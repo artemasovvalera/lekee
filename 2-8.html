@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.8. Эксплуатация релейной защиты и электроавтоматики - Эксплуатация электрооборудования</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 50%, #1a365d 100%);
+            min-height: 100vh;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .lecture-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-left: 6px solid #c53030;
+        }
+
+        .breadcrumb {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #1a365d;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .lecture-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .content-body {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #1a365d;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #c53030;
+        }
+
+        h3 {
+            color: #2c5282;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 25px 0 15px 0;
+        }
+
+        h4 {
+            color: #4a5568;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .formula-box {
+            background: #1a365d;
+            color: white;
+            border-left: 4px solid #c53030;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1rem;
+        }
+
+        .formula-box .formula {
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .formula-box .formula-desc {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: #2c5282;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:hover {
+            background: #f7fafc;
+        }
+
+        .image-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .image-container svg {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-caption {
+            color: #4a5568;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);
+            border-left: 4px solid #f6ad55;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+            border-left: 4px solid #c53030;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            color: #742a2a;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .example-title {
+            font-weight: 700;
+            color: #234e52;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e8f4fd 0%, #bee3f8 100%);
+            border-left: 4px solid #3182ce;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .reference {
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .reference h4 {
+            color: #1a365d;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #c53030;
+            padding-bottom: 10px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e2e8f0;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: #2c5282;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .nav-btn:hover {
+            background: #576a84;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-btn-home {
+            background: #c53030;
+            flex: 0 0 auto;
+            max-width: 180px;
+        }
+
+        .nav-btn-home:hover {
+            background: #9b2c2c;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .gost-reference {
+            display: inline-block;
+            background: #edf2f7;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .column-box {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .column-box h4 {
+            color: #2c5282;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f6ad55;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .lecture-header, .content-body {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .two-column, .three-column {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .nav-btn-home {
+                order: -1;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="nav-buttons">
+            <a href="2-7.html" class="nav-btn">← Предыдущая тема: 2.7. Электрические машины</a>
+            <a href="start.html" class="nav-btn nav-btn-home">📚 Оглавление</a>
+            <a href="2-9.html" class="nav-btn">Следующая тема: 2.9. Заземляющие устройства →</a>
+        </div>
+
+        <header class="lecture-header">
+            <div class="breadcrumb">Раздел 2 → Тема 2.8 → Эксплуатация релейной защиты и электроавтоматики</div>
+            <h1>2.8. Эксплуатация релейной защиты и электроавтоматики. Планирование ТО и Р</h1>
+            <div class="lecture-meta">
+                <div class="meta-item">📚 Лекционное занятие</div>
+                <div class="meta-item">⏱ 2 академических часа</div>
+                <div class="meta-item">🎯 Раздел 2: Эксплуатация электрооборудования</div>
+            </div>
+        </header>
+
+        <article class="content-body">
+            
+            <!-- ВВЕДЕНИЕ -->
+            <h2>Введение</h2>
+            
+            <p>Релейная защита и автоматика (РЗА) является важнейшей составной частью любой электроэнергетической системы. Она обеспечивает автоматическое выявление повреждений и ненормальных режимов работы электрооборудования, отключение повреждённых элементов и восстановление нормального режима работы системы электроснабжения. Без надёжно функционирующей релейной защиты невозможна безопасная и экономичная эксплуатация современных электрических сетей и электроустановок.</p>
+
+            <p>Значение РЗА для электроэнергетики определяется тем, что короткие замыкания и другие аварийные режимы в электрических сетях неизбежны и могут приводить к катастрофическим последствиям: разрушению оборудования, пожарам, поражению людей электрическим током, массовым отключениям потребителей. Именно релейная защита обеспечивает быстрое (за доли секунды) выявление и локализацию повреждений, минимизируя ущерб и предотвращая развитие аварий.</p>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <span class="stat-value">0,02-0,1 с</span>
+                    <span class="stat-label">время срабатывания быстродействующих защит</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">99,5%</span>
+                    <span class="stat-label">требуемая надёжность срабатывания</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">95%</span>
+                    <span class="stat-label">успешность АПВ на ВЛ</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">30+</span>
+                    <span class="stat-label">лет срок службы УРЗА</span>
+                </div>
+            </div>
+
+            <p>История развития релейной защиты насчитывает более 100 лет. Первые защитные устройства появились в конце XIX века одновременно с развитием электрических сетей. За это время релейная защита прошла путь от простейших плавких предохранителей и электромеханических реле до современных микропроцессорных терминалов, объединённых в интеллектуальные системы управления подстанциями.</p>
+
+            <p>Особенностью эксплуатации устройств РЗА является то, что большую часть времени они находятся в режиме ожидания и должны быть готовы сработать в любой момент при возникновении аварийной ситуации. При этом ложные срабатывания защиты недопустимы, поскольку они приводят к необоснованным отключениям оборудования и потребителей. Это предъявляет особые требования к надёжности устройств РЗА и качеству их технического обслуживания.</p>
+
+            <div class="definition-box">
+                <strong>Определение:</strong> <em>Релейная защита</em> — совокупность устройств (или отдельное устройство), содержащая реле и способная реагировать на короткие замыкания (КЗ) в различных элементах электроэнергетической системы, на нарушения нормальных режимов работы этих элементов и осуществлять функции автоматического управления коммутационными аппаратами (<span class="gost-reference">ГОСТ Р 57114-2016</span>).
+            </div>
+
+            <p>Современная система РЗА строится на следующих основных принципах:</p>
+
+            <ul>
+                <li><strong>Селективность (избирательность)</strong> — способность защиты выявлять место повреждения и отключать только повреждённый элемент, сохраняя в работе неповреждённую часть системы</li>
+                <li><strong>Быстродействие</strong> — минимальное время отключения повреждения для ограничения размеров разрушений и сохранения устойчивости системы</li>
+                <li><strong>Чувствительность</strong> — способность защиты надёжно реагировать на все виды повреждений в пределах защищаемой зоны при минимальных значениях аварийных параметров</li>
+                <li><strong>Надёжность</strong> — гарантированное срабатывание при возникновении условий, на которые рассчитана защита (надёжность срабатывания), и несрабатывание при отсутствии таких условий (надёжность несрабатывания)</li>
+            </ul>
+
+            <p>Эксплуатация устройств РЗА регламентируется обширной нормативно-технической документацией:</p>
+
+            <ul>
+                <li><span class="gost-reference">ПТЭЭП (глава 2.6)</span> — Правила технической эксплуатации электроустановок потребителей. Глава 2.6 «Релейная защита и автоматика»</li>
+                <li><span class="gost-reference">ПУЭ (глава 3.2)</span> — Правила устройства электроустановок. Глава 3.2 «Релейная защита»</li>
+                <li><span class="gost-reference">СТО 56947007-29.120.70.241-2017</span> — Правила технического обслуживания устройств релейной защиты и автоматики</li>
+                <li><span class="gost-reference">ГОСТ Р 57114-2016</span> — Единая энергетическая система и изолированно работающие энергосистемы. Релейная защита. Термины и определения</li>
+                <li><span class="gost-reference">РД 153-34.0-35.617-2001</span> — Правила технического обслуживания устройств релейной защиты, электроавтоматики, дистанционного управления и сигнализации электростанций и подстанций 110-750 кВ</li>
+            </ul>
+
+            <!-- РАЗДЕЛ 2.8.1 -->
+            <h2>2.8.1. Назначение и виды релейной защиты</h2>
+
+            <p>Для понимания принципов эксплуатации устройств РЗА необходимо чётко представлять назначение различных видов защит, принципы их действия и области применения. Рассмотрим основные функции релейной защиты и классификацию защитных устройств.</p>
+
+            <h3>Основные функции релейной защиты</h3>
+
+            <p>Релейная защита выполняет несколько важнейших функций в системе электроснабжения, которые можно разделить на основные и дополнительные.</p>
+
+            <div class="two-column">
+                <div class="column-box">
+                    <h4>Основные функции</h4>
+                    <ul>
+                        <li><strong>Защита при КЗ</strong> — быстрое выявление и отключение коротких замыканий для предотвращения разрушения оборудования</li>
+                        <li><strong>Защита при перегрузках</strong> — предотвращение недопустимого перегрева оборудования при длительных перегрузках</li>
+                        <li><strong>Защита при замыканиях на землю</strong> — выявление однофазных замыканий на землю в сетях с различными режимами нейтрали</li>
+                        <li><strong>Защита от ненормальных режимов</strong> — реагирование на опасные отклонения параметров (напряжение, частота)</li>
+                    </ul>
+                </div>
+                <div class="column-box">
+                    <h4>Дополнительные функции</h4>
+                    <ul>
+                        <li><strong>Автоматическое повторное включение (АПВ)</strong> — восстановление питания после отключения</li>
+                        <li><strong>Автоматический ввод резерва (АВР)</strong> — переключение на резервный источник</li>
+                        <li><strong>Автоматическая частотная разгрузка (АЧР)</strong> — отключение нагрузки при снижении частоты</li>
+                        <li><strong>Регистрация аварийных событий</strong> — фиксация параметров режима при авариях</li>
+                        <li><strong>Сигнализация</strong> — информирование персонала о состоянии оборудования</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Принципы действия релейной защиты</h3>
+
+            <p>Устройства релейной защиты строятся на различных принципах действия, определяющих их характеристики и области применения. Выбор принципа защиты зависит от типа защищаемого оборудования, требований к быстродействию и селективности, а также от экономических соображений.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Принцип действия</th>
+                        <th>Контролируемый параметр</th>
+                        <th>Особенности</th>
+                        <th>Область применения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Токовый</strong></td>
+                        <td>Величина тока</td>
+                        <td>Срабатывание при превышении током уставки. Простота, надёжность</td>
+                        <td>Максимальная токовая защита (МТЗ), токовые отсечки</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Дифференциальный</strong></td>
+                        <td>Разность токов на концах защищаемого элемента</td>
+                        <td>Абсолютная селективность, мгновенное действие</td>
+                        <td>Защита трансформаторов, генераторов, шин, линий</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Дистанционный</strong></td>
+                        <td>Отношение напряжения к току (сопротивление)</td>
+                        <td>Определение расстояния до места КЗ</td>
+                        <td>Защита линий электропередачи</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Направленный</strong></td>
+                        <td>Направление мощности КЗ</td>
+                        <td>Определение направления к месту повреждения</td>
+                        <td>Защита линий с двусторонним питанием</td>
+                    </tr>
+                    <tr>
+                        <td><strong>По напряжению</strong></td>
+                        <td>Величина и изменение напряжения</td>
+                        <td>Реагирование на снижение или повышение напряжения</td>
+                        <td>Защита минимального напряжения, защита от перенапряжений</td>
+                    </tr>
+                    <tr>
+                        <td><strong>По частоте</strong></td>
+                        <td>Частота сети</td>
+                        <td>Реагирование на отклонение частоты</td>
+                        <td>АЧР, защита генераторов</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Газовый</strong></td>
+                        <td>Выделение газа в масле трансформатора</td>
+                        <td>Реагирование на внутренние повреждения</td>
+                        <td>Защита маслонаполненных трансформаторов</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Основные виды релейной защиты</h3>
+
+            <p>Рассмотрим подробнее наиболее распространённые виды релейной защиты, применяемые на различных объектах электроэнергетики.</p>
+
+            <h4>Максимальная токовая защита (МТЗ)</h4>
+
+            <p>Максимальная токовая защита является наиболее простым и распространённым видом защиты. Она основана на принципе увеличения тока при коротком замыкании. МТЗ срабатывает, когда ток превышает заданное значение (уставку) в течение определённого времени (выдержка времени). Селективность МТЗ обеспечивается ступенчатым принципом — выдержки времени защит возрастают по мере удаления от источника питания.</p>
+
+            <div class="formula-box">
+                <strong>Расчёт тока срабатывания МТЗ:</strong>
+                <div class="formula">
+                    I<sub>сз</sub> = (k<sub>н</sub> × k<sub>сзп</sub> × I<sub>раб.макс</sub>) / k<sub>в</sub>
+                </div>
+                <div class="formula-desc">
+                    где: I<sub>сз</sub> — ток срабатывания защиты, А;<br>
+                    k<sub>н</sub> — коэффициент надёжности (1,1-1,3);<br>
+                    k<sub>сзп</sub> — коэффициент самозапуска (1,5-3,0);<br>
+                    I<sub>раб.макс</sub> — максимальный рабочий ток, А;<br>
+                    k<sub>в</sub> — коэффициент возврата реле (0,8-0,95)
+                </div>
+            </div>
+
+            <p>МТЗ применяется для защиты линий, трансформаторов, электродвигателей и другого оборудования. Основным недостатком является относительно большое время срабатывания на защитах, близких к источнику питания, что обусловлено необходимостью обеспечения селективности.</p>
+
+            <h4>Токовая отсечка</h4>
+
+            <p>Токовая отсечка — это токовая защита без выдержки времени (или с минимальной выдержкой), селективность которой обеспечивается выбором тока срабатывания большим, чем максимальный ток КЗ за пределами защищаемой зоны. Благодаря этому отсечка защищает только часть линии или оборудования, но действует практически мгновенно.</p>
+
+            <div class="formula-box">
+                <strong>Расчёт тока срабатывания токовой отсечки:</strong>
+                <div class="formula">
+                    I<sub>со</sub> = k<sub>н</sub> × I<sub>кз.макс.внеш</sub>
+                </div>
+                <div class="formula-desc">
+                    где: I<sub>со</sub> — ток срабатывания отсечки, А;<br>
+                    k<sub>н</sub> — коэффициент надёжности (1,2-1,3);<br>
+                    I<sub>кз.макс.внеш</sub> — максимальный ток при КЗ в конце защищаемой зоны (на шинах противоположной подстанции), А
+                </div>
+            </div>
+
+            <h4>Дифференциальная защита</h4>
+
+            <p>Дифференциальная защита основана на сравнении токов, втекающих в защищаемый элемент и вытекающих из него. В нормальном режиме и при внешних КЗ эти токи равны (с учётом коэффициентов трансформации ТТ), и защита не срабатывает. При повреждении внутри защищаемой зоны появляется дифференциальный ток (разность токов), вызывающий срабатывание защиты.</p>
+
+            <div class="definition-box">
+                <strong>Преимущества дифференциальной защиты:</strong>
+                <ul>
+                    <li><strong>Абсолютная селективность</strong> — защита реагирует только на повреждения внутри защищаемой зоны и не требует согласования с другими защитами</li>
+                    <li><strong>Мгновенное действие</strong> — отсутствие выдержки времени, время срабатывания определяется только быстродействием реле</li>
+                    <li><strong>Высокая чувствительность</strong> — возможность настройки на малые токи повреждения</li>
+                    <li><strong>Независимость от нагрузки</strong> — рабочий ток не влияет на работу защиты</li>
+                </ul>
+            </div>
+
+            <p>Дифференциальная защита применяется для защиты трансформаторов, генераторов, электродвигателей, сборных шин и линий электропередачи. Основной сложностью при её реализации является обеспечение баланса токов трансформаторов тока и отстройка от бросков намагничивающего тока трансформаторов.</p>
+
+            <h4>Дистанционная защита</h4>
+
+            <p>Дистанционная защита измеряет сопротивление линии до места короткого замыкания, которое пропорционально расстоянию до точки повреждения. Это позволяет определить, находится ли КЗ в пределах защищаемой зоны, и обеспечить ступенчатую селективность без больших выдержек времени.</p>
+
+            <div class="formula-box">
+                <strong>Принцип измерения сопротивления при КЗ:</strong>
+                <div class="formula">
+                    Z<sub>изм</sub> = U<sub>реле</sub> / I<sub>реле</sub> = Z<sub>1</sub> × l
+                </div>
+                <div class="formula-desc">
+                    где: Z<sub>изм</sub> — измеренное сопротивление, Ом;<br>
+                    U<sub>реле</sub> — напряжение на входе реле, В;<br>
+                    I<sub>реле</sub> — ток на входе реле, А;<br>
+                    Z<sub>1</sub> — удельное сопротивление линии, Ом/км;<br>
+                    l — расстояние до места КЗ, км
+                </div>
+            </div>
+
+            <p>Дистанционная защита обычно выполняется трёхступенчатой: первая ступень защищает 80-85% длины линии без выдержки времени, вторая ступень — всю линию и часть следующего участка с небольшой выдержкой, третья ступень — резервирование защит смежных элементов с большей выдержкой времени.</p>
+
+            <div class="image-container">
+                <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Фон -->
+                    <rect width="900" height="500" fill="#ffffff"/>
+                    
+                    <!-- Заголовок -->
+                    <text x="450" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#1a365d">
+                        ПРИНЦИПЫ ДЕЙСТВИЯ ОСНОВНЫХ ВИДОВ РЕЛЕЙНОЙ ЗАЩИТЫ
+                    </text>
+                    
+                    <!-- МТЗ -->
+                    <g transform="translate(30, 50)">
+                        <rect x="0" y="0" width="270" height="200" fill="#f7fafc" stroke="#e2e8f0" rx="8"/>
+                        <text x="135" y="25" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#2c5282">
+                            Максимальная токовая защита
+                        </text>
+                        
+                        <!-- Схема -->
+                        <line x1="30" y1="80" x2="240" y2="80" stroke="#4a5568" stroke-width="3"/>
+                        <circle cx="60" cy="80" r="15" fill="#3182ce" stroke="#2c5282" stroke-width="2"/>
+                        <text x="60" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="white">ТТ</text>
+                        
+                        <rect x="100" y="65" width="40" height="30" fill="#fc8181" stroke="#c53030" stroke-width="2"/>
+                        <text x="120" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="white">I></text>
+                        
+                        <rect x="160" y="65" width="40" height="30" fill="#faf089" stroke="#d69e2e" stroke-width="2"/>
+                        <text x="180" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#744210">t</text>
+                        
+                        <!-- Выключатель -->
+                        <rect x="220" y="70" width="15" height="20" fill="#718096"/>
+                        
+                        <!-- Описание -->
+                        <text x="20" y="130" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">• Срабатывает при I > I<tspan baseline-shift="sub" font-size="8">сз</tspan></text>
+                        <text x="20" y="148" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">• Селективность по времени</text>
+                        <text x="20" y="166" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">• Простота реализации</text>
+                        <text x="20" y="184" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">• Применение: линии, Тр, ЭД</text>
+                    </g>
+                    
+                    <!-- Дифференциальная защита -->
+                    <g transform="translate(315, 50)">
+                        <rect x="0" y="0" width="270" height="200" fill="#f7fafc" stroke="#e2e8f0" rx="8"/>
+                        <text x="135" y="25" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#2c5282">
+                            Дифференциальная защита
+                        </text>
+                        
+                        <!-- Схема -->
+                        <line x1="30" y1="80" x2="240" y2="80" stroke="#4a5568" stroke-width="3"/>
+                        
+                        <!-- ТТ слева -->
+                        <circle cx="50" cy="80" r="12" fill="#3182ce" stroke="#2c5282" stroke-width="2"/>
+                        <text x="50" y="84" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="white">ТТ1</text>
+                        
+                        <!-- Защищаемый объект -->
+                        <rect x="100" y="65" width="70" height="30" fill="#c6f6d5" stroke="#38a169" stroke-width="2"/>
+                        <text x="135" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#22543d">Тр/Г</text>
+                        
+                        <!-- ТТ справа -->
+                        <circle cx="220" cy="80" r="12" fill="#3182ce" stroke="#2c5282" stroke-width="2"/>
+                        <text x="220" y="84" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="white">ТТ2</text>
+                        
+                        <!-- Реле -->
+                        <line x1="50" y1="92" x2="50" y2="110" stroke="#4a5568" stroke-width="1"/>
+                        <line x1="220" y1="92" x2="220" y2="110" stroke="#4a5568" stroke-width="1"/>
+                        <line x1="50" y1="110" x2="135" y2="110" stroke="#4a5568" stroke-width="1"/>
+                        <line x1="220" y1="110" x2="135" y2="110" stroke="#4a5568" stroke-width="1"/>
+                        <rect x="115" y="100" width="40" height="25" fill="#fc8181" stroke="#c53030" stroke-width="2"/>
+                        <text x="135" y="117" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="white">ΔI</text>
+                        
+                        <!-- Описание -->
+                        <text x="20" y="145" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">• Сравнивает I<tspan baseline-shift="sub" font-size="8">1</tspan> и I<tspan baseline-shift="sub" font-size="8">2</tspan></text>
+                        <text x="20" y="163" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">• Абсолютная селективность</text>
+                        <text x="20" y="181" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">• Мгновенное действие</text>
+                    </g>
+                    
+                    <!-- Дистанционная защита -->
+                    <g transform="translate(600, 50)">
+                        <rect x="0" y="0" width="270" height="200" fill="#f7fafc" stroke="#e2e8f0" rx="8"/>
+                        <text x="135" y="25" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#2c5282">
+                            Дистанционная защита
+                        </text>
+                        
+                        <!-- Схема линии -->
+                        <line x1="30" y1="80" x2="240" y2="80" stroke="#4a5568" stroke-width="3"/>
+                        
+                        <!-- ПС А -->
+                        <rect x="20" y="65" width="30" height="30" fill="#bee3f8" stroke="#3182ce" stroke-width="2"/>
+                        <text x="35" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#2c5282">А</text>
+                        
+                        <!-- ПС Б -->
+                        <rect x="220" y="65" width="30" height="30" fill="#bee3f8" stroke="#3182ce" stroke-width="2"/>
+                        <text x="235" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#2c5282">Б</text>
+                        
+                        <!-- Реле Z -->
+                        <rect x="60" y="100" width="40" height="25" fill="#fc8181" stroke="#c53030" stroke-width="2"/>
+                        <text x="80" y="117" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="white">Z<</text>
+                        
+                        <!-- Зоны -->
+                        <line x1="50" y1="70" x2="50" y2="60" stroke="#38a169" stroke-width="2"/>
+                        <line x1="50" y1="60" x2="180" y2="60" stroke="#38a169" stroke-width="2"/>
+                        <text x="115" y="55" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#38a169">I зона (0,8-0,85)</text>
+                        
+                        <line x1="50" y1="90" x2="50" y2="95" stroke="#d69e2e" stroke-width="2"/>
+                        <line x1="50" y1="95" x2="240" y2="95" stroke="#d69e2e" stroke-width="2"/>
+                        <text x="145" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#d69e2e">II зона (1,1-1,2)</text>
+                        
+                        <!-- Описание -->
+                        <text x="20" y="145" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">• Измеряет Z = U/I</text>
+                        <text x="20" y="163" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">• Ступенчатая селективность</text>
+                        <text x="20" y="181" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">• Применение: линии 110+ кВ</text>
+                    </g>
+                    
+                    <!-- Газовая защита -->
+                    <g transform="translate(30, 270)">
+                        <rect x="0" y="0" width="270" height="200" fill="#f7fafc" stroke="#e2e8f0" rx="8"/>
+                        <text x="135" y="25" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#2c5282">
+                            Газовая защита трансформатора
+                        </text>
+                        
+                        <!-- Схема трансформатора -->
+                        <rect x="40" y="50" width="80" height="100" fill="#faf089" stroke="#d69e2e" stroke-width="2" rx="5"/>
+                        <text x="80" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#744210">Тр</text>
+                        
+                        <!-- Маслопровод к расширителю -->
+                        <line x1="120" y1="70" x2="200" y2="70" stroke="#4a5568" stroke-width="4"/>
+                        
+                        <!-- Газовое реле -->
+                        <ellipse cx="160" cy="70" rx="20" ry="15" fill="#fc8181" stroke="#c53030" stroke-width="2"/>
+                        <text x="160" y="75" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="white">ГР</text>
+                        
+                        <!-- Расширитель -->
+                        <ellipse cx="220" cy="70" rx="25" ry="20" fill="#bee3f8" stroke="#3182ce" stroke-width="2"/>
+                        <text x="220" y="75" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#2c5282">Расш.</text>
+                        
+                        <!-- Описание -->
+                        <text x="20" y="170" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">• Реагирует на выделение газа</text>
+                        <text x="20" y="188" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">• Сигнал или отключение</text>
+                    </g>
+                    
+                    <!-- Направленная защита -->
+                    <g transform="translate(315, 270)">
+                        <rect x="0" y="0" width="270" height="200" fill="#f7fafc" stroke="#e2e8f0" rx="8"/>
+                        <text x="135" y="25" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#2c5282">
+                            Направленная защита
+                        </text>
+                        
+                        <!-- Схема -->
+                        <line x1="30" y1="100" x2="240" y2="100" stroke="#4a5568" stroke-width="3"/>
+                        
+                        <!-- Источники -->
+                        <circle cx="30" cy="100" r="15" fill="#38a169" stroke="#22543d" stroke-width="2"/>
+                        <text x="30" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="white">~</text>
+                        
+                        <circle cx="240" cy="100" r="15" fill="#38a169" stroke="#22543d" stroke-width="2"/>
+                        <text x="240" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="white">~</text>
+                        
+                        <!-- Реле направления -->
+                        <rect x="100" y="85" width="70" height="30" fill="#fc8181" stroke="#c53030" stroke-width="2"/>
+                        <text x="135" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="white">I>, W→</text>
+                        
+                        <!-- Стрелки направления -->
+                        <path d="M 80 70 L 100 70 L 95 65 M 100 70 L 95 75" stroke="#3182ce" stroke-width="2" fill="none"/>
+                        <path d="M 190 70 L 170 70 L 175 65 M 170 70 L 175 75" stroke="#d69e2e" stroke-width="2" fill="none"/>
+                        
+                        <!-- Описание -->
+                        <text x="20" y="150" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">• Определяет направление мощности КЗ</text>
+                        <text x="20" y="168" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">• Для сетей с двусторонним питанием</text>
+                        <text x="20" y="186" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">• Сочетается с МТЗ</text>
+                    </g>
+                    
+                    <!-- Защита по напряжению -->
+                    <g transform="translate(600, 270)">
+                        <rect x="0" y="0" width="270" height="200" fill="#f7fafc" stroke="#e2e8f0" rx="8"/>
+                        <text x="135" y="25" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#2c5282">
+                            Защита по напряжению
+                        </text>
+                        
+                        <!-- Схема -->
+                        <line x1="50" y1="80" x2="220" y2="80" stroke="#4a5568" stroke-width="3"/>
+                        
+                        <!-- ТН -->
+                        <circle cx="80" cy="80" r="15" fill="#805ad5" stroke="#553c9a" stroke-width="2"/>
+                        <text x="80" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="white">ТН</text>
+                        
+                        <!-- Реле минимального напряжения -->
+                        <rect x="120" y="65" width="40" height="30" fill="#fc8181" stroke="#c53030" stroke-width="2"/>
+                        <text x="140" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="white">U<</text>
+                        
+                        <!-- Реле максимального напряжения -->
+                        <rect x="180" y="65" width="40" height="30" fill="#faf089" stroke="#d69e2e" stroke-width="2"/>
+                        <text x="200" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#744210">U></text>
+                        
+                        <!-- Описание -->
+                        <text x="20" y="130" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">• U< — защита минимального напряжения</text>
+                        <text x="20" y="148" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">  (самозапуск двигателей, АВР)</text>
+                        <text x="20" y="168" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">• U> — защита от перенапряжений</text>
+                        <text x="20" y="186" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">• 3U<sub>0</sub> — защита от замыканий на землю</text>
+                    </g>
+                </svg>
+                <div class="image-caption">Рис. 2.8.1. Принципы действия основных видов релейной защиты</div>
+            </div>
+
+            <h3>Микропроцессорные устройства РЗА</h3>
+
+            <p>Современные устройства релейной защиты и автоматики построены на микропроцессорной элементной базе. Они представляют собой специализированные промышленные компьютеры, выполняющие функции измерения, обработки информации, принятия решений и управления коммутационными аппаратами. Микропроцессорные устройства (МП РЗА) обладают рядом существенных преимуществ по сравнению с электромеханическими и полупроводниковыми реле предыдущих поколений.</p>
+
+            <div class="two-column">
+                <div class="column-box">
+                    <h4>Преимущества МП РЗА</h4>
+                    <ul>
+                        <li>Многофункциональность — совмещение нескольких видов защит, автоматики, измерений в одном устройстве</li>
+                        <li>Высокая точность измерений и стабильность уставок</li>
+                        <li>Самодиагностика и непрерывный контроль исправности</li>
+                        <li>Регистрация аварийных событий (осциллографирование)</li>
+                        <li>Дистанционное управление и изменение уставок</li>
+                        <li>Интеграция в АСУ ТП подстанции</li>
+                        <li>Малые габариты и энергопотребление</li>
+                        <li>Простота настройки через программный интерфейс</li>
+                    </ul>
+                </div>
+                <div class="column-box">
+                    <h4>Особенности эксплуатации</h4>
+                    <ul>
+                        <li>Требуется квалифицированный персонал для настройки и обслуживания</li>
+                        <li>Необходимость защиты от электромагнитных помех</li>
+                        <li>Резервированное питание оперативным током</li>
+                        <li>Периодическое обновление программного обеспечения</li>
+                        <li>Кибербезопасность при подключении к сетям</li>
+                        <li>Тепловой режим — ограничение температуры окружающей среды</li>
+                        <li>Срок службы электролитических конденсаторов</li>
+                    </ul>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Характеристика</th>
+                        <th>Электромеханические реле</th>
+                        <th>Микропроцессорные терминалы</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Погрешность измерения</strong></td>
+                        <td>5-10%</td>
+                        <td>0,5-2%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Время срабатывания</strong></td>
+                        <td>30-100 мс</td>
+                        <td>15-40 мс</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Самодиагностика</strong></td>
+                        <td>Отсутствует</td>
+                        <td>Непрерывная, 100% охват</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Регистрация событий</strong></td>
+                        <td>Указательные реле</td>
+                        <td>Осциллографирование, журнал событий</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Количество функций</strong></td>
+                        <td>1-2 на устройство</td>
+                        <td>10-50 на терминал</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Изменение уставок</strong></td>
+                        <td>Механически, требует вскрытия</td>
+                        <td>Программно, в том числе дистанционно</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Срок службы</strong></td>
+                        <td>30-40 лет</td>
+                        <td>15-25 лет</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Устойчивость к помехам</strong></td>
+                        <td>Высокая</td>
+                        <td>Требует специальных мер защиты</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <strong>Основные производители МП РЗА:</strong>
+                <ul>
+                    <li><strong>ABB (Швейцария/Швеция)</strong> — серии REL, REB, REF, Relion</li>
+                    <li><strong>Siemens (Германия)</strong> — серии SIPROTEC 4, SIPROTEC 5</li>
+                    <li><strong>Schneider Electric (Франция)</strong> — серии Sepam, MiCOM</li>
+                    <li><strong>General Electric (США)</strong> — серии Multilin</li>
+                    <li><strong>НПП «ЭКРА» (Россия)</strong> — серии БЭ2704, ШЭ2607</li>
+                    <li><strong>ООО «Релематика» (Россия)</strong> — серии ТОР</li>
+                    <li><strong>НТЦ «Механотроника» (Россия)</strong> — серии БМРЗ</li>
+                    <li><strong>ИЦ «Бреслер» (Россия)</strong> — серии Бреслер</li>
+                </ul>
+            </div>
+
+            <!-- РАЗДЕЛ 2.8.2 -->
+            <h2>2.8.2. Техническое обслуживание устройств РЗА</h2>
+
+            <p>Техническое обслуживание (ТО) устройств релейной защиты и автоматики — это комплекс работ, направленных на поддержание устройств в работоспособном состоянии и обеспечение их готовности к выполнению функций защиты. Особенностью ТО устройств РЗА является то, что они находятся в режиме ожидания и должны быть постоянно готовы к срабатыванию при возникновении аварийной ситуации.</p>
+
+            <p>Система технического обслуживания РЗА существенно изменилась в связи с массовым внедрением микропроцессорных устройств. Если для электромеханических реле требовались регулярные механические проверки и регулировки, то для МП РЗА основное внимание уделяется функциональным проверкам и контролю программного обеспечения.</p>
+
+            <h3>Виды технического обслуживания РЗА</h3>
+
+            <p>В соответствии с действующими нормативными документами устанавливаются следующие виды технического обслуживания устройств РЗА:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Вид ТО</th>
+                        <th>Назначение</th>
+                        <th>Когда проводится</th>
+                        <th>Объём работ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Проверка при новом включении (Н)</strong></td>
+                        <td>Подготовка к первому включению в работу</td>
+                        <td>Перед вводом в эксплуатацию нового или реконструированного устройства</td>
+                        <td>Полный объём проверок, измерений и испытаний согласно инструкции</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Первый профилактический контроль (К1)</strong></td>
+                        <td>Выявление дефектов приработки</td>
+                        <td>Через 8-12 месяцев после включения (для электромеханических устройств)</td>
+                        <td>Полный объём, как при новом включении</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Профилактический контроль (К)</strong></td>
+                        <td>Проверка исправности и правильности функционирования</td>
+                        <td>Периодически, согласно графику (1 раз в 3-8 лет)</td>
+                        <td>Проверка уставок, испытание изоляции, функциональные проверки</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Профилактическое восстановление (В)</strong></td>
+                        <td>Восстановление исправности при выявлении дефектов</td>
+                        <td>По результатам профилактического контроля или диагностики</td>
+                        <td>Ремонт, замена элементов, регулировка</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Технический осмотр (О)</strong></td>
+                        <td>Контроль состояния без вывода из работы</td>
+                        <td>Периодически, не реже 1 раза в 6 месяцев</td>
+                        <td>Внешний осмотр, проверка сигнализации, контроль самодиагностики</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Тестовый контроль (Т)</strong></td>
+                        <td>Проверка исправности (для МП РЗА)</td>
+                        <td>Периодически, 1 раз в год</td>
+                        <td>Автоматизированное тестирование функций</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Внеочередные работы</strong></td>
+                        <td>Проверка после срабатывания, отказа, неправильного действия</td>
+                        <td>По мере необходимости</td>
+                        <td>Определяется по результатам анализа</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Проверка при новом включении</h3>
+
+            <p>Проверка при новом включении является наиболее полным видом технического обслуживания и проводится для подтверждения соответствия устройства проектной документации, правильности монтажа и готовности к эксплуатации. Эта проверка выполняется специалистами служб РЗА или специализированных наладочных организаций.</p>
+
+            <div class="highlight-box">
+                <strong>Основные этапы проверки при новом включении:</strong>
+                <ol>
+                    <li><strong>Подготовительные работы:</strong>
+                        <ul>
+                            <li>Изучение проектной документации и заводских инструкций</li>
+                            <li>Проверка комплектности оборудования</li>
+                            <li>Внешний осмотр устройств и монтажа</li>
+                            <li>Проверка соответствия маркировки проекту</li>
+                        </ul>
+                    </li>
+                    <li><strong>Проверка изоляции:</strong>
+                        <ul>
+                            <li>Измерение сопротивления изоляции мегаомметром</li>
+                            <li>Испытание повышенным напряжением (для электромеханических устройств)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Проверка элементов устройства:</strong>
+                        <ul>
+                            <li>Проверка реле — уставки, времена, характеристики</li>
+                            <li>Проверка логических связей</li>
+                            <li>Проверка цепей управления, сигнализации</li>
+                        </ul>
+                    </li>
+                    <li><strong>Проверка взаимодействия с внешними устройствами:</strong>
+                        <ul>
+                            <li>Проверка цепей трансформаторов тока и напряжения</li>
+                            <li>Проверка цепей отключения и включения выключателей</li>
+                            <li>Проверка цепей связи с другими устройствами</li>
+                        </ul>
+                    </li>
+                    <li><strong>Комплексная проверка:</strong>
+                        <ul>
+                            <li>Проверка работы защиты под нагрузкой</li>
+                            <li>Проверка правильности подключения к ТТ и ТН</li>
+                            <li>Снятие векторных диаграмм</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <h3>Профилактический контроль</h3>
+
+            <p>Профилактический контроль (К) проводится периодически для подтверждения исправности устройств и правильности их функционирования. Объём работ при профилактическом контроле меньше, чем при проверке нового включения, и определяется типом устройства и условиями эксплуатации.</p>
+
+            <div class="two-column">
+                <div class="column-box">
+                    <h4>Профилактический контроль электромеханических устройств</h4>
+                    <ul>
+                        <li>Внешний осмотр, очистка от пыли</li>
+                        <li>Проверка механической части реле</li>
+                        <li>Проверка контактов реле</li>
+                        <li>Измерение сопротивления изоляции</li>
+                        <li>Проверка уставок срабатывания</li>
+                        <li>Проверка времени срабатывания</li>
+                        <li>Проверка коэффициента возврата</li>
+                        <li>Проверка взаимодействия с выключателем</li>
+                    </ul>
+                </div>
+                <div class="column-box">
+                    <h4>Профилактический контроль МП устройств</h4>
+                    <ul>
+                        <li>Проверка результатов самодиагностики</li>
+                        <li>Проверка конфигурации и уставок</li>
+                        <li>Сверка с проектной документацией</li>
+                        <li>Проверка аналоговых входов (токи, напряжения)</li>
+                        <li>Проверка дискретных входов и выходов</li>
+                        <li>Функциональные тесты защит</li>
+                        <li>Проверка осциллографирования</li>
+                        <li>Проверка связи с АСУ ТП</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Периодичность технического обслуживания</h3>
+
+            <p>Периодичность проведения профилактического контроля устанавливается в зависимости от типа устройств и их важности. Для микропроцессорных устройств, имеющих функцию непрерывной самодиагностики, периодичность проверок может быть существенно увеличена по сравнению с электромеханическими реле.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип устройства</th>
+                        <th>Цикл профконтроля</th>
+                        <th>Цикл тестового контроля</th>
+                        <th>Цикл техосмотра</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Электромеханические реле (основное оборудование)</strong></td>
+                        <td>3 года</td>
+                        <td>—</td>
+                        <td>6 месяцев</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Электромеханические реле (второстепенное оборудование)</strong></td>
+                        <td>6 лет</td>
+                        <td>—</td>
+                        <td>6 месяцев</td>
+                    </tr>
+                    <tr>
+                        <td><strong>МП устройства с самодиагностикой (основное оборудование)</strong></td>
+                        <td>6 лет</td>
+                        <td>1 год</td>
+                        <td>6 месяцев</td>
+                    </tr>
+                    <tr>
+                        <td><strong>МП устройства с самодиагностикой (второстепенное оборудование)</strong></td>
+                        <td>8 лет</td>
+                        <td>2 года</td>
+                        <td>6 месяцев</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Устройства автоматики (АПВ, АВР, АЧР)</strong></td>
+                        <td>3-6 лет</td>
+                        <td>1 год (для МП)</td>
+                        <td>6 месяцев</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>⚠️ Условия изменения периодичности ТО:</strong>
+                <p>Периодичность профилактического контроля может быть увеличена или уменьшена в зависимости от:</p>
+                <ul>
+                    <li>Результатов предыдущих проверок (отсутствие замечаний → увеличение цикла)</li>
+                    <li>Количества срабатываний и отказов (много отказов → сокращение цикла)</li>
+                    <li>Условий окружающей среды (агрессивная среда, вибрация → сокращение)</li>
+                    <li>Срока эксплуатации (приближение к нормативному сроку → сокращение)</li>
+                    <li>Важности защищаемого оборудования</li>
+                </ul>
+            </div>
+
+            <!-- РАЗДЕЛ 2.8.3 -->
+            <h2>2.8.3. Испытания устройств РЗА</h2>
+
+            <p>Испытания устройств релейной защиты и автоматики проводятся для подтверждения их соответствия техническим требованиям и готовности к работе. В отличие от технического обслуживания, которое выполняется периодически, испытания могут проводиться как планово, так и по результатам анализа работы устройств.</p>
+
+            <h3>Проверка уставок защит</h3>
+
+            <p>Проверка уставок является одной из важнейших операций при техническом обслуживании устройств РЗА. Уставки определяют, при каких значениях контролируемых параметров защита должна сработать. Неправильные уставки могут привести как к отказу защиты при повреждении, так и к ложному срабатыванию в нормальном режиме.</p>
+
+            <div class="definition-box">
+                <strong>Основные виды уставок защит:</strong>
+                <ul>
+                    <li><strong>Уставка по току срабатывания (I<sub>сз</sub>)</strong> — значение тока, при котором защита срабатывает</li>
+                    <li><strong>Уставка по напряжению срабатывания (U<sub>сз</sub>)</strong> — значение напряжения срабатывания</li>
+                    <li><strong>Уставка по сопротивлению (Z<sub>сз</sub>)</strong> — для дистанционных защит</li>
+                    <li><strong>Уставка по времени (t<sub>сз</sub>)</strong> — выдержка времени до срабатывания</li>
+                    <li><strong>Уставка по мощности (S<sub>сз</sub>)</strong> — для защит по мощности</li>
+                    <li><strong>Коэффициент торможения (k<sub>т</sub>)</strong> — для дифференциальных защит</li>
+                </ul>
+            </div>
+
+            <h4>Методика проверки уставок</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Этап проверки</th>
+                        <th>Содержание работ</th>
+                        <th>Используемое оборудование</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Подготовка</strong></td>
+                        <td>Изучение карты уставок, подготовка испытательного оборудования, вывод устройства из работы</td>
+                        <td>Карта уставок, схемы, инструкции</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Подключение испытательного оборудования</strong></td>
+                        <td>Подключение источника тока/напряжения к испытуемому устройству</td>
+<td>Испытательная установка (РЕТОМ, У|RI, Omicron)</td>
+</tr>
+<tr>
+<td><strong>Проверка тока срабатывания</strong></td>
+<td>Плавное повышение тока до срабатывания реле, фиксация значения</td>
+<td>Источник тока, амперметр</td>
+</tr>
+<tr>
+<td><strong>Проверка тока возврата</strong></td>
+<td>Плавное снижение тока до возврата реле, расчёт коэффициента возврата</td>
+<td>Источник тока, амперметр</td>
+</tr>
+<tr>
+<td><strong>Проверка времени срабатывания</strong></td>
+<td>Подача тока/напряжения заданной величины, измерение времени до срабатывания</td>
+<td>Секундомер, осциллограф</td>
+</tr>
+<tr>
+<td><strong>Оформление результатов</strong></td>
+<td>Заполнение протокола, сравнение с нормами, выводы</td>
+<td>Протокол проверки</td>
+</tr>
+</tbody>
+</table>
+
+text
+
+        <div class="formula-box">
+            <strong>Допустимые отклонения уставок:</strong>
+            <div class="formula">
+                δ = (X<sub>факт</sub> - X<sub>уст</sub>) / X<sub>уст</sub> × 100%
+            </div>
+            <div class="formula-desc">
+                где: δ — относительная погрешность, %;<br>
+                X<sub>факт</sub> — фактическое значение параметра срабатывания;<br>
+                X<sub>уст</sub> — заданное значение уставки<br>
+                <em>Допустимые отклонения: для электромеханических реле ±5-10%, для МП устройств ±2-5%</em>
+            </div>
+        </div>
+
+        <h3>Испытания срабатывания и возврата реле</h3>
+
+        <p>Испытания срабатывания и возврата позволяют определить фактические характеристики реле и сравнить их с нормативными значениями. Эти испытания особенно важны для электромеханических реле, характеристики которых могут изменяться в процессе эксплуатации под влиянием механического износа, загрязнения, старения материалов.</p>
+
+        <h4>Проверка токовых реле</h4>
+
+        <div class="example-box">
+            <div class="example-title">📋 Пример: Протокол проверки токового реле РТ-40/10</div>
+            <p><strong>Объект:</strong> ПС 110/10 кВ «Промышленная», ячейка №5</p>
+            <p><strong>Тип реле:</strong> РТ-40/10, заводской №12345</p>
+            <p><strong>Уставка по карте:</strong> I<sub>сз</sub> = 8 А</p>
+            <p><strong>Дата проверки:</strong> 15.05.2024</p>
+            
+            <table style="margin-top: 15px; font-size: 0.9rem;">
+                <tr>
+                    <th>Параметр</th>
+                    <th>Уставка</th>
+                    <th>Измерено</th>
+                    <th>Отклонение</th>
+                    <th>Норма</th>
+                    <th>Заключение</th>
+                </tr>
+                <tr>
+                    <td>Ток срабатывания I<sub>сз</sub>, А</td>
+                    <td>8,0</td>
+                    <td>8,12</td>
+                    <td>+1,5%</td>
+                    <td>±5%</td>
+                    <td style="background: #c6f6d5;">Норма</td>
+                </tr>
+                <tr>
+                    <td>Ток возврата I<sub>в</sub>, А</td>
+                    <td>—</td>
+                    <td>6,82</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>Коэффициент возврата k<sub>в</sub></td>
+                    <td>≥0,8</td>
+                    <td>0,84</td>
+                    <td>—</td>
+                    <td>0,8-0,85</td>
+                    <td style="background: #c6f6d5;">Норма</td>
+                </tr>
+                <tr>
+                    <td>Время срабатывания при 1,2I<sub>сз</sub>, с</td>
+                    <td>≤0,1</td>
+                    <td>0,05</td>
+                    <td>—</td>
+                    <td>≤0,1</td>
+                    <td style="background: #c6f6d5;">Норма</td>
+                </tr>
+            </table>
+            
+            <p style="margin-top: 15px;"><strong>Заключение:</strong> Реле РТ-40/10 соответствует техническим требованиям, пригодно к эксплуатации.</p>
+            <p><strong>Проверку выполнил:</strong> инженер РЗА Петров А.И.</p>
+        </div>
+
+        <h3>Комплексная проверка взаимодействия защит</h3>
+
+        <p>Комплексная проверка проводится для подтверждения правильного взаимодействия всех элементов системы защиты — от измерительных трансформаторов до коммутационных аппаратов. Она особенно важна при вводе в эксплуатацию новых устройств или после реконструкции.</p>
+
+        <div class="highlight-box">
+            <strong>Этапы комплексной проверки:</strong>
+            <ol>
+                <li><strong>Проверка цепей трансформаторов тока:</strong>
+                    <ul>
+                        <li>Проверка правильности подключения (полярность, фазировка)</li>
+                        <li>Снятие векторной диаграммы токов</li>
+                        <li>Проверка нагрузки вторичных цепей</li>
+                        <li>Измерение токов небаланса (для дифференциальных защит)</li>
+                    </ul>
+                </li>
+                <li><strong>Проверка цепей трансформаторов напряжения:</strong>
+                    <ul>
+                        <li>Проверка правильности подключения</li>
+                        <li>Измерение напряжений, проверка симметрии</li>
+                        <li>Проверка цепей напряжения нулевой последовательности</li>
+                    </ul>
+                </li>
+                <li><strong>Проверка цепей управления выключателем:</strong>
+                    <ul>
+                        <li>Проверка цепей отключения от защиты</li>
+                        <li>Измерение времени отключения</li>
+                        <li>Проверка блокировок и сигнализации</li>
+                    </ul>
+                </li>
+                <li><strong>Проверка работы защиты от постороннего источника:</strong>
+                    <ul>
+                        <li>Имитация режима КЗ с помощью испытательной установки</li>
+                        <li>Проверка срабатывания всех ступеней защиты</li>
+                        <li>Проверка действия на отключение выключателя</li>
+                    </ul>
+                </li>
+                <li><strong>Проверка работы под нагрузкой (рабочим током):</strong>
+                    <ul>
+                        <li>Контроль показаний измерительных приборов</li>
+                        <li>Проверка работы защиты под нагрузкой</li>
+                        <li>Проверка отсутствия ложных срабатываний</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="image-container">
+            <svg viewBox="0 0 900 450" xmlns="http://www.w3.org/2000/svg">
+                <!-- Фон -->
+                <rect width="900" height="450" fill="#ffffff"/>
+                
+                <!-- Заголовок -->
+                <text x="450" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#1a365d">
+                    СХЕМА ПРОВЕРКИ ЗАЩИТЫ ОТ ИСПЫТАТЕЛЬНОЙ УСТАНОВКИ
+                </text>
+                
+                <!-- Испытательная установка -->
+                <rect x="50" y="80" width="150" height="120" fill="#bee3f8" stroke="#3182ce" stroke-width="2" rx="8"/>
+                <text x="125" y="110" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#2c5282">Испытательная</text>
+                <text x="125" y="130" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#2c5282">установка</text>
+                <text x="125" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#4a5568">(РЕТОМ, Omicron)</text>
+                <text x="125" y="180" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#718096">I, U — регулируемые</text>
+                
+                <!-- Выходы испытательной установки -->
+                <line x1="200" y1="110" x2="280" y2="110" stroke="#c53030" stroke-width="2"/>
+                <text x="240" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#c53030">I<tspan baseline-shift="sub" font-size="7">исп</tspan></text>
+                
+                <line x1="200" y1="140" x2="280" y2="140" stroke="#3182ce" stroke-width="2"/>
+                <text x="240" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#3182ce">U<tspan baseline-shift="sub" font-size="7">исп</tspan></text>
+                
+                <line x1="200" y1="170" x2="280" y2="170" stroke="#38a169" stroke-width="2"/>
+                <text x="240" y="185" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#38a169">Пуск / Стоп</text>
+                
+                <!-- Устройство РЗА -->
+                <rect x="280" y="60" width="200" height="180" fill="#fef3c7" stroke="#d69e2e" stroke-width="2" rx="8"/>
+                <text x="380" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#744210">Устройство РЗА</text>
+                
+                <!-- Входы устройства -->
+                <rect x="295" y="100" width="60" height="30" fill="#fc8181" stroke="#c53030" stroke-width="1" rx="3"/>
+                <text x="325" y="120" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="white">Токовые</text>
+                
+                <rect x="295" y="140" width="60" height="30" fill="#90cdf4" stroke="#3182ce" stroke-width="1" rx="3"/>
+                <text x="325" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#2c5282">Напряж.</text>
+                
+                <!-- Логика -->
+                <rect x="370" y="110" width="50" height="50" fill="#e9d8fd" stroke="#805ad5" stroke-width="1" rx="3"/>
+                <text x="395" y="130" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#553c9a">Логика</text>
+                <text x="395" y="145" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#553c9a">защит</text>
+                
+                <!-- Выходные реле -->
+                <rect x="430" y="100" width="40" height="30" fill="#c6f6d5" stroke="#38a169" stroke-width="1" rx="3"/>
+                <text x="450" y="120" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#22543d">Вых.</text>
+                
+                <!-- Выход на отключение -->
+                <line x1="480" y1="115" x2="550" y2="115" stroke="#c53030" stroke-width="2"/>
+                <text x="515" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#c53030">Откл.</text>
+                
+                <!-- Дискретные входы -->
+                <rect x="295" y="185" width="60" height="25" fill="#faf089" stroke="#d69e2e" stroke-width="1" rx="3"/>
+                <text x="325" y="202" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#744210">Диск.вх.</text>
+                
+                <!-- Обратная связь на измерение времени -->
+                <line x1="470" y1="115" x2="470" y2="50" stroke="#38a169" stroke-width="1" stroke-dasharray="5,3"/>
+                <line x1="470" y1="50" x2="100" y2="50" stroke="#38a169" stroke-width="1" stroke-dasharray="5,3"/>
+                <line x1="100" y1="50" x2="100" y2="80" stroke="#38a169" stroke-width="1" stroke-dasharray="5,3"/>
+                <text x="285" y="45" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#38a169">Сигнал срабатывания (измерение t)</text>
+                
+                <!-- Выключатель -->
+                <rect x="550" y="80" width="80" height="100" fill="#e2e8f0" stroke="#4a5568" stroke-width="2" rx="5"/>
+                <text x="590" y="110" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#4a5568">Выключ.</text>
+                <text x="590" y="130" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#718096">(имитатор</text>
+                <text x="590" y="145" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#718096">или реальн.)</text>
+                
+                <!-- Стрелки соединений -->
+                <polygon points="275,110 280,105 280,115" fill="#c53030"/>
+                <polygon points="275,140 280,135 280,145" fill="#3182ce"/>
+                <polygon points="545,115 550,110 550,120" fill="#c53030"/>
+                
+                <!-- Пояснения -->
+                <rect x="650" y="60" width="230" height="180" fill="#f7fafc" stroke="#e2e8f0" rx="4"/>
+                <text x="765" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1a365d">Порядок проверки:</text>
+                
+                <text x="660" y="110" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">1. Задать уставку на устройстве</text>
+                <text x="660" y="130" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">2. Подать ток/напряжение от</text>
+                <text x="670" y="145" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">испытательной установки</text>
+                <text x="660" y="165" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">3. Плавно увеличивать до</text>
+                <text x="670" y="180" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">срабатывания защиты</text>
+                <text x="660" y="200" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">4. Зафиксировать значение</text>
+                <text x="670" y="215" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">и время срабатывания</text>
+                <text x="660" y="235" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">5. Сравнить с уставкой</text>
+                
+                <!-- Нижняя часть - измеряемые параметры -->
+                <rect x="50" y="280" width="830" height="150" fill="#f0fff4" stroke="#38a169" rx="8"/>
+                <text x="465" y="305" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#22543d">Измеряемые и контролируемые параметры</text>
+                
+                <g transform="translate(70, 320)">
+                    <rect x="0" y="0" width="180" height="90" fill="#ffffff" stroke="#e2e8f0" rx="4"/>
+                    <text x="90" y="20" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#2c5282">Токовые защиты</text>
+                    <text x="10" y="40" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• Ток срабатывания I<tspan baseline-shift="sub" font-size="7">сз</tspan></text>
+                    <text x="10" y="55" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• Ток возврата I<tspan baseline-shift="sub" font-size="7">в</tspan></text>
+                    <text x="10" y="70" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• Время срабатывания t<tspan baseline-shift="sub" font-size="7">сз</tspan></text>
+                    <text x="10" y="85" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• Коэффициент возврата k<tspan baseline-shift="sub" font-size="7">в</tspan></text>
+                </g>
+                
+                <g transform="translate(270, 320)">
+                    <rect x="0" y="0" width="180" height="90" fill="#ffffff" stroke="#e2e8f0" rx="4"/>
+                    <text x="90" y="20" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#2c5282">Дистанционные защиты</text>
+                    <text x="10" y="40" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• Сопротивление срабат. Z<tspan baseline-shift="sub" font-size="7">сз</tspan></text>
+                    <text x="10" y="55" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• Угол максим. чувствит. φ<tspan baseline-shift="sub" font-size="7">мч</tspan></text>
+                    <text x="10" y="70" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• Время ступеней t<tspan baseline-shift="sub" font-size="7">I</tspan>, t<tspan baseline-shift="sub" font-size="7">II</tspan>, t<tspan baseline-shift="sub" font-size="7">III</tspan></text>
+                    <text x="10" y="85" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• Характеристика срабатывания</text>
+                </g>
+                
+                <g transform="translate(470, 320)">
+                    <rect x="0" y="0" width="180" height="90" fill="#ffffff" stroke="#e2e8f0" rx="4"/>
+                    <text x="90" y="20" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#2c5282">Дифференциальные защиты</text>
+                    <text x="10" y="40" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• Ток срабатывания I<tspan baseline-shift="sub" font-size="7">диф.сз</tspan></text>
+                    <text x="10" y="55" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• Коэффициент торможения k<tspan baseline-shift="sub" font-size="7">т</tspan></text>
+                    <text x="10" y="70" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• Ток небаланса I<tspan baseline-shift="sub" font-size="7">нб</tspan></text>
+                    <text x="10" y="85" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• Отстройка от БНТ</text>
+                </g>
+                
+                <g transform="translate(670, 320)">
+                    <rect x="0" y="0" width="180" height="90" fill="#ffffff" stroke="#e2e8f0" rx="4"/>
+                    <text x="90" y="20" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#2c5282">Автоматика</text>
+                    <text x="10" y="40" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• АПВ: время, кратность</text>
+                    <text x="10" y="55" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• АВР: напряжение пуска, t</text>
+                    <text x="10" y="70" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• АЧР: частота, время</text>
+                    <text x="10" y="85" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• ЧАПВ: частота возврата</text>
+                </g>
+            </svg>
+            <div class="image-caption">Рис. 2.8.2. Схема проверки устройства РЗА от испытательной установки</div>
+        </div>
+
+        <h3>Современные испытательные комплексы</h3>
+
+        <p>Для проверки современных микропроцессорных устройств РЗА используются специализированные испытательные комплексы, позволяющие имитировать различные режимы работы энергосистемы, включая сложные переходные процессы при коротких замыканиях.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Испытательный комплекс</th>
+                    <th>Производитель</th>
+                    <th>Основные возможности</th>
+                    <th>Область применения</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>РЕТОМ-51/61</strong></td>
+                    <td>НПП «Динамика» (Россия)</td>
+                    <td>6 каналов тока (до 30 А), 4 канала напряжения (до 300 В), воспроизведение COMTRADE</td>
+                    <td>Проверка МП РЗА всех типов</td>
+                </tr>
+                <tr>
+                    <td><strong>CMC 356</strong></td>
+                    <td>Omicron (Австрия)</td>
+                    <td>6 токов, 4 напряжения, высокая точность, GPS-синхронизация</td>
+                    <td>Проверка сложных защит, дифференциальных, дистанционных</td>
+                </tr>
+                <tr>
+                    <td><strong>FREJA 549</strong></td>
+                    <td>Megger (Швеция)</td>
+                    <td>3 тока, 4 напряжения, портативность</td>
+                    <td>Полевые испытания</td>
+                </tr>
+                <tr>
+                    <td><strong>DRTS 66</strong></td>
+                    <td>ISA (Италия)</td>
+                    <td>6 токов, 6 напряжений, мощные выходы</td>
+                    <td>Проверка электромеханических и МП устройств</td>
+                </tr>
+                <tr>
+                    <td><strong>Реле-Томограф</strong></td>
+                    <td>НПП «ЭКРА» (Россия)</td>
+                    <td>Специализирован для терминалов ЭКРА</td>
+                    <td>Сервисное обслуживание БМРЗ</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- РАЗДЕЛ 2.8.4 -->
+        <h2>2.8.4. Планирование обслуживания РЗА</h2>
+
+        <p>Эффективное планирование технического обслуживания устройств РЗА обеспечивает их постоянную готовность к работе при минимальных затратах. Планирование включает составление годовых и месячных графиков работ, координацию с отключениями основного оборудования и распределение ресурсов службы РЗА.</p>
+
+        <h3>Составление годовых графиков</h3>
+
+        <p>Годовой график технического обслуживания РЗА составляется службой РЗА предприятия (или энергосистемы) на основе нормативных документов, с учётом фактического состояния устройств и планов ремонта основного оборудования.</p>
+
+        <div class="info-box">
+            <strong>Исходные данные для составления годового графика:</strong>
+            <ul>
+                <li>Перечень устройств РЗА с указанием типов, года ввода в эксплуатацию</li>
+                <li>Даты последних проверок каждого устройства</li>
+                <li>Нормативная периодичность проверок для каждого типа устройств</li>
+                <li>План ремонтов основного оборудования (трансформаторов, выключателей, линий)</li>
+                <li>Наличие и квалификация персонала службы РЗА</li>
+                <li>Оснащённость испытательным оборудованием</li>
+                <li>Сезонные ограничения (грозовой сезон, отопительный период)</li>
+            </ul>
+        </div>
+
+        <h4>Принципы планирования</h4>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Принцип</th>
+                    <th>Описание</th>
+                    <th>Пример применения</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Совмещение с ремонтами оборудования</strong></td>
+                    <td>Проверка РЗА во время планового ремонта защищаемого оборудования</td>
+                    <td>Проверка дифференциальной защиты трансформатора при его капитальном ремонте</td>
+                </tr>
+                <tr>
+                    <td><strong>Учёт взаимосвязи защит</strong></td>
+                    <td>Одновременная проверка взаимодействующих устройств</td>
+                    <td>Проверка защит линии с двух сторон, проверка УРОВ</td>
+                </tr>
+                <tr>
+                    <td><strong>Равномерное распределение нагрузки</strong></td>
+                    <td>Распределение объёма работ по месяцам года</td>
+                    <td>Избежание пиковых нагрузок на персонал</td>
+                </tr>
+                <tr>
+                    <td><strong>Учёт сезонных факторов</strong></td>
+                    <td>Выполнение наружных работ в тёплое время года</td>
+                    <td>Проверка защит ОРУ в летний период</td>
+                </tr>
+                <tr>
+                    <td><strong>Приоритет ответственного оборудования</strong></td>
+                    <td>Первоочередная проверка защит важных присоединений</td>
+                    <td>Защиты питающих линий, секционных выключателей</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="example-box">
+            <div class="example-title">📊 Пример: Фрагмент годового графика ТО РЗА подстанции 110/10 кВ</div>
+            <p><strong>Объект:</strong> ПС 110/10 кВ «Промышленная»</p>
+            <p><strong>Период:</strong> 2024 год</p>
+            
+            <table style="margin-top: 15px; font-size: 0.85rem;">
+                <tr>
+                    <th>Присоединение</th>
+                    <th>Устройство</th>
+                    <th>Вид ТО</th>
+                    <th>Месяц</th>
+                    <th>Трудоёмкость, чел.-ч</th>
+                    <th>Примечание</th>
+                </tr>
+                <tr>
+                    <td>ВЛ 110 кВ Л-101</td>
+                    <td>ШЭ2607 (ДЗ, ТЗНП)</td>
+                    <td>К</td>
+                    <td>Март</td>
+                    <td>24</td>
+                    <td>Совместить с ремонтом ВЛ</td>
+                </tr>
+                <tr>
+                    <td>Т-1 ТРДН-25000</td>
+                    <td>ДЗТ, МТЗ, ГЗ</td>
+                    <td>К</td>
+                    <td>Май</td>
+                    <td>32</td>
+                    <td>Капремонт трансформатора</td>
+                </tr>
+                <tr>
+                    <td>Секция 10 кВ №1</td>
+                    <td>БМРЗ-100 (все ячейки)</td>
+                    <td>Т</td>
+                    <td>Июнь</td>
+                    <td>16</td>
+                    <td>Тестовый контроль</td>
+                </tr>
+                <tr>
+                    <td>Секция 10 кВ №2</td>
+                    <td>БМРЗ-100 (все ячейки)</td>
+                    <td>Т</td>
+                    <td>Июль</td>
+                    <td>16</td>
+                    <td>Тестовый контроль</td>
+                </tr>
+                <tr>
+                    <td>СВ-10 кВ</td>
+                    <td>АВР секций</td>
+                    <td>К</td>
+                    <td>Август</td>
+                    <td>12</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>ВЛ 110 кВ Л-102</td>
+                    <td>ШЭ2607 (ДЗ, ТЗНП)</td>
+                    <td>К</td>
+                    <td>Сентябрь</td>
+                    <td>24</td>
+                    <td>—</td>
+                </tr>
+                <tr style="font-weight: bold; background: #f7fafc;">
+                    <td colspan="4">Итого за год:</td>
+                    <td>320</td>
+                    <td>—</td>
+                </tr>
+            </table>
+            
+            <p style="margin-top: 15px;"><strong>Расчёт потребности в персонале:</strong></p>
+            <p>При годовом фонде рабочего времени 1800 часов и норме на ТО РЗА 50% от общего времени работы требуется: 320 / (1800 × 0,5) = 0,36 ставки инженера РЗА. С учётом внеплановых работ и резерва — 0,5-1 ставка.</p>
+        </div>
+
+        <h3>Координация с отключениями оборудования</h3>
+
+        <p>Большинство работ по техническому обслуживанию РЗА требует вывода устройств из работы, что, в свою очередь, часто связано с отключением защищаемого оборудования. Поэтому планирование ТО РЗА должно быть тесно увязано с планом ремонтов основного оборудования.</p>
+
+        <div class="warning-box">
+            <strong>⚠️ Требования к выводу устройств РЗА из работы:</strong>
+            <ul>
+                <li>Вывод основных защит допускается только при наличии резервных защит или при выводе защищаемого оборудования</li>
+                <li>При выводе защиты на время более 1 суток должны быть приняты дополнительные меры (временные защиты, усиление оперативного контроля)</li>
+                <li>Вывод АПВ на ВЛ в грозовой сезон нежелателен</li>
+                <li>Вывод АВР и АЧР согласовывается с диспетчерской службой</li>
+                <li>Оформление вывода производится по заявке установленной формы</li>
+                <li>О выводе защиты должен быть уведомлён оперативный персонал</li>
+            </ul>
+        </div>
+
+        <h3>Документация по техническому обслуживанию РЗА</h3>
+
+        <p>Правильное ведение документации является обязательным условием качественной эксплуатации устройств РЗА. Документация обеспечивает преемственность при смене персонала, возможность анализа истории работы устройств и планирование дальнейшего обслуживания.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Вид документа</th>
+                    <th>Содержание</th>
+                    <th>Где хранится</th>
+                    <th>Срок хранения</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Паспорт-протокол устройства РЗА</strong></td>
+                    <td>Тип, заводской номер, дата ввода, уставки, результаты всех проверок</td>
+                    <td>Служба РЗА</td>
+                    <td>Весь срок эксплуатации</td>
+                </tr>
+                <tr>
+                    <td><strong>Карта уставок</strong></td>
+                    <td>Все уставки устройства с обоснованием</td>
+                    <td>Служба РЗА, копия на ПС</td>
+                    <td>Весь срок эксплуатации</td>
+                </tr>
+                <tr>
+                    <td><strong>Протокол проверки</strong></td>
+                    <td>Результаты измерений и испытаний при ТО</td>
+                    <td>Служба РЗА</td>
+                    <td>До следующей проверки того же вида</td>
+                </tr>
+                <tr>
+                    <td><strong>Журнал релейной защиты</strong></td>
+                    <td>Записи о всех работах, срабатываниях, дефектах</td>
+                    <td>Подстанция</td>
+                    <td>3 года после заполнения</td>
+                </tr>
+                <tr>
+                    <td><strong>Акт срабатывания (отказа)</strong></td>
+                    <td>Анализ работы защиты при аварии</td>
+                    <td>Служба РЗА</td>
+                    <td>5 лет</td>
+                </tr>
+                <tr>
+                    <td><strong>Инструкция по обслуживанию</strong></td>
+                    <td>Порядок проверки, методики, нормы</td>
+                    <td>Служба РЗА, ПС</td>
+                    <td>До замены</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Анализ работы устройств РЗА</h3>
+
+        <p>Важной составной частью эксплуатации РЗА является систематический анализ работы устройств при авариях и нарушениях в работе. Анализ позволяет выявлять неправильные действия защит, определять их причины и принимать меры по предотвращению повторения.</p>
+
+        <div class="definition-box">
+            <strong>Классификация действий устройств РЗА:</strong>
+            <ul>
+                <li><strong>Правильное действие</strong> — защита сработала при наличии условий, на которые она рассчитана, и выполнила свои функции в соответствии с заданными уставками и алгоритмами</li>
+                <li><strong>Отказ срабатывания</strong> — защита не сработала при наличии условий, на которые она рассчитана. Это наиболее опасный вид неправильного действия</li>
+                <li><strong>Излишнее срабатывание</strong> — защита сработала при отсутствии повреждения в защищаемой зоне, но при наличии других возмущений (внешнее КЗ, качания, коммутации)</li>
+                <li><strong>Ложное срабатывание</strong> — защита сработала при отсутствии каких-либо возмущений в энергосистеме</li>
+            </ul>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Вид неправильного действия</th>
+                    <th>Типичные причины</th>
+                    <th>Меры по предотвращению</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Отказ срабатывания</strong></td>
+                    <td>
+                        <ul>
+                            <li>Неправильные уставки</li>
+                            <li>Неисправность реле</li>
+                            <li>Обрыв цепей</li>
+                            <li>Неисправность ТТ, ТН</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Проверка расчёта уставок</li>
+                            <li>Регулярное ТО</li>
+                            <li>Контроль цепей</li>
+                            <li>Дублирование защит</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Излишнее срабатывание</strong></td>
+                    <td>
+                        <ul>
+                            <li>Недостаточная селективность</li>
+                            <li>Неправильная отстройка от внешних КЗ</li>
+                            <li>Неучёт переходных процессов</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Корректировка уставок</li>
+                            <li>Применение блокировок</li>
+                            <li>Замена на более совершенные устройства</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Ложное срабатывание</strong></td>
+                    <td>
+                        <ul>
+                            <li>Электромагнитные помехи</li>
+                            <li>Неисправность элементов</li>
+                            <li>Вибрация контактов</li>
+                            <li>Ошибки персонала</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Защита от помех</li>
+                            <li>Ревизия контактных соединений</li>
+                            <li>Обучение персонала</li>
+                            <li>Блокировка от ложных команд</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- ВЫВОДЫ -->
+        <h2>Выводы по теме</h2>
+
+        <div class="highlight-box">
+            <strong>Основные выводы:</strong>
+            <ol>
+                <li><strong>Релейная защита и автоматика</strong> — важнейшая часть системы электроснабжения, обеспечивающая автоматическое выявление и отключение повреждений. Основные требования к защите: селективность, быстродействие, чувствительность, надёжность.</li>
+                <li><strong>Виды релейной защиты</strong> различаются по принципу действия: токовые (МТЗ, отсечка), дифференциальные, дистанционные, направленные, по напряжению и частоте. Выбор типа защиты определяется характеристиками защищаемого объекта и требованиями к быстродействию и селективности.</li>
+                <li><strong>Микропроцессорные устройства РЗА</strong> обладают существенными преимуществами: многофункциональность, высокая точность, самодиагностика, регистрация событий, дистанционное управление. Однако требуют квалифицированного обслуживания и защиты от помех.</li>
+                <li><strong>Техническое обслуживание РЗА</strong> включает проверки при новом включении, профилактический контроль, тестовый контроль и технические осмотры. Периодичность зависит от типа устройства и его важности.</li>
+                <li><strong>Испытания устройств РЗА</strong> проводятся с использованием специализированных испытательных комплексов, позволяющих проверить уставки, характеристики срабатывания и взаимодействие с другими устройствами.</li>
+                <li><strong>Планирование обслуживания</strong> должно координироваться с ремонтами основного оборудования. Важную роль играет ведение технической документации и анализ работы устройств при авариях.</li>
+            </ol>
+        </div>
+
+        
+
+        <!-- ЛИТЕРАТУРА -->
+        <h2>Литература и нормативные документы</h2>
+        
+        <div class="reference">
+            <h4>Основные нормативные документы</h4>
+            <ol>
+                <li>Правила технической эксплуатации электроустановок потребителей (ПТЭЭП). Глава 2.6. Релейная защита и автоматика. Утв. приказом Минэнерго России от 12.08.2022 № 811.</li>
+                <li>Правила устройства электроустановок (ПУЭ). Глава 3.2. Релейная защита. 7-е издание.</li>
+                <li>СТО 56947007-29.120.70.241-2017. Правила технического обслуживания устройств релейной защиты, автоматики, дистанционного управления и сигнализации.</li>
+                <li>РД 153-34.0-35.617-2001. Правила технического обслуживания устройств релейной защиты, электроавтоматики, дистанционного управления и сигнализации электростанций и подстанций 110-750 кВ.</li>
+                <li>ГОСТ Р 57114-2016. Единая энергетическая система и изолированно работающие энергосистемы. Релейная защита. Термины и определения.</li>
+                <li>СТО 34.01-23.1-001-2017. Объём и нормы испытаний электрооборудования.</li>
+                <li>МЭК 60255. Реле измерительные и защитное оборудование.</li>
+            </ol>
+            
+            <h4 style="margin-top: 20px;">Учебная литература</h4>
+            <ol>
+                <li>Андреев В.А. Релейная защита и автоматика систем электроснабжения. — М.: Высшая школа, 2008. — 639 с.</li>
+                <li>Чернобровов Н.В., Семёнов В.А. Релейная защита энергетических систем. — М.: Энергоатомиздат, 1998. — 800 с.</li>
+                <li>Шабад М.А. Расчёты релейной защиты и автоматики распределительных сетей. — СПб.: ПЭИПК, 2003. — 350 с.</li>
+                <li>Булычев А.В. и др. Релейная защита в распределительных электрических сетях. — М.: Энергоатомиздат, 2011. — 208 с.</li>
+                <li>Гуревич В.И. Микропроцессорные реле защиты. Устройство, проблемы, перспективы. — М.: Инфра-Инженерия, 2011. — 336 с.</li>
+                <li>Киреева Э.А. Релейная защита и автоматика электроэнергетических систем. — М.: Академия, 2014. — 288 с.</li>
+            </ol>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="2-7.html" class="nav-btn">← Предыдущая тема: 2.7. Электрические машины</a>
+            <a href="start.html" class="nav-btn nav-btn-home">📚 Оглавление</a>
+            <a href="2-9.html" class="nav-btn">Следующая тема: 2.9. Заземляющие устройства →</a>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <p>© 2024 Кузбасский государственный технический университет имени Т.Ф. Горбачева</p>
+        <p>Кафедра электроснабжения горных и промышленных предприятий</p>
+    </footer>
+</div>
+
+</body> </html>

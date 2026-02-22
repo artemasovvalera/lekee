@@ -1,0 +1,2794 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.5. Эксплуатация распределительных устройств и коммутационных аппаратов</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 50%, #1a365d 100%);
+            min-height: 100vh;
+            color: #2d3748;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .lecture-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-left: 6px solid #c53030;
+        }
+
+        .breadcrumb {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #1a365d;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .lecture-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .content-body {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #1a365d;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 35px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #c53030;
+        }
+
+        h3 {
+            color: #2c5282;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 28px 0 15px 0;
+        }
+
+        h4 {
+            color: #4a5568;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 22px 0 12px 0;
+        }
+
+        h5 {
+            color: #2d3748;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 18px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+
+        .formula-box {
+            background: #1a365d;
+            color: white;
+            border-left: 4px solid #c53030;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1rem;
+        }
+
+        .formula-box .formula {
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .formula-box .formula-desc {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: #2c5282;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:hover {
+            background: #f7fafc;
+        }
+
+        .image-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .image-container svg {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-caption {
+            color: #4a5568;
+            font-size: 0.95rem;
+            margin-top: 12px;
+            font-style: italic;
+            text-align: justify;
+            padding: 0 20px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);
+            border-left: 4px solid #f6ad55;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+            border-left: 4px solid #c53030;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            color: #742a2a;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .example-title {
+            font-weight: 700;
+            color: #234e52;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e8f4fd 0%, #bee3f8 100%);
+            border-left: 4px solid #3182ce;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .technical-box {
+            background: linear-gradient(135deg, #faf5ff 0%, #e9d8fd 100%);
+            border-left: 4px solid #805ad5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .reference {
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .reference h4 {
+            color: #1a365d;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #c53030;
+            padding-bottom: 10px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e2e8f0;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: #2c5282;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .nav-btn:hover {
+            background: #1a365d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-btn-home {
+            background: #c53030;
+            flex: 0 0 auto;
+            max-width: 180px;
+        }
+
+        .nav-btn-home:hover {
+            background: #9b2c2c;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .gost-reference {
+            display: inline-block;
+            background: #edf2f7;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .column-box {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .column-box h4 {
+            color: #2c5282;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f6ad55;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .comparison-table th {
+            background: #38a169;
+        }
+
+        .comparison-table .good {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .comparison-table .bad {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+
+        .comparison-table .neutral {
+            background: #fefcbf;
+            color: #744210;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .lecture-header, .content-body {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .two-column, .three-column {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .nav-btn-home {
+                order: -1;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="lecture-header">
+            <div class="breadcrumb">Раздел 2 → Тема 2.5 → Эксплуатация распределительных устройств</div>
+            <h1>2.5. Эксплуатация распределительных устройств и коммутационных аппаратов</h1>
+            <div class="lecture-meta">
+                <div class="meta-item">📚 Лекционное занятие</div>
+                <div class="meta-item">⏱ 4 академических часа</div>
+                <div class="meta-item">🎯 Раздел 2: Эксплуатация электрооборудования</div>
+            </div>
+        </header>
+
+        <article class="content-body">
+            
+            <!-- ВВЕДЕНИЕ -->
+            <h2>Введение</h2>
+            
+            <p>Распределительные устройства (РУ) являются ключевыми элементами систем электроснабжения, обеспечивающими приём электроэнергии от источников, её распределение между потребителями и защиту электрических сетей от аварийных режимов. Надёжная и безопасная работа РУ напрямую определяет качество электроснабжения промышленных предприятий, жилых зданий и объектов инфраструктуры.</p>
+
+            <p>Коммутационные аппараты, входящие в состав РУ, выполняют операции включения и отключения электрических цепей как в нормальных, так и в аварийных режимах. От правильной эксплуатации этих аппаратов зависит не только бесперебойность электроснабжения, но и безопасность обслуживающего персонала, поскольку коммутационные операции сопровождаются возникновением электрической дуги и значительными электродинамическими усилиями.</p>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <span class="stat-value">~1,2 млн</span>
+                    <span class="stat-label">РУ 6-10 кВ в России</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">45%</span>
+                    <span class="stat-label">отказов — из-за коммутационных аппаратов</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">25-30</span>
+                    <span class="stat-label">лет срок службы выключателей</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">85%</span>
+                    <span class="stat-label">РУ 6-10 кВ — вакуумные выключатели</span>
+                </div>
+            </div>
+
+            <p>Современные тенденции в области распределительных устройств характеризуются переходом от масляных выключателей к вакуумным и элегазовым, применением комплектных распределительных устройств заводского изготовления, внедрением микропроцессорных систем защиты и автоматики, а также повышением требований к экологической безопасности оборудования.</p>
+
+            <div class="definition-box">
+                <strong>Определение:</strong> <em>Распределительное устройство (РУ)</em> — электроустановка, предназначенная для приёма и распределения электрической энергии на одном напряжении и содержащая коммутационные аппараты, сборные и соединительные шины, вспомогательные устройства (компрессорные, аккумуляторные и др.), а также устройства защиты, автоматики и измерительные приборы (<span class="gost-reference">ПУЭ, п. 4.2.3</span>).
+            </div>
+
+            <p>Эксплуатация распределительных устройств и коммутационных аппаратов регламентируется обширной нормативной базой, включающей правила устройства, технической эксплуатации и испытаний электрооборудования:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Нормативный документ</th>
+                        <th>Область применения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="gost-reference">ПУЭ, главы 4.1, 4.2</span></td>
+                        <td>Требования к устройству распределительных устройств и подстанций</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">ПТЭЭП, глава 2.2</span></td>
+                        <td>Правила технической эксплуатации распределительных устройств</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">РД 34.45-51.300-97</span></td>
+                        <td>Объём и нормы испытаний электрооборудования, включая коммутационные аппараты</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">ГОСТ Р 52565-2006</span></td>
+                        <td>Выключатели переменного тока на напряжения от 3 до 750 кВ. Общие технические условия</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">ГОСТ 689-90</span></td>
+                        <td>Разъединители и заземлители переменного тока на напряжение свыше 1000 В</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">ГОСТ Р 55190-2012</span></td>
+                        <td>Комплектные распределительные устройства в металлической оболочке с элегазовой изоляцией (КРУЭ)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">СТО 56947007-29.130.01.105-2011</span></td>
+                        <td>Методические указания по техническому обслуживанию вакуумных выключателей</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- РАЗДЕЛ 2.5.1 -->
+            <h2>2.5.1. Виды распределительных устройств</h2>
+
+            <p>Распределительные устройства классифицируются по различным признакам: по месту установки (наружные, внутренние), по конструктивному исполнению (сборные, комплектные), по напряжению, по назначению и другим параметрам. Выбор типа РУ определяется классом напряжения, условиями окружающей среды, требованиями к надёжности, габаритными ограничениями и экономическими факторами.</p>
+
+            <h3>Классификация распределительных устройств</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Признак классификации</th>
+                        <th>Типы РУ</th>
+                        <th>Характеристики</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>По месту установки</strong></td>
+                        <td>Открытые (ОРУ), закрытые (ЗРУ)</td>
+                        <td>ОРУ — на открытом воздухе; ЗРУ — в зданиях</td>
+                    </tr>
+                    <tr>
+                        <td><strong>По конструкции</strong></td>
+                        <td>Сборные, комплектные (КРУ, КРУЭ)</td>
+                        <td>Сборные — монтаж на месте; комплектные — заводское изготовление</td>
+                    </tr>
+                    <tr>
+                        <td><strong>По напряжению</strong></td>
+                        <td>До 1 кВ, 6-10 кВ, 35 кВ, 110 кВ и выше</td>
+                        <td>Определяет габариты изоляционных промежутков</td>
+                    </tr>
+                    <tr>
+                        <td><strong>По типу изоляции</strong></td>
+                        <td>С воздушной, элегазовой, твёрдой изоляцией</td>
+                        <td>Влияет на габариты и требования к обслуживанию</td>
+                    </tr>
+                    <tr>
+                        <td><strong>По схеме главных цепей</strong></td>
+                        <td>С одной системой шин, с двумя, с обходной и т.д.</td>
+                        <td>Определяет гибкость и надёжность схемы</td>
+                    </tr>
+                    <tr>
+                        <td><strong>По назначению</strong></td>
+                        <td>Главное РУ (ГРУ), распределительные пункты (РП), ТП</td>
+                        <td>ГРУ — на электростанциях; РП, ТП — в сетях</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Распределительные устройства наружной установки (ОРУ)</h3>
+
+            <p>Открытые распределительные устройства (ОРУ) представляют собой электроустановки, все или основное оборудование которых расположено на открытом воздухе. ОРУ применяются преимущественно на напряжениях 35 кВ и выше, где использование закрытых помещений экономически нецелесообразно из-за больших габаритов оборудования и необходимых изоляционных расстояний.</p>
+
+            <div class="image-container">
+                <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Фон -->
+                    <rect width="900" height="500" fill="#f0f8ff"/>
+                    
+                    <!-- Небо -->
+                    <rect width="900" height="200" fill="#87ceeb"/>
+                    
+                    <!-- Земля/площадка -->
+                    <rect y="380" width="900" height="120" fill="#8b7355"/>
+                    <rect y="380" width="900" height="10" fill="#696969"/>
+                    
+                    <!-- Заголовок -->
+                    <text x="450" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#1a365d">
+                        ОТКРЫТОЕ РАСПРЕДЕЛИТЕЛЬНОЕ УСТРОЙСТВО 110 кВ (ОРУ-110 кВ)
+                    </text>
+                    
+                    <!-- Опорная конструкция (портал) -->
+                    <rect x="100" y="180" width="20" height="200" fill="#4a5568"/>
+                    <rect x="280" y="180" width="20" height="200" fill="#4a5568"/>
+                    <rect x="95" y="170" width="210" height="20" fill="#4a5568"/>
+                    
+                    <!-- Шины 110 кВ -->
+                    <line x1="100" y1="180" x2="800" y2="180" stroke="#c53030" stroke-width="6"/>
+                    <text x="450" y="165" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#c53030">Сборные шины 110 кВ</text>
+                    
+                    <!-- Изоляторы опорные -->
+                    <g transform="translate(150, 180)">
+                        <rect x="-8" y="0" width="16" height="60" fill="#d4a574" rx="3"/>
+                        <ellipse cx="0" cy="15" rx="12" ry="5" fill="#e8d4b8"/>
+                        <ellipse cx="0" cy="30" rx="12" ry="5" fill="#e8d4b8"/>
+                        <ellipse cx="0" cy="45" rx="12" ry="5" fill="#e8d4b8"/>
+                    </g>
+                    
+                    <g transform="translate(250, 180)">
+                        <rect x="-8" y="0" width="16" height="60" fill="#d4a574" rx="3"/>
+                        <ellipse cx="0" cy="15" rx="12" ry="5" fill="#e8d4b8"/>
+                        <ellipse cx="0" cy="30" rx="12" ry="5" fill="#e8d4b8"/>
+                        <ellipse cx="0" cy="45" rx="12" ry="5" fill="#e8d4b8"/>
+                    </g>
+                    
+                    <!-- Выключатель 110 кВ (баковый) -->
+                    <g transform="translate(350, 200)">
+                        <rect x="-30" y="0" width="60" height="100" fill="#3182ce" stroke="#2c5282" stroke-width="2" rx="5"/>
+                        <rect x="-25" y="10" width="50" height="30" fill="#63b3ed"/>
+                        <text x="0" y="75" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="white">ВГТ-110</text>
+                        <text x="0" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="7" fill="white">Выключатель</text>
+                        <!-- Вводы выключателя -->
+                        <rect x="-20" y="-30" width="10" height="35" fill="#d4a574"/>
+                        <rect x="10" y="-30" width="10" height="35" fill="#d4a574"/>
+                        <!-- Привод -->
+                        <rect x="-40" y="40" width="20" height="50" fill="#718096"/>
+                        <text x="-30" y="120" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="7" fill="#4a5568">Привод</text>
+                    </g>
+                    
+                    <!-- Разъединитель -->
+                    <g transform="translate(500, 220)">
+                        <rect x="-8" y="0" width="16" height="50" fill="#d4a574" rx="2"/>
+                        <ellipse cx="0" cy="12" rx="10" ry="4" fill="#e8d4b8"/>
+                        <ellipse cx="0" cy="25" rx="10" ry="4" fill="#e8d4b8"/>
+                        <ellipse cx="0" cy="38" rx="10" ry="4" fill="#e8d4b8"/>
+                        <!-- Ножи разъединителя -->
+                        <line x1="-30" y1="-10" x2="0" y2="-10" stroke="#c53030" stroke-width="4"/>
+                        <line x1="0" y1="-10" x2="30" y2="-10" stroke="#c53030" stroke-width="4"/>
+                        <circle cx="-30" cy="-10" r="5" fill="#c53030"/>
+                        <circle cx="30" cy="-10" r="5" fill="#c53030"/>
+                        <text x="0" y="70" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#4a5568">Разъединитель</text>
+                        <text x="0" y="80" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="7" fill="#4a5568">РНДЗ-110</text>
+                    </g>
+                    
+                    <!-- Трансформатор тока -->
+                    <g transform="translate(600, 200)">
+                        <ellipse cx="0" cy="40" rx="25" ry="60" fill="#805ad5" stroke="#6b46c1" stroke-width="2"/>
+                        <ellipse cx="0" cy="20" rx="18" ry="8" fill="#9f7aea"/>
+                        <ellipse cx="0" cy="40" rx="18" ry="8" fill="#9f7aea"/>
+                        <ellipse cx="0" cy="60" rx="18" ry="8" fill="#9f7aea"/>
+                        <line x1="0" y1="-25" x2="0" y2="-40" stroke="#c53030" stroke-width="4"/>
+                        <text x="0" y="115" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#4a5568">ТТ</text>
+                        <text x="0" y="125" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="7" fill="#4a5568">ТФЗМ-110</text>
+                    </g>
+                    
+                    <!-- Трансформатор напряжения -->
+                    <g transform="translate(700, 220)">
+                        <rect x="-20" y="0" width="40" height="70" fill="#38a169" stroke="#276749" stroke-width="2" rx="3"/>
+                        <ellipse cx="0" cy="15" rx="15" ry="6" fill="#68d391"/>
+                        <ellipse cx="0" cy="35" rx="15" ry="6" fill="#68d391"/>
+                        <ellipse cx="0" cy="55" rx="15" ry="6" fill="#68d391"/>
+                        <line x1="0" y1="-5" x2="0" y2="-30" stroke="#c53030" stroke-width="3"/>
+                        <text x="0" y="90" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#4a5568">ТН</text>
+                        <text x="0" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="7" fill="#4a5568">НКФ-110</text>
+                    </g>
+                    
+                    <!-- Ограничитель перенапряжений -->
+                    <g transform="translate(800, 230)">
+                        <rect x="-12" y="0" width="24" height="80" fill="#d69e2e" stroke="#b7791f" stroke-width="2" rx="4"/>
+                        <line x1="-8" y1="20" x2="8" y2="20" stroke="#744210" stroke-width="2"/>
+                        <line x1="-8" y1="40" x2="8" y2="40" stroke="#744210" stroke-width="2"/>
+                        <line x1="-8" y1="60" x2="8" y2="60" stroke="#744210" stroke-width="2"/>
+                        <line x1="0" y1="-5" x2="0" y2="-25" stroke="#c53030" stroke-width="3"/>
+                        <text x="0" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#4a5568">ОПН</text>
+                        <text x="0" y="110" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="7" fill="#4a5568">ОПН-110</text>
+                    </g>
+                    
+                    <!-- Ограждение -->
+                    <line x1="50" y1="380" x2="50" y2="320" stroke="#718096" stroke-width="2"/>
+                    <line x1="850" y1="380" x2="850" y2="320" stroke="#718096" stroke-width="2"/>
+                    <line x1="50" y1="320" x2="850" y2="320" stroke="#718096" stroke-width="2" stroke-dasharray="10,5"/>
+                    <text x="450" y="340" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#718096">Ограждение территории ОРУ</text>
+                    
+                    <!-- Заземляющий контур -->
+                    <line x1="100" y1="375" x2="800" y2="375" stroke="#2d3748" stroke-width="3"/>
+                    <text x="450" y="368" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#2d3748">Заземляющий контур</text>
+                    
+                    <!-- Молниеотвод -->
+                    <g transform="translate(200, 50)">
+                        <line x1="0" y1="0" x2="0" y2="130" stroke="#4a5568" stroke-width="4"/>
+                        <polygon points="0,-20 -8,0 8,0" fill="#f6e05e"/>
+                        <text x="0" y="145" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#4a5568">Молниеотвод</text>
+                    </g>
+                    
+                    <!-- Легенда -->
+                    <rect x="60" y="400" width="780" height="90" fill="rgba(255,255,255,0.9)" stroke="#e2e8f0" stroke-width="1" rx="4"/>
+                    <text x="450" y="420" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1a365d">
+                        СОСТАВ ОБОРУДОВАНИЯ ОРУ-110 кВ
+                    </text>
+                    
+                    <circle cx="100" cy="445" r="6" fill="#3182ce"/>
+                    <text x="115" y="449" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Выключатель (элегазовый/масляный)</text>
+                    
+                    <circle cx="320" cy="445" r="6" fill="#c53030"/>
+                    <text x="335" y="449" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Разъединитель с заземлителями</text>
+                    
+                    <circle cx="540" cy="445" r="6" fill="#805ad5"/>
+                    <text x="555" y="449" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Трансформатор тока</text>
+                    
+                    <circle cx="100" cy="470" r="6" fill="#38a169"/>
+                    <text x="115" y="474" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Трансформатор напряжения</text>
+                    
+                    <circle cx="320" cy="470" r="6" fill="#d69e2e"/>
+                    <text x="335" y="474" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Ограничитель перенапряжений (ОПН)</text>
+                    
+                    <circle cx="540" cy="470" r="6" fill="#d4a574"/>
+                    <text x="555" y="474" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Опорные и подвесные изоляторы</text>
+                </svg>
+                <div class="image-caption">Рис. 2.7. Общий вид открытого распределительного устройства 110 кВ (ОРУ-110 кВ). На схеме показана типовая компоновка ячейки линейного присоединения: сборные шины на порталах, элегазовый выключатель ВГТ-110 с пружинным приводом, разъединитель РНДЗ-110 с двумя заземляющими ножами, трансформатор тока ТФЗМ-110 для цепей защиты и измерения, трансформатор напряжения НКФ-110 ёмкостного типа, ограничитель перенапряжений ОПН-110 для защиты от атмосферных и коммутационных перенапряжений. Оборудование установлено на железобетонных фундаментах, территория ОРУ ограждена, по периметру проложен заземляющий контур</div>
+            </div>
+
+            <h4>Конструктивные особенности ОРУ</h4>
+
+            <p>Открытые распределительные устройства характеризуются рядом конструктивных особенностей, обусловленных их расположением на открытом воздухе и необходимостью обеспечения изоляционных расстояний для высоких напряжений:</p>
+
+            <div class="two-column">
+                <div class="column-box">
+                    <h4>Преимущества ОРУ</h4>
+                    <ul>
+                        <li>Меньшие капитальные затраты по сравнению с ЗРУ</li>
+                        <li>Короткие сроки сооружения</li>
+                        <li>Возможность расширения без существенной реконструкции</li>
+                        <li>Хороший обзор оборудования</li>
+                        <li>Естественная вентиляция</li>
+                        <li>Меньшая пожароопасность</li>
+                        <li>Возможность применения крупногабаритного оборудования</li>
+                    </ul>
+                </div>
+                <div class="column-box">
+                    <h4>Недостатки ОРУ</h4>
+                    <ul>
+                        <li>Воздействие атмосферных условий (температура, осадки, загрязнение)</li>
+                        <li>Большая занимаемая площадь</li>
+                        <li>Затруднённое обслуживание в неблагоприятную погоду</li>
+                        <li>Необходимость усиленной защиты от перенапряжений</li>
+                        <li>Более частая очистка изоляции от загрязнений</li>
+                        <li>Повышенный уровень шума от оборудования</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4>Минимальные изоляционные расстояния на ОРУ</h4>
+
+            <p>Расстояния между токоведущими частями и от токоведущих частей до заземлённых конструкций определяются <span class="gost-reference">ПУЭ, глава 4.2</span> и зависят от класса напряжения. Соблюдение этих расстояний является обязательным условием безопасной эксплуатации:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Класс напряжения, кВ</th>
+                        <th>Между фазами, мм</th>
+                        <th>До заземлённых частей, мм</th>
+                        <th>До ограждений, мм</th>
+                        <th>Высота токоведущих частей, мм</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>35</td>
+                        <td>400</td>
+                        <td>350</td>
+                        <td>650</td>
+                        <td>3000</td>
+                    </tr>
+                    <tr>
+                        <td>110</td>
+                        <td>1000</td>
+                        <td>900</td>
+                        <td>1500</td>
+                        <td>3500</td>
+                    </tr>
+                    <tr>
+                        <td>220</td>
+                        <td>1800</td>
+                        <td>1700</td>
+                        <td>2500</td>
+                        <td>4500</td>
+                    </tr>
+                    <tr>
+                        <td>330</td>
+                        <td>2600</td>
+                        <td>2400</td>
+                        <td>3400</td>
+                        <td>5500</td>
+                    </tr>
+                    <tr>
+                        <td>500</td>
+                        <td>4200</td>
+                        <td>4000</td>
+                        <td>5000</td>
+                        <td>7500</td>
+                    </tr>
+                    <tr>
+                        <td>750</td>
+                        <td>6500</td>
+                        <td>6200</td>
+                        <td>7500</td>
+                        <td>10000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Распределительные устройства внутренней установки (ЗРУ, КРУ)</h3>
+
+            <p>Закрытые распределительные устройства (ЗРУ) размещаются в специальных зданиях или помещениях. К ЗРУ относятся сборные распределительные устройства, монтируемые на месте, и комплектные распределительные устройства (КРУ), изготавливаемые на заводах в виде укрупнённых блоков. Применение ЗРУ обеспечивает защиту оборудования от атмосферных воздействий, что особенно важно в районах с загрязнённой атмосферой и тяжёлыми климатическими условиями.</p>
+
+            <h4>Комплектные распределительные устройства (КРУ)</h4>
+
+            <p>КРУ представляют собой распределительные устройства, состоящие из полностью или частично закрытых шкафов или блоков со встроенными в них аппаратами, устройствами защиты, автоматики, измерения и вспомогательными устройствами, поставляемые в собранном или полностью подготовленном для сборки виде (<span class="gost-reference">ГОСТ 14693-90</span>).</p>
+
+            <div class="image-container">
+                <svg viewBox="0 0 900 550" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Фон -->
+                    <rect width="900" height="550" fill="#ffffff"/>
+                    
+                    <!-- Заголовок -->
+                    <text x="450" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#1a365d">
+                        КОМПЛЕКТНОЕ РАСПРЕДЕЛИТЕЛЬНОЕ УСТРОЙСТВО (КРУ) 6-10 кВ
+                    </text>
+                    
+                    <!-- Шкаф КРУ (вид спереди) -->
+                    <g transform="translate(100, 60)">
+                        <text x="100" y="0" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#2c5282">
+                            ВИД СПЕРЕДИ
+                        </text>
+                        
+                        <!-- Корпус шкафа -->
+                        <rect x="0" y="20" width="200" height="400" fill="#4a5568" stroke="#2d3748" stroke-width="3" rx="5"/>
+                        
+                        <!-- Отсек выключателя (выкатной элемент) -->
+                        <rect x="10" y="150" width="180" height="140" fill="#718096" stroke="#4a5568" stroke-width="2"/>
+                        <rect x="20" y="160" width="160" height="120" fill="#a0aec0"/>
+                        <text x="100" y="210" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#2d3748">Выкатной</text>
+                        <text x="100" y="225" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#2d3748">элемент</text>
+                        <text x="100" y="245" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#3182ce">(выключатель)</text>
+                        
+                        <!-- Ручка выкатного элемента -->
+                        <rect x="85" y="270" width="30" height="8" fill="#2d3748" rx="2"/>
+                        
+                        <!-- Отсек сборных шин (верхний) -->
+                        <rect x="10" y="30" width="180" height="110" fill="#c53030" stroke="#9b2c2c" stroke-width="2"/>
+                        <text x="100" y="70" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="white">ОТСЕК</text>
+                        <text x="100" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="white">СБОРНЫХ ШИН</text>
+                        <text x="100" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#ffc0c0">(неподвижные контакты)</text>
+                        
+                        <!-- Отсек кабельных присоединений (нижний) -->
+                        <rect x="10" y="300" width="180" height="110" fill="#38a169" stroke="#276749" stroke-width="2"/>
+                        <text x="100" y="340" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="white">ОТСЕК</text>
+                        <text x="100" y="355" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="white">КАБЕЛЬНЫХ</text>
+                        <text x="100" y="370" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="white">ПРИСОЕДИНЕНИЙ</text>
+                        <text x="100" y="390" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#c6f6d5">(ТТ, кабели)</text>
+                        
+                        <!-- Релейный отсек -->
+                        <rect x="210" y="20" width="80" height="200" fill="#805ad5" stroke="#6b46c1" stroke-width="2"/>
+                        <text x="250" y="60" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="white" transform="rotate(90, 250, 100)">РЕЛЕЙНЫЙ ОТСЕК</text>
+                        
+                        <!-- Индикаторы и кнопки -->
+                        <circle cx="230" y="240" r="8" fill="#48bb78"/>
+                        <circle cx="260" y="240" r="8" fill="#f56565"/>
+                        <rect x="220" y="260" width="30" height="15" fill="#2d3748" rx="2"/>
+                        <rect x="260" y="260" width="30" height="15" fill="#2d3748" rx="2"/>
+                        
+                        <!-- Размеры -->
+                        <line x1="-20" y1="20" x2="-20" y2="420" stroke="#718096" stroke-width="1"/>
+                        <line x1="-25" y1="20" x2="-15" y2="20" stroke="#718096" stroke-width="1"/>
+                        <line x1="-25" y1="420" x2="-15" y2="420" stroke="#718096" stroke-width="1"/>
+                        <text x="-35" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#718096" transform="rotate(-90, -35, 220)">H = 2100 мм</text>
+                        
+                        <line x1="0" y1="440" x2="200" y2="440" stroke="#718096" stroke-width="1"/>
+                        <line x1="0" y1="435" x2="0" y2="445" stroke="#718096" stroke-width="1"/>
+                        <line x1="200" y1="435" x2="200" y2="445" stroke="#718096" stroke-width="1"/>
+                        <text x="100" y="460" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#718096">B = 750 мм</text>
+                    </g>
+                    
+                    <!-- Шкаф КРУ (вид сбоку, разрез) -->
+                    <g transform="translate(450, 60)">
+                        <text x="150" y="0" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#2c5282">
+                            ВИД СБОКУ (РАЗРЕЗ)
+                        </text>
+                        
+                        <!-- Корпус -->
+                        <rect x="0" y="20" width="300" height="400" fill="#f7fafc" stroke="#4a5568" stroke-width="3"/>
+                        
+                        <!-- Сборные шины -->
+                        <line x1="20" y1="60" x2="280" y2="60" stroke="#c53030" stroke-width="8"/>
+                        <line x1="20" y1="80" x2="280" y2="80" stroke="#c53030" stroke-width="8"/>
+                        <line x1="20" y1="100" x2="280" y2="100" stroke="#c53030" stroke-width="8"/>
+                        <text x="150" y="50" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#c53030">Сборные шины A, B, C</text>
+                        
+                        <!-- Верхние разъединяющие контакты -->
+                        <rect x="100" y="115" width="100" height="20" fill="#d69e2e"/>
+                        <text x="150" y="150" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="7" fill="#744210">Верхние контакты</text>
+                        
+                        <!-- Вакуумный выключатель -->
+                        <rect x="80" y="170" width="140" height="80" fill="#3182ce" stroke="#2c5282" stroke-width="2" rx="5"/>
+                        <ellipse cx="120" cy="210" rx="15" ry="25" fill="#63b3ed"/>
+                        <ellipse cx="150" cy="210" rx="15" ry="25" fill="#63b3ed"/>
+                        <ellipse cx="180" cy="210" rx="15" ry="25" fill="#63b3ed"/>
+                        <text x="150" y="265" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#2c5282">Вакуумный выключатель</text>
+                        
+                        <!-- Пружинный привод -->
+                        <rect x="230" y="180" width="50" height="60" fill="#718096" stroke="#4a5568" stroke-width="1"/>
+                        <text x="255" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="7" fill="white">Привод</text>
+                        
+                        <!-- Нижние разъединяющие контакты -->
+                        <rect x="100" y="280" width="100" height="20" fill="#d69e2e"/>
+                        <text x="150" y="315" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="7" fill="#744210">Нижние контакты</text>
+                        
+                        <!-- Трансформаторы тока -->
+                        <ellipse cx="120" cy="350" rx="20" ry="15" fill="#805ad5" stroke="#6b46c1" stroke-width="2"/>
+                        <ellipse cx="150" cy="350" rx="20" ry="15" fill="#805ad5" stroke="#6b46c1" stroke-width="2"/>
+                        <ellipse cx="180" cy="350" rx="20" ry="15" fill="#805ad5" stroke="#6b46c1" stroke-width="2"/>
+                        <text x="150" y="380" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#553c9a">Трансформаторы тока</text>
+                        
+                        <!-- Кабельные присоединения -->
+                        <line x1="120" y1="395" x2="120" y2="420" stroke="#2d3748" stroke-width="10"/>
+                        <line x1="150" y1="395" x2="150" y2="420" stroke="#2d3748" stroke-width="10"/>
+                        <line x1="180" y1="395" x2="180" y2="420" stroke="#2d3748" stroke-width="10"/>
+                        
+                        <!-- Шторки -->
+                        <rect x="95" y="130" width="110" height="8" fill="#f6ad55" stroke="#dd6b20" stroke-width="1"/>
+                        <text x="205" y="138" font-family="Segoe UI, sans-serif" font-size="7" fill="#dd6b20">Шторка</text>
+                        
+                        <!-- Рельсы выкатного элемента -->
+                        <line x1="70" y1="255" x2="230" y2="255" stroke="#4a5568" stroke-width="3"/>
+                        <text x="40" y="258" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="7" fill="#4a5568">Рельс</text>
+                        
+                        <!-- Стрелка выкатывания -->
+                        <line x1="20" y1="210" x2="60" y2="210" stroke="#38a169" stroke-width="2" marker-end="url(#arrowGreen)"/>
+                        <text x="40" y="195" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="7" fill="#38a169">Выкатка</text>
+                    </g>
+                    
+                    <!-- Маркеры стрелок -->
+                    <defs>
+                        <marker id="arrowGreen" markerWidth="10" markerHeight="6" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#38a169"/>
+                        </marker>
+                    </defs>
+                    
+                    <!-- Легенда -->
+                    <rect x="50" y="480" width="800" height="60" fill="#f7fafc" stroke="#e2e8f0" stroke-width="1" rx="4"/>
+                    <text x="450" y="500" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1a365d">
+                        ОСНОВНЫЕ ЭЛЕМЕНТЫ КРУ
+                    </text>
+                    
+                    <rect x="70" y="515" width="15" height="15" fill="#c53030"/>
+                    <text x="95" y="527" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Отсек сборных шин</text>
+                    
+                    <rect x="230" y="515" width="15" height="15" fill="#3182ce"/>
+                    <text x="255" y="527" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Выкатной элемент (выключатель)</text>
+                    
+                    <rect x="450" y="515" width="15" height="15" fill="#38a169"/>
+                    <text x="475" y="527" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Отсек присоединений (ТТ, кабели)</text>
+                    
+                    <rect x="670" y="515" width="15" height="15" fill="#805ad5"/>
+                    <text x="695" y="527" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Релейный отсек</text>
+                </svg>
+                <div class="image-caption">Рис. 2.8. Конструкция шкафа комплектного распределительного устройства (КРУ) 6-10 кВ с вакуумным выключателем. Слева показан вид спереди с выделением основных отсеков: отсек сборных шин (верхний, содержит неподвижные разъединяющие контакты), отсек выкатного элемента (средний, содержит вакуумный выключатель с приводом), отсек кабельных присоединений (нижний, содержит трансформаторы тока и кабельные разделки), релейный отсек (сбоку, содержит аппаратуру защиты, управления и сигнализации). Справа показан разрез шкафа с элементами: сборные шины трёхфазной системы, верхние и нижние разъединяющие контакты, вакуумный выключатель с тремя дугогасительными камерами, пружинный привод, трансформаторы тока на каждую фазу, защитная шторка, автоматически закрывающая отсек шин при выкатывании выключателя. Типовые габариты шкафа: высота 2100 мм, ширина 750 мм, глубина 1200 мм</div>
+            </div>
+
+            <h4>Классификация КРУ</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип КРУ</th>
+                        <th>Обозначение</th>
+                        <th>Напряжение, кВ</th>
+                        <th>Особенности</th>
+                        <th>Область применения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>С выкатными элементами</strong></td>
+                        <td>КРУ, К-ХХ</td>
+                        <td>6-10</td>
+                        <td>Выключатель на выкатной тележке, шторки безопасности</td>
+                        <td>ГРУ электростанций, ГПП предприятий, РП городских сетей</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Стационарные</strong></td>
+                        <td>КСО</td>
+                        <td>6-10</td>
+                        <td>Выключатель закреплён стационарно, меньшая стоимость</td>
+                        <td>РП, ТП с небольшим числом присоединений</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Наружной установки</strong></td>
+                        <td>КРУН</td>
+                        <td>6-10</td>
+                        <td>В металлическом кожухе, защита от атмосферных воздействий</td>
+                        <td>КТП, РП без здания</td>
+                    </tr>
+                    <tr>
+                        <td><strong>С элегазовой изоляцией</strong></td>
+                        <td>КРУЭ</td>
+                        <td>35-750</td>
+                        <td>Все элементы в среде SF₆, компактность</td>
+                        <td>Городские подстанции, стеснённые условия</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Моноблочные</strong></td>
+                        <td>КРУ-СЭЩ, Evolis</td>
+                        <td>6-35</td>
+                        <td>Модульная конструкция, заводская готовность</td>
+                        <td>Современные подстанции, реконструкция</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <strong>Позиции выкатного элемента КРУ:</strong>
+                <p>Выкатной элемент (тележка с выключателем) может занимать три фиксированных положения:</p>
+                <ul>
+                    <li><strong>Рабочее положение:</strong> Разъединяющие контакты замкнуты, выключатель подключён к сборным шинам и кабельному присоединению. Возможно включение и отключение нагрузки.</li>
+                    <li><strong>Контрольное (испытательное) положение:</strong> Разъединяющие контакты разомкнуты, но вспомогательные цепи (управление, сигнализация, защита) подключены. Используется для проверки работы выключателя и релейной защиты.</li>
+                    <li><strong>Ремонтное положение:</strong> Выкатной элемент полностью выведен из шкафа. Все контакты разомкнуты. Отсеки шин и присоединений закрыты защитными шторками.</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Блокировки:</strong> Согласно <span class="gost-reference">ПУЭ п. 4.2.26</span>, КРУ должны иметь блокировки, исключающие возможность выкатывания и вкатывания выключателя во включённом положении.</p>
+            </div>
+
+            <h3>Комплектные трансформаторные подстанции (КТП)</h3>
+
+            <p>Комплектные трансформаторные подстанции представляют собой подстанции, состоящие из трансформаторов и блоков (КРУ или КРУН и других элементов), поставляемых в собранном или полностью подготовленном для сборки виде (<span class="gost-reference">ГОСТ 14695-80</span>). КТП широко применяются для электроснабжения промышленных предприятий, городских кварталов, сельскохозяйственных объектов благодаря сокращению сроков строительства и снижению капитальных затрат.</p>
+
+            <h4>Классификация КТП</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип КТП</th>
+                        <th>Напряжение ВН/НН</th>
+                        <th>Мощность, кВА</th>
+                        <th>Установка</th>
+                        <th>Особенности</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>КТП внутренней установки</strong></td>
+                        <td>6-10/0,4 кВ</td>
+                        <td>100-2500</td>
+                        <td>В помещениях</td>
+                        <td>Для цехов с нормальной средой</td>
+                    </tr>
+                    <tr>
+                        <td><strong>КТП наружной установки (КТПН)</strong></td>
+                        <td>6-10/0,4 кВ</td>
+                        <td>25-2500</td>
+                        <td>На открытом воздухе</td>
+                        <td>Утеплённые, с подогревом для холодного климата</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Мачтовые (столбовые) КТП</strong></td>
+                        <td>6-10/0,4 кВ</td>
+                        <td>25-250</td>
+                        <td>На опоре ВЛ</td>
+                        <td>Сельская местность, минимум земли</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Блочные КТП (БКТП)</strong></td>
+                        <td>6-10/0,4 кВ</td>
+                        <td>250-2500</td>
+                        <td>Отдельный блок</td>
+                        <td>Городские сети, полная заводская готовность</td>
+                    </tr>
+                    <tr>
+                        <td><strong>КТП глубокого ввода</strong></td>
+                        <td>35-110/6-10 кВ</td>
+                        <td>2500-40000</td>
+                        <td>На территории предприятия</td>
+                        <td>Крупные предприятия, снижение потерь</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <strong>Состав типовой КТП 6-10/0,4 кВ:</strong>
+                <ul>
+                    <li><strong>Устройство высшего напряжения (УВН):</strong> коммутационные аппараты 6-10 кВ (выключатель нагрузки, разъединитель, предохранители)</li>
+                    <li><strong>Силовой трансформатор:</strong> масляный (ТМ, ТМГ) или сухой (ТСЗ, ТСЛ)</li>
+                    <li><strong>Устройство низшего напряжения (УНН):</strong> вводной автоматический выключатель, секционный выключатель, отходящие линии с автоматами или предохранителями</li>
+                    <li><strong>Вспомогательное оборудование:</strong> система учёта электроэнергии, защита от перенапряжений, освещение, отопление (для КТПН)</li>
+                </ul>
+            </div>
+
+            <h3>Распределительные пункты (РП)</h3>
+
+            <p>Распределительные пункты предназначены для приёма электроэнергии от источников (подстанций, электростанций) и распределения её между потребителями или другими РП на одном уровне напряжения без трансформации. РП применяются в городских распределительных сетях 6-10 кВ, на промышленных предприятиях, в схемах электроснабжения ответственных потребителей.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип РП</th>
+                        <th>Напряжение</th>
+                        <th>Число присоединений</th>
+                        <th>Конструкция</th>
+                        <th>Применение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>РП в здании</strong></td>
+                        <td>6-10 кВ</td>
+                        <td>6-24</td>
+                        <td>КРУ, КСО в специальном здании</td>
+                        <td>Городские сети с большим числом ТП</td>
+                    </tr>
+                    <tr>
+                        <td><strong>РП наружной установки</strong></td>
+                        <td>6-10 кВ</td>
+                        <td>4-12</td>
+                        <td>КРУН в металлическом корпусе</td>
+                        <td>Промышленные предприятия</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Блочные РП (БРП)</strong></td>
+                        <td>6-10 кВ</td>
+                        <td>6-16</td>
+                        <td>Бетонный или металлический блок</td>
+                        <td>Новое строительство, быстрый монтаж</td>
+                    </tr>
+                    <tr>
+                        <td><strong>РП 35 кВ</strong></td>
+                        <td>35 кВ</td>
+                        <td>4-8</td>
+                        <td>ОРУ или КРУЭ</td>
+                        <td>Распределение на напряжении 35 кВ</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="example-box">
+                <div class="example-title">📊 Пример: Схема РП-10 кВ городской сети</div>
+                <p><strong>Назначение:</strong> Распределительный пункт РП-127 для электроснабжения жилого микрорайона</p>
+                <p><strong>Схема:</strong> Две секции шин с секционным выключателем, питание от двух независимых источников (ПС-110/10 кВ «Центральная» и ПС-110/10 кВ «Восточная»)</p>
+                <p><strong>Состав оборудования:</strong></p>
+                <ul>
+                    <li>Вводные ячейки с вакуумными выключателями ВВ/TEL-10-20/1000 — 2 шт.</li>
+                    <li>Секционная ячейка с вакуумным выключателем — 1 шт.</li>
+                    <li>Ячейки отходящих линий к ТП — 12 шт.</li>
+                    <li>Ячейки трансформаторов напряжения НАМИ-10 — 2 шт.</li>
+                    <li>Ячейки трансформаторов собственных нужд ТМ-63/10 — 2 шт.</li>
+                </ul>
+                <p><strong>Особенности:</strong> Микропроцессорные устройства защиты «Сириус-2», система телемеханики с передачей данных на диспетчерский пункт, АВР на вводах и секционном выключателе</p>
+            </div>
+
+            <!-- РАЗДЕЛ 2.5.2 -->
+            <h2>2.5.2. Коммутационная аппаратура</h2>
+
+            <p>Коммутационные аппараты предназначены для включения и отключения электрических цепей. По функциональному назначению они подразделяются на выключатели (способные отключать токи короткого замыкания), выключатели нагрузки, разъединители (для создания видимого разрыва без нагрузки), рубильники, переключатели и предохранители. Выбор типа коммутационного аппарата определяется его местом в схеме, требуемой отключающей способностью, условиями эксплуатации и экономическими факторами.</p>
+
+            <h3>Выключатели высокого напряжения</h3>
+
+            <p>Выключатель — это коммутационный аппарат, предназначенный для включения и отключения тока в цепи в нормальных условиях, а также для отключения тока при аварийных режимах (короткое замыкание, перегрузка). Выключатели классифицируются по способу гашения электрической дуги, возникающей при размыкании контактов под нагрузкой.</p>
+
+            <div class="definition-box">
+                <strong>Основные параметры выключателей</strong> (<span class="gost-reference">ГОСТ Р 52565-2006</span>):
+                <ul>
+                    <li><strong>Номинальное напряжение (Uном)</strong> — наибольшее действующее значение напряжения, при котором выключатель может работать длительно</li>
+                    <li><strong>Номинальный ток (Iном)</strong> — наибольший ток, который выключатель может проводить длительно без превышения допустимой температуры</li>
+                    <li><strong>Номинальный ток отключения (Iоткл.ном)</strong> — наибольший ток короткого замыкания, который выключатель способен отключить при определённых условиях</li>
+                    <li><strong>Ток электродинамической стойкости (iдин)</strong> — амплитудное значение тока КЗ, которое выключатель выдерживает во включённом положении без повреждений</li>
+                    <li><strong>Ток термической стойкости (Iтерм)</strong> — действующее значение тока КЗ, который выключатель выдерживает в течение определённого времени (обычно 1-3 с)</li>
+                    <li><strong>Собственное время отключения (tс.в)</strong> — интервал от момента подачи команды на отключение до момента начала расхождения дугогасительных контактов</li>
+                    <li><strong>Полное время отключения (tполн)</strong> — интервал от момента подачи команды до момента погасания дуги на всех полюсах</li>
+                    <li><strong>Механический ресурс</strong> — число операций «включение-отключение» без ремонта</li>
+                    <li><strong>Коммутационный ресурс</strong> — число отключений номинального тока</li>
+                </ul>
+            </div>
+
+            <h4>Масляные выключатели</h4>
+
+            <p>Масляные выключатели используют трансформаторное масло в качестве дугогасящей среды и изоляции. При размыкании контактов возникающая дуга разлагает масло с образованием газового пузыря, который оказывает деионизирующее действие на дугу. Различают баковые (многообъёмные) и маломасляные (малообъёмные) выключатели.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип</th>
+                        <th>Марки</th>
+                        <th>Напряжение</th>
+                        <th>Особенности</th>
+                        <th>Область применения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Баковые</strong></td>
+                        <td>С-35, МКП-110, У-110</td>
+                        <td>35-220 кВ</td>
+                        <td>Большой объём масла (до 20 т), все три полюса в общем баке</td>
+                        <td>Устаревший тип, ОРУ старых подстанций</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Маломасляные (колонковые)</strong></td>
+                        <td>ВМП-10, ВМПЭ-10, ВМГ-133</td>
+                        <td>6-35 кВ</td>
+                        <td>Малый объём масла (5-25 л на полюс), каждый полюс в отдельном баке</td>
+                        <td>КРУ, КСО, ЗРУ 6-10 кВ (постепенно заменяются вакуумными)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Маломасляные горшковые</strong></td>
+                        <td>ВМГ-10, ВМГ-133</td>
+                        <td>6-10 кВ</td>
+                        <td>Компактная конструкция, встраивание в КРУ</td>
+                        <td>КРУ старых серий</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="two-column">
+                <div class="column-box">
+                    <h4>Преимущества масляных выключателей</h4>
+                    <ul>
+                        <li>Отработанная конструкция и технология</li>
+                        <li>Высокая отключающая способность</li>
+                        <li>Относительно низкая стоимость</li>
+                        <li>Простота эксплуатации (для персонала с опытом)</li>
+                        <li>Хорошие изоляционные свойства масла</li>
+                    </ul>
+                </div>
+                <div class="column-box">
+                    <h4>Недостатки масляных выключателей</h4>
+                    <ul>
+                        <li>Пожаро- и взрывоопасность</li>
+                        <li>Необходимость периодической замены и регенерации масла</li>
+                        <li>Загрязнение окружающей среды при утечках</li>
+                        <li>Большие габариты и масса</li>
+                        <li>Ограниченный коммутационный ресурс</li>
+                        <li>Длительное время отключения (0,06-0,08 с)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4>Вакуумные выключатели</h4>
+
+            <p>Вакуумные выключатели используют высокий вакуум (давление 10⁻⁴–10⁻⁶ Па) в качестве дугогасящей и изолирующей среды. При размыкании контактов в вакууме дуга гаснет при первом переходе тока через ноль благодаря высокой электрической прочности вакуумного промежутка и быстрой деионизации межконтактного пространства. В настоящее время вакуумные выключатели являются основным типом выключателей для распределительных сетей 6-35 кВ.</p>
+
+            <div class="image-container">
+                <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Фон -->
+                    <rect width="900" height="500" fill="#ffffff"/>
+                    
+                    <!-- Заголовок -->
+                    <text x="450" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#1a365d">
+                        КОНСТРУКЦИЯ ВАКУУМНОГО ВЫКЛЮЧАТЕЛЯ
+                    </text>
+                    
+                    <!-- Вакуумная дугогасительная камера (ВДК) - увеличенный вид -->
+                    <g transform="translate(150, 60)">
+                        <text x="100" y="0" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#2c5282">
+                            ВАКУУМНАЯ ДУГОГАСИТЕЛЬНАЯ КАМЕРА (ВДК)
+                        </text>
+                        
+                        <!-- Внешний корпус камеры -->
+                        <rect x="40" y="30" width="120" height="280" fill="#e8f4fd" stroke="#3182ce" stroke-width="3" rx="10"/>
+                        
+                        <!-- Керамические изоляторы -->
+                        <rect x="50" y="40" width="100" height="40" fill="#d4a574" stroke="#b7791f" stroke-width="2" rx="5"/>
+                        <text x="100" y="65" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#744210">Керамический</text>
+                        <text x="100" y="75" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#744210">изолятор</text>
+                        
+                        <rect x="50" y="230" width="100" height="40" fill="#d4a574" stroke="#b7791f" stroke-width="2" rx="5"/>
+                        <text x="100" y="255" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#744210">Керамический</text>
+                        <text x="100" y="265" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#744210">изолятор</text>
+                        
+                        <!-- Металлический экран -->
+                        <rect x="55" y="85" width="90" height="140" fill="#a0aec0" stroke="#718096" stroke-width="2" rx="5"/>
+                        <text x="100" y="110" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#4a5568">Металлический</text>
+                        <text x="100" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#4a5568">экран</text>
+                        
+                        <!-- Вакуумная полость -->
+                        <rect x="65" y="95" width="70" height="120" fill="#f0fff4" stroke="#38a169" stroke-width="1" stroke-dasharray="3,2"/>
+                        <text x="100" y="150" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#276749">ВАКУУМ</text>
+                        <text x="100" y="165" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="7" fill="#276749">10⁻⁴...10⁻⁶ Па</text>
+                        
+                        <!-- Неподвижный контакт -->
+                        <rect x="85" y="100" width="30" height="15" fill="#c53030" stroke="#9b2c2c" stroke-width="2"/>
+                        <line x1="100" y1="30" x2="100" y2="100" stroke="#c53030" stroke-width="6"/>
+                        <text x="135" y="110" font-family="Segoe UI, sans-serif" font-size="7" fill="#c53030">Неподвижный</text>
+                        <text x="135" y="120" font-family="Segoe UI, sans-serif" font-size="7" fill="#c53030">контакт</text>
+                        
+                        <!-- Подвижный контакт -->
+                        <rect x="85" y="140" width="30" height="15" fill="#3182ce" stroke="#2c5282" stroke-width="2"/>
+                        <line x1="100" y1="155" x2="100" y2="200" stroke="#3182ce" stroke-width="6"/>
+                        <text x="135" y="150" font-family="Segoe UI, sans-serif" font-size="7" fill="#3182ce">Подвижный</text>
+                        <text x="135" y="160" font-family="Segoe UI, sans-serif" font-size="7" fill="#3182ce">контакт</text>
+                        
+                        <!-- Сильфон -->
+                        <path d="M 85 200 Q 75 205 85 210 Q 95 215 85 220 Q 75 225 85 230" fill="none" stroke="#718096" stroke-width="2"/>
+                        <path d="M 115 200 Q 125 205 115 210 Q 105 215 115 220 Q 125 225 115 230" fill="none" stroke="#718096" stroke-width="2"/>
+                        <text x="100" y="212" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="7" fill="#718096">Сильфон</text>
+                        
+                        <!-- Выводы -->
+                        <line x1="100" y1="270" x2="100" y2="320" stroke="#3182ce" stroke-width="6"/>
+                        <text x="100" y="340" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#2c5282">К приводу</text>
+                        
+                        <!-- Стрелка движения -->
+                        <line x1="130" y1="180" x2="130" y2="210" stroke="#38a169" stroke-width="2" marker-end="url(#arrowDown)"/>
+                        <line x1="130" y1="180" x2="130" y2="150" stroke="#38a169" stroke-width="2" marker-start="url(#arrowUp)"/>
+                        <text x="155" y="185" font-family="Segoe UI, sans-serif" font-size="7" fill="#38a169">Ход</text>
+                        <text x="155" y="195" font-family="Segoe UI, sans-serif" font-size="7" fill="#38a169">8-12 мм</text>
+                    </g>
+                    
+                    <!-- Маркеры стрелок -->
+                    <defs>
+                        <marker id="arrowDown" markerWidth="10" markerHeight="6" refX="5" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#38a169"/>
+                        </marker>
+                        <marker id="arrowUp" markerWidth="10" markerHeight="6" refX="5" refY="3" orient="auto-start-reverse">
+                            <polygon points="0 0, 10 3, 0 6" fill="#38a169"/>
+                        </marker>
+                    </defs>
+                    
+                    <!-- Выключатель в сборе -->
+                    <g transform="translate(450, 60)">
+                        <text x="150" y="0" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#2c5282">
+                            ВАКУУМНЫЙ ВЫКЛЮЧАТЕЛЬ ВВ/TEL-10-20/1000
+                        </text>
+                        
+                        <!-- Рама выключателя -->
+                        <rect x="0" y="30" width="300" height="350" fill="#f7fafc" stroke="#4a5568" stroke-width="2" rx="5"/>
+                        
+                        <!-- Три полюса -->
+                        <g transform="translate(30, 50)">
+                            <!-- Полюс A -->
+                            <rect x="0" y="0" width="60" height="200" fill="#e8f4fd" stroke="#3182ce" stroke-width="2" rx="5"/>
+                            <ellipse cx="30" cy="100" rx="20" ry="60" fill="#bee3f8" stroke="#3182ce" stroke-width="1"/>
+                            <text x="30" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#2c5282">Полюс A</text>
+                        </g>
+                        
+                        <g transform="translate(120, 50)">
+                            <!-- Полюс B -->
+                            <rect x="0" y="0" width="60" height="200" fill="#e8f4fd" stroke="#3182ce" stroke-width="2" rx="5"/>
+                            <ellipse cx="30" cy="100" rx="20" ry="60" fill="#bee3f8" stroke="#3182ce" stroke-width="1"/>
+                            <text x="30" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#2c5282">Полюс B</text>
+                        </g>
+                        
+                        <g transform="translate(210, 50)">
+                            <!-- Полюс C -->
+                            <rect x="0" y="0" width="60" height="200" fill="#e8f4fd" stroke="#3182ce" stroke-width="2" rx="5"/>
+                            <ellipse cx="30" cy="100" rx="20" ry="60" fill="#bee3f8" stroke="#3182ce" stroke-width="1"/>
+                            <text x="30" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#2c5282">Полюс C</text>
+                        </g>
+                        
+                        <!-- Общий вал -->
+                        <rect x="20" y="255" width="260" height="15" fill="#718096" stroke="#4a5568" stroke-width="1"/>
+                        <text x="150" y="290" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Общий приводной вал</text>
+                        
+                        <!-- Пружинный привод -->
+                        <rect x="80" y="300" width="140" height="60" fill="#805ad5" stroke="#6b46c1" stroke-width="2" rx="5"/>
+                        <text x="150" y="325" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="white">ПРУЖИННЫЙ</text>
+                        <text x="150" y="340" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="white">ПРИВОД</text>
+                        <text x="150" y="355" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#e9d8fd">БПП-101</text>
+                        
+                        <!-- Кнопки управления -->
+                        <circle cx="50" y="330" r="12" fill="#48bb78" stroke="#276749" stroke-width="2"/>
+                        <text x="50" y="355" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="7" fill="#276749">ВКЛ</text>
+                        
+                        <circle cx="250" y="330" r="12" fill="#f56565" stroke="#c53030" stroke-width="2"/>
+                        <text x="250" y="355" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="7" fill="#c53030">ОТКЛ</text>
+                        
+                        <!-- Верхние выводы -->
+                        <rect x="25" y="20" width="20" height="30" fill="#c53030"/>
+                        <rect x="140" y="20" width="20" height="30" fill="#c53030"/>
+                        <rect x="255" y="20" width="20" height="30" fill="#c53030"/>
+                        
+                        <!-- Нижние выводы -->
+                        <rect x="25" y="250" width="20" height="20" fill="#3182ce"/>
+                        <rect x="140" y="250" width="20" height="20" fill="#3182ce"/>
+                        <rect x="255" y="250" width="20" height="20" fill="#3182ce"/>
+                    </g>
+                    
+                    <!-- Легенда и характеристики -->
+                    <rect x="50" y="420" width="800" height="70" fill="#f7fafc" stroke="#e2e8f0" stroke-width="1" rx="4"/>
+                    <text x="450" y="440" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1a365d">
+                        ТЕХНИЧЕСКИЕ ХАРАКТЕРИСТИКИ ВАКУУМНОГО ВЫКЛЮЧАТЕЛЯ ВВ/TEL-10-20/1000
+                    </text>
+                    
+                    <text x="100" y="460" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• Uном = 10 кВ</text>
+                    <text x="100" y="475" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• Iном = 1000 А</text>
+                    
+                    <text x="280" y="460" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• Iоткл = 20 кА</text>
+                    <text x="280" y="475" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• iдин = 51 кА</text>
+                    
+                    <text x="450" y="460" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• tс.в = 0,025 с</text>
+                    <text x="450" y="475" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• tполн = 0,035 с</text>
+                    
+                    <text x="620" y="460" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• Мех. ресурс: 50000 операций</text>
+                    <text x="620" y="475" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">• Комм. ресурс (Iном): 30000 откл.</text>
+                </svg>
+                <div class="image-caption">Рис. 2.9. Конструкция вакуумного выключателя 10 кВ. Слева показана вакуумная дугогасительная камера (ВДК) в разрезе: керамические изоляторы обеспечивают герметичность и электрическую прочность; металлический экран защищает изоляторы от напыления металла контактов; контактная система состоит из неподвижного и подвижного контактов специальной конфигурации (часто с радиальными прорезями для создания магнитного поля, перемещающего дугу); сильфон обеспечивает герметичность при перемещении подвижного контакта; ход контактов составляет 8-12 мм. Справа показан выключатель ВВ/TEL-10-20/1000 в сборе: три полюса с ВДК установлены на общей раме, приводной механизм — пружинный привод БПП-101, обеспечивающий быстрое включение и отключение. Выключатель имеет высокий механический ресурс (50000 операций) и коммутационный ресурс при номинальном токе (30000 отключений), что значительно превышает показатели масляных выключателей</div>
+            </div>
+
+            <div class="technical-box">
+                <strong>Принцип гашения дуги в вакууме:</strong>
+                <p>При размыкании контактов в вакууме возникает дуга, питаемая ионизированными парами металла контактов. Особенности дугогашения в вакууме:</p>
+                <ol>
+                    <li><strong>Быстрая диффузия:</strong> Плазма дуги быстро рассеивается в вакуумное пространство</li>
+                    <li><strong>Малое количество носителей:</strong> После прохождения тока через ноль в межконтактном промежутке практически отсутствуют носители заряда</li>
+                    <li><strong>Высокая электрическая прочность:</strong> Вакуум восстанавливает изоляционные свойства за микросекунды после погасания дуги</li>
+                    <li><strong>Интенсивное охлаждение:</strong> Малые размеры камеры обеспечивают быстрый отвод тепла</li>
+                </ol>
+                <p style="margin-top: 10px;"><strong>Важно:</strong> Дуга в вакууме гаснет при первом же переходе тока через ноль, что обеспечивает минимальное время горения дуги (не более 10 мс при частоте 50 Гц).</p>
+            </div>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Вакуумные выключатели</th>
+                        <th>Масляные выключатели</th>
+                        <th>Элегазовые выключатели</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Время отключения</td>
+                        <td class="good">0,02-0,04 с</td>
+                        <td class="bad">0,06-0,08 с</td>
+                        <td class="good">0,03-0,05 с</td>
+                    </tr>
+                    <tr>
+                        <td>Механический ресурс</td>
+                        <td class="good">30000-50000 операций</td>
+                        <td class="bad">2000-10000 операций</td>
+                        <td class="good">10000-20000 операций</td>
+                    </tr>
+                    <tr>
+                        <td>Коммутационный ресурс (Iном)</td>
+                        <td class="good">20000-30000 отключений</td>
+                        <td class="bad">150-500 отключений</td>
+                        <td class="good">5000-10000 отключений</td>
+                    </tr>
+                    <tr>
+                        <td>Пожаробезопасность</td>
+                        <td class="good">Высокая</td>
+                        <td class="bad">Низкая</td>
+                        <td class="good">Высокая</td>
+                    </tr>
+                    <tr>
+                        <td>Экологичность</td>
+                        <td class="good">Высокая</td>
+                        <td class="bad">Низкая (масло)</td>
+                        <td class="neutral">Средняя (SF₆ — парниковый газ)</td>
+                    </tr>
+                    <tr>
+                        <td>Обслуживание</td>
+                        <td class="good">Минимальное</td>
+                        <td class="bad">Регулярное (масло, контакты)</td>
+                        <td class="good">Минимальное</td>
+                    </tr>
+                    <tr>
+                        <td>Габариты и масса</td>
+                        <td class="good">Компактные</td>
+                        <td class="bad">Большие</td>
+                        <td class="good">Средние</td>
+                    </tr>
+                    <tr>
+                        <td>Область применения</td>
+                        <td>6-35 кВ (до 110 кВ)</td>
+                        <td>6-220 кВ (устаревшие)</td>
+                        <td>35-750 кВ</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Элегазовые (SF₆) выключатели</h4>
+
+            <p>Элегазовые выключатели используют в качестве дугогасящей и изолирующей среды электроотрицательный газ гексафторид серы (SF₆), называемый также элегазом. Элегаз обладает высокой электрической прочностью (в 2,5 раза выше воздуха при атмосферном давлении) и отличными дугогасящими свойствами благодаря способности захватывать свободные электроны и образовывать малоподвижные отрицательные ионы.</p>
+
+            <div class="info-box">
+                <strong>Свойства элегаза (SF₆):</strong>
+                <ul>
+                    <li><strong>Химическая формула:</strong> SF₆ (гексафторид серы)</li>
+                    <li><strong>Молекулярная масса:</strong> 146 г/моль (в 5 раз тяжелее воздуха)</li>
+                    <li><strong>Электрическая прочность:</strong> 89 кВ/см при 0,1 МПа (воздух — 30 кВ/см)</li>
+                    <li><strong>Температура сжижения:</strong> -64°С при атмосферном давлении</li>
+                    <li><strong>Теплопроводность:</strong> в 1,6 раза выше воздуха</li>
+                    <li><strong>Химическая инертность:</strong> не горит, не поддерживает горение, не токсичен</li>
+                    <li><strong>Экологический аспект:</strong> парниковый газ с потенциалом глобального потепления 23900 (в 23900 раз выше CO₂), требует контроля утечек</li>
+                </ul>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип</th>
+                        <th>Марки</th>
+                        <th>Напряжение</th>
+                        <th>Конструкция</th>
+                        <th>Применение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Колонковые</strong></td>
+                        <td>ВГТ-110, ВГБ-220, LTB (ABB)</td>
+                        <td>110-750 кВ</td>
+                        <td>Каждый полюс — отдельная колонна на опорном изоляторе</td>
+                        <td>ОРУ, замена масляных выключателей</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Баковые</strong></td>
+                        <td>ВЭБ-110, HPL (Siemens)</td>
+                        <td>110-220 кВ</td>
+                        <td>Все три полюса в общем баке</td>
+                        <td>ОРУ, стеснённые условия</td>
+                    </tr>
+                    <tr>
+                        <td><strong>В составе КРУЭ</strong></td>
+                        <td>8DA/8DB (Siemens), ZX (ABB)</td>
+                        <td>110-500 кВ</td>
+                        <td>Модульная конструкция, компактность</td>
+                        <td>Городские подстанции, ограниченная территория</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Для КРУ 6-35 кВ</strong></td>
+                        <td>ВГП-10, LF (Schneider Electric)</td>
+                        <td>6-35 кВ</td>
+                        <td>Компактные, для установки в КРУ</td>
+                        <td>КРУ, ЗРУ (альтернатива вакуумным)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Разъединители</h3>
+
+            <p>Разъединитель — это контактный коммутационный аппарат, предназначенный для отключения и включения электрической цепи без тока или с незначительным током, который для обеспечения безопасности имеет между контактами в отключённом положении изоляционный промежуток, соответствующий требованиям <span class="gost-reference">ГОСТ 689-90</span>. Основное назначение разъединителя — создание видимого разрыва для безопасного проведения работ на отключённом оборудовании.</p>
+
+            <div class="warning-box">
+                <strong>⚠️ Важно! Операции с разъединителями:</strong>
+                <p>Разъединители не имеют дугогасительных устройств, поэтому:</p>
+                <ul>
+                    <li><strong>ЗАПРЕЩАЕТСЯ</strong> отключать разъединителем ток нагрузки (более нескольких ампер)</li>
+                    <li><strong>ДОПУСКАЕТСЯ</strong> отключать разъединителем: ток холостого хода трансформаторов (при определённых условиях), зарядный ток линий и шин, ток замыкания на землю в сетях с изолированной нейтралью (до 5 А)</li>
+                    <li>Отключение нагрузки разъединителем вызывает возникновение устойчивой дуги, выгорание контактов и может привести к междуфазному КЗ</li>
+                    <li>Порядок операций: сначала отключается выключатель, затем — разъединители</li>
+                </ul>
+            </div>
+
+            <h4>Классификация разъединителей</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип</th>
+                        <th>Марки</th>
+                        <th>Напряжение</th>
+                        <th>Конструкция</th>
+                        <th>Установка</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Рубящего типа</strong></td>
+                        <td>РНД, РНДЗ, РДЗ</td>
+                        <td>10-750 кВ</td>
+                        <td>Ножи поворачиваются в вертикальной плоскости</td>
+                        <td>ОРУ, горизонтальное расположение</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Поворотного типа</strong></td>
+                        <td>РПД, РПДЗ</td>
+                        <td>35-220 кВ</td>
+                        <td>Ножи поворачиваются в горизонтальной плоскости</td>
+                        <td>ОРУ с двумя системами шин</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Подвесные (качающиеся)</strong></td>
+                        <td>РПГ, РПГЗ</td>
+                        <td>330-750 кВ</td>
+                        <td>Ножи подвешены на гирляндах изоляторов</td>
+                        <td>ОРУ сверхвысокого напряжения</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Внутренней установки</strong></td>
+                        <td>РВ, РВЗ, РВФЗ</td>
+                        <td>6-35 кВ</td>
+                        <td>Компактная конструкция для помещений</td>
+                        <td>ЗРУ, КСО</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Пантографного типа</strong></td>
+                        <td>РПД</td>
+                        <td>110-500 кВ</td>
+                        <td>Складывающаяся система рычагов</td>
+                        <td>ОРУ с минимальной площадью</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Заземляющие ножи разъединителей</h4>
+
+            <p>Большинство разъединителей наружной установки оснащаются заземляющими ножами — дополнительными контактными системами, предназначенными для заземления отключённого участка цепи. Обозначение «З» в марке разъединителя (РНДЗ, РПДЗ) указывает на наличие заземляющих ножей. Заземляющие ножи могут располагаться с одной или с двух сторон разъединителя.</p>
+
+            <div class="info-box">
+                <strong>Блокировки разъединителей (<span class="gost-reference">ПУЭ п. 4.2.24-4.2.27</span>):</strong>
+                <ul>
+                    <li>Должна быть исключена возможность включения заземляющих ножей на участок, находящийся под напряжением</li>
+                    <li>Должна быть исключена возможность подачи напряжения на заземлённый участок</li>
+                    <li>Должна быть исключена возможность отключения и включения разъединителей при включённом выключателе (для отделителей это требование не применяется)</li>
+                    <li>Блокировки выполняются механическими, электромагнитными или программными средствами</li>
+                </ul>
+            </div>
+
+            <h3>Выключатели нагрузки</h3>
+
+            <p>Выключатель нагрузки — это коммутационный аппарат, предназначенный для включения и отключения токов нагрузки, но не рассчитанный на отключение токов короткого замыкания. Применяется в сочетании с предохранителями, которые обеспечивают защиту от КЗ. Выключатели нагрузки широко используются в распределительных сетях 6-10 кВ благодаря простоте конструкции и низкой стоимости по сравнению с выключателями.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип</th>
+                        <th>Марки</th>
+                        <th>Дугогасящая среда</th>
+                        <th>Iном, А</th>
+                        <th>Применение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>С автогазовым дугогашением</strong></td>
+                        <td>ВНА, ВНР, ВНП</td>
+                        <td>Газы от разложения вкладышей из оргстекла</td>
+                        <td>400-630</td>
+                        <td>КТП, РП, ТП</td>
+                    </tr>
+                    <tr>
+                        <td><strong>С электромагнитным дугогашением</strong></td>
+                        <td>ВНВ</td>
+                        <td>Воздух, магнитное дутьё</td>
+                        <td>400-630</td>
+                        <td>ЗРУ 6-10 кВ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Вакуумные</strong></td>
+                        <td>ВНВП</td>
+                        <td>Вакуум</td>
+                        <td>400-630</td>
+                        <td>КТП, КСО современные</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Элегазовые</strong></td>
+                        <td>ВНЭ, FKN (ABB)</td>
+                        <td>SF₆</td>
+                        <td>400-1250</td>
+                        <td>КСО, КРУН современные</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Предохранители</h3>
+
+            <p>Предохранитель — это коммутационный электрический аппарат, предназначенный для отключения защищаемой цепи путём разрушения специально предусмотренных для этого токоведущих частей под действием тока, превышающего определённое значение в течение определённого времени (<span class="gost-reference">ГОСТ Р 50339.0-2003</span>). Предохранители являются простейшими аппаратами защиты от сверхтоков (токов КЗ и перегрузки).</p>
+
+            <h4>Классификация предохранителей высокого напряжения</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип</th>
+                        <th>Марки</th>
+                        <th>Напряжение</th>
+                        <th>Конструкция</th>
+                        <th>Применение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Кварцевые (ПК)</strong></td>
+                        <td>ПКТ, ПКН, ПКЭ</td>
+                        <td>6-35 кВ</td>
+                        <td>Плавкая вставка в кварцевом песке, керамическая трубка</td>
+                        <td>Защита ТП, КТП, силовых трансформаторов</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Стреляющие</strong></td>
+                        <td>ПСН, ПВТ</td>
+                        <td>10-110 кВ</td>
+                        <td>При сгорании вставки патрон выбрасывается</td>
+                        <td>Защита ВЛ, ОРУ (устаревший тип)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Токоограничивающие</strong></td>
+                        <td>ПКТ-VV, CEF</td>
+                        <td>6-35 кВ</td>
+                        <td>Ограничивают ток КЗ до максимального значения</td>
+                        <td>Защита конденсаторных батарей, трансформаторов</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="formula-box">
+                <strong>Выбор плавких предохранителей:</strong>
+                <div class="formula">
+                    I<sub>вс</sub> ≥ I<sub>расч</sub> / α
+                </div>
+                <div class="formula-desc">
+                    где: I<sub>вс</sub> — номинальный ток плавкой вставки, А;<br>
+                    I<sub>расч</sub> — расчётный ток защищаемой цепи, А;<br>
+                    α — коэффициент, учитывающий условия работы (для трансформаторов α = 1,4-2,5 в зависимости от пусковых токов нагрузки)
+                </div>
+                <p style="margin-top: 15px;"><strong>Условие селективности с выключателем:</strong></p>
+                <div class="formula">
+                    t<sub>пр</sub> < t<sub>выкл</sub>
+                </div>
+                <div class="formula-desc">
+                    где: t<sub>пр</sub> — время срабатывания предохранителя при данном токе КЗ;<br>
+                    t<sub>выкл</sub> — время срабатывания защиты выключателя (с выдержкой времени)
+                </div>
+            </div>
+
+            <!-- РАЗДЕЛ 2.5.3 -->
+            <h2>2.5.3. Планирование технического обслуживания и ремонта распределительных устройств</h2>
+
+            <p>Техническое обслуживание (ТО) и ремонт (Р) распределительных устройств выполняются по системе планово-предупредительного ремонта (ППР), которая предусматривает проведение работ через определённые интервалы времени или после выполнения определённого объёма операций. Целью системы ППР является поддержание оборудования в работоспособном состоянии, предупреждение преждевременного износа и предотвращение аварий.</p>
+
+            <h3>Периодичность осмотров распределительных устройств</h3>
+
+            <p>Согласно <span class="gost-reference">ПТЭЭП, глава 2.2</span>, осмотры распределительных устройств проводятся в следующие сроки:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Вид осмотра</th>
+                        <th>Объект</th>
+                        <th>Периодичность</th>
+                        <th>Кто проводит</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Оперативный осмотр</strong></td>
+                        <td>Все РУ с постоянным дежурством</td>
+                        <td>Не реже 1 раза в смену</td>
+                        <td>Оперативный персонал</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Периодический осмотр</strong></td>
+                        <td>РУ без постоянного дежурства</td>
+                        <td>Не реже 1 раза в месяц</td>
+                        <td>Оперативный или оперативно-ремонтный персонал</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Осмотр ответственных объектов</strong></td>
+                        <td>ГПП, узловые РП</td>
+                        <td>Не реже 1 раза в сутки</td>
+                        <td>ИТР, мастера</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Внеочередной осмотр</strong></td>
+                        <td>Все РУ</td>
+                        <td>После КЗ, перегрузок, резкого изменения погоды, при неясной сигнализации</td>
+                        <td>Оперативный персонал</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ночной осмотр</strong></td>
+                        <td>ОРУ с напряжением 35 кВ и выше</td>
+                        <td>По графику, не реже 1 раза в месяц</td>
+                        <td>ИТР, мастера</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Объекты контроля при осмотре РУ</h4>
+
+            <div class="highlight-box">
+                <strong>При осмотре распределительных устройств контролируются:</strong>
+                <ul>
+                    <li><strong>Состояние помещений ЗРУ:</strong> исправность дверей, замков, отопления, вентиляции, освещения, отсутствие течей, загрязнений</li>
+                    <li><strong>Состояние изоляции:</strong> загрязнённость изоляторов, наличие трещин, сколов, следов разрядов, птичьих гнёзд</li>
+                    <li><strong>Состояние контактных соединений:</strong> наличие нагрева (по цвету термоиндикаторов или визуально), потемнение, деформации</li>
+                    <li><strong>Уровень масла:</strong> в маслонаполненных аппаратах по маслоуказателям</li>
+                    <li><strong>Давление SF₆:</strong> в элегазовых аппаратах по манометрам (с учётом температуры)</li>
+                    <li><strong>Положение коммутационных аппаратов:</strong> соответствие указателей фактическому положению</li>
+                    <li><strong>Целостность ограждений:</strong> заборов, сеток, замков на дверях ячеек</li>
+                    <li><strong>Состояние заземления:</strong> видимые соединения, отсутствие коррозии</li>
+                    <li><strong>Наличие маркировки:</strong> надписи на оборудовании, плакаты безопасности</li>
+                    <li><strong>Работа систем:</strong> сигнализации, обогрева приводов, освещения</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <div class="example-title">📋 Пример: Карта осмотра ячейки КРУ-10 кВ</div>
+                <p><strong>Объект:</strong> КРУ К-59 ввод № 1 от трансформатора Т-1</p>
+                <p><strong>Дата осмотра:</strong> 15.11.2024, время: 10:00</p>
+                <table style="margin-top: 10px;">
+                    <tr>
+                        <th>№</th>
+                        <th>Объект контроля</th>
+                        <th>Состояние</th>
+                        <th>Отметка</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Положение выкатного элемента</td>
+                        <td>Рабочее, указатель соответствует</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Положение вакуумного выключателя</td>
+                        <td>Включено, лампа «ВКЛ» горит</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Счётчик числа срабатываний</td>
+                        <td>0127 (было 0125 — 2 операции за месяц)</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Состояние пружин привода</td>
+                        <td>Заведены, указатель в положении «заведено»</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Изоляция (опорные изоляторы)</td>
+                        <td>Чистая, без трещин и сколов</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Контактные соединения (визуально)</td>
+                        <td>Без следов нагрева и потемнения</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Релейный отсек</td>
+                        <td>Индикация РЗА в норме, неисправностей нет</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Шторки безопасности</td>
+                        <td>Открыты (при рабочем положении)</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Блокировки</td>
+                        <td>Замок на приводе — заперт</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Нагрузка ячейки (по амперметру)</td>
+                        <td>520 А (Iном = 1000 А, загрузка 52%)</td>
+                        <td>✓</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 10px;"><strong>Заключение:</strong> Ячейка КРУ в нормальном состоянии, замечаний нет. Осмотр провёл: электромонтёр Сидоров П.А.</p>
+            </div>
+
+            <h3>Обслуживание механизмов привода коммутационных аппаратов</h3>
+
+            <p>Приводы коммутационных аппаратов обеспечивают накопление энергии и её освобождение для выполнения операций включения и отключения. От надёжной работы привода зависит безотказность срабатывания выключателя при подаче команды от релейной защиты или оператора.</p>
+
+            <h4>Типы приводов коммутационных аппаратов</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип привода</th>
+                        <th>Принцип действия</th>
+                        <th>Применение</th>
+                        <th>Особенности обслуживания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Пружинный</strong></td>
+                        <td>Энергия запасается в заведённых пружинах</td>
+                        <td>Вакуумные и элегазовые выключатели 6-220 кВ</td>
+                        <td>Проверка заводки пружин, смазка шарниров, регулировка</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Электромагнитный</strong></td>
+                        <td>Электромагнит втягивает якорь при подаче тока</td>
+                        <td>Выключатели 6-10 кВ, контакторы</td>
+                        <td>Проверка зазоров, состояния катушек, контактов</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Пневматический</strong></td>
+                        <td>Сжатый воздух приводит в движение поршень</td>
+                        <td>Воздушные выключатели 110-750 кВ (устаревшие)</td>
+                        <td>Контроль давления, проверка клапанов, осушка воздуха</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Гидравлический</strong></td>
+                        <td>Давление масла перемещает поршень</td>
+                        <td>Элегазовые выключатели 110-750 кВ</td>
+                        <td>Контроль давления, уровня масла, герметичности</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Пружинно-моторный</strong></td>
+                        <td>Электродвигатель заводит пружину</td>
+                        <td>Современные выключатели 10-220 кВ</td>
+                        <td>Проверка двигателя, концевых выключателей, пружин</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ручной</strong></td>
+                        <td>Оператор вручную оперирует рычагом</td>
+                        <td>Разъединители, выключатели нагрузки</td>
+                        <td>Смазка, проверка блокировок</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Регламент обслуживания пружинного привода вакуумного выключателя</h4>
+
+            <div class="info-box">
+                <strong>Объём работ при техническом обслуживании привода ВВ/TEL (<span class="gost-reference">СТО 56947007-29.130.01.105-2011</span>):</strong>
+                <p><strong>Периодичность:</strong> 1 раз в 3 года или после 10000 операций (что наступит ранее)</p>
+                <ol>
+                    <li><strong>Внешний осмотр:</strong> проверка отсутствия механических повреждений, коррозии, состояния крепежа</li>
+                    <li><strong>Проверка работы привода:</strong> выполнение 3-5 контрольных операций ВО (включение-отключение) вручную и дистанционно</li>
+                    <li><strong>Проверка времени операций:</strong> измерение собственного времени включения и отключения</li>
+                    <li><strong>Проверка скорости движения контактов:</strong> осциллографирование при необходимости</li>
+                    <li><strong>Смазка шарнирных соединений:</strong> смазка ЦИАТИМ-201 или аналогичная</li>
+                    <li><strong>Проверка состояния пружин:</strong> отсутствие трещин, коррозии, деформаций</li>
+                    <li><strong>Проверка блокировок:</strong> механических и электрических</li>
+                    <li><strong>Проверка концевых выключателей:</strong> срабатывание при переходе в крайние положения</li>
+                    <li><strong>Проверка работы электродвигателя заводки:</strong> время заводки пружин, потребляемый ток</li>
+                    <li><strong>Очистка и подтяжка контактных соединений:</strong> в цепях управления и силовых цепях</li>
+                </ol>
+            </div>
+
+            <h3>Смазка и регулировка контактов</h3>
+
+            <p>Контактные системы коммутационных аппаратов работают в тяжёлых условиях: при коммутации возникает электрическая дуга, контакты подвергаются механическим ударам, электродинамическим усилиям и термическому воздействию. Правильная смазка и регулировка контактов обеспечивают надёжную работу аппарата и увеличивают срок его службы.</p>
+
+            <h4>Требования к контактным соединениям</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Норма</th>
+                        <th>Метод контроля</th>
+                        <th>Последствия несоответствия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Переходное сопротивление контактов</strong></td>
+                        <td>Не более значения, указанного в паспорте (обычно 20-100 мкОм)</td>
+                        <td>Микроомметр, мост постоянного тока</td>
+                        <td>Перегрев контактов, оплавление, приваривание</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Контактное нажатие</strong></td>
+                        <td>По паспорту аппарата (5-50 кг в зависимости от тока)</td>
+                        <td>Динамометр</td>
+                        <td>Недостаточное — рост сопротивления; избыточное — износ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Провал контактов (вжим)</strong></td>
+                        <td>По паспорту (для выключателей — 3-5 мм)</td>
+                        <td>Линейка, специальное приспособление</td>
+                        <td>Нарушение при износе контактов, требуется замена</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Раствор контактов (ход)</strong></td>
+                        <td>По паспорту (для разъединителей — достаточный видимый разрыв)</td>
+                        <td>Визуально, измерение</td>
+                        <td>Недостаточная отключающая способность</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Одновременность замыкания</strong></td>
+                        <td>Разновременность не более 3-5 мм</td>
+                        <td>Специальное приспособление, осциллограф</td>
+                        <td>Неравномерный износ, неодновременное гашение дуги</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Смазочные материалы для коммутационных аппаратов</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Смазка</th>
+                        <th>Область применения</th>
+                        <th>Температурный диапазон</th>
+                        <th>Особенности</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ЦИАТИМ-201</strong></td>
+                        <td>Шарниры, подшипники, механизмы приводов</td>
+                        <td>-60...+90°С</td>
+                        <td>Универсальная, морозостойкая</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ЦИАТИМ-221</strong></td>
+                        <td>Подшипники качения, высоконагруженные узлы</td>
+                        <td>-60...+150°С</td>
+                        <td>Термостойкая, для высоких нагрузок</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Смазка ГОИ-54п</strong></td>
+                        <td>Контактные поверхности ножей разъединителей</td>
+                        <td>-40...+50°С</td>
+                        <td>Защита от коррозии, снижение износа</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Вазелин технический</strong></td>
+                        <td>Контактные соединения, болтовые соединения</td>
+                        <td>-20...+50°С</td>
+                        <td>Защита от окисления</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Электропроводная смазка (ЭПС)</strong></td>
+                        <td>Контактные поверхности токоведущих частей</td>
+                        <td>-50...+100°С</td>
+                        <td>Снижает переходное сопротивление</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Проверка электрической прочности изоляции</h3>
+
+            <p>Изоляция коммутационных аппаратов и распределительных устройств подвергается воздействию рабочего напряжения, коммутационных и атмосферных перенапряжений, а также загрязнений и увлажнения. Периодическая проверка изоляции позволяет выявить дефекты на ранней стадии и предотвратить аварийные отказы.</p>
+
+            <h4>Виды воздействий на изоляцию</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Вид воздействия</th>
+                        <th>Характеристика</th>
+                        <th>Последствия</th>
+                        <th>Метод контроля</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Рабочее напряжение</strong></td>
+                        <td>Длительное воздействие номинального напряжения</td>
+                        <td>Старение, частичные разряды</td>
+                        <td>Измерение tg δ, частичных разрядов</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Коммутационные перенапряжения</strong></td>
+                        <td>Кратковременные превышения напряжения при коммутациях</td>
+                        <td>Пробой ослабленных мест</td>
+                        <td>Испытание повышенным напряжением</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Атмосферные перенапряжения</strong></td>
+                        <td>Импульсы при грозовых разрядах</td>
+                        <td>Перекрытия, пробои</td>
+                        <td>Испытание импульсным напряжением (заводские)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Загрязнение</strong></td>
+                        <td>Отложение пыли, солей, копоти на изоляторах</td>
+                        <td>Снижение поверхностного сопротивления, перекрытия во влажную погоду</td>
+                        <td>Визуальный осмотр, измерение тока утечки</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Увлажнение</strong></td>
+                        <td>Конденсация влаги, попадание воды</td>
+                        <td>Снижение сопротивления изоляции, пробой</td>
+                        <td>Измерение сопротивления изоляции</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Механические воздействия</strong></td>
+                        <td>Вибрации, удары, термические деформации</td>
+                        <td>Трещины, сколы изоляторов</td>
+                        <td>Визуальный осмотр</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>⚠️ Признаки дефектов изоляции, выявляемые при осмотре:</strong>
+                <ul>
+                    <li><strong>Трещины и сколы</strong> на фарфоровых и полимерных изоляторах</li>
+                    <li><strong>Следы перекрытий</strong> — тёмные полосы, подгары на поверхности</li>
+                    <li><strong>Изменение цвета</strong> — потемнение эпоксидной изоляции, пожелтение полимеров</li>
+                    <li><strong>Загрязнение</strong> — отложения пыли, цементной или угольной крошки, птичий помёт</li>
+                    <li><strong>Коронирование</strong> — свечение в темноте на острых краях (при ночном осмотре)</li>
+                    <li><strong>Посторонний шум</strong> — потрескивание, шипение (частичные разряды)</li>
+                    <li><strong>Запах озона</strong> — характерный признак ионизации воздуха</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Действия при обнаружении:</strong> Немедленно сообщить ответственному за электрохозяйство, при опасных дефектах — принять меры по разгрузке или отключению оборудования.</p>
+            </div>
+
+            <!-- РАЗДЕЛ 2.5.4 -->
+            <h2>2.5.4. Нормы испытаний коммутационной аппаратуры</h2>
+
+            <p>Испытания коммутационных аппаратов проводятся для оценки их технического состояния и подтверждения возможности дальнейшей эксплуатации. Объём и нормы испытаний регламентированы <span class="gost-reference">РД 34.45-51.300-97</span>, <span class="gost-reference">ПТЭЭП</span> и инструкциями заводов-изготовителей. Результаты испытаний сравниваются с нормативными значениями и с результатами предыдущих измерений для выявления динамики изменения параметров.</p>
+
+            <h3>Измерение сопротивления изоляции</h3>
+
+            <p>Измерение сопротивления изоляции является первым и обязательным этапом испытаний любого электрооборудования. Позволяет выявить грубые дефекты изоляции (увлажнение, загрязнение, повреждение) перед проведением испытаний повышенным напряжением.</p>
+
+            <div class="formula-box">
+                <strong>Нормы сопротивления изоляции (<span class="gost-reference">РД 34.45-51.300-97</span>):</strong>
+                <div class="formula-desc" style="text-align: left; padding-left: 20px;">
+                    <table style="background: transparent; color: white; margin: 10px 0; width: 100%;">
+                        <tr>
+                            <th style="background: rgba(255,255,255,0.1);">Объект измерения</th>
+                            <th style="background: rgba(255,255,255,0.1);">R<sub>из</sub>, МОм</th>
+                            <th style="background: rgba(255,255,255,0.1);">Мегаомметр, В</th>
+                        </tr>
+                        <tr>
+                            <td>Выключатели, разъединители на напряжение выше 1000 В</td>
+                            <td>≥ 1000</td>
+                            <td>2500</td>
+                        </tr>
+                        <tr>
+                            <td>Вторичные цепи управления, защиты, сигнализации</td>
+                            <td>≥ 1,0</td>
+                            <td>500-1000</td>
+                        </tr>
+                        <tr>
+                            <td>Вторичные обмотки трансформаторов тока и напряжения</td>
+                            <td>≥ 1,0</td>
+                            <td>1000</td>
+                        </tr>
+                        <tr>
+                            <td>Электромагниты управления приводами</td>
+                            <td>≥ 1,0</td>
+                            <td>1000</td>
+                        </tr>
+                        <tr>
+                            <td>Полимерные изоляторы</td>
+                            <td>≥ 3000</td>
+                            <td>2500</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <h4>Методика измерения сопротивления изоляции выключателя</h4>
+
+            <div class="info-box">
+                <strong>Порядок измерения:</strong>
+                <ol>
+                    <li><strong>Подготовка:</strong> Отключить выключатель от сети, установить заземления на вводы</li>
+                    <li><strong>Снятие заземления:</strong> Последовательно снять заземления для проведения измерений</li>
+                    <li><strong>Разрядка ёмкости:</strong> Перед подключением мегаомметра разрядить ёмкость изоляции</li>
+                    <li><strong>Измерение при отключённом положении:</strong>
+                        <ul>
+                            <li>Каждый полюс относительно заземлённого корпуса</li>
+                            <li>Между полюсами (для многополюсных аппаратов)</li>
+                            <li>Между разомкнутыми контактами каждого полюса</li>
+                        </ul>
+                    </li>
+                    <li><strong>Измерение при включённом положении:</strong> Каждый полюс относительно земли</li>
+                    <li><strong>Измерение вторичных цепей:</strong> Цепи управления, сигнализации относительно земли</li>
+                    <li><strong>Фиксация результатов:</strong> Занести в протокол с указанием температуры и влажности                    </li>
+                </ol>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип аппарата</th>
+                        <th>Объект измерения</th>
+                        <th>Норма R<sub>из</sub>, МОм</th>
+                        <th>Напряжение мегаомметра, В</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="3"><strong>Вакуумный выключатель 10 кВ</strong></td>
+                        <td>Полюс — земля (вкл.)</td>
+                        <td>≥ 1000</td>
+                        <td>2500</td>
+                    </tr>
+                    <tr>
+                        <td>Между контактами (откл.)</td>
+                        <td>≥ 1000</td>
+                        <td>2500</td>
+                    </tr>
+                    <tr>
+                        <td>Вторичные цепи</td>
+                        <td>≥ 1,0</td>
+                        <td>1000</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>Элегазовый выключатель 110 кВ</strong></td>
+                        <td>Главные цепи</td>
+                        <td>≥ 3000</td>
+                        <td>2500</td>
+                    </tr>
+                    <tr>
+                        <td>Вторичные цепи</td>
+                        <td>≥ 1,0</td>
+                        <td>1000</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>Разъединитель 110 кВ</strong></td>
+                        <td>Изоляторы опорные</td>
+                        <td>≥ 1000</td>
+                        <td>2500</td>
+                    </tr>
+                    <tr>
+                        <td>Тяги изоляционные</td>
+                        <td>≥ 300</td>
+                        <td>2500</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Выключатель нагрузки 10 кВ</strong></td>
+                        <td>Полюс — земля</td>
+                        <td>≥ 1000</td>
+                        <td>2500</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Испытание изоляции повышенным напряжением</h3>
+
+            <p>Испытание повышенным напряжением промышленной частоты (50 Гц) является основным методом проверки электрической прочности изоляции коммутационных аппаратов. Испытание выявляет дефекты, не обнаруживаемые при измерении сопротивления изоляции: локальные ослабления, внутренние повреждения, загрязнение воздушных промежутков.</p>
+
+            <h4>Нормы испытательных напряжений для коммутационных аппаратов</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Класс напряжения, кВ</th>
+                        <th>U<sub>исп</sub> для выключателей, кВ</th>
+                        <th>U<sub>исп</sub> для разъединителей, кВ</th>
+                        <th>Длительность, мин</th>
+                        <th>Примечание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>6</td>
+                        <td>32</td>
+                        <td>32</td>
+                        <td>1</td>
+                        <td>Для изоляции относительно земли и между полюсами</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>42</td>
+                        <td>42</td>
+                        <td>1</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>55</td>
+                        <td>55</td>
+                        <td>1</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>65</td>
+                        <td>65</td>
+                        <td>1</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>35</td>
+                        <td>95</td>
+                        <td>95</td>
+                        <td>1</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>110</td>
+                        <td>200 (250)*</td>
+                        <td>250</td>
+                        <td>1</td>
+                        <td>* В скобках — для оборудования с нормальной изоляцией</td>
+                    </tr>
+                    <tr>
+                        <td>220</td>
+                        <td>400 (460)*</td>
+                        <td>460</td>
+                        <td>1</td>
+                        <td>—</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>⚠️ Требования безопасности при испытаниях повышенным напряжением:</strong>
+                <ul>
+                    <li>Работы выполняются по наряду-допуску бригадой не менее 2 человек</li>
+                    <li>Руководитель испытаний должен иметь группу по электробезопасности не ниже IV (в установках выше 1000 В)</li>
+                    <li>Испытательная установка должна быть ограждена и снабжена блокировками</li>
+                    <li>Обязательна подача звукового и светового сигнала перед подачей напряжения</li>
+                    <li>После испытания — снятие остаточного заряда через разрядное устройство</li>
+                    <li>Время разряда — не менее 3-5 минут для высоковольтного оборудования</li>
+                    <li>Применение диэлектрических перчаток, ковров, изолирующих штанг</li>
+                    <li>Запрещается приближение к испытуемому оборудованию во время испытания</li>
+                </ul>
+            </div>
+
+            <h4>Особенности испытания различных типов выключателей</h4>
+
+            <div class="technical-box">
+                <strong>Вакуумные выключатели:</strong>
+                <p>Испытание повышенным напряжением вакуумных дугогасительных камер (ВДК) имеет особенности:</p>
+                <ul>
+                    <li>Испытательное напряжение между разомкнутыми контактами ВДК не должно превышать 80% от испытательного напряжения относительно земли</li>
+                    <li>Причина: малый зазор между контактами (8-12 мм) при высокой электрической прочности вакуума</li>
+                    <li>При испытании возможна рентгеновская эмиссия — требуется контроль дозы излучения</li>
+                    <li>Нормы для ВДК при эксплуатации: U<sub>исп</sub> = 0,9 × U<sub>исп.завод</sub></li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Пример:</strong> Для вакуумного выключателя 10 кВ испытательное напряжение относительно земли составляет 42 кВ, а между разомкнутыми контактами ВДК — не более 42 × 0,8 = 33,6 кВ (обычно принимают 32 кВ).</p>
+            </div>
+
+            <div class="technical-box">
+                <strong>Элегазовые выключатели:</strong>
+                <p>Перед испытанием элегазовых выключателей необходимо:</p>
+                <ul>
+                    <li>Проверить давление SF₆ — должно соответствовать паспортному значению с учётом температуры</li>
+                    <li>При давлении ниже нормы — испытание не проводится до выяснения причины утечки</li>
+                    <li>Испытательное напряжение может быть приложено только при номинальном давлении газа</li>
+                    <li>После испытания — повторная проверка давления для выявления возможных повреждений уплотнений</li>
+                </ul>
+            </div>
+
+            <h3>Проверка работоспособности и срабатывания защитных устройств</h3>
+
+            <p>Надёжная работа коммутационных аппаратов зависит не только от состояния изоляции и контактов, но и от правильного функционирования приводов, блокировок и устройств защиты. Проверка срабатывания выполняется при приёмо-сдаточных испытаниях и периодически в процессе эксплуатации.</p>
+
+            <h4>Проверка работы выключателей</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Проверяемый параметр</th>
+                        <th>Метод проверки</th>
+                        <th>Норма</th>
+                        <th>Периодичность</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Собственное время включения t<sub>вкл</sub></strong></td>
+                        <td>Осциллографирование или секундомер с миллисекундной точностью</td>
+                        <td>По паспорту (обычно 0,05-0,1 с)</td>
+                        <td>При вводе, после ремонта</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Собственное время отключения t<sub>откл</sub></strong></td>
+                        <td>Осциллографирование</td>
+                        <td>По паспорту (вакуумные — 0,02-0,04 с, масляные — 0,05-0,08 с)</td>
+                        <td>При вводе, после ремонта, 1 раз в 3 года</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Полное время отключения</strong></td>
+                        <td>Осциллографирование с записью тока дуги</td>
+                        <td>По паспорту</td>
+                        <td>При вводе, после ремонта</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Минимальное напряжение срабатывания</strong></td>
+                        <td>Снижение напряжения на катушках управления</td>
+                        <td>Включение при ≥ 0,85U<sub>ном</sub>, отключение при ≥ 0,65U<sub>ном</sub></td>
+                        <td>При вводе, после ремонта</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Одновременность замыкания контактов</strong></td>
+                        <td>Осциллографирование или миллиамперметр</td>
+                        <td>Разновременность ≤ 2-3 мс</td>
+                        <td>При вводе, после ремонта</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Скорость движения контактов</strong></td>
+                        <td>Осциллографирование с датчиком перемещения</td>
+                        <td>По паспорту</td>
+                        <td>При вводе, после капитального ремонта</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Работа цикла АПВ</strong></td>
+                        <td>Проверка цикла О-В-О</td>
+                        <td>Безотказное выполнение цикла</td>
+                        <td>При вводе, 1 раз в 3 года</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Проверка работы разъединителей</h4>
+
+            <div class="info-box">
+                <strong>Объём проверки разъединителей:</strong>
+                <ol>
+                    <li><strong>Проверка лёгкости хода:</strong> Операции включения и отключения должны выполняться плавно, без заеданий, с усилием не более указанного в паспорте</li>
+                    <li><strong>Проверка фиксации:</strong> Ножи должны чётко фиксироваться в крайних положениях (включено, отключено)</li>
+                    <li><strong>Проверка вхождения ножей:</strong> Ножи должны полностью входить в неподвижные контакты, обеспечивая надёжный контакт</li>
+                    <li><strong>Проверка одновременности:</strong> Все три полюса должны включаться и отключаться одновременно (разновременность не более 3 мм хода)</li>
+                    <li><strong>Проверка заземляющих ножей:</strong> Свободный ход, надёжный контакт с заземлённым выводом, работа блокировок</li>
+                    <li><strong>Проверка блокировок:</strong> Невозможность включения заземляющих ножей при включённом главном ноже, невозможность включения главного ножа при включённых заземляющих</li>
+                    <li><strong>Проверка привода:</strong> Работа ручного и двигательного приводов, концевых выключателей</li>
+                </ol>
+            </div>
+
+            <h4>Проверка предохранителей</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Проверяемый параметр</th>
+                        <th>Метод</th>
+                        <th>Норма</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Соответствие номинальных данных</strong></td>
+                        <td>Визуально по маркировке</td>
+                        <td>Соответствие проекту и защищаемому оборудованию</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Целостность плавкой вставки</strong></td>
+                        <td>Прозвонка омметром (для патронов с доступными выводами)</td>
+                        <td>R ≈ 0 (целая), R = ∞ (перегоревшая)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Состояние контактов</strong></td>
+                        <td>Визуально, измерение переходного сопротивления</td>
+                        <td>Отсутствие подгаров, окисления; R<sub>пер</sub> ≤ норма</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Надёжность крепления</strong></td>
+                        <td>Визуально, проверка затяжки</td>
+                        <td>Патрон плотно установлен, не качается</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Указатель срабатывания</strong></td>
+                        <td>Визуально</td>
+                        <td>Указатель не выпал (для ПКТ)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Измерение переходного сопротивления контактов</h3>
+
+            <p>Переходное сопротивление контактов — важнейший параметр, характеризующий качество контактного соединения. Повышенное переходное сопротивление приводит к нагреву контактов, что может вызвать оплавление, приваривание контактов или возгорание. Измерение проводится методом амперметра-вольтметра или с помощью микроомметра.</p>
+
+            <div class="formula-box">
+                <strong>Методика измерения переходного сопротивления:</strong>
+                <div class="formula">
+                    R<sub>пер</sub> = U / I
+                </div>
+                <div class="formula-desc">
+                    где: R<sub>пер</sub> — переходное сопротивление, мкОм (Ом);<br>
+                    U — падение напряжения на контакте, мкВ (мВ);<br>
+                    I — ток измерения, А (обычно 100-200 А для силовых контактов)
+                </div>
+                <p style="margin-top: 15px;"><strong>Требования к измерениям:</strong></p>
+                <ul style="font-family: 'Segoe UI', sans-serif; font-size: 0.9rem;">
+                    <li>Ток измерения должен быть не менее 100 А для силовых аппаратов</li>
+                    <li>Для точных измерений используются микроомметры с током 100-600 А</li>
+                    <li>Провода подключаются непосредственно к контактам (четырёхпроводная схема)</li>
+                    <li>Измерение проводится при температуре контактов, близкой к нормальной (+20°С)</li>
+                </ul>
+            </div>
+
+            <h4>Нормы переходного сопротивления контактов коммутационных аппаратов</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Аппарат</th>
+                        <th>Номинальный ток, А</th>
+                        <th>R<sub>пер</sub> не более, мкОм</th>
+                        <th>Примечание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="4"><strong>Выключатели</strong></td>
+                        <td>630</td>
+                        <td>75</td>
+                        <td rowspan="4">Для новых — по паспорту, для эксплуатируемых — увеличение не более 50% от заводских</td>
+                    </tr>
+                    <tr>
+                        <td>1000</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>1600</td>
+                        <td>40</td>
+                    </tr>
+                    <tr>
+                        <td>2000-3150</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3"><strong>Разъединители</strong></td>
+                        <td>400</td>
+                        <td>120</td>
+                        <td rowspan="3">Сопротивление токопровода от ввода до ввода</td>
+                    </tr>
+                    <tr>
+                        <td>630</td>
+                        <td>80</td>
+                    </tr>
+                    <tr>
+                        <td>1000 и выше</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Заземляющие ножи</strong></td>
+                        <td>Любой</td>
+                        <td>500</td>
+                        <td>Допускается повышенное сопротивление из-за небольшой длительности протекания тока</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="example-box">
+                <div class="example-title">📊 Пример: Протокол испытаний вакуумного выключателя</div>
+                <p><strong>Объект:</strong> Вакуумный выключатель ВВ/TEL-10-20/1000 У2</p>
+                <p><strong>Место установки:</strong> КРУ К-59 ячейка № 5 (ввод от Т-1)</p>
+                <p><strong>Дата испытаний:</strong> 20.11.2024</p>
+                <p><strong>Вид испытаний:</strong> Профилактические (периодические)</p>
+                
+                <table style="margin-top: 15px;">
+                    <tr>
+                        <th colspan="5" style="background: #38a169;">1. Измерение сопротивления изоляции (мегаомметр 2500 В)</th>
+                    </tr>
+                    <tr>
+                        <th>Объект измерения</th>
+                        <th>Фаза А</th>
+                        <th>Фаза В</th>
+                        <th>Фаза С</th>
+                        <th>Норма</th>
+                    </tr>
+                    <tr>
+                        <td>Полюс — земля (выключатель включён)</td>
+                        <td>8500 МОм</td>
+                        <td>9200 МОм</td>
+                        <td>8800 МОм</td>
+                        <td>≥ 1000 МОм</td>
+                    </tr>
+                    <tr>
+                        <td>Между контактами ВДК (выключатель отключён)</td>
+                        <td>7200 МОм</td>
+                        <td>7800 МОм</td>
+                        <td>7500 МОм</td>
+                        <td>≥ 1000 МОм</td>
+                    </tr>
+                    <tr>
+                        <td>Вторичные цепи — земля</td>
+                        <td colspan="3">45 МОм</td>
+                        <td>≥ 1,0 МОм</td>
+                    </tr>
+                </table>
+
+                <table style="margin-top: 15px;">
+                    <tr>
+                        <th colspan="5" style="background: #3182ce;">2. Измерение переходного сопротивления контактов (микроомметр ИКС-200)</th>
+                    </tr>
+                    <tr>
+                        <th>Полюс</th>
+                        <th>Измерено, мкОм</th>
+                        <th>Паспорт, мкОм</th>
+                        <th>Норма (эксплуат.), мкОм</th>
+                        <th>Оценка</th>
+                    </tr>
+                    <tr>
+                        <td>Фаза А</td>
+                        <td>28</td>
+                        <td>25</td>
+                        <td>≤ 37,5</td>
+                        <td>✓ Соответствует</td>
+                    </tr>
+                    <tr>
+                        <td>Фаза В</td>
+                        <td>32</td>
+                        <td>25</td>
+                        <td>≤ 37,5</td>
+                        <td>✓ Соответствует</td>
+                    </tr>
+                    <tr>
+                        <td>Фаза С</td>
+                        <td>26</td>
+                        <td>25</td>
+                        <td>≤ 37,5</td>
+                        <td>✓ Соответствует</td>
+                    </tr>
+                </table>
+
+                <table style="margin-top: 15px;">
+                    <tr>
+                        <th colspan="4" style="background: #805ad5;">3. Проверка характеристик срабатывания</th>
+                    </tr>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Измерено</th>
+                        <th>Паспорт</th>
+                        <th>Оценка</th>
+                    </tr>
+                    <tr>
+                        <td>Собственное время включения</td>
+                        <td>0,052 с</td>
+                        <td>≤ 0,07 с</td>
+                        <td>✓ Соответствует</td>
+                    </tr>
+                    <tr>
+                        <td>Собственное время отключения</td>
+                        <td>0,024 с</td>
+                        <td>≤ 0,03 с</td>
+                        <td>✓ Соответствует</td>
+                    </tr>
+                    <tr>
+                        <td>Полное время отключения</td>
+                        <td>0,036 с</td>
+                        <td>≤ 0,05 с</td>
+                        <td>✓ Соответствует</td>
+                    </tr>
+                    <tr>
+                        <td>Минимальное напряжение включения</td>
+                        <td>176 В (0,8 Uном)</td>
+                        <td>≥ 0,85 Uном (187 В)</td>
+                        <td>✓ Соответствует</td>
+                    </tr>
+                    <tr>
+                        <td>Минимальное напряжение отключения</td>
+                        <td>132 В (0,6 Uном)</td>
+                        <td>≥ 0,65 Uном (143 В)</td>
+                        <td>✓ Соответствует</td>
+                    </tr>
+                    <tr>
+                        <td>Счётчик числа операций</td>
+                        <td>4285</td>
+                        <td>—</td>
+                        <td>8,6% от ресурса (50000)</td>
+                    </tr>
+                </table>
+
+                <table style="margin-top: 15px;">
+                    <tr>
+                        <th colspan="4" style="background: #d69e2e;">4. Испытание изоляции повышенным напряжением</th>
+                    </tr>
+                    <tr>
+                        <th>Объект испытания</th>
+                        <th>U<sub>исп</sub>, кВ</th>
+                        <th>Длительность</th>
+                        <th>Результат</th>
+                    </tr>
+                    <tr>
+                        <td>Изоляция относительно земли (вкл.)</td>
+                        <td>42</td>
+                        <td>1 мин</td>
+                        <td>Выдержала</td>
+                    </tr>
+                    <tr>
+                        <td>Изоляция между контактами ВДК (откл.)</td>
+                        <td>32</td>
+                        <td>1 мин</td>
+                        <td>Выдержала</td>
+                    </tr>
+                </table>
+
+                <p style="margin-top: 20px;"><strong>ЗАКЛЮЧЕНИЕ:</strong> Вакуумный выключатель ВВ/TEL-10-20/1000 У2 по результатам профилактических испытаний находится в исправном состоянии. Все измеренные параметры соответствуют нормам <span class="gost-reference">РД 34.45-51.300-97</span> и паспортным данным. Выключатель пригоден к дальнейшей эксплуатации.</p>
+                <p><strong>Рекомендации:</strong> Следующие испытания — через 3 года или после 15000 операций (что наступит ранее).</p>
+                <p style="margin-top: 10px;">Испытания провёл: инженер ЭТЛ Козлов А.В. __________</p>
+                <p>Проверил: начальник ЭТЛ Фёдоров С.И. __________</p>
+            </div>
+
+            <h3>Тепловизионный контроль распределительных устройств</h3>
+
+            <p>Тепловизионное обследование является современным методом диагностики электрооборудования без отключения, позволяющим выявить локальные перегревы контактных соединений, обмоток, изоляции. Методика регламентирована <span class="gost-reference">РД 153-34.0-20.363-99</span>.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Объект контроля</th>
+                        <th>Что выявляется</th>
+                        <th>Критерий дефекта</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Контакты выключателей</strong></td>
+                        <td>Повышенное переходное сопротивление</td>
+                        <td>Превышение температуры аналогичных контактов более чем на 5°С</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ножи разъединителей</strong></td>
+                        <td>Недостаточный контакт, загрязнение</td>
+                        <td>Разность температур фаз более 10°С</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Болтовые соединения шин</strong></td>
+                        <td>Ослабление затяжки, окисление</td>
+                        <td>Превышение температуры смежных участков более чем на 10°С</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Изоляторы</strong></td>
+                        <td>Внутренние дефекты, загрязнение</td>
+                        <td>Неравномерное распределение температуры по высоте</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Кабельные разделки</strong></td>
+                        <td>Дефекты присоединения, перегрузка</td>
+                        <td>Нагрев более 70°С (для кабелей с БПИ)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <strong>Периодичность тепловизионного контроля РУ:</strong>
+                <ul>
+                    <li><strong>ОРУ 110 кВ и выше:</strong> не реже 1 раза в год</li>
+                    <li><strong>ЗРУ, КРУ 6-35 кВ:</strong> не реже 1 раза в 2 года</li>
+                    <li><strong>После капитальных ремонтов:</strong> обязательно при нагрузке не менее 50%</li>
+                    <li><strong>При подозрении на перегрев:</strong> внеочередной контроль</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Условия проведения:</strong> Нагрузка не менее 50% от номинальной, отсутствие прямого солнечного света на объектах, стабильная температура окружающего воздуха.</p>
+            </div>
+
+            <!-- ВЫВОДЫ -->
+            <h2>Выводы по теме</h2>
+
+            <div class="definition-box">
+                <strong>Основные выводы:</strong>
+                <ol>
+                    <li><strong>Распределительные устройства</strong> классифицируются по месту установки (ОРУ, ЗРУ), конструктивному исполнению (сборные, комплектные), напряжению. Выбор типа РУ определяется условиями эксплуатации, требованиями надёжности и экономическими факторами.</li>
+                    
+                    <li><strong>Современные коммутационные аппараты</strong> — вакуумные и элегазовые выключатели — практически вытеснили масляные выключатели благодаря высокому ресурсу, малому обслуживанию, пожаробезопасности и экологичности.</li>
+                    
+                    <li><strong>Техническое обслуживание РУ</strong> включает регулярные осмотры, проверку состояния изоляции и контактов, обслуживание приводов, контроль работы блокировок. Периодичность определяется ПТЭЭП и зависит от типа оборудования и условий эксплуатации.</li>
+                    
+                    <li><strong>Измерение переходного сопротивления контактов</strong> является важнейшим критерием состояния коммутационных аппаратов. Превышение нормы свидетельствует об износе контактов или нарушении контактного нажатия.</li>
+                    
+                    <li><strong>Испытания изоляции</strong> проводятся в два этапа: измерение сопротивления изоляции мегаомметром и испытание повышенным напряжением промышленной частоты. Нормы зависят от класса напряжения и типа оборудования.</li>
+                    
+                    <li><strong>Характеристики срабатывания выключателей</strong> (время включения и отключения, минимальное напряжение срабатывания) должны проверяться при вводе в эксплуатацию и периодически для обеспечения правильной работы релейной защиты.</li>
+                    
+                    <li><strong>Тепловизионный контроль</strong> является эффективным методом диагностики без отключения, позволяющим выявить дефекты контактных соединений на ранней стадии.</li>
+                </ol>
+            </div>
+
+            <!-- ЛИТЕРАТУРА -->
+            <h2>Литература и нормативные документы</h2>
+            
+            <div class="reference">
+                <h4>Основные нормативные документы</h4>
+                <ol>
+                    <li>Правила устройства электроустановок (ПУЭ). Главы 4.1, 4.2. Распределительные устройства и подстанции. 7-е издание.</li>
+                    <li>Правила технической эксплуатации электроустановок потребителей (ПТЭЭП). Глава 2.2. Распределительные устройства и подстанции. Утв. приказом Минэнерго России от 13.01.2003 № 6.</li>
+                    <li>РД 34.45-51.300-97. Объём и нормы испытаний электрооборудования. — М.: НЦ ЭНАС, 2004.</li>
+                    <li>ГОСТ Р 52565-2006. Выключатели переменного тока на напряжения от 3 до 750 кВ. Общие технические условия.</li>
+                    <li>ГОСТ 689-90. Разъединители и заземлители переменного тока на напряжение свыше 1000 В. Общие технические условия.</li>
+                    <li>ГОСТ 14693-90. Устройства комплектные распределительные негерметизированные в металлической оболочке на напряжение до 10 кВ. Общие технические условия.</li>
+                    <li>ГОСТ Р 55190-2012. Комплектные распределительные устройства в металлической оболочке с элегазовой изоляцией (КРУЭ) на номинальные напряжения 110 кВ и выше.</li>
+                    <li>СТО 56947007-29.130.01.105-2011. Методические указания по техническому обслуживанию вакуумных выключателей 6-35 кВ. — М.: ФСК ЕЭС, 2011.</li>
+                    <li>РД 153-34.0-20.363-99. Методика инфракрасной диагностики электрооборудования и ВЛ. — М.: ОРГРЭС, 1999.</li>
+                    <li>ГОСТ Р 50339.0-2003. Предохранители плавкие низковольтные. Общие требования.</li>
+                </ol>
+                
+                <h4 style="margin-top: 20px;">Учебная и справочная литература</h4>
+                <ol>
+                    <li>Чунихин А.А. Электрические аппараты. Общий курс: Учебник для вузов. — М.: Энергоатомиздат, 1988. — 720 с.</li>
+                    <li>Родштейн Л.А. Электрические аппараты: Учебник для техникумов. — Л.: Энергоатомиздат, 1989. — 304 с.</li>
+                    <li>Рожкова Л.Д., Козулин В.С. Электрооборудование станций и подстанций: Учебник для техникумов. — М.: Энергоатомиздат, 1987. — 648 с.</li>
+                    <li>Неклепаев Б.Н., Крючков И.П. Электрическая часть электростанций и подстанций: Справочные материалы. — М.: Энергоатомиздат, 1989. — 608 с.</li>
+                    <li>Справочник по электрическим установкам высокого напряжения / Под ред. И.А. Баумштейна и С.А. Бажанова. — М.: Энергоатомиздат, 1989. — 768 с.</li>
+                    <li>Вакуумные выключатели в распределительных устройствах 6-35 кВ / Под ред. В.А. Воронина. — М.: ВНИИЭ, 2002. — 156 с.</li>
+                    <li>Афанасьев В.В. и др. Трансформаторные подстанции: Справочник. — СПб.: Энергоатомиздат, 2000. — 320 с.</li>
+                    <li>Правила по охране труда при эксплуатации электроустановок. Утв. приказом Минтруда России от 15.12.2020 № 903н.</li>
+                </ol>
+            </div>
+
+            <!-- НАВИГАЦИЯ -->
+            <div class="nav-buttons">
+                <a href="2-4.html" class="nav-btn">← Предыдущая тема: 2.4. Эксплуатация электродвигателей</a>
+                <a href="start.html" class="nav-btn nav-btn-home">📚 Оглавление</a>
+                <a href="2-6.html" class="nav-btn">Следующая тема: 2.6. Релейная защита и автоматика →</a>
+            </div>
+        </article>
+
+        <footer class="footer">
+            <p>© 2024 Кузбасский государственный технический университет имени Т.Ф. Горбачева</p>
+            <p>Кафедра электрических станций, сетей и систем электроснабжения предприятий (ЭГиПП)</p>
+            <p>Автор: Артемасов В.В., к.т.н., доцент</p>
+        </footer>
+    </div>
+</body>
+</html>

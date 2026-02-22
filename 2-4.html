@@ -1,0 +1,2279 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.4. Эксплуатация трансформаторного масла - Эксплуатация электрооборудования</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 50%, #1a365d 100%);
+            min-height: 100vh;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .lecture-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-left: 6px solid #c53030;
+        }
+
+        .breadcrumb {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #1a365d;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .lecture-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .content-body {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #1a365d;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #c53030;
+        }
+
+        h3 {
+            color: #2c5282;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 25px 0 15px 0;
+        }
+
+        h4 {
+            color: #4a5568;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .formula-box {
+            background: #1a365d;
+            color: white;
+            border-left: 4px solid #c53030;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1rem;
+        }
+
+        .formula-box .formula {
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .formula-box .formula-desc {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: #2c5282;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:hover {
+            background: #f7fafc;
+        }
+
+        .image-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .image-container svg {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-caption {
+            color: #4a5568;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);
+            border-left: 4px solid #f6ad55;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+            border-left: 4px solid #c53030;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            color: #742a2a;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .example-title {
+            font-weight: 700;
+            color: #234e52;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e8f4fd 0%, #bee3f8 100%);
+            border-left: 4px solid #3182ce;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .reference {
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .reference h4 {
+            color: #1a365d;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #c53030;
+            padding-bottom: 10px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e2e8f0;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: #2c5282;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .nav-btn:hover {
+            background: #576a84;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-btn-home {
+            background: #c53030;
+            flex: 0 0 auto;
+            max-width: 180px;
+        }
+
+        .nav-btn-home:hover {
+            background: #9b2c2c;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .gost-reference {
+            display: inline-block;
+            background: #edf2f7;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .column-box {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .column-box h4 {
+            color: #2c5282;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f6ad55;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .lecture-header, .content-body {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .two-column, .three-column {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .nav-btn-home {
+                order: -1;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="nav-buttons">
+            <a href="2-3.html" class="nav-btn">← Предыдущая тема: 2.3. Эксплуатация трансформаторов</a>
+            <a href="start.html" class="nav-btn nav-btn-home">📚 Оглавление</a>
+            <a href="2-5.html" class="nav-btn">Следующая тема: 2.5. Эксплуатация РУ →</a>
+        </div>
+
+        <header class="lecture-header">
+            <div class="breadcrumb">Раздел 2 → Тема 2.4 → Эксплуатация трансформаторного масла</div>
+            <h1>2.4. Эксплуатация трансформаторного масла. Испытания</h1>
+            <div class="lecture-meta">
+                <div class="meta-item">📚 Лекционное занятие</div>
+                <div class="meta-item">⏱ 2 академических часа</div>
+                <div class="meta-item">🎯 Раздел 2: Эксплуатация электрооборудования</div>
+            </div>
+        </header>
+
+        <article class="content-body">
+            
+            <!-- ВВЕДЕНИЕ -->
+            <h2>Введение</h2>
+            
+            <p>Трансформаторное масло является важнейшим компонентом маслонаполненного электрооборудования — силовых трансформаторов, автотрансформаторов, реакторов, масляных выключателей, измерительных трансформаторов тока и напряжения, вводов высокого напряжения и другого оборудования. От качества и состояния трансформаторного масла напрямую зависит надёжность работы электрооборудования, его срок службы и безопасность эксплуатации.</p>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <span class="stat-value">85%</span>
+                    <span class="stat-label">трансформаторов 110+ кВ — маслонаполненные</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">2,5 млн</span>
+                    <span class="stat-label">тонн масла в эксплуатации в РФ</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">25-30</span>
+                    <span class="stat-label">лет нормативный срок службы масла</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">40%</span>
+                    <span class="stat-label">аварий связано с состоянием масла</span>
+                </div>
+            </div>
+
+            <p>В процессе эксплуатации трансформаторное масло подвергается воздействию электрического поля, повышенных температур, контактирует с кислородом воздуха, конструкционными материалами и продуктами их деструкции. Под влиянием этих факторов происходит старение масла — ухудшение его физико-химических и электроизоляционных свойств. Контроль состояния масла и своевременное принятие мер по его восстановлению или замене являются важнейшими задачами эксплуатации маслонаполненного оборудования.</p>
+
+            <div class="definition-box">
+                <strong>Определение:</strong> <em>Трансформаторное масло</em> — высокоочищенная фракция нефти, получаемая методом селективной очистки и гидроочистки нефтяных дистиллятов, обладающая высокими электроизоляционными свойствами, химической стабильностью и теплопередающей способностью (<span class="gost-reference">ГОСТ 982-80</span>).
+            </div>
+
+            <p>Правильная эксплуатация трансформаторного масла позволяет обеспечить надёжную работу электрооборудования на протяжении всего расчётного срока службы, предотвратить аварии и оптимизировать затраты на техническое обслуживание. Основными нормативными документами, регламентирующими работу с трансформаторным маслом, являются:</p>
+
+            <ul>
+                <li><span class="gost-reference">ГОСТ 982-80</span> — Масла трансформаторные. Технические условия</li>
+                <li><span class="gost-reference">ГОСТ 10121-76</span> — Масло трансформаторное селективной очистки. ТУ</li>
+                <li><span class="gost-reference">РД 34.43.105-89</span> — Методические указания по эксплуатации трансформаторных масел</li>
+                <li><span class="gost-reference">СТО 34.01-23.1-001-2017</span> — Объём и нормы испытаний электрооборудования</li>
+                <li><span class="gost-reference">РД 153-34.0-46.302-00</span> — Методические указания по диагностике развивающихся дефектов трансформаторного оборудования по результатам ХАРГ</li>
+                <li><span class="gost-reference">ГОСТ IEC 60296-2013</span> — Нефтепродукты. Неиспользованные минеральные изоляционные масла для электрооборудования</li>
+            </ul>
+
+            <!-- РАЗДЕЛ 2.4.1 -->
+            <h2>2.4.1. Свойства и функции трансформаторного масла</h2>
+
+            <p>Трансформаторное масло выполняет несколько важнейших функций в маслонаполненном электрооборудовании. Понимание этих функций и свойств масла, обеспечивающих их выполнение, является основой для организации правильной эксплуатации.</p>
+
+            <h3>Основные функции трансформаторного масла</h3>
+
+            <div class="three-column">
+                <div class="column-box">
+                    <h4>🔌 Электроизоляционная функция</h4>
+                    <ul>
+                        <li>Изоляция токоведущих частей друг от друга</li>
+                        <li>Изоляция от заземлённых элементов</li>
+                        <li>Заполнение пор твёрдой изоляции</li>
+                        <li>Повышение электрической прочности изоляционной системы</li>
+                    </ul>
+                </div>
+                <div class="column-box">
+                    <h4>🌡️ Теплоотводящая функция</h4>
+                    <ul>
+                        <li>Отвод тепла от обмоток и магнитопровода</li>
+                        <li>Перенос тепла к охладителям</li>
+                        <li>Выравнивание температуры в объёме оборудования</li>
+                        <li>Предотвращение локальных перегревов</li>
+                    </ul>
+                </div>
+                <div class="column-box">
+                    <h4>🛡️ Защитная функция</h4>
+                    <ul>
+                        <li>Защита изоляции от увлажнения</li>
+                        <li>Защита от окисления</li>
+                        <li>Гашение электрической дуги (в выключателях)</li>
+                        <li>Консервация внутренних поверхностей</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Физико-химические свойства трансформаторного масла</h3>
+
+            <p>Качество трансформаторного масла определяется комплексом физико-химических свойств, которые нормируются стандартами и контролируются в процессе эксплуатации.</p>
+
+            <h4>Основные физические свойства</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Показатель</th>
+                        <th>Определение</th>
+                        <th>Норма для свежего масла</th>
+                        <th>Значение для эксплуатации</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Плотность при 20°С</strong></td>
+                        <td>Масса единицы объёма масла</td>
+                        <td>Не более 895 кг/м³</td>
+                        <td>Определяет массу масла в оборудовании, влияет на теплопередачу</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Вязкость кинематическая</strong></td>
+                        <td>Сопротивление течению</td>
+                        <td>При 50°С: не более 8 мм²/с<br>При -30°С: не более 1200 мм²/с</td>
+                        <td>Определяет условия циркуляции масла и охлаждения</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Температура вспышки</strong></td>
+                        <td>Температура воспламенения паров</td>
+                        <td>Не ниже 135°С (в закрытом тигле)</td>
+                        <td>Пожаробезопасность при эксплуатации</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Температура застывания</strong></td>
+                        <td>Температура потери текучести</td>
+                        <td>Не выше -45°С</td>
+                        <td>Возможность работы при низких температурах</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Цвет</strong></td>
+                        <td>Визуальная характеристика</td>
+                        <td>Светло-жёлтый, прозрачный</td>
+                        <td>Индикатор старения и загрязнения</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Натровая проба</strong></td>
+                        <td>Наличие водорастворимых кислот и щелочей</td>
+                        <td>Отсутствие (прозрачный слой)</td>
+                        <td>Показатель агрессивности масла</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Химические свойства</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Показатель</th>
+                        <th>Определение</th>
+                        <th>Норма для свежего масла</th>
+                        <th>Предельное значение при эксплуатации</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Кислотное число</strong></td>
+                        <td>Количество КОН для нейтрализации кислот в 1 г масла</td>
+                        <td>Не более 0,02 мг КОН/г</td>
+                        <td>До 0,25 мг КОН/г (для 110 кВ и выше)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Содержание водорастворимых кислот</strong></td>
+                        <td>Наличие низкомолекулярных органических кислот</td>
+                        <td>Отсутствие</td>
+                        <td>Отсутствие</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Содержание механических примесей</strong></td>
+                        <td>Взвешенные твёрдые частицы</td>
+                        <td>Отсутствие</td>
+                        <td>Отсутствие (класс чистоты)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Содержание серы</strong></td>
+                        <td>Общее и коррозионноактивной серы</td>
+                        <td>Общей — до 0,6%<br>Коррозионноактивной — отс.</td>
+                        <td>Коррозионноактивной — отсутствие</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Стабильность против окисления</strong></td>
+                        <td>Способность противостоять окислению</td>
+                        <td>После 14 ч окисления:<br>осадок ≤ 0,01%<br>кисл. число ≤ 0,1 мг КОН/г</td>
+                        <td>Определяется типом присадок</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Содержание антиокислительной присадки</strong></td>
+                        <td>Концентрация ионола (агидол-1)</td>
+                        <td>0,2-0,5%</td>
+                        <td>Не менее 0,05%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Электроизоляционные свойства</h3>
+
+            <p>Электроизоляционные свойства трансформаторного масла определяют его способность выдерживать воздействие электрического поля без пробоя и обеспечивать надёжную изоляцию токоведущих частей.</p>
+
+            <div class="formula-box">
+                <strong>Электрическая прочность (пробивное напряжение):</strong>
+                <div class="formula">
+                    E<sub>пр</sub> = U<sub>пр</sub> / d
+                </div>
+                <div class="formula-desc">
+                    где: E<sub>пр</sub> — электрическая прочность, кВ/мм;<br>
+                    U<sub>пр</sub> — пробивное напряжение, кВ;<br>
+                    d — расстояние между электродами, мм (стандартно 2,5 мм)
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Показатель</th>
+                        <th>Метод определения</th>
+                        <th>Норма для свежего масла</th>
+                        <th>Норма при эксплуатации (110 кВ и выше)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Пробивное напряжение</strong></td>
+                        <td>ГОСТ 6581 (стандартный маслопробойник)</td>
+                        <td>≥ 30 кВ (d = 2,5 мм)</td>
+                        <td>≥ 35 кВ (перед заливкой)<br>≥ 25 кВ (в эксплуатации)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Тангенс угла диэлектрических потерь (tgδ)</strong></td>
+                        <td>ГОСТ 6581 при 70°С и 90°С</td>
+                        <td>≤ 0,5% при 70°С<br>≤ 1,5% при 90°С</td>
+                        <td>≤ 7% при 70°С<br>≤ 15% при 90°С</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Удельное объёмное сопротивление</strong></td>
+                        <td>ГОСТ 6581 при 20°С и 70°С</td>
+                        <td>≥ 10¹³ Ом·см при 20°С<br>≥ 10¹¹ Ом·см при 70°С</td>
+                        <td>≥ 10¹² Ом·см при 70°С</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Содержание влаги</strong></td>
+                        <td>ГОСТ 7822 (метод Фишера)</td>
+                        <td>≤ 10 г/т (ppm)</td>
+                        <td>≤ 25 г/т (110-220 кВ)<br>≤ 15 г/т (330 кВ и выше)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Газосодержание</strong></td>
+                        <td>Абсорбционный метод</td>
+                        <td>≤ 0,5% (перед заливкой)</td>
+                        <td>≤ 2% (в эксплуатации)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="image-container">
+                <svg viewBox="0 0 900 450" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Фон -->
+                    <rect width="900" height="450" fill="#ffffff"/>
+                    
+                    <!-- Заголовок -->
+                    <text x="450" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#1a365d">
+                        ЗАВИСИМОСТЬ ЭЛЕКТРИЧЕСКОЙ ПРОЧНОСТИ МАСЛА ОТ СОДЕРЖАНИЯ ВЛАГИ И ЗАГРЯЗНЕНИЙ
+                    </text>
+                    
+                    <!-- Оси координат -->
+                    <line x1="100" y1="380" x2="850" y2="380" stroke="#2d3748" stroke-width="2"/>
+                    <line x1="100" y1="380" x2="100" y2="60" stroke="#2d3748" stroke-width="2"/>
+                    
+                    <!-- Подписи осей -->
+                    <text x="475" y="420" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#4a5568">
+                        Содержание влаги, г/т (ppm)
+                    </text>
+                    <text x="40" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#4a5568" transform="rotate(-90, 40, 220)">
+                        Пробивное напряжение, кВ
+                    </text>
+                    
+                    <!-- Шкала X -->
+                    <text x="100" y="400" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#718096">0</text>
+                    <text x="250" y="400" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#718096">10</text>
+                    <text x="400" y="400" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#718096">20</text>
+                    <text x="550" y="400" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#718096">30</text>
+                    <text x="700" y="400" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#718096">40</text>
+                    <text x="850" y="400" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#718096">50</text>
+                    
+                    <!-- Шкала Y -->
+                    <text x="85" y="380" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="10" fill="#718096">0</text>
+                    <text x="85" y="300" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="10" fill="#718096">20</text>
+                    <text x="85" y="220" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="10" fill="#718096">40</text>
+                    <text x="85" y="140" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="10" fill="#718096">60</text>
+                    <text x="85" y="80" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="10" fill="#718096">80</text>
+                    
+                    <!-- Сетка -->
+                    <line x1="100" y1="300" x2="850" y2="300" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="5,5"/>
+                    <line x1="100" y1="220" x2="850" y2="220" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="5,5"/>
+                    <line x1="100" y1="140" x2="850" y2="140" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="5,5"/>
+                    
+                    <!-- Кривая для чистого масла -->
+                    <path d="M 100 80 Q 200 85 250 110 Q 350 160 450 220 Q 550 280 650 320 Q 750 350 850 360" 
+                          stroke="#38a169" stroke-width="3" fill="none"/>
+                    
+                    <!-- Кривая для загрязнённого масла -->
+                    <path d="M 100 140 Q 200 160 250 200 Q 350 260 450 300 Q 550 340 650 355 Q 750 365 850 370" 
+                          stroke="#c53030" stroke-width="3" fill="none"/>
+                    
+                    <!-- Горизонтальная линия нормы -->
+                    <line x1="100" y1="260" x2="850" y2="260" stroke="#3182ce" stroke-width="2" stroke-dasharray="10,5"/>
+                    <text x="860" y="265" font-family="Segoe UI, sans-serif" font-size="10" fill="#3182ce">Норма 30 кВ</text>
+                    
+                    <!-- Вертикальная линия предела влаги -->
+                    <line x1="400" y1="60" x2="400" y2="380" stroke="#d69e2e" stroke-width="2" stroke-dasharray="10,5"/>
+                    <text x="405" y="75" font-family="Segoe UI, sans-serif" font-size="10" fill="#d69e2e">Предел 20 ppm</text>
+                    
+                    <!-- Легенда -->
+                    <rect x="550" y="80" width="300" height="80" fill="#f7fafc" stroke="#e2e8f0" rx="4"/>
+                    <line x1="570" y1="105" x2="620" y2="105" stroke="#38a169" stroke-width="3"/>
+                    <text x="630" y="110" font-family="Segoe UI, sans-serif" font-size="11" fill="#2d3748">Чистое масло</text>
+                    <line x1="570" y1="130" x2="620" y2="130" stroke="#c53030" stroke-width="3"/>
+                    <text x="630" y="135" font-family="Segoe UI, sans-serif" font-size="11" fill="#2d3748">Загрязнённое масло</text>
+                    <text x="570" y="155" font-family="Segoe UI, sans-serif" font-size="9" fill="#718096">(с механическими примесями)</text>
+                </svg>
+                <div class="image-caption">Рис. 2.4.1. Зависимость пробивного напряжения трансформаторного масла от содержания влаги</div>
+            </div>
+
+            <h3>Теплоотводящие свойства масла</h3>
+
+            <p>Теплоотводящая способность трансформаторного масла определяется его теплофизическими характеристиками и обеспечивает отвод тепла, выделяющегося в обмотках и магнитопроводе трансформатора при его работе.</p>
+
+            <div class="formula-box">
+                <strong>Коэффициент теплоотдачи от обмотки к маслу:</strong>
+                <div class="formula">
+                    α = 0,5 × λ × (g × β × Δt / ν²)^0.25 × l^(-0.25)
+                </div>
+                <div class="formula-desc">
+                    где: α — коэффициент теплоотдачи, Вт/(м²·К);<br>
+                    λ — теплопроводность масла, Вт/(м·К);<br>
+                    g — ускорение свободного падения, м/с²;<br>
+                    β — коэффициент объёмного расширения масла, 1/К;<br>
+                    Δt — перепад температуры между обмоткой и маслом, К;<br>
+                    ν — кинематическая вязкость масла, м²/с;<br>
+                    l — характерный размер (высота обмотки), м
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Теплофизический показатель</th>
+                        <th>Значение</th>
+                        <th>Влияние на теплоотвод</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Теплопроводность</strong></td>
+                        <td>0,11-0,14 Вт/(м·К) при 20-80°С</td>
+                        <td>Определяет интенсивность кондуктивного теплообмена</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Удельная теплоёмкость</strong></td>
+                        <td>1,7-2,2 кДж/(кг·К)</td>
+                        <td>Определяет количество тепла, переносимого единицей массы</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Кинематическая вязкость</strong></td>
+                        <td>8-25 мм²/с при 20°С<br>3-5 мм²/с при 70°С</td>
+                        <td>Влияет на скорость конвективного движения масла</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Коэффициент объёмного расширения</strong></td>
+                        <td>(7-8)×10⁻⁴ 1/К</td>
+                        <td>Определяет интенсивность естественной конвекции</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Плотность</strong></td>
+                        <td>850-890 кг/м³</td>
+                        <td>Влияет на движущую силу конвекции</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <strong>Важно:</strong> При повышении вязкости масла (загрязнение, низкая температура) ухудшается конвективный теплоотвод, что приводит к повышению температуры обмоток. Увеличение температуры масла на каждые 6°С сверх номинальной сокращает срок службы изоляции примерно в 2 раза (правило Монтзингера).
+            </div>
+
+            <h3>Марки трансформаторных масел</h3>
+
+            <p>В России и странах СНГ применяются несколько марок трансформаторных масел, различающихся способом получения и областью применения.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Марка масла</th>
+                        <th>Способ получения</th>
+                        <th>Область применения</th>
+                        <th>Особенности</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ГК</strong></td>
+                        <td>Гидрокрекинг нефти</td>
+                        <td>Трансформаторы всех классов напряжения</td>
+                        <td>Высокая стабильность, низкое содержание серы, требует присадки</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ТКп</strong></td>
+                        <td>Селективная очистка парными растворителями</td>
+                        <td>Трансформаторы до 500 кВ</td>
+                        <td>Хорошая стабильность, содержит природные ингибиторы</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Т-750</strong></td>
+                        <td>Глубокая селективная очистка</td>
+                        <td>Трансформаторы 500 кВ и выше</td>
+                        <td>Повышенная электрическая прочность</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Т-1500</strong></td>
+                        <td>Глубокая гидроочистка</td>
+                        <td>Трансформаторы 750 кВ и выше</td>
+                        <td>Высшее качество, низкий tgδ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ВГ</strong></td>
+                        <td>Из западносибирской нефти</td>
+                        <td>Выключатели, измерительные ТТ и ТН</td>
+                        <td>Низкая вязкость при отрицательных температурах</td>
+                    </tr>
+                    <tr>
+                        <td><strong>АГК</strong></td>
+                        <td>Гидрокаталитический</td>
+                        <td>Арктическое исполнение</td>
+                        <td>Температура застывания до -65°С</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <strong>Импортные масла:</strong> На российском рынке также представлены импортные трансформаторные масла: Nynas (Швеция), Shell Diala (Нидерланды), Ergon (США), Petro-Canada и др. При использовании импортных масел необходимо проверять их совместимость с отечественными маслами и соответствие требованиям российских стандартов.
+            </div>
+
+            <!-- РАЗДЕЛ 2.4.2 -->
+            <h2>2.4.2. Контроль качества масла в эксплуатации</h2>
+
+            <p>Систематический контроль качества трансформаторного масла является обязательным условием надёжной эксплуатации маслонаполненного оборудования. Контроль позволяет своевременно выявлять ухудшение свойств масла и развивающиеся дефекты в оборудовании.</p>
+
+            <h3>Периодичность отбора проб масла</h3>
+
+            <p>Периодичность контроля качества масла устанавливается в зависимости от класса напряжения оборудования, его значимости и условий эксплуатации.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Вид оборудования</th>
+                        <th>Сокращённый анализ</th>
+                        <th>Полный анализ</th>
+                        <th>Хроматографический анализ газов (ХАРГ)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Трансформаторы 110 кВ</strong></td>
+                        <td>1 раз в 2 года</td>
+                        <td>1 раз в 6 лет</td>
+                        <td>1 раз в 6 месяцев</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Трансформаторы 220 кВ</strong></td>
+                        <td>1 раз в год</td>
+                        <td>1 раз в 4 года</td>
+                        <td>1 раз в 6 месяцев</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Трансформаторы 330-500 кВ</strong></td>
+                        <td>1 раз в год</td>
+                        <td>1 раз в 3 года</td>
+                        <td>1 раз в 3 месяца</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Трансформаторы 750 кВ и выше</strong></td>
+                        <td>2 раза в год</td>
+                        <td>1 раз в 2 года</td>
+                        <td>1 раз в 3 месяца</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Автотрансформаторы связи</strong></td>
+                        <td>1 раз в год</td>
+                        <td>1 раз в 3 года</td>
+                        <td>1 раз в 3 месяца</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Маслонаполненные вводы 110 кВ и выше</strong></td>
+                        <td>1 раз в 2 года</td>
+                        <td>1 раз в 6 лет</td>
+                        <td>При необходимости</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Измерительные трансформаторы 110 кВ и выше</strong></td>
+                        <td>1 раз в 4 года</td>
+                        <td>1 раз в 8 лет</td>
+                        <td>При необходимости</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Масляные выключатели 110 кВ и выше</strong></td>
+                        <td>1 раз в 3 года</td>
+                        <td>1 раз в 6 лет</td>
+                        <td>—</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>⚠️ Внеочередной отбор проб масла производится:</strong>
+                <ul>
+                    <li>После срабатывания газовой защиты</li>
+                    <li>При обнаружении течи масла</li>
+                    <li>После аварийного отключения оборудования</li>
+                    <li>При резком изменении характеристик масла по результатам предыдущего анализа</li>
+                    <li>После капитального ремонта с заменой или доливкой масла</li>
+                    <li>Перед включением оборудования после длительного простоя</li>
+                </ul>
+            </div>
+
+            <h3>Методы отбора проб масла</h3>
+
+            <p>Правильный отбор пробы масла имеет решающее значение для достоверности результатов анализа. Нарушение методики отбора может привести к ошибочным выводам о состоянии масла и оборудования.</p>
+
+            <div class="definition-box">
+                <strong>Требования к отбору проб масла (<span class="gost-reference">ГОСТ 2517-2012</span>):</strong>
+                <ul>
+                    <li>Отбор производится в сухую погоду при относительной влажности не более 75%</li>
+                    <li>Температура масла в оборудовании должна быть не ниже +5°С</li>
+                    <li>Перед отбором слить не менее 2-3 литров масла для промывки</li>
+                    <li>Использовать чистую, сухую стеклянную или металлическую тару</li>
+                    <li>Тара должна быть герметично закрыта сразу после отбора</li>
+                    <li>Пробы маркируются с указанием даты, места отбора, типа оборудования</li>
+                </ul>
+            </div>
+
+            <h4>Требования к посуде для отбора проб</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Вид анализа</th>
+                        <th>Тип посуды</th>
+                        <th>Объём пробы</th>
+                        <th>Особые требования</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Сокращённый анализ</strong></td>
+                        <td>Стеклянная бутыль с притёртой пробкой</td>
+                        <td>0,5-1 л</td>
+                        <td>Промыта испытуемым маслом</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Полный анализ</strong></td>
+                        <td>Стеклянная бутыль</td>
+                        <td>1-2 л</td>
+                        <td>Промыта, высушена</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Определение влаги (метод Фишера)</strong></td>
+                        <td>Стеклянный шприц или специальная ампула</td>
+                        <td>20-50 мл</td>
+                        <td>Абсолютно сухая, без контакта с воздухом</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Хроматографический анализ газов</strong></td>
+                        <td>Стеклянный шприц медицинский (ГХ)</td>
+                        <td>20-50 мл</td>
+                        <td>Без пузырьков воздуха, герметично</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Определение фурановых соединений</strong></td>
+                        <td>Стеклянная посуда тёмного стекла</td>
+                        <td>100 мл</td>
+                        <td>Защита от света</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="image-container">
+                <svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Фон -->
+                    <rect width="900" height="400" fill="#ffffff"/>
+                    
+                    <!-- Заголовок -->
+                    <text x="450" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#1a365d">
+                        СХЕМА ОТБОРА ПРОБЫ МАСЛА ИЗ ТРАНСФОРМАТОРА
+                    </text>
+                    
+                    <!-- Трансформатор (бак) -->
+                    <rect x="100" y="80" width="300" height="250" fill="#e2e8f0" stroke="#4a5568" stroke-width="2" rx="5"/>
+                    <text x="250" y="200" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" fill="#2d3748">БАК</text>
+                    <text x="250" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" fill="#2d3748">ТРАНСФОРМАТОРА</text>
+                    
+                    <!-- Масло в баке -->
+                    <rect x="105" y="120" width="290" height="205" fill="#f6e05e" opacity="0.5"/>
+                    <text x="250" y="300" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#744210">Уровень масла</text>
+                    
+                    <!-- Расширитель -->
+                    <ellipse cx="250" cy="60" rx="80" ry="25" fill="#e2e8f0" stroke="#4a5568" stroke-width="2"/>
+                    <text x="250" y="65" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">Расширитель</text>
+                    <line x1="250" y1="85" x2="250" y2="80" stroke="#4a5568" stroke-width="2"/>
+                    
+                    <!-- Маслоспускной кран (нижний) -->
+                    <rect x="80" y="280" width="30" height="15" fill="#718096" stroke="#4a5568" stroke-width="1"/>
+                    <line x1="80" y1="287" x2="50" y2="287" stroke="#4a5568" stroke-width="3"/>
+                    <circle cx="45" cy="287" r="8" fill="#c53030" stroke="#4a5568" stroke-width="1"/>
+                    <text x="45" y="315" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Маслоспускной</text>
+                    <text x="45" y="327" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">кран</text>
+                    
+                    <!-- Стрелки потока -->
+                    <path d="M 50 287 L 50 350" stroke="#3182ce" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#3182ce"/>
+                        </marker>
+                    </defs>
+                    
+                    <!-- Ведро для слива -->
+                    <path d="M 30 350 L 20 380 L 80 380 L 70 350 Z" fill="#a0aec0" stroke="#4a5568" stroke-width="1"/>
+                    <text x="50" y="395" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Слив 2-3 л</text>
+                    
+                    <!-- Процедура отбора -->
+                    <rect x="500" y="60" width="380" height="300" fill="#f7fafc" stroke="#e2e8f0" stroke-width="1" rx="4"/>
+                    <text x="690" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#1a365d">ПОРЯДОК ОТБОРА ПРОБЫ</text>
+                    
+                    <text x="520" y="115" font-family="Segoe UI, sans-serif" font-size="11" fill="#2d3748">1. Проверить погодные условия (сухо, влажность &lt;75%)</text>
+                    <text x="520" y="140" font-family="Segoe UI, sans-serif" font-size="11" fill="#2d3748">2. Подготовить чистую сухую тару</text>
+                    <text x="520" y="165" font-family="Segoe UI, sans-serif" font-size="11" fill="#2d3748">3. Очистить кран от загрязнений</text>
+                    <text x="520" y="190" font-family="Segoe UI, sans-serif" font-size="11" fill="#2d3748">4. Слить первые 2-3 литра масла</text>
+                    <text x="520" y="215" font-family="Segoe UI, sans-serif" font-size="11" fill="#2d3748">5. Ополоснуть тару отбираемым маслом</text>
+                    <text x="520" y="240" font-family="Segoe UI, sans-serif" font-size="11" fill="#2d3748">6. Отобрать пробу, заполнив тару на 90%</text>
+                    <text x="520" y="265" font-family="Segoe UI, sans-serif" font-size="11" fill="#2d3748">7. Немедленно закрыть тару пробкой</text>
+                    <text x="520" y="290" font-family="Segoe UI, sans-serif" font-size="11" fill="#2d3748">8. Закрыть маслоспускной кран</text>
+                    <text x="520" y="315" font-family="Segoe UI, sans-serif" font-size="11" fill="#2d3748">9. Маркировать пробу (дата, оборудование)</text>
+                    <text x="520" y="340" font-family="Segoe UI, sans-serif" font-size="11" fill="#2d3748">10. Доставить в лабораторию в течение 24 ч</text>
+                    
+                    <!-- Бутылка с пробой -->
+                    <rect x="420" y="250" width="40" height="80" fill="#f6e05e" stroke="#4a5568" stroke-width="1" rx="3"/>
+                    <rect x="428" y="240" width="24" height="15" fill="#718096" stroke="#4a5568" stroke-width="1"/>
+                    <text x="440" y="355" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Проба масла</text>
+                </svg>
+                <div class="image-caption">Рис. 2.4.2. Схема отбора пробы масла из силового трансформатора</div>
+            </div>
+
+            <h3>Визуальный контроль и органолептический анализ</h3>
+
+            <p>Первичная оценка состояния масла может быть проведена визуально непосредственно на месте эксплуатации. Визуальный контроль позволяет обнаружить грубые изменения свойств масла.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Наблюдаемый признак</th>
+                        <th>Возможная причина</th>
+                        <th>Рекомендуемые действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Потемнение масла</strong></td>
+                        <td>Окисление, старение, термическое разложение</td>
+                        <td>Провести полный анализ, оценить необходимость регенерации</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Помутнение, опалесценция</strong></td>
+                        <td>Содержание влаги в эмульгированном состоянии</td>
+                        <td>Определить влагосодержание, провести сушку</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Наличие осадка</strong></td>
+                        <td>Механические примеси, продукты старения</td>
+                        <td>Фильтрация, при значительном осадке — регенерация</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Чёрный цвет, запах гари</strong></td>
+                        <td>Термическое разложение (дуга, локальный перегрев)</td>
+                        <td>Срочная замена масла, обследование оборудования</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Резкий специфический запах</strong></td>
+                        <td>Наличие серосодержащих соединений, ПХБ</td>
+                        <td>Химический анализ на содержание примесей</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Пузырьки газа</strong></td>
+                        <td>Разложение масла или изоляции, проникновение воздуха</td>
+                        <td>Хроматографический анализ газов, дегазация</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Объём сокращённого и полного анализа масла</h3>
+
+            <div class="two-column">
+                <div class="column-box">
+                    <h4>Сокращённый анализ</h4>
+                    <p>Проводится для оперативной оценки состояния масла:</p>
+                    <ul>
+                        <li>Пробивное напряжение</li>
+                        <li>Кислотное число</li>
+                        <li>Температура вспышки</li>
+                        <li>Визуальный осмотр (цвет, прозрачность)</li>
+                        <li>Наличие механических примесей</li>
+                        <li>Содержание влаги (качественно или количественно)</li>
+                    </ul>
+                </div>
+                <div class="column-box">
+                    <h4>Полный анализ</h4>
+                    <p>Проводится для комплексной оценки:</p>
+                    <ul>
+                        <li>Все показатели сокращённого анализа</li>
+                        <li>Тангенс угла диэлектрических потерь (tgδ)</li>
+                        <li>Удельное объёмное сопротивление</li>
+                        <li>Содержание антиокислительной присадки</li>
+                        <li>Стабильность против окисления</li>
+                        <li>Натровая проба</li>
+                        <li>Содержание серы</li>
+                        <li>Газосодержание</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- РАЗДЕЛ 2.4.3 -->
+            <h2>2.4.3. Испытания трансформаторного масла</h2>
+
+            <p>Испытания трансформаторного масла проводятся в аккредитованных электротехнических лабораториях и позволяют получить количественные характеристики свойств масла для оценки его пригодности к дальнейшей эксплуатации.</p>
+
+            <h3>Определение пробивного напряжения</h3>
+
+            <p>Пробивное напряжение является основным показателем электроизоляционных свойств масла и характеризует его способность выдерживать воздействие электрического поля.</p>
+
+            <div class="definition-box">
+                <strong>Методика определения (<span class="gost-reference">ГОСТ 6581-75</span>):</strong>
+                <p>Испытание проводится в стандартном маслопробойнике с плоскими дисковыми электродами диаметром 25 мм, расположенными горизонтально на расстоянии 2,5 мм друг от друга. Напряжение повышается плавно со скоростью 2 кВ/с до пробоя. Проводится 6 пробоев с интервалом 5-10 минут. За результат принимается среднее арифметическое 6 определений.</p>
+            </div>
+
+            <div class="image-container">
+                <svg viewBox="0 0 900 350" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Фон -->
+                    <rect width="900" height="350" fill="#ffffff"/>
+                    
+                    <!-- Заголовок -->
+                    <text x="450" y="25" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#1a365d">
+                        СХЕМА СТАНДАРТНОГО МАСЛОПРОБОЙНИКА ДЛЯ ОПРЕДЕЛЕНИЯ ПРОБИВНОГО НАПРЯЖЕНИЯ
+                    </text>
+                    
+                    <!-- Ячейка маслопробойника -->
+                    <rect x="150" y="60" width="250" height="220" fill="#f7fafc" stroke="#4a5568" stroke-width="2" rx="5"/>
+                    
+                    <!-- Масло в ячейке -->
+                    <rect x="155" y="100" width="240" height="175" fill="#f6e05e" opacity="0.4"/>
+                    
+                    <!-- Верхний электрод -->
+                    <rect x="235" y="80" width="80" height="8" fill="#718096" stroke="#4a5568" stroke-width="1"/>
+                    <line x1="275" y1="60" x2="275" y2="80" stroke="#4a5568" stroke-width="3"/>
+                    <text x="275" y="52" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#c53030">ВН</text>
+                    
+                    <!-- Нижний электрод -->
+                    <rect x="235" y="180" width="80" height="8" fill="#718096" stroke="#4a5568" stroke-width="1"/>
+                    <line x1="275" y1="188" x2="275" y2="250" stroke="#4a5568" stroke-width="3"/>
+                    <line x1="260" y1="250" x2="290" y2="250" stroke="#4a5568" stroke-width="3"/>
+                    <line x1="265" y1="255" x2="285" y2="255" stroke="#4a5568" stroke-width="2"/>
+                    <line x1="270" y1="260" x2="280" y2="260" stroke="#4a5568" stroke-width="1"/>
+                    <text x="275" y="275" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#2d3748">Заземление</text>
+                    
+                    <!-- Размер зазора -->
+                    <line x1="330" y1="88" x2="330" y2="180" stroke="#c53030" stroke-width="1"/>
+                    <line x1="325" y1="88" x2="335" y2="88" stroke="#c53030" stroke-width="1"/>
+                    <line x1="325" y1="180" x2="335" y2="180" stroke="#c53030" stroke-width="1"/>
+                    <text x="360" y="140" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#c53030">d = 2,5 мм</text>
+                    
+                    <!-- Диаметр электродов -->
+                    <line x1="235" y1="195" x2="315" y2="195" stroke="#3182ce" stroke-width="1"/>
+                    <line x1="235" y1="190" x2="235" y2="200" stroke="#3182ce" stroke-width="1"/>
+                    <line x1="315" y1="190" x2="315" y2="200" stroke="#3182ce" stroke-width="1"/>
+                    <text x="275" y="210" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#3182ce">D = 25 мм</text>
+                    
+                    <!-- Дуга пробоя -->
+                    <path d="M 270 90 Q 260 130 275 135 Q 290 130 280 178" stroke="#f6ad55" stroke-width="3" fill="none" stroke-dasharray="5,3"/>
+                    <text x="310" y="130" font-family="Segoe UI, sans-serif" font-size="9" fill="#d69e2e">Искровой</text>
+                    <text x="310" y="142" font-family="Segoe UI, sans-serif" font-size="9" fill="#d69e2e">пробой</text>
+                    
+                    <!-- Условия испытания -->
+                    <rect x="500" y="60" width="350" height="220" fill="#f7fafc" stroke="#e2e8f0" stroke-width="1" rx="4"/>
+                    <text x="675" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#1a365d">УСЛОВИЯ ИСПЫТАНИЯ</text>
+                    
+                    <text x="520" y="115" font-family="Segoe UI, sans-serif" font-size="11" fill="#2d3748">• Температура масла: 15-35°С</text>
+                    <text x="520" y="140" font-family="Segoe UI, sans-serif" font-size="11" fill="#2d3748">• Время выдержки перед испытанием: 10 мин</text>
+                    <text x="520" y="165" font-family="Segoe UI, sans-serif" font-size="11" fill="#2d3748">• Скорость подъёма напряжения: 2 кВ/с</text>
+                    <text x="520" y="190" font-family="Segoe UI, sans-serif" font-size="11" fill="#2d3748">• Количество пробоев: 6</text>
+                    <text x="520" y="215" font-family="Segoe UI, sans-serif" font-size="11" fill="#2d3748">• Интервал между пробоями: 5-10 мин</text>
+                    <text x="520" y="240" font-family="Segoe UI, sans-serif" font-size="11" fill="#2d3748">• Результат: среднее 6 значений</text>
+                    <text x="520" y="265" font-family="Segoe UI, sans-serif" font-size="11" fill="#2d3748">• Норма для свежего масла: ≥ 30 кВ</text>
+                </svg>
+                <div class="image-caption">Рис. 2.4.3. Схема стандартного маслопробойника для определения пробивного напряжения</div>
+            </div>
+
+            <h4>Нормы пробивного напряжения масла</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Класс напряжения оборудования</th>
+                        <th>Свежее масло перед заливкой, кВ</th>
+                        <th>Масло в эксплуатации, кВ</th>
+                        <th>Предельно допустимое, кВ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>До 15 кВ</td>
+                        <td>≥ 30</td>
+                        <td>≥ 25</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>15-35 кВ</td>
+                        <td>≥ 35</td>
+                        <td>≥ 30</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td>60-150 кВ</td>
+                        <td>≥ 55</td>
+                        <td>≥ 45</td>
+                        <td>35</td>
+                    </tr>
+                    <tr>
+                        <td>220-500 кВ</td>
+                        <td>≥ 60</td>
+                        <td>≥ 50</td>
+                        <td>40</td>
+                    </tr>
+                    <tr>
+                        <td>750 кВ и выше</td>
+                        <td>≥ 70</td>
+                        <td>≥ 60</td>
+                        <td>50</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Измерение тангенса угла диэлектрических потерь (tgδ)</h3>
+
+            <p>Тангенс угла диэлектрических потерь является чувствительным показателем загрязнения масла продуктами старения, влагой, коллоидными частицами и другими примесями. Этот показатель позволяет выявить начальные стадии ухудшения качества масла, когда пробивное напряжение ещё остаётся в норме.</p>
+
+            <div class="formula-box">
+                <strong>Тангенс угла диэлектрических потерь:</strong>
+                <div class="formula">
+                    tgδ = P / (ω × C × U²) = I<sub>a</sub> / I<sub>r</sub>
+                </div>
+                <div class="formula-desc">
+                    где: P — мощность диэлектрических потерь, Вт;<br>
+                    ω — угловая частота, рад/с;<br>
+                    C — ёмкость конденсатора с маслом, Ф;<br>
+                    U — приложенное напряжение, В;<br>
+                    I<sub>a</sub> — активная составляющая тока, А;<br>
+                    I<sub>r</sub> — реактивная (ёмкостная) составляющая тока, А
+                </div>
+            </div>
+
+            <div class="definition-box">
+                <strong>Методика измерения (<span class="gost-reference">ГОСТ 6581-75</span>):</strong>
+                <p>Измерение проводится в трёхэлектродной ячейке (плоский конденсатор) при температурах 20°С, 70°С и 90°С. Используется мост переменного тока (Р5026, Тангенс-3М) или автоматический измеритель (IDAX, Omicron). Измерение при повышенной температуре позволяет выявить загрязнения, которые не проявляются при комнатной температуре.</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Класс напряжения</th>
+                        <th>Температура измерения</th>
+                        <th>Свежее масло, %</th>
+                        <th>Масло в эксплуатации, %</th>
+                        <th>Предельно допустимое, %</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">До 35 кВ</td>
+                        <td>70°С</td>
+                        <td>≤ 0,5</td>
+                        <td>≤ 7,0</td>
+                        <td>15,0</td>
+                    </tr>
+                    <tr>
+                        <td>90°С</td>
+                        <td>≤ 1,5</td>
+                        <td>≤ 15,0</td>
+                        <td>25,0</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">110-220 кВ</td>
+                        <td>70°С</td>
+                        <td>≤ 0,5</td>
+                        <td>≤ 5,0</td>
+                        <td>10,0</td>
+                    </tr>
+                    <tr>
+                        <td>90°С</td>
+                        <td>≤ 1,5</td>
+                        <td>≤ 10,0</td>
+                        <td>20,0</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">330-750 кВ</td>
+                        <td>70°С</td>
+                        <td>≤ 0,4</td>
+                        <td>≤ 3,0</td>
+                        <td>6,0</td>
+                    </tr>
+                    <tr>
+                        <td>90°С</td>
+                        <td>≤ 1,0</td>
+                        <td>≤ 6,0</td>
+                        <td>12,0</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <strong>Интерпретация результатов измерения tgδ:</strong>
+                <ul>
+                    <li><strong>tgδ в норме при всех температурах</strong> — масло пригодно к эксплуатации</li>
+                    <li><strong>tgδ повышен при 90°С, в норме при 70°С</strong> — начальная стадия загрязнения, контроль</li>
+                    <li><strong>tgδ повышен при 70°С и 90°С</strong> — значительное загрязнение, требуется очистка или регенерация</li>
+                    <li><strong>tgδ резко возрастает с температурой</strong> — наличие полярных загрязнений (вода, кислоты)</li>
+                    <li><strong>tgδ мало зависит от температуры, но повышен</strong> — наличие коллоидных частиц, сажи</li>
+                </ul>
+            </div>
+
+            <h3>Определение кислотного числа</h3>
+
+            <p>Кислотное число характеризует содержание в масле свободных органических кислот, образующихся при окислении углеводородов. Повышение кислотности свидетельствует о старении масла и может привести к коррозии металлических деталей и разрушению целлюлозной изоляции.</p>
+
+            <div class="definition-box">
+                <strong>Методика определения (<span class="gost-reference">ГОСТ 5985-79</span>):</strong>
+                <p>Навеску масла растворяют в смеси этилового спирта и толуола, титруют спиртовым раствором гидроксида калия (КОН) в присутствии индикатора (щелочной синий 6Б или нитрозиновый жёлтый). Кислотное число выражается в мг КОН, необходимого для нейтрализации кислот, содержащихся в 1 г масла.</p>
+            </div>
+
+            <div class="formula-box">
+                <strong>Расчёт кислотного числа:</strong>
+                <div class="formula">
+                    КЧ = (V × K × 5,61) / m
+                </div>
+                <div class="formula-desc">
+                    где: КЧ — кислотное число, мг КОН/г;<br>
+                    V — объём раствора КОН, израсходованный на титрование, мл;<br>
+                    K — поправочный коэффициент к титру раствора КОН;<br>
+                    5,61 — масса КОН в 1 мл 0,1 н раствора, мг;<br>
+                    m — масса навески масла, г
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Класс напряжения оборудования</th>
+                        <th>Свежее масло, мг КОН/г</th>
+                        <th>Масло в эксплуатации, мг КОН/г</th>
+                        <th>Предельно допустимое, мг КОН/г</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>До 35 кВ</td>
+                        <td>≤ 0,02</td>
+                        <td>≤ 0,25</td>
+                        <td>0,40</td>
+                    </tr>
+                    <tr>
+                        <td>110-220 кВ</td>
+                        <td>≤ 0,02</td>
+                        <td>≤ 0,15</td>
+                        <td>0,25</td>
+                    </tr>
+                    <tr>
+                        <td>330-500 кВ</td>
+                        <td>≤ 0,01</td>
+                        <td>≤ 0,10</td>
+                        <td>0,15</td>
+                    </tr>
+                    <tr>
+                        <td>750 кВ и выше</td>
+                        <td>≤ 0,01</td>
+                        <td>≤ 0,08</td>
+                        <td>0,10</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Определение содержания влаги</h3>
+
+            <p>Влага является одним из наиболее опасных загрязнений трансформаторного масла. Даже незначительное содержание влаги резко снижает электрическую прочность масла и ускоряет деструкцию целлюлозной изоляции.</p>
+
+            <h4>Формы присутствия влаги в масле</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Форма влаги</th>
+                        <th>Характеристика</th>
+                        <th>Влияние на свойства масла</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Растворённая</strong></td>
+                        <td>Молекулярно распределена в масле, не видна визуально</td>
+                        <td>Умеренное снижение пробивного напряжения, повышение tgδ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Эмульгированная</strong></td>
+                        <td>Мельчайшие капли воды, масло мутное</td>
+                        <td>Резкое снижение пробивного напряжения</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Осаждённая (свободная)</strong></td>
+                        <td>Слой воды на дне бака</td>
+                        <td>Коррозия, опасность замыкания</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="definition-box">
+                <strong>Метод Карла Фишера (<span class="gost-reference">ГОСТ 7822-75</span>):</strong>
+                <p>Наиболее точный метод определения влаги. Основан на реакции воды с реактивом Фишера (раствор иода, диоксида серы, пиридина в метаноле). Количество воды определяется по количеству израсходованного реактива при титровании. Чувствительность метода — до 1 г/т (ppm).</p>
+            </div>
+
+            <div class="formula-box">
+                <strong>Растворимость воды в масле (зависимость от температуры):</strong>
+                <div class="formula">
+                    W<sub>s</sub> = A × exp(B × T)
+                </div>
+                <div class="formula-desc">
+                    где: W<sub>s</sub> — предельная растворимость воды, г/т;<br>
+                    A ≈ 7,5 — коэффициент для трансформаторного масла;<br>
+                    B ≈ 0,04 — температурный коэффициент, 1/°С;<br>
+                    T — температура масла, °С<br>
+                    <em>При 20°С растворимость ≈ 55 г/т, при 70°С ≈ 400 г/т</em>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Класс напряжения</th>
+                        <th>Свежее масло перед заливкой, г/т</th>
+                        <th>Масло в эксплуатации, г/т</th>
+                        <th>Предельно допустимое, г/т</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>До 110 кВ</td>
+                        <td>≤ 15</td>
+                        <td>≤ 25</td>
+                        <td>35</td>
+                    </tr>
+                    <tr>
+                        <td>150-220 кВ</td>
+                        <td>≤ 10</td>
+                        <td>≤ 20</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>330-500 кВ</td>
+                        <td>≤ 10</td>
+                        <td>≤ 15</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>750 кВ и выше</td>
+                        <td>≤ 5</td>
+                        <td>≤ 10</td>
+                        <td>15</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Хроматографический анализ растворённых газов (ХАРГ)</h3>
+
+            <p>Хроматографический анализ газов, растворённых в масле, является наиболее информативным методом диагностики состояния маслонаполненного оборудования. Метод позволяет выявлять развивающиеся дефекты на ранних стадиях, задолго до возникновения аварийной ситуации.</p>
+
+            <div class="info-box">
+                <strong>Принцип метода:</strong>
+                <p>При воздействии электрического поля, повышенной температуры, электрических разрядов происходит разложение масла и твёрдой изоляции с образованием характерных газов. Состав и соотношение газов зависят от типа дефекта и его интенсивности. Газы растворяются в масле и могут быть извлечены для анализа методом газовой хроматографии.</p>
+            </div>
+
+            <h4>Газы, определяемые при ХАРГ</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Газ</th>
+                        <th>Формула</th>
+                        <th>Источник образования</th>
+                        <th>Характерные дефекты</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Водород</strong></td>
+                        <td>H₂</td>
+                        <td>Разложение масла и целлюлозы</td>
+                        <td>Частичные разряды, искрение, перегрев</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Метан</strong></td>
+                        <td>CH₄</td>
+                        <td>Разложение масла</td>
+                        <td>Термический дефект низкой температуры</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Этан</strong></td>
+                        <td>C₂H₆</td>
+                        <td>Разложение масла</td>
+                        <td>Термический дефект средней температуры</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Этилен</strong></td>
+                        <td>C₂H₄</td>
+                        <td>Разложение масла при высокой температуре</td>
+                        <td>Термический дефект высокой температуры (>500°С)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ацетилен</strong></td>
+                        <td>C₂H₂</td>
+                        <td>Разложение масла в дуге</td>
+                        <td>Электрическая дуга, искровые разряды</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Оксид углерода</strong></td>
+                        <td>CO</td>
+                        <td>Разложение целлюлозы</td>
+                        <td>Перегрев твёрдой изоляции</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Диоксид углерода</strong></td>
+                        <td>CO₂</td>
+                        <td>Разложение целлюлозы, окисление масла</td>
+                        <td>Старение изоляции, перегрев</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Кислород</strong></td>
+                        <td>O₂</td>
+                        <td>Проникновение воздуха</td>
+                        <td>Негерметичность, дефект уплотнений</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Азот</strong></td>
+                        <td>N₂</td>
+                        <td>Проникновение воздуха, азотная подушка</td>
+                        <td>—</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="image-container">
+                <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Фон -->
+                    <rect width="900" height="500" fill="#ffffff"/>
+                    
+                    <!-- Заголовок -->
+                    <text x="450" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#1a365d">
+                        ДИАГНОСТИКА ДЕФЕКТОВ ТРАНСФОРМАТОРОВ ПО РЕЗУЛЬТАТАМ ХАРГ
+                    </text>
+                    
+                    <!-- Треугольник Дюваля -->
+                    <polygon points="450,70 200,420 700,420" fill="none" stroke="#2d3748" stroke-width="2"/>
+                    
+                    <!-- Зоны дефектов -->
+                    <!-- Зона PD (частичные разряды) -->
+                    <polygon points="450,70 380,180 520,180" fill="#bee3f8" stroke="#3182ce" stroke-width="1"/>
+                    <text x="450" y="140" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#2c5282">PD</text>
+                    
+                    <!-- Зона D1 (разряды низкой энергии) -->
+                    <polygon points="380,180 320,280 450,280 520,180" fill="#fef3c7" stroke="#d69e2e" stroke-width="1"/>
+                    <text x="420" y="240" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#744210">D1</text>
+                    
+                    <!-- Зона D2 (разряды высокой энергии) -->
+                    <polygon points="320,280 260,380 400,380 450,280" fill="#fed7d7" stroke="#c53030" stroke-width="1"/>
+                    <text x="360" y="340" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#742a2a">D2</text>
+                    
+                    <!-- Зона T1 (термический <300°C) -->
+                    <polygon points="520,180 450,280 550,380 620,280" fill="#c6f6d5" stroke="#38a169" stroke-width="1"/>
+                    <text x="540" y="290" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#22543d">T1</text>
+                    
+                    <!-- Зона T2 (термический 300-700°C) -->
+                    <polygon points="620,280 550,380 650,420 680,340" fill="#faf089" stroke="#d69e2e" stroke-width="1"/>
+                    <text x="630" y="370" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#744210">T2</text>
+                    
+                    <!-- Зона T3 (термический >700°C) -->
+                    <polygon points="680,340 650,420 700,420" fill="#fc8181" stroke="#c53030" stroke-width="1"/>
+                    <text x="680" y="400" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#742a2a">T3</text>
+                    
+                    <!-- Зона DT (смешанный) -->
+                    <polygon points="450,280 400,380 550,380" fill="#e9d8fd" stroke="#805ad5" stroke-width="1"/>
+                    <text x="465" y="350" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#553c9a">DT</text>
+                    
+                    <!-- Подписи вершин -->
+                    <text x="450" y="55" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#2d3748">CH₄ (100%)</text>
+                    <text x="180" y="435" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#2d3748">H₂ (100%)</text>
+                    <text x="720" y="435" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#2d3748">C₂H₄ (100%)</text>
+                    
+                    <!-- Легенда -->
+                    <rect x="730" y="70" width="160" height="250" fill="#f7fafc" stroke="#e2e8f0" rx="4"/>
+                    <text x="810" y="95" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1a365d">ТИПЫ ДЕФЕКТОВ</text>
+                    
+                    <rect x="745" y="110" width="15" height="15" fill="#bee3f8" stroke="#3182ce"/>
+                    <text x="770" y="122" font-family="Segoe UI, sans-serif" font-size="9" fill="#2d3748">PD - Частичные разряды</text>
+                    
+                    <rect x="745" y="135" width="15" height="15" fill="#fef3c7" stroke="#d69e2e"/>
+                    <text x="770" y="147" font-family="Segoe UI, sans-serif" font-size="9" fill="#2d3748">D1 - Разряды низкой энергии</text>
+                    
+                    <rect x="745" y="160" width="15" height="15" fill="#fed7d7" stroke="#c53030"/>
+                    <text x="770" y="172" font-family="Segoe UI, sans-serif" font-size="9" fill="#2d3748">D2 - Разряды высокой энергии</text>
+                    
+                    <rect x="745" y="185" width="15" height="15" fill="#c6f6d5" stroke="#38a169"/>
+                    <text x="770" y="197" font-family="Segoe UI, sans-serif" font-size="9" fill="#2d3748">T1 - Перегрев &lt;300°С</text>
+                    
+                    <rect x="745" y="210" width="15" height="15" fill="#faf089" stroke="#d69e2e"/>
+                    <text x="770" y="222" font-family="Segoe UI, sans-serif" font-size="9" fill="#2d3748">T2 - Перегрев 300-700°С</text>
+                    
+                    <rect x="745" y="235" width="15" height="15" fill="#fc8181" stroke="#c53030"/>
+                    <text x="770" y="247" font-family="Segoe UI, sans-serif" font-size="9" fill="#2d3748">T3 - Перегрев &gt;700°С</text>
+                    
+                    <rect x="745" y="260" width="15" height="15" fill="#e9d8fd" stroke="#805ad5"/>
+                    <text x="770" y="272" font-family="Segoe UI, sans-serif" font-size="9" fill="#2d3748">DT - Смешанный дефект</text>
+                    
+                    <text x="810" y="305" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#718096">Метод треугольника</text>
+                    <text x="810" y="315" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#718096">Дюваля (IEC 60599)</text>
+                </svg>
+                <div class="image-caption">Рис. 2.4.4. Диагностика дефектов трансформаторов методом треугольника Дюваля (ХАРГ)</div>
+            </div>
+
+            <h4>Граничные концентрации газов</h4>
+
+            <p>Для оценки состояния оборудования используются граничные концентрации газов, превышение которых свидетельствует о наличии дефекта.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Газ</th>
+                        <th>Граничная концентрация, % об.</th>
+                        <th>Граничная скорость роста, % об./мес.</th>
+                        <th>Критерий отключения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>H₂ (водород)</strong></td>
+                        <td>0,01</td>
+                        <td>0,005</td>
+                        <td>>0,5% — аварийное отключение</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CH₄ (метан)</strong></td>
+                        <td>0,01</td>
+                        <td>0,003</td>
+                        <td>>0,1%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C₂H₆ (этан)</strong></td>
+                        <td>0,01</td>
+                        <td>0,003</td>
+                        <td>>0,1%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C₂H₄ (этилен)</strong></td>
+                        <td>0,01</td>
+                        <td>0,003</td>
+                        <td>>0,1%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C₂H₂ (ацетилен)</strong></td>
+                        <td>0,001</td>
+                        <td>0,001</td>
+                        <td>>0,01% — немедленный вывод</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CO (оксид углерода)</strong></td>
+                        <td>0,05</td>
+                        <td>0,02</td>
+                        <td>>1,0%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CO₂ (диоксид углерода)</strong></td>
+                        <td>0,6</td>
+                        <td>0,1</td>
+                        <td>Соотношение CO₂/CO < 3</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>⚠️ Критерии немедленного отключения трансформатора по результатам ХАРГ:</strong>
+                <ul>
+                    <li>Концентрация ацетилена (C₂H₂) более 0,01% объёмных</li>
+                    <li>Концентрация водорода (H₂) более 0,5% объёмных</li>
+                    <li>Резкий рост любого газа (более чем в 2 раза за месяц)</li>
+                    <li>Появление ацетилена при ранее отсутствовавшем</li>
+                    <li>Соотношение CO₂/CO менее 3 (интенсивное разрушение целлюлозы)</li>
+                </ul>
+            </div>
+
+            <h4>Методы интерпретации результатов ХАРГ</h4>
+
+            <div class="two-column">
+                <div class="column-box">
+                    <h4>Метод отношений газов (МЭК 60599)</h4>
+                    <p>Основан на расчёте характерных отношений концентраций газов:</p>
+                    <ul>
+                        <li>C₂H₂/C₂H₄ — характеризует тип разряда</li>
+                        <li>CH₄/H₂ — характеризует интенсивность</li>
+                        <li>C₂H₄/C₂H₆ — температура дефекта</li>
+                    </ul>
+                    <p>По сочетанию отношений определяется тип дефекта.</p>
+                </div>
+                <div class="column-box">
+                    <h4>Метод треугольника Дюваля</h4>
+                    <p>Графический метод, использующий соотношения трёх газов: CH₄, C₂H₄, C₂H₂. Точка на треугольнике показывает тип дефекта:</p>
+                    <ul>
+                        <li>Область PD — частичные разряды</li>
+                        <li>Области D1, D2 — электрические разряды</li>
+                        <li>Области T1, T2, T3 — термические дефекты</li>
+                        <li>Область DT — смешанные дефекты</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <div class="example-title">📊 Пример: Результаты ХАРГ и диагностика дефекта</div>
+                <p><strong>Объект:</strong> Трансформатор ТРДН-40000/110, год выпуска 2008</p>
+                <p><strong>Дата анализа:</strong> май 2024 г.</p>
+                <table style="margin-top: 10px;">
+                    <tr>
+                        <th>Газ</th>
+                        <th>Концентрация, % об.</th>
+                        <th>Предыдущий анализ (3 мес. назад)</th>
+                        <th>Граничное значение</th>
+                    </tr>
+                    <tr>
+                        <td>H₂</td>
+                        <td style="background: #fed7d7;">0,025</td>
+                        <td>0,008</td>
+                        <td>0,01</td>
+                    </tr>
+                    <tr>
+                        <td>CH₄</td>
+                        <td style="background: #fed7d7;">0,018</td>
+                        <td>0,005</td>
+                        <td>0,01</td>
+                    </tr>
+                    <tr>
+                        <td>C₂H₆</td>
+                        <td>0,006</td>
+                        <td>0,003</td>
+                        <td>0,01</td>
+                    </tr>
+                    <tr>
+                        <td>C₂H₄</td>
+                        <td style="background: #fed7d7;">0,022</td>
+                        <td>0,004</td>
+                        <td>0,01</td>
+                    </tr>
+                    <tr>
+                        <td>C₂H₂</td>
+                        <td>0,0005</td>
+                        <td>0,0002</td>
+                        <td>0,001</td>
+                    </tr>
+                    <tr>
+                        <td>CO</td>
+                        <td>0,035</td>
+                        <td>0,028</td>
+                        <td>0,05</td>
+                    </tr>
+                    <tr>
+                        <td>CO₂</td>
+                        <td>0,42</td>
+                        <td>0,38</td>
+                        <td>0,6</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 15px;"><strong>Анализ:</strong></p>
+                <ul>
+                    <li>Превышены граничные концентрации H₂, CH₄, C₂H₄</li>
+                    <li>Отношение C₂H₂/C₂H₄ = 0,023 → разряды отсутствуют</li>
+                    <li>Отношение C₂H₄/C₂H₆ = 3,7 → температура дефекта 300-700°С</li>
+                    <li>Отношение CH₄/H₂ = 0,72 → термический дефект</li>
+                    <li>Рост этилена в 5,5 раз за 3 месяца — активный процесс</li>
+                </ul>
+                <p><strong>Диагноз:</strong> Развивающийся термический дефект средней температуры (зона T2 по Дювалю). Вероятная причина — локальный перегрев в контактном соединении обмотки или магнитопровода.</p>
+                <p><strong>Рекомендации:</strong></p>
+                <ol>
+                    <li>Провести тепловизионное обследование</li>
+                    <li>Сократить периодичность ХАРГ до 1 раза в месяц</li>
+                    <li>Запланировать внутренний осмотр при ближайшем отключении</li>
+                    <li>При дальнейшем росте газов — вывод в ремонт</li>
+                </ol>
+            </div>
+
+            <!-- РАЗДЕЛ 2.4.4 -->
+            <h2>2.4.4. Восстановление и замена масла</h2>
+
+            <p>При ухудшении показателей качества масла до предельных значений или при превышении граничных концентраций продуктов старения требуется принятие мер по восстановлению свойств масла или его замене.</p>
+
+            <h3>Методы восстановления качества масла</h3>
+
+            <p>Выбор метода восстановления зависит от характера и степени ухудшения свойств масла.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Метод обработки</th>
+                        <th>Устраняемые загрязнения</th>
+                        <th>Применяемое оборудование</th>
+                        <th>Эффективность</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Фильтрация</strong></td>
+                        <td>Механические примеси</td>
+                        <td>Фильтр-прессы, патронные фильтры</td>
+                        <td>Высокая для частиц >5 мкм</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Центрифугирование</strong></td>
+                        <td>Механические примеси, свободная вода</td>
+                        <td>Центрифуги (СМ-2, НОГОТЬ)</td>
+                        <td>Удаление воды до 0,01%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Вакуумная сушка</strong></td>
+                        <td>Растворённая и эмульгированная вода, газы</td>
+                        <td>Вакуумные дегазаторы, установки УВМ</td>
+                        <td>Влага до 5-10 ppm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Адсорбционная очистка</strong></td>
+                        <td>Продукты старения, кислоты</td>
+                        <td>Адсорберы с силикагелем, цеолитами</td>
+                        <td>Снижение кислотного числа</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Регенерация</strong></td>
+                        <td>Все продукты старения, восстановление состава</td>
+                        <td>Регенерационные установки</td>
+                        <td>Полное восстановление свойств</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Сушка трансформаторного масла</h3>
+
+            <p>Сушка масла применяется для удаления влаги при её содержании выше нормы. Наиболее эффективным методом является вакуумная обработка масла.</p>
+
+            <div class="formula-box">
+                <strong>Зависимость давления насыщенных паров воды в масле от температуры:</strong>
+                <div class="formula">
+                    lg P<sub>H₂O</sub> = 8,07 - 1730 / (T + 230)
+                </div>
+                <div class="formula-desc">
+                    где: P<sub>H₂O</sub> — давление паров воды, мм рт. ст.;<br>
+                    T — температура масла, °С<br>
+                    <em>При вакууме 1-5 мм рт. ст. и температуре 60-80°С происходит интенсивное испарение воды</em>
+                </div>
+            </div>
+
+            <h4>Технологические режимы сушки масла</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Вакуумная сушка</th>
+                        <th>Центрифугирование</th>
+                        <th>Адсорбционная сушка</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Температура масла</strong></td>
+                        <td>60-80°С</td>
+                        <td>40-60°С</td>
+                        <td>20-40°С</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Давление</strong></td>
+                        <td>1-5 мм рт. ст. (133-665 Па)</td>
+                        <td>Атмосферное</td>
+                        <td>Атмосферное</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Производительность</strong></td>
+                        <td>1-6 м³/ч</td>
+                        <td>1-3 м³/ч</td>
+                        <td>0,5-2 м³/ч</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Достигаемое влагосодержание</strong></td>
+                        <td>5-10 ppm</td>
+                        <td>15-20 ppm</td>
+                        <td>10-15 ppm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Удаление газов</strong></td>
+                        <td>Да (до 0,1%)</td>
+                        <td>Нет</td>
+                        <td>Нет</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="image-container">
+                <svg viewBox="0 0 900 450" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Фон -->
+                    <rect width="900" height="450" fill="#ffffff"/>
+                    
+                    <!-- Заголовок -->
+                    <text x="450" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#1a365d">
+                        СХЕМА УСТАНОВКИ ВАКУУМНОЙ ОБРАБОТКИ МАСЛА
+                    </text>
+                    
+                    <!-- Трансформатор -->
+                    <rect x="50" y="150" width="120" height="180" fill="#e2e8f0" stroke="#4a5568" stroke-width="2" rx="5"/>
+                    <rect x="55" y="180" width="110" height="145" fill="#f6e05e" opacity="0.4"/>
+                    <text x="110" y="270" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#4a5568">Трансформатор</text>
+                    
+                    <!-- Насос откачки -->
+                    <circle cx="230" cy="240" r="30" fill="#3182ce" stroke="#2c5282" stroke-width="2"/>
+                    <text x="230" y="244" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="white">Насос</text>
+                    <line x1="170" y1="240" x2="200" y2="240" stroke="#4a5568" stroke-width="3"/>
+                    
+                    <!-- Нагреватель -->
+                    <rect x="290" y="200" width="60" height="80" fill="#fc8181" stroke="#c53030" stroke-width="2" rx="3"/>
+                    <text x="320" y="245" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#742a2a">Нагрев</text>
+                    <text x="320" y="258" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#742a2a">60-80°С</text>
+                    <line x1="260" y1="240" x2="290" y2="240" stroke="#4a5568" stroke-width="3"/>
+                    
+                    <!-- Вакуумная камера -->
+                    <ellipse cx="450" cy="240" rx="70" ry="100" fill="#e8f4fd" stroke="#3182ce" stroke-width="2"/>
+                    <text x="450" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#2c5282">Вакуумная</text>
+                    <text x="450" y="235" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#2c5282">камера</text>
+                    <text x="450" y="260" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">1-5 мм рт.ст.</text>
+                    <!-- Распылитель -->
+                    <line x1="380" y1="180" x2="450" y2="180" stroke="#4a5568" stroke-width="2"/>
+                    <circle cx="450" cy="180" r="8" fill="#f6e05e" stroke="#d69e2e"/>
+                    <line x1="350" y1="240" x2="380" y2="240" stroke="#4a5568" stroke-width="3"/>
+                    
+                    <!-- Вакуумный насос -->
+                    <rect x="550" y="100" width="80" height="50" fill="#718096" stroke="#4a5568" stroke-width="2" rx="3"/>
+                    <text x="590" y="130" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="white">Вакуум-</text>
+                    <text x="590" y="142" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="white">насос</text>
+                    <line x1="450" y1="140" x2="450" y2="100" stroke="#4a5568" stroke-width="2"/>
+                    <line x1="450" y1="100" x2="550" y2="100" stroke="#4a5568" stroke-width="2"/>
+                    
+                    <!-- Конденсатор -->
+                    <rect x="550" y="180" width="60" height="80" fill="#bee3f8" stroke="#3182ce" stroke-width="2" rx="3"/>
+                    <text x="580" y="215" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#2c5282">Конден-</text>
+                    <text x="580" y="228" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#2c5282">сатор</text>
+                    <text x="580" y="250" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#4a5568">H₂O</text>
+                    <line x1="520" y1="220" x2="550" y2="220" stroke="#4a5568" stroke-width="2"/>
+                    
+                    <!-- Сборник воды -->
+                    <rect x="560" y="280" width="40" height="40" fill="#63b3ed" stroke="#3182ce" stroke-width="1"/>
+                    <line x1="580" y1="260" x2="580" y2="280" stroke="#3182ce" stroke-width="2"/>
+                    
+                    <!-- Фильтр -->
+                    <rect x="650" y="200" width="50" height="80" fill="#c6f6d5" stroke="#38a169" stroke-width="2" rx="3"/>
+                    <text x="675" y="235" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#22543d">Фильтр</text>
+                    <text x="675" y="250" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#4a5568">5 мкм</text>
+                    <line x1="520" y1="300" x2="650" y2="300" stroke="#4a5568" stroke-width="3"/>
+                    <line x1="650" y1="300" x2="650" y2="280" stroke="#4a5568" stroke-width="3"/>
+                    
+                    <!-- Насос закачки -->
+                    <circle cx="770" cy="240" r="30" fill="#38a169" stroke="#22543d" stroke-width="2"/>
+                    <text x="770" y="237" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="white">Насос</text>
+                    <text x="770" y="250" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="white">подачи</text>
+                    <line x1="700" y1="240" x2="740" y2="240" stroke="#4a5568" stroke-width="3"/>
+                    
+                    <!-- Возврат в трансформатор -->
+                    <line x1="800" y1="240" x2="850" y2="240" stroke="#4a5568" stroke-width="3"/>
+                    <line x1="850" y1="240" x2="850" y2="380" stroke="#4a5568" stroke-width="3"/>
+                    <line x1="850" y1="380" x2="110" y2="380" stroke="#4a5568" stroke-width="3"/>
+                    <line x1="110" y1="380" x2="110" y2="330" stroke="#4a5568" stroke-width="3"/>
+                    <polygon points="105,335 110,325 115,335" fill="#4a5568"/>
+                    
+                    <!-- Стрелки потока -->
+                    <polygon points="195,235 185,240 195,245" fill="#4a5568"/>
+                    <polygon points="285,235 275,240 285,245" fill="#4a5568"/>
+                    <polygon points="375,235 365,240 375,245" fill="#4a5568"/>
+                    <polygon points="735,235 725,240 735,245" fill="#4a5568"/>
+                    
+                    <!-- Подписи -->
+                    <text x="450" y="420" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#4a5568">Циркуляция масла через установку до достижения требуемых показателей</text>
+                </svg>
+                <div class="image-caption">Рис. 2.4.5. Принципиальная схема установки вакуумной обработки трансформаторного масла</div>
+            </div>
+
+            <h3>Регенерация трансформаторного масла</h3>
+
+            <p>Регенерация — это комплексная обработка масла, направленная на восстановление всех его эксплуатационных свойств до уровня свежего масла. Регенерация применяется при значительном старении масла, когда простая очистка и сушка неэффективны.</p>
+
+            <div class="definition-box">
+                <strong>Показания к регенерации масла:</strong>
+                <ul>
+                    <li>Кислотное число более 0,1 мг КОН/г (для масла 110 кВ и выше)</li>
+                    <li>Тангенс угла потерь более 5% при 70°С</li>
+                    <li>Значительное потемнение масла</li>
+                    <li>Наличие осадка, шлама</li>
+                    <li>Отсутствие или недостаток антиокислительной присадки</li>
+                    <li>Комплексное ухудшение нескольких показателей</li>
+                </ul>
+            </div>
+
+            <h4>Методы регенерации</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Метод регенерации</th>
+                        <th>Принцип действия</th>
+                        <th>Удаляемые загрязнения</th>
+                        <th>Особенности</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Адсорбционная (контактная)</strong></td>
+                        <td>Контакт масла с адсорбентом (силикагель, отбеливающая глина)</td>
+                        <td>Кислоты, смолы, асфальтены, полярные соединения</td>
+                        <td>Наиболее распространённый метод, эффективен для масел со средней степенью старения</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Перколяционная</strong></td>
+                        <td>Фильтрация масла через слой адсорбента</td>
+                        <td>Те же, что при контактном методе</td>
+                        <td>Непрерывный процесс, удобен для регенерации без слива масла</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Сернокислотная</strong></td>
+                        <td>Обработка концентрированной серной кислотой</td>
+                        <td>Все продукты старения, ненасыщенные углеводороды</td>
+                        <td>Глубокая очистка, но образуются кислые отходы</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Гидрогенизационная</strong></td>
+                        <td>Каталитическое гидрирование при высоком давлении</td>
+                        <td>Все продукты старения, сера</td>
+                        <td>Восстановление до качества свежего масла, дорогостоящий процесс</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ионообменная</strong></td>
+                        <td>Пропускание через ионообменные смолы</td>
+                        <td>Кислоты, соли металлов</td>
+                        <td>Высокая селективность, возможность регенерации смол</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Технология адсорбционной регенерации</h4>
+
+            <div class="info-box">
+                <strong>Этапы адсорбционной регенерации:</strong>
+                <ol>
+                    <li><strong>Предварительная обработка:</strong> Нагрев масла до 60-80°С, фильтрация от механических примесей</li>
+                    <li><strong>Обработка адсорбентом:</strong> Контакт с силикагелем (5-10% от массы масла) при перемешивании 30-60 минут</li>
+                    <li><strong>Отделение адсорбента:</strong> Фильтрация через пресс-фильтр</li>
+                    <li><strong>Вакуумная сушка:</strong> Удаление влаги и газов при остаточном давлении 5-10 мм рт.ст.</li>
+                    <li><strong>Введение присадки:</strong> Добавление антиокислительной присадки (ионол) 0,2-0,3%</li>
+                    <li><strong>Контроль качества:</strong> Анализ всех показателей на соответствие нормам для свежего масла</li>
+                </ol>
+            </div>
+
+            <h3>Замена масла в трансформаторах</h3>
+
+            <p>Полная замена масла производится в случаях, когда регенерация экономически нецелесообразна или невозможна, а также при необходимости изменения типа масла.</p>
+
+            <h4>Показания к замене масла:</h4>
+
+            <ul>
+                <li>Кислотное число более 0,25 мг КОН/г (для масла 110 кВ и выше)</li>
+                <li>Наличие коррозионноактивной серы</li>
+                <li>Критическое снижение пробивного напряжения</li>
+                <li>Значительное содержание ПХБ (полихлорбифенилов)</li>
+                <li>Несовместимость с другим типом масла при доливке</li>
+                <li>После внутреннего осмотра при капитальном ремонте</li>
+            </ul>
+
+            <div class="warning-box">
+                <strong>⚠️ Требования к технологии замены масла:</strong>
+                <ul>
+                    <li>Слив старого масла производится при температуре не ниже +10°С</li>
+                    <li>После слива — промывка бака сухим маслом или специальным составом</li>
+                    <li>Заливка нового масла — только через вакуумную установку</li>
+                    <li>Новое масло должно быть подготовлено: влага ≤10 ppm, газосодержание ≤0,5%</li>
+                    <li>После заливки — выдержка под вакуумом не менее 24 часов</li>
+                    <li>Перед включением — полный анализ масла и проверка трансформатора</li>
+                </ul>
+            </div>
+
+            <h4>Совместимость трансформаторных масел</h4>
+
+            <p>При доливке или смешивании масел различных марок необходимо учитывать их совместимость.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Марка масла</th>
+                        <th>ГК</th>
+                        <th>ТКп</th>
+                        <th>Т-750</th>
+                        <th>ВГ</th>
+                        <th>Импортные</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ГК</strong></td>
+                        <td style="background: #c6f6d5;">+</td>
+                        <td style="background: #c6f6d5;">+</td>
+                        <td style="background: #c6f6d5;">+</td>
+                        <td style="background: #fef3c7;">±</td>
+                        <td style="background: #fef3c7;">±</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ТКп</strong></td>
+                        <td style="background: #c6f6d5;">+</td>
+                        <td style="background: #c6f6d5;">+</td>
+                        <td style="background: #c6f6d5;">+</td>
+                        <td style="background: #fef3c7;">±</td>
+                        <td style="background: #fef3c7;">±</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Т-750</strong></td>
+                        <td style="background: #c6f6d5;">+</td>
+                        <td style="background: #c6f6d5;">+</td>
+                        <td style="background: #c6f6d5;">+</td>
+                        <td style="background: #fef3c7;">±</td>
+                        <td style="background: #fef3c7;">±</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ВГ</strong></td>
+                        <td style="background: #fef3c7;">±</td>
+                        <td style="background: #fef3c7;">±</td>
+                        <td style="background: #fef3c7;">±</td>
+                        <td style="background: #c6f6d5;">+</td>
+                        <td style="background: #fed7d7;">−</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Импортные</strong></td>
+                        <td style="background: #fef3c7;">±</td>
+                        <td style="background: #fef3c7;">±</td>
+                        <td style="background: #fef3c7;">±</td>
+                        <td style="background: #fed7d7;">−</td>
+                        <td style="background: #fef3c7;">±*</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><em>Обозначения: + — совместимы; ± — требуется проверка на совместимость; − — несовместимы; * — зависит от конкретных марок</em></p>
+
+            <div class="example-box">
+                <div class="example-title">📊 Пример: Экономическое сравнение регенерации и замены масла</div>
+                <p><strong>Объект:</strong> Трансформатор ТДН-16000/110, объём масла 12 тонн</p>
+                <p><strong>Состояние масла:</strong> Кислотное число 0,18 мг КОН/г, tgδ = 8% при 70°С</p>
+                <table style="margin-top: 10px;">
+                    <tr>
+                        <th>Показатель</th>
+                        <th>Регенерация</th>
+                        <th>Замена</th>
+                    </tr>
+                    <tr>
+                        <td>Стоимость масла</td>
+                        <td>—</td>
+                        <td>12 т × 85 000 руб./т = 1 020 000 руб.</td>
+                    </tr>
+                    <tr>
+                        <td>Стоимость обработки</td>
+                        <td>12 т × 25 000 руб./т = 300 000 руб.</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>Присадка (ионол 0,25%)</td>
+                        <td>30 кг × 800 руб./кг = 24 000 руб.</td>
+                        <td>Включено в масло</td>
+                    </tr>
+                    <tr>
+                        <td>Работы по сливу/заливке</td>
+                        <td>Без слива: 50 000 руб.</td>
+                        <td>180 000 руб.</td>
+                    </tr>
+                    <tr>
+                        <td>Утилизация старого масла</td>
+                        <td>—</td>
+                        <td>12 т × 5 000 руб./т = 60 000 руб.</td>
+                    </tr>
+                    <tr>
+                        <td>Простой трансформатора</td>
+                        <td>2 суток</td>
+                        <td>5-7 суток</td>
+                    </tr>
+                    <tr style="font-weight: bold; background: #f7fafc;">
+                        <td>ИТОГО</td>
+                        <td>374 000 руб.</td>
+                        <td>1 260 000 руб.</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 10px;"><strong>Вывод:</strong> Регенерация экономически эффективнее в 3,4 раза. Рекомендуется провести регенерацию масла с введением антиокислительной присадки.</p>
+            </div>
+
+            <!-- ВЫВОДЫ -->
+            <h2>Выводы по теме</h2>
+
+            <div class="highlight-box">
+                <strong>Основные выводы:</strong>
+                <ol>
+                    <li><strong>Трансформаторное масло</strong> выполняет три основные функции: электроизоляционную, теплоотводящую и защитную. Качество масла определяется комплексом физико-химических и электроизоляционных свойств, нормируемых стандартами.</li>
+                    <li><strong>Контроль качества масла</strong> должен проводиться регулярно в соответствии с установленной периодичностью. Сокращённый анализ позволяет оперативно оценить состояние масла, полный анализ — выполнить комплексную оценку.</li>
+                    <li><strong>Основные испытания масла</strong> включают определение пробивного напряжения, измерение tgδ, определение кислотного числа, содержания влаги и хроматографический анализ растворённых газов (ХАРГ).</li>
+                    <li><strong>ХАРГ является наиболее информативным методом</strong> диагностики состояния маслонаполненного оборудования, позволяющим выявлять развивающиеся дефекты на ранних стадиях по составу и концентрации характерных газов.</li>
+                    <li><strong>Восстановление качества масла</strong> осуществляется методами фильтрации, сушки, адсорбционной очистки и регенерации. Выбор метода зависит от характера и степени ухудшения свойств масла.</li>
+                    <li><strong>Правильная эксплуатация масла</strong> обеспечивает надёжную работу электрооборудования, продлевает срок его службы и позволяет оптимизировать затраты на техническое обслуживание.</li>
+                </ol>
+            </div>
+
+           
+
+            <!-- ЛИТЕРАТУРА -->
+            <h2>Литература и нормативные документы</h2>
+            
+            <div class="reference">
+                <h4>Основные нормативные документы</h4>
+                <ol>
+                    <li>ГОСТ 982-80. Масла трансформаторные. Технические условия.</li>
+                    <li>ГОСТ 10121-76. Масло трансформаторное селективной очистки. Технические условия.</li>
+                    <li>ГОСТ IEC 60296-2013. Жидкости электроизоляционные. Неиспользованные минеральные изоляционные масла для электрооборудования.</li>
+                    <li>ГОСТ 6581-75. Материалы электроизоляционные жидкие. Методы электрических испытаний.</li>
+                    <li>ГОСТ 7822-75. Масла нефтяные. Метод определения растворённой воды.</li>
+                    <li>ГОСТ 5985-79. Нефтепродукты. Метод определения кислотности и кислотного числа.</li>
+                    <li>РД 34.43.105-89. Методические указания по эксплуатации трансформаторных масел.</li>
+                    <li>РД 153-34.0-46.302-00. Методические указания по диагностике развивающихся дефектов трансформаторного оборудования по результатам хроматографического анализа газов, растворённых в масле.</li>
+                    <li>СТО 34.01-23.1-001-2017. Объём и нормы испытаний электрооборудования.</li>
+                    <li>МЭК 60599. Минеральные масла, заливаемые в электрооборудование. Руководство по интерпретации анализа растворённых и свободных газов.</li>
+                </ol>
+                
+                <h4 style="margin-top: 20px;">Учебная литература</h4>
+                <ol>
+                    <li>Липштейн Р.А., Шахнович М.И. Трансформаторное масло. — М.: Энергоатомиздат, 1983. — 296 с.</li>
+                    <li>Алексеев Б.А. Контроль состояния (диагностика) крупных силовых трансформаторов. — М.: НЦ ЭНАС, 2002. — 216 с.</li>
+                    <li>Давиденко И.В. Хроматографический анализ газов, растворённых в трансформаторном масле. — М.: Энергия, 1980. — 112 с.</li>
+                    <li>Вдовико В.П. Диагностика высоковольтного электрооборудования. — Новосибирск: НГТУ, 2007. — 280 с.</li>
+                    <li>Русов В.А. Измерение частичных разрядов в изоляции оборудования высокого напряжения. — Екатеринбург: УрГУПС, 2011. — 367 с.</li>
+                    <li>CIGRE Technical Brochure 443. DGA in Non-Mineral Oils and Load Tap Changers and Diagnosis Interpretation. — 2010.</li>
+                </ol>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="2-3.html" class="nav-btn">← Предыдущая тема: 2.3. Эксплуатация трансформаторов</a>
+                <a href="start.html" class="nav-btn nav-btn-home">📚 Оглавление</a>
+                <a href="2-5.html" class="nav-btn">Следующая тема: 2.5. Эксплуатация РУ →</a>
+            </div>
+        </article>
+
+        <footer class="footer">
+            <p>© 2024 Кузбасский государственный технический университет имени Т.Ф. Горбачева</p>
+            <p>Кафедра электроснабжения горных и промышленных предприятий</p>
+        </footer>
+    </div>
+</body>
+</html>
