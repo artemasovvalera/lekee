@@ -1,0 +1,1362 @@
+# Лекция 1.3. Классификация и кодификация электротехнической продукции
+
+Создаю полную лекцию по образцу, с сохранением всех стилей, SVG-диаграмм и структуры оформления.
+
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.3. Классификация и кодификация - Эксплуатация электрооборудования</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 50%, #1a365d 100%);
+            min-height: 100vh;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .lecture-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-left: 6px solid #c53030;
+        }
+
+        .breadcrumb {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #1a365d;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .lecture-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .content-body {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #1a365d;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #c53030;
+        }
+
+        h3 {
+            color: #2c5282;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 25px 0 15px 0;
+        }
+
+        h4 {
+            color: #4a5568;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .formula-box {
+            background: #f7fafc;
+            border-left: 4px solid #2c5282;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-family: 'Times New Roman', serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: #2c5282;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:hover {
+            background: #f7fafc;
+        }
+
+        .image-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .image-container svg {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-caption {
+            color: #4a5568;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);
+            border-left: 4px solid #f6ad55;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+            border-left: 4px solid #c53030;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            color: #742a2a;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .example-title {
+            font-weight: 700;
+            color: #234e52;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .reference {
+            color: #718096;
+            font-size: 0.85rem;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 5px;
+            margin-top: 20px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e2e8f0;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: #2c5282;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #1a365d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .gost-reference {
+            display: inline-block;
+            background: #edf2f7;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .code-example {
+            background: #1a365d;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .code-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .code-part {
+            background: rgba(255,255,255,0.1);
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .code-part-label {
+            font-size: 0.8rem;
+            color: #90cdf4;
+            margin-bottom: 5px;
+        }
+
+        .code-part-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #f6ad55;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .lecture-header, .content-body {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="lecture-header">
+            <div class="breadcrumb">Раздел 1.3 → Классификация и кодификация электротехнической продукции</div>
+            <h1>1.3. Классификация и кодификация электротехнической продукции</h1>
+            <div class="lecture-meta">
+                <div class="meta-item">📚 Лекционное занятие</div>
+                <div class="meta-item">⏱ 4 академических часа</div>
+                <div class="meta-item">🎯 Обязательный раздел</div>
+            </div>
+        </header>
+
+        <article class="content-body">
+            <h2>1.3.1. Классификация электротехнической продукции по видам</h2>
+            
+            <p><strong>Классификация электрооборудования</strong> — это систематизация электротехнических изделий по определённым признакам, позволяющая упорядочить многообразие продукции для целей проектирования, эксплуатации, учёта и снабжения. Классификация регламентируется комплексом нормативных документов: <span class="gost-reference">ГОСТ 18311-80</span>, <span class="gost-reference">ГОСТ 16110-82</span>, <span class="gost-reference">ОК 005-93 (ОКП)</span>.</p>
+
+            <p>В соответствии с функциональным назначением вся электротехническая продукция подразделяется на следующие основные группы:</p>
+
+            <div class="image-container">
+                <svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Фон -->
+                    <rect width="900" height="600" fill="#ffffff"/>
+                    
+                    <!-- Заголовок -->
+                    <text x="450" y="35" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#1a365d">
+                        КЛАССИФИКАЦИЯ ЭЛЕКТРОТЕХНИЧЕСКОЙ ПРОДУКЦИИ ПО ВИДАМ
+                    </text>
+                    
+                    <!-- Центральный блок -->
+                    <rect x="325" y="60" width="250" height="60" fill="#1a365d" stroke="#0d1b2a" stroke-width="3" rx="8"/>
+                    <text x="450" y="95" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="white">
+                        ЭЛЕКТРОТЕХНИЧЕСКАЯ
+                    </text>
+                    <text x="450" y="112" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="white">
+                        ПРОДУКЦИЯ
+                    </text>
+                    
+                    <!-- Линии связи от центра -->
+                    <line x1="450" y1="120" x2="450" y2="150" stroke="#4a5568" stroke-width="2"/>
+                    <line x1="450" y1="150" x2="150" y2="150" stroke="#4a5568" stroke-width="2"/>
+                    <line x1="450" y1="150" x2="750" y2="150" stroke="#4a5568" stroke-width="2"/>
+                    
+                    <!-- Вертикальные линии к блокам -->
+                    <line x1="150" y1="150" x2="150" y2="180" stroke="#4a5568" stroke-width="2"/>
+                    <line x1="300" y1="150" x2="300" y2="180" stroke="#4a5568" stroke-width="2"/>
+                    <line x1="450" y1="150" x2="450" y2="180" stroke="#4a5568" stroke-width="2"/>
+                    <line x1="600" y1="150" x2="600" y2="180" stroke="#4a5568" stroke-width="2"/>
+                    <line x1="750" y1="150" x2="750" y2="180" stroke="#4a5568" stroke-width="2"/>
+                    
+                    <!-- Блок 1: Электрические машины -->
+                    <rect x="50" y="180" width="200" height="50" fill="#c53030" stroke="#742a2a" stroke-width="2" rx="6"/>
+                    <text x="150" y="210" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="white">
+                        ЭЛЕКТРИЧЕСКИЕ МАШИНЫ
+                    </text>
+                    
+                    <!-- Подблоки электрических машин -->
+                    <rect x="50" y="245" width="95" height="80" fill="#fed7d7" stroke="#c53030" stroke-width="1" rx="4"/>
+                    <text x="97" y="265" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#742a2a">Двигатели</text>
+                    <text x="97" y="280" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#742a2a">• Асинхронные</text>
+                    <text x="97" y="293" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#742a2a">• Синхронные</text>
+                    <text x="97" y="306" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#742a2a">• Постоянного тока</text>
+                    
+                    <rect x="155" y="245" width="95" height="80" fill="#fed7d7" stroke="#c53030" stroke-width="1" rx="4"/>
+                    <text x="202" y="265" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#742a2a">Генераторы</text>
+                    <text x="202" y="280" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#742a2a">• Турбогенераторы</text>
+                    <text x="202" y="293" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#742a2a">• Гидрогенераторы</text>
+                    <text x="202" y="306" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#742a2a">• Дизель-генераторы</text>
+                    
+                    <!-- Блок 2: Трансформаторы -->
+                    <rect x="200" y="180" width="200" height="50" fill="#2c5282" stroke="#1a365d" stroke-width="2" rx="6"/>
+                    <text x="300" y="205" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="white">
+                        ТРАНСФОРМАТОРЫ
+                    </text>
+                    <text x="300" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#90cdf4">
+                        И РЕАКТОРЫ
+                    </text>
+                    
+                    <!-- Подблоки трансформаторов -->
+                    <rect x="200" y="245" width="200" height="80" fill="#dbeafe" stroke="#2c5282" stroke-width="1" rx="4"/>
+                    <text x="300" y="265" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1e40af">Типы трансформаторов:</text>
+                    <text x="300" y="282" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#1e40af">• Силовые (ТМ, ТМГ, ТСЗ)</text>
+                    <text x="300" y="295" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#1e40af">• Измерительные (ТТ, ТН)</text>
+                    <text x="300" y="308" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#1e40af">• Специальные (сварочные, печные)</text>
+                    
+                    <!-- Блок 3: Коммутационные аппараты -->
+                    <rect x="350" y="180" width="200" height="50" fill="#38a169" stroke="#276749" stroke-width="2" rx="6"/>
+                    <text x="450" y="205" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="white">
+                        КОММУТАЦИОННЫЕ
+                    </text>
+                    <text x="450" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#c6f6d5">
+                        АППАРАТЫ
+                    </text>
+                    
+                    <!-- Подблоки коммутационных аппаратов -->
+                    <rect x="350" y="245" width="200" height="80" fill="#c6f6d5" stroke="#38a169" stroke-width="1" rx="4"/>
+                    <text x="450" y="265" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#276749">Виды аппаратов:</text>
+                    <text x="450" y="282" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#276749">• Выключатели (ВА, АВМ)</text>
+                    <text x="450" y="295" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#276749">• Контакторы, пускатели</text>
+                    <text x="450" y="308" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#276749">• Разъединители, рубильники</text>
+                    
+                    <!-- Блок 4: Кабели и провода -->
+                    <rect x="500" y="180" width="200" height="50" fill="#d69e2e" stroke="#b7791f" stroke-width="2" rx="6"/>
+                    <text x="600" y="205" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="white">
+                        КАБЕЛИ И ПРОВОДА
+                    </text>
+                    
+                    <!-- Подблоки кабелей -->
+                    <rect x="500" y="245" width="200" height="80" fill="#fef3c7" stroke="#d69e2e" stroke-width="1" rx="4"/>
+                    <text x="600" y="265" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#92400e">Виды кабельной продукции:</text>
+                    <text x="600" y="282" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#92400e">• Силовые (ВВГ, АВВГ, ПвВГ)</text>
+                    <text x="600" y="295" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#92400e">• Контрольные (КВВГ, АКВВГ)</text>
+                    <text x="600" y="308" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#92400e">• Провода (ПВ, АПВ, ПВС)</text>
+                    
+                    <!-- Блок 5: Защитная аппаратура -->
+                    <rect x="650" y="180" width="200" height="50" fill="#805ad5" stroke="#6b46c1" stroke-width="2" rx="6"/>
+                    <text x="750" y="205" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="white">
+                        ЗАЩИТНАЯ
+                    </text>
+                    <text x="750" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#e9d8fd">
+                        АППАРАТУРА
+                    </text>
+                    
+                    <!-- Подблоки защитной аппаратуры -->
+                    <rect x="650" y="245" width="200" height="80" fill="#e9d8fd" stroke="#805ad5" stroke-width="1" rx="4"/>
+                    <text x="750" y="265" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#553c9a">Устройства защиты:</text>
+                    <text x="750" y="282" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#553c9a">• Автоматические выключатели</text>
+                    <text x="750" y="295" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#553c9a">• УЗО, АВДТ</text>
+                    <text x="750" y="308" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#553c9a">• Предохранители, реле</text>
+                    
+                    <!-- Нижний блок: Нормативная база -->
+                    <rect x="150" y="360" width="600" height="50" fill="#f7fafc" stroke="#2c5282" stroke-width="2" rx="6"/>
+                    <text x="450" y="390" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#1a365d">
+                        Нормативная база: ГОСТ 18311-80, ГОСТ 16110-82, ОК 005-93 (ОКП), IEC 60050
+                    </text>
+                    
+                    <!-- Линии к нормативной базе -->
+                    <line x1="150" y1="325" x2="150" y2="340" stroke="#4a5568" stroke-width="1" stroke-dasharray="3,3"/>
+                    <line x1="300" y1="325" x2="300" y2="340" stroke="#4a5568" stroke-width="1" stroke-dasharray="3,3"/>
+                    <line x1="450" y1="325" x2="450" y2="340" stroke="#4a5568" stroke-width="1" stroke-dasharray="3,3"/>
+                    <line x1="600" y1="325" x2="600" y2="340" stroke="#4a5568" stroke-width="1" stroke-dasharray="3,3"/>
+                    <line x1="750" y1="325" x2="750" y2="340" stroke="#4a5568" stroke-width="1" stroke-dasharray="3,3"/>
+                    <line x1="150" y1="340" x2="750" y2="340" stroke="#4a5568" stroke-width="1" stroke-dasharray="3,3"/>
+                    <line x1="450" y1="340" x2="450" y2="360" stroke="#4a5568" stroke-width="1" stroke-dasharray="3,3"/>
+                </svg>
+                <div class="image-caption">Рис. 1.10. Классификация электротехнической продукции по основным видам</div>
+            </div>
+
+            <h3>Электрические машины</h3>
+            
+            <p>Электрические машины предназначены для преобразования энергии: двигатели преобразуют электрическую энергию в механическую, генераторы — механическую в электрическую. Согласно <span class="gost-reference">ГОСТ 16110-82</span>, электрические машины классифицируются по следующим признакам:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Признак классификации</th>
+                        <th>Виды</th>
+                        <th>Примеры обозначений</th>
+                        <th>Область применения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>По роду тока</strong></td>
+                        <td>Переменного тока, постоянного тока</td>
+                        <td>АИР (перем.), 2ПН (пост.)</td>
+                        <td>Универсальное применение</td>
+                    </tr>
+                    <tr>
+                        <td><strong>По принципу действия</strong></td>
+                        <td>Асинхронные, синхронные, коллекторные</td>
+                        <td>АИР, СТД, 4ПН</td>
+                        <td>В зависимости от требований к регулированию</td>
+                    </tr>
+                    <tr>
+                        <td><strong>По мощности</strong></td>
+                        <td>Микромашины (до 0,5 кВт), малой, средней, большой мощности</td>
+                        <td>АИР56, АИР180, ДАЗО</td>
+                        <td>Бытовая техника, промышленность, энергетика</td>
+                    </tr>
+                    <tr>
+                        <td><strong>По исполнению</strong></td>
+                        <td>Открытые, защищённые, закрытые, взрывозащищённые</td>
+                        <td>IP23, IP44, IP54, Ex</td>
+                        <td>В зависимости от условий эксплуатации</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Трансформаторы и реакторы</h3>
+            
+            <p>Трансформаторы — статические электромагнитные устройства для преобразования переменного тока одного напряжения в переменный ток другого напряжения. Классификация трансформаторов по <span class="gost-reference">ГОСТ 11677-85</span>:</p>
+
+            <ul>
+                <li><strong>Силовые трансформаторы</strong> — для передачи и распределения электроэнергии (ТМ, ТМГ, ТМЗ, ТДН, ТРДН)</li>
+                <li><strong>Измерительные трансформаторы</strong> — для подключения измерительных приборов и релейной защиты (ТТ — трансформаторы тока, ТН — трансформаторы напряжения)</li>
+                <li><strong>Специальные трансформаторы</strong> — сварочные, печные, для преобразователей частоты</li>
+            </ul>
+
+            <p><strong>Реакторы</strong> — индуктивные аппараты для ограничения токов короткого замыкания (токоограничивающие реакторы РБ, РБСГ) или компенсации реактивной мощности (шунтирующие реакторы).</p>
+
+            <h3>Коммутационные аппараты</h3>
+            
+            <p>Коммутационные аппараты предназначены для включения, отключения и переключения электрических цепей. По <span class="gost-reference">ГОСТ 17703-72</span> они подразделяются на:</p>
+
+            <ul>
+                <li><strong>Выключатели</strong> — аппараты, способные включать, проводить и отключать токи в нормальном режиме и при коротких замыканиях (масляные, вакуумные, элегазовые, воздушные)</li>
+                <li><strong>Разъединители</strong> — для создания видимого разрыва цепи, отключение только обесточенных цепей</li>
+                <li><strong>Контакторы</strong> — для частых коммутаций при дистанционном управлении</li>
+                <li><strong>Пускатели</strong> — комплектные устройства для пуска и защиты электродвигателей</li>
+            </ul>
+
+            <h3>Кабели и провода</h3>
+            
+            <p>Кабельно-проводниковая продукция классифицируется по <span class="gost-reference">ГОСТ 15845-80</span> на следующие группы:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Группа</th>
+                        <th>Назначение</th>
+                        <th>Примеры марок</th>
+                        <th>Напряжение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Силовые кабели</strong></td>
+                        <td>Передача электроэнергии</td>
+                        <td>ВВГ, АВВГ, ПвВГ, АСБ</td>
+                        <td>До 500 кВ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Контрольные кабели</strong></td>
+                        <td>Цепи управления и сигнализации</td>
+                        <td>КВВГ, АКВВГ, КВВГнг</td>
+                        <td>До 660 В</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Установочные провода</strong></td>
+                        <td>Внутренняя проводка</td>
+                        <td>ПВ-1, ПВ-3, АПВ, ПВС</td>
+                        <td>До 450/750 В</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Гибкие кабели</strong></td>
+                        <td>Подключение подвижных механизмов</td>
+                        <td>КГ, КГН, КГЭС</td>
+                        <td>До 10 кВ</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Защитная аппаратура</h3>
+            
+            <p>Устройства защиты электроустановок обеспечивают безопасность персонала и сохранность оборудования. По <span class="gost-reference">ГОСТ IEC 60947-2</span> и <span class="gost-reference">ГОСТ 50345-2010</span> защитная аппаратура включает:</p>
+
+            <ul>
+                <li><strong>Автоматические выключатели</strong> — защита от перегрузок и коротких замыканий (ВА47, ВА88, АВМ)</li>
+                <li><strong>Устройства защитного отключения (УЗО)</strong> — защита от токов утечки</li>
+                <li><strong>Дифференциальные автоматы (АВДТ)</strong> — совмещение функций автомата и УЗО</li>
+                <li><strong>Предохранители</strong> — однократная защита от сверхтоков (ПН-2, ПР-2, НПН)</li>
+                <li><strong>Реле защиты</strong> — устройства релейной защиты (РТ, РТВ, РТЗ)</li>
+            </ul>
+
+            <h2>1.3.2. Классификация по условиям эксплуатации</h2>
+
+            <p>Условия эксплуатации определяют требования к конструкции, материалам и защитным покрытиям электрооборудования. Классификация по условиям эксплуатации регламентируется <span class="gost-reference">ГОСТ 15150-69</span>, <span class="gost-reference">ГОСТ 17516.1-90</span> и <span class="gost-reference">ГОСТ 14254-2015 (IEC 60529)</span>.</p>
+
+            <h3>Климатические исполнения</h3>
+
+            <p>Климатическое исполнение определяет способность оборудования работать в определённых макроклиматических районах. Согласно <span class="gost-reference">ГОСТ 15150-69</span> установлены следующие виды исполнений:</p>
+
+            <div class="image-container">
+                <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Фон -->
+                    <rect width="900" height="500" fill="#ffffff"/>
+                    
+                    <!-- Заголовок -->
+                    <text x="450" y="35" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#1a365d">
+                        КЛИМАТИЧЕСКИЕ ИСПОЛНЕНИЯ ЭЛЕКТРООБОРУДОВАНИЯ (ГОСТ 15150-69)
+                    </text>
+                    
+                    <!-- Блоки климатических исполнений -->
+                    <!-- УХЛ -->
+                    <rect x="50" y="70" width="160" height="120" fill="#dbeafe" stroke="#2c5282" stroke-width="2" rx="8"/>
+                    <text x="130" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24" font-weight="bold" fill="#1a365d">УХЛ</text>
+                    <text x="130" y="125" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#2c5282">Умеренный и</text>
+                    <text x="130" y="138" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#2c5282">холодный климат</text>
+                    <text x="130" y="158" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">от -60°C до +40°C</text>
+                    <text x="130" y="175" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Россия, СНГ, Европа</text>
+                    
+                    <!-- У -->
+                    <rect x="230" y="70" width="160" height="120" fill="#c6f6d5" stroke="#38a169" stroke-width="2" rx="8"/>
+                    <text x="310" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24" font-weight="bold" fill="#276749">У</text>
+                    <text x="310" y="125" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#276749">Умеренный</text>
+                    <text x="310" y="138" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#276749">климат</text>
+                    <text x="310" y="158" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">от -40°C до +40°C</text>
+                    <text x="310" y="175" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Центральная Россия</text>
+                    
+                    <!-- Т -->
+                    <rect x="410" y="70" width="160" height="120" fill="#fef3c7" stroke="#d69e2e" stroke-width="2" rx="8"/>
+                    <text x="490" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24" font-weight="bold" fill="#92400e">Т</text>
+                    <text x="490" y="125" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">Тропический</text>
+                    <text x="490" y="138" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">климат</text>
+                    <text x="490" y="158" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">от +1°C до +50°C</text>
+                    <text x="490" y="175" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Африка, Ю. Азия</text>
+                    
+                    <!-- М -->
+                    <rect x="590" y="70" width="160" height="120" fill="#e9d8fd" stroke="#805ad5" stroke-width="2" rx="8"/>
+                    <text x="670" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24" font-weight="bold" fill="#553c9a">М</text>
+                    <text x="670" y="125" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#553c9a">Морской умеренно-</text>
+                    <text x="670" y="138" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#553c9a">холодный климат</text>
+                    <text x="670" y="158" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">от -40°C до +45°C</text>
+                    <text x="670" y="175" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Судовое оборудование</text>
+                    
+                    <!-- О -->
+                    <rect x="770" y="70" width="110" height="120" fill="#fed7d7" stroke="#c53030" stroke-width="2" rx="8"/>
+                    <text x="825" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24" font-weight="bold" fill="#742a2a">О</text>
+                    <text x="825" y="125" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#742a2a">Общеклима-</text>
+                    <text x="825" y="138" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#742a2a">тическое</text>
+                    <text x="825" y="158" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Все районы</text>
+                    <text x="825" y="175" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Экспорт</text>
+                    
+                    <!-- Категории размещения -->
+                    <text x="450" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#1a365d">
+                        КАТЕГОРИИ РАЗМЕЩЕНИЯ
+                    </text>
+                    
+                    <rect x="50" y="240" width="160" height="90" fill="#f7fafc" stroke="#4a5568" stroke-width="1" rx="6"/>
+                    <text x="130" y="270" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#1a365d">1</text>
+                    <text x="130" y="290" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">На открытом воздухе</text>
+                    <text x="130" y="305" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#718096">Прямое воздействие</text>
+                    <text x="130" y="318" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#718096">климатических факторов</text>
+                    
+                    <rect x="230" y="240" width="160" height="90" fill="#f7fafc" stroke="#4a5568" stroke-width="1" rx="6"/>
+                    <text x="310" y="270" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#1a365d">2</text>
+                    <text x="310" y="290" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">Под навесом</text>
+                    <text x="310" y="305" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#718096">Защита от осадков,</text>
+                    <text x="310" y="318" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#718096">прямого солнца</text>
+                    
+                    <rect x="410" y="240" width="160" height="90" fill="#f7fafc" stroke="#4a5568" stroke-width="1" rx="6"/>
+                    <text x="490" y="270" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#1a365d">3</text>
+                    <text x="490" y="290" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">В закрытых помещениях</text>
+                    <text x="490" y="305" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#718096">Без отопления,</text>
+                    <text x="490" y="318" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#718096">естественная вентиляция</text>
+                    
+                    <rect x="590" y="240" width="160" height="90" fill="#f7fafc" stroke="#4a5568" stroke-width="1" rx="6"/>
+                    <text x="670" y="270" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#1a365d">4</text>
+                    <text x="670" y="290" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">В отапливаемых</text>
+                    <text x="670" y="305" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#718096">Регулируемый</text>
+                    <text x="670" y="318" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#718096">микроклимат</text>
+                    
+                    <rect x="770" y="240" width="110" height="90" fill="#f7fafc" stroke="#4a5568" stroke-width="1" rx="6"/>
+                    <text x="825" y="270" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#1a365d">5</text>
+                    <text x="825" y="290" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">С высокой</text>
+                    <text x="825" y="305" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#718096">влажностью</text>
+                    <text x="825" y="318" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#718096">(100%)</text>
+                    
+                    <!-- Пример полного обозначения -->
+                    <rect x="200" y="360" width="500" height="80" fill="#1a365d" stroke="#0d1b2a" stroke-width="2" rx="8"/>
+                    <text x="450" y="390" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="white">
+                        Пример полного обозначения: УХЛ4
+                    </text>
+                    <text x="450" y="415" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#90cdf4">
+                        Умеренный и холодный климат, размещение в отапливаемых помещениях
+                    </text>
+                    <text x="450" y="432" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#e2e8f0">
+                        Диапазон температур: от +1°C до +40°C, относительная влажность до 80%
+                    </text>
+                    
+                    <!-- Примечание -->
+                    <text x="450" y="470" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#718096" font-style="italic">
+                        * Дополнительные исполнения: ХЛ (холодный), ТВ (тропический влажный), ТС (тропический сухой), В (все макроклиматические районы)
+                    </text>
+                </svg>
+                <div class="image-caption">Рис. 1.11. Климатические исполнения и категории размещения электрооборудования</div>
+            </div>
+
+            <h3>Степени защиты оболочки (IP-код)</h3>
+
+            <p>Степень защиты оборудования от проникновения твёрдых предметов и воды обозначается кодом IP (Ingress Protection) по <span class="gost-reference">ГОСТ 14254-2015 (IEC 60529)</span>:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Первая цифра (защита от твёрдых предметов)</th>
+                        <th>Вторая цифра (защита от воды)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>0</strong> — защита отсутствует</td>
+                        <td><strong>0</strong> — защита отсутствует</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1</strong> — от предметов ≥50 мм (тыльная сторона руки)</td>
+                        <td><strong>1</strong> — от вертикально падающих капель</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2</strong> — от предметов ≥12,5 мм (палец)</td>
+                        <td><strong>2</strong> — от капель под углом 15°</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3</strong> — от предметов ≥2,5 мм (инструмент)</td>
+                        <td><strong>3</strong> — от дождя под углом 60°</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4</strong> — от предметов ≥1 мм (проволока)</td>
+                        <td><strong>4</strong> — от брызг с любого направления</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5</strong> — пылезащищённое</td>
+                        <td><strong>5</strong> — от струй воды</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6</strong> — пыленепроницаемое</td>
+                        <td><strong>6</strong> — от сильных струй, волн</td>
+                    </tr>
+                    <tr>
+                        <td>—</td>
+                        <td><strong>7</strong> — от кратковременного погружения</td>
+                    </tr>
+                    <tr>
+                        <td>—</td>
+                        <td><strong>8</strong> — от длительного погружения</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="example-box">
+                <div class="example-title">📊 Примеры применения степеней защиты</div>
+                <ul>
+                    <li><strong>IP20</strong> — оборудование для сухих отапливаемых помещений (щиты, шкафы в электрощитовых)</li>
+                    <li><strong>IP44</strong> — оборудование для помещений с повышенной влажностью (санузлы, кухни)</li>
+                    <li><strong>IP54</strong> — оборудование для наружной установки под навесом</li>
+                    <li><strong>IP65</strong> — оборудование для наружной установки, промывка струями воды</li>
+                    <li><strong>IP68</strong> — погружные насосы, подводные светильники</li>
+                </ul>
+            </div>
+
+            <h3>Взрывозащищённое исполнение</h3>
+
+            <p>Для работы во взрывоопасных зонах применяется оборудование с различными видами взрывозащиты по <span class="gost-reference">ГОСТ 31610.0-2019 (IEC 60079-0)</span>:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Вид защиты</th>
+                        <th>Обозначение</th>
+                        <th>Принцип защиты</th>
+                        <th>Зона применения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Взрывонепроницаемая оболочка</strong></td>
+                        <td>Ex d</td>
+                        <td>Оболочка выдерживает внутренний взрыв, не передавая его наружу</td>
+                        <td>Зоны 1, 2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Повышенная защита</strong></td>
+                        <td>Ex e</td>
+                        <td>Исключение искрения и нагрева при нормальной работе</td>
+                        <td>Зоны 1, 2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Искробезопасная цепь</strong></td>
+                        <td>Ex i</td>
+                        <td>Ограничение энергии искры до безопасного уровня</td>
+                        <td>Зоны 0, 1, 2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Масляное заполнение</strong></td>
+                        <td>Ex o</td>
+                        <td>Погружение токоведущих частей в масло</td>
+                        <td>Зоны 1, 2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Кварцевое заполнение</strong></td>
+                        <td>Ex q</td>
+                        <td>Заполнение оболочки кварцевым песком</td>
+                        <td>Зоны 1, 2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Заполнение защитным газом</strong></td>
+                        <td>Ex p</td>
+                        <td>Избыточное давление защитного газа в оболочке</td>
+                        <td>Зоны 1, 2</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>⚠️ Требования безопасности:</strong> Применение электрооборудования во взрывоопасных зонах без соответствующей маркировки взрывозащиты запрещено. Маркировка наносится на корпус оборудования и включает: знак Ex, вид защиты, группу и температурный класс (например: Ex d IIB T4).
+            </div>
+
+            <h2>1.3.3. Системы кодирования и маркировки</h2>
+
+            <p>Системы кодирования обеспечивают однозначную идентификацию электрооборудования, передачу информации о его характеристиках и применении. Основные системы кодирования регламентированы стандартами ГОСТ и отраслевыми нормативными документами.</p>
+
+            <h3>Условные обозначения электрических машин</h3>
+
+            <p>Структура обозначения асинхронных двигателей серии АИР по <span class="gost-reference">ГОСТ 26772-85</span>:</p>
+
+            <div class="code-example">
+                <div style="text-align: center; font-size: 1.3rem; margin-bottom: 15px;">
+                    АИР 180 М 4 У3
+                </div>
+                <div class="code-breakdown">
+                    <div class="code-part">
+                        <div class="code-part-label">Серия</div>
+                        <div class="code-part-value">АИР</div>
+                    </div>
+                    <div class="code-part">
+                        <div class="code-part-label">Высота оси, мм</div>
+                        <div class="code-part-value">180</div>
+                    </div>
+                    <div class="code-part">
+                        <div class="code-part-label">Длина станины</div>
+                        <div class="code-part-value">М</div>
+                    </div>
+                    <div class="code-part">
+                        <div class="code-part-label">Число полюсов</div>
+                        <div class="code-part-value">4</div>
+                    </div>
+                    <div class="code-part">
+                        <div class="code-part-label">Климат. исп.</div>
+                        <div class="code-part-value">У3</div>
+                    </div>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Серия</th>
+                        <th>Расшифровка</th>
+                        <th>Особенности</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>АИР</strong></td>
+                        <td>Асинхронный, Интерэлектро, Россия</td>
+                        <td>Современная унифицированная серия</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4А, 4АМ</strong></td>
+                        <td>Четвёртая серия, модернизированный</td>
+                        <td>Предыдущее поколение (до 1990-х)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5А, 5АМ</strong></td>
+                        <td>Пятая серия</td>
+                        <td>Энергоэффективные двигатели</td>
+                    </tr>
+                    <tr>
+                        <td><strong>АД</strong></td>
+                        <td>Асинхронный двигатель</td>
+                        <td>Базовая серия</td>
+                    </tr>
+                    <tr>
+                        <td><strong>АИРМ</strong></td>
+                        <td>АИР модернизированный</td>
+                        <td>Повышенный КПД (IE2, IE3)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Обозначения трансформаторов</h3>
+
+            <p>Система обозначений силовых трансформаторов по <span class="gost-reference">ГОСТ 11677-85</span>:</p>
+
+            <div class="code-example">
+                <div style="text-align: center; font-size: 1.3rem; margin-bottom: 15px;">
+                    ТМГ - 1000 / 10 - У1
+                </div>
+                <div class="code-breakdown">
+                    <div class="code-part">
+                        <div class="code-part-label">Тип</div>
+                        <div class="code-part-value">Т</div>
+                    </div>
+                    <div class="code-part">
+                        <div class="code-part-label">Охлаждение</div>
+                        <div class="code-part-value">М</div>
+                    </div>
+                    <div class="code-part">
+                        <div class="code-part-label">Исполнение</div>
+                        <div class="code-part-value">Г</div>
+                    </div>
+                    <div class="code-part">
+                        <div class="code-part-label">Мощность, кВА</div>
+                        <div class="code-part-value">1000</div>
+                    </div>
+                    <div class="code-part">
+                        <div class="code-part-label">Напряжение ВН, кВ</div>
+                        <div class="code-part-value">10</div>
+                    </div>
+                    <div class="code-part">
+                        <div class="code-part-label">Климат. исп.</div>
+                        <div class="code-part-value">У1</div>
+                    </div>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Буква</th>
+                        <th>Позиция</th>
+                        <th>Значение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Т</strong></td>
+                        <td>1 — тип</td>
+                        <td>Трансформатор (А — автотрансформатор)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Р, Т</strong></td>
+                        <td>2 — обмотки</td>
+                        <td>Трёхфазный (без буквы), расщеплённая обмотка (Р), трёхобмоточный (Т)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>М, Д, С, Ц</strong></td>
+                        <td>3 — охлаждение</td>
+                        <td>Масляное естественное (М), с дутьём (Д), сухое (С), с принуд. циркуляцией (Ц)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Г, З, Н</strong></td>
+                        <td>4 — исполнение</td>
+                        <td>Герметичное (Г), защитное (З), с РПН (Н)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Маркировка кабелей и проводов</h3>
+
+            <p>Система обозначений кабельной продукции по <span class="gost-reference">ГОСТ 16442-80</span>:</p>
+
+            <div class="code-example">
+                <div style="text-align: center; font-size: 1.3rem; margin-bottom: 15px;">
+                    АВВГнг(А)-LS 4×120
+                </div>
+                <div class="code-breakdown">
+                    <div class="code-part">
+                        <div class="code-part-label">Материал жилы</div>
+                        <div class="code-part-value">А</div>
+                    </div>
+                    <div class="code-part">
+                        <div class="code-part-label">Изоляция</div>
+                        <div class="code-part-value">В</div>
+                    </div>
+                    <div class="code-part">
+                        <div class="code-part-label">Оболочка</div>
+                        <div class="code-part-value">В</div>
+                    </div>
+                    <div class="code-part">
+                        <div class="code-part-label">Без защ. покрова</div>
+                        <div class="code-part-value">Г</div>
+                    </div>
+                    <div class="code-part">
+                        <div class="code-part-label">Не распр. горение</div>
+                        <div class="code-part-value">нг(А)</div>
+                    </div>
+                    <div class="code-part">
+                        <div class="code-part-label">Низкое дымовыд.</div>
+                        <div class="code-part-value">LS</div>
+                    </div>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Обозначение</th>
+                        <th>Расшифровка</th>
+                        <th>Пример марки</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>А</strong> (первая буква)</td>
+                        <td>Алюминиевая жила (отсутствие — медная)</td>
+                        <td>АВВГ — алюминий, ВВГ — медь</td>
+                    </tr>
+                    <tr>
+                        <td><strong>В</strong></td>
+                        <td>Изоляция из ПВХ-пластиката</td>
+                        <td>ВВГ, ПВ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>П</strong></td>
+                        <td>Изоляция из полиэтилена</td>
+                        <td>ПвВГ — сшитый полиэтилен</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Б</strong></td>
+                        <td>Броня из стальных лент</td>
+                        <td>ВБбШв — бронированный</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Г</strong></td>
+                        <td>Без защитного покрова (голый)</td>
+                        <td>ВВГ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>нг</strong></td>
+                        <td>Не распространяющий горение</td>
+                        <td>ВВГнг</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LS</strong></td>
+                        <td>Low Smoke — пониженное дымовыделение</td>
+                        <td>ВВГнг-LS</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FR</strong></td>
+                        <td>Fire Resistant — огнестойкий</td>
+                        <td>ВВГнг-FRLS</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Общероссийский классификатор продукции (ОКП)</h3>
+
+            <p><span class="gost-reference">ОК 005-93</span> — Общероссийский классификатор продукции устанавливает систему кодирования всех видов продукции, включая электротехническую. Код ОКП состоит из 6 цифр:</p>
+
+            <div class="highlight-box">
+                <strong>Структура кода ОКП для электрооборудования:</strong>
+                <ul>
+                    <li><strong>34</strong> — Оборудование электротехническое</li>
+                    <li><strong>34 1000</strong> — Машины электрические</li>
+                    <li><strong>34 2000</strong> — Трансформаторы</li>
+                    <li><strong>34 3000</strong> — Аппаратура электрическая высоковольтная</li>
+                    <li><strong>34 4000</strong> — Аппаратура электрическая низковольтная</li>
+                    <li><strong>35 0000</strong> — Кабели, провода, шнуры</li>
+                </ul>
+            </div>
+
+            <h2>1.3.4. Паспортизация электрооборудования</h2>
+
+            <p>Паспорт электрооборудования — технический документ, удостоверяющий качество изделия и содержащий сведения, необходимые для его эксплуатации. Требования к паспортам установлены <span class="gost-reference">ГОСТ 2.601-2019</span>.</p>
+
+            <h3>Содержание паспорта оборудования</h3>
+
+            <p>Паспорт электрооборудования должен содержать следующие разделы:</p>
+
+            <div class="image-container">
+                <svg viewBox="0 0 900 450" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Фон -->
+                    <rect width="900" height="450" fill="#ffffff"/>
+                    
+                    <!-- Заголовок -->
+                    <text x="450" y="35" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#1a365d">
+                        СТРУКТУРА ПАСПОРТА ЭЛЕКТРООБОРУДОВАНИЯ
+                    </text>
+                    
+                    <!-- Центральный блок - Паспорт -->
+                    <rect x="350" y="60" width="200" height="60" fill="#1a365d" stroke="#0d1b2a" stroke-width="3" rx="8"/>
+                    <text x="450" y="95" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="white">
+                        ПАСПОРТ
+                    </text>
+                    
+                    <!-- Линии связи -->
+                    <line x1="450" y1="120" x2="450" y2="150" stroke="#4a5568" stroke-width="2"/>
+                    <line x1="150" y1="150" x2="750" y2="150" stroke="#4a5568" stroke-width="2"/>
+                    
+                    <!-- Вертикальные линии -->
+                    <line x1="150" y1="150" x2="150" y2="180" stroke="#4a5568" stroke-width="2"/>
+                    <line x1="300" y1="150" x2="300" y2="180" stroke="#4a5568" stroke-width="2"/>
+                    <line x1="450" y1="150" x2="450" y2="180" stroke="#4a5568" stroke-width="2"/>
+                    <line x1="600" y1="150" x2="600" y2="180" stroke="#4a5568" stroke-width="2"/>
+                    <line x1="750" y1="150" x2="750" y2="180" stroke="#4a5568" stroke-width="2"/>
+                    
+                    <!-- Блок 1: Общие сведения -->
+                    <rect x="50" y="180" width="200" height="130" fill="#dbeafe" stroke="#2c5282" stroke-width="2" rx="6"/>
+                    <text x="150" y="205" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#1a365d">
+                        ОБЩИЕ СВЕДЕНИЯ
+                    </text>
+                    <text x="60" y="230" font-family="Segoe UI, sans-serif" font-size="10" fill="#2c5282">• Наименование изделия</text>
+                    <text x="60" y="248" font-family="Segoe UI, sans-serif" font-size="10" fill="#2c5282">• Обозначение (тип, марка)</text>
+                    <text x="60" y="266" font-family="Segoe UI, sans-serif" font-size="10" fill="#2c5282">• Заводской номер</text>
+                    <text x="60" y="284" font-family="Segoe UI, sans-serif" font-size="10" fill="#2c5282">• Дата изготовления</text>
+                    <text x="60" y="302" font-family="Segoe UI, sans-serif" font-size="10" fill="#2c5282">• Соответствие стандартам</text>
+                    
+                    <!-- Блок 2: Технические характеристики -->
+                    <rect x="200" y="180" width="200" height="130" fill="#c6f6d5" stroke="#38a169" stroke-width="2" rx="6"/>
+                    <text x="300" y="205" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#276749">
+                        ТЕХНИЧЕСКИЕ
+                    </text>
+                    <text x="300" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#276749">
+                        ХАРАКТЕРИСТИКИ
+                    </text>
+                    <text x="210" y="245" font-family="Segoe UI, sans-serif" font-size="10" fill="#276749">• Номинальные параметры</text>
+                    <text x="210" y="263" font-family="Segoe UI, sans-serif" font-size="10" fill="#276749">• Режим работы</text>
+                    <text x="210" y="281" font-family="Segoe UI, sans-serif" font-size="10" fill="#276749">• Класс изоляции</text>
+                    <text x="210" y="299" font-family="Segoe UI, sans-serif" font-size="10" fill="#276749">• КПД, cos φ</text>
+                    
+                    <!-- Блок 3: Сведения об изготовителе -->
+                    <rect x="350" y="180" width="200" height="130" fill="#fef3c7" stroke="#d69e2e" stroke-width="2" rx="6"/>
+                    <text x="450" y="205" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#92400e">
+                        СВЕДЕНИЯ ОБ
+                    </text>
+                    <text x="450" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#92400e">
+                        ИЗГОТОВИТЕЛЕ
+                    </text>
+                                        <text x="360" y="245" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">• Наименование предприятия</text>
+                    <text x="360" y="263" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">• Юридический адрес</text>
+                    <text x="360" y="281" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">• Контактные данные</text>
+                    <text x="360" y="299" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">• Товарный знак</text>
+                    
+                    <!-- Блок 4: Гарантийные обязательства -->
+                    <rect x="500" y="180" width="200" height="130" fill="#e9d8fd" stroke="#805ad5" stroke-width="2" rx="6"/>
+                    <text x="600" y="205" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#553c9a">
+                        ГАРАНТИЙНЫЕ
+                    </text>
+                    <text x="600" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#553c9a">
+                        ОБЯЗАТЕЛЬСТВА
+                    </text>
+                    <text x="510" y="245" font-family="Segoe UI, sans-serif" font-size="10" fill="#553c9a">• Гарантийный срок</text>
+                    <text x="510" y="263" font-family="Segoe UI, sans-serif" font-size="10" fill="#553c9a">• Срок службы</text>
+                    <text x="510" y="281" font-family="Segoe UI, sans-serif" font-size="10" fill="#553c9a">• Условия гарантии</text>
+                    <text x="510" y="299" font-family="Segoe UI, sans-serif" font-size="10" fill="#553c9a">• Сервисные центры</text>
+                    
+                    <!-- Блок 5: Эксплуатационные данные -->
+                    <rect x="650" y="180" width="200" height="130" fill="#fed7d7" stroke="#c53030" stroke-width="2" rx="6"/>
+                    <text x="750" y="205" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#742a2a">
+                        ЭКСПЛУАТАЦИОННЫЕ
+                    </text>
+                    <text x="750" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#742a2a">
+                        ДАННЫЕ
+                    </text>
+                    <text x="660" y="245" font-family="Segoe UI, sans-serif" font-size="10" fill="#742a2a">• Дата ввода в эксплуатацию</text>
+                    <text x="660" y="263" font-family="Segoe UI, sans-serif" font-size="10" fill="#742a2a">• Записи о ремонтах</text>
+                    <text x="660" y="281" font-family="Segoe UI, sans-serif" font-size="10" fill="#742a2a">• Результаты испытаний</text>
+                    <text x="660" y="299" font-family="Segoe UI, sans-serif" font-size="10" fill="#742a2a">• Наработка (моточасы)</text>
+                    
+                    <!-- Нижний блок: Нормативная база -->
+                    <rect x="200" y="340" width="500" height="50" fill="#f7fafc" stroke="#2c5282" stroke-width="2" rx="6"/>
+                    <text x="450" y="365" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1a365d">
+                        Нормативная база: ГОСТ 2.601-2019, ГОСТ 2.610-2006, ГОСТ Р 2.601-2019
+                    </text>
+                    <text x="450" y="382" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">
+                        Паспорт является юридическим документом и хранится весь срок эксплуатации оборудования
+                    </text>
+                    
+                    <!-- Примечание -->
+                    <text x="450" y="430" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#718096" font-style="italic">
+                        * Паспорт должен быть на русском языке, допускается дублирование на иностранном языке
+                    </text>
+                </svg>
+                <div class="image-caption">Рис. 1.12. Структура паспорта электрооборудования согласно ГОСТ 2.601-2019</div>
+            </div>
+
+            <h3>Технические характеристики в паспорте</h3>
+
+            <p>Раздел технических характеристик содержит основные параметры оборудования, необходимые для правильной эксплуатации:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Вид оборудования</th>
+                        <th>Основные параметры в паспорте</th>
+                        <th>Единицы измерения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Электродвигатели</strong></td>
+                        <td>Мощность, напряжение, ток, частота вращения, КПД, cos φ, класс изоляции, режим работы</td>
+                        <td>кВт, В, А, об/мин, %, —</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Трансформаторы</strong></td>
+                        <td>Мощность, напряжение ВН/НН, группа соединения, потери ХХ и КЗ, напряжение КЗ, ток ХХ</td>
+                        <td>кВА, кВ, —, кВт, %, %</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Автоматические выключатели</strong></td>
+                        <td>Номинальный ток, напряжение, отключающая способность, характеристика срабатывания</td>
+                        <td>А, В, кА, тип (B, C, D)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Кабели</strong></td>
+                        <td>Сечение жил, число жил, номинальное напряжение, допустимый ток, сопротивление изоляции</td>
+                        <td>мм², шт., кВ, А, МОм·км</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Контакторы</strong></td>
+                        <td>Номинальный ток, напряжение, категория применения, механическая износостойкость</td>
+                        <td>А, В, AC-1...AC-4, циклов</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Гарантийные обязательства</h3>
+
+            <p>Раздел гарантийных обязательств определяет условия, при которых изготовитель несёт ответственность за качество продукции:</p>
+
+            <div class="highlight-box">
+                <strong>Типовые гарантийные сроки для электрооборудования:</strong>
+                <ul>
+                    <li><strong>Электродвигатели:</strong> 2-3 года или 10 000-20 000 часов наработки</li>
+                    <li><strong>Силовые трансформаторы:</strong> 3-5 лет с даты ввода в эксплуатацию</li>
+                    <li><strong>Автоматические выключатели:</strong> 2-5 лет в зависимости от производителя</li>
+                    <li><strong>Кабельная продукция:</strong> 3-5 лет при соблюдении условий монтажа и эксплуатации</li>
+                    <li><strong>Контакторы и пускатели:</strong> 2-3 года или определённое число циклов коммутации</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Условия сохранения гарантии:</strong>
+                <ul>
+                    <li>Соблюдение условий транспортирования и хранения</li>
+                    <li>Монтаж квалифицированным персоналом согласно инструкции</li>
+                    <li>Эксплуатация в пределах номинальных параметров</li>
+                    <li>Соблюдение климатических условий (температура, влажность)</li>
+                    <li>Проведение регламентного технического обслуживания</li>
+                    <li>Отсутствие механических повреждений и следов вскрытия</li>
+                </ul>
+            </div>
+
+            <h3>Эксплуатационная документация</h3>
+
+            <p>Помимо паспорта, в комплект эксплуатационной документации согласно <span class="gost-reference">ГОСТ 2.601-2019</span> входят:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Документ</th>
+                        <th>Назначение</th>
+                        <th>Обязательность</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Руководство по эксплуатации (РЭ)</strong></td>
+                        <td>Описание устройства, порядок монтажа, эксплуатации и технического обслуживания</td>
+                        <td>Обязательно для сложного оборудования</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Инструкция по монтажу (ИМ)</strong></td>
+                        <td>Порядок установки и подключения оборудования</td>
+                        <td>При необходимости специальных работ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Формуляр (ФО)</strong></td>
+                        <td>Учёт наработки, ремонтов, замены комплектующих</td>
+                        <td>Для ответственного оборудования</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ведомость ЗИП</strong></td>
+                        <td>Перечень запасных частей, инструмента и принадлежностей</td>
+                        <td>При наличии комплекта ЗИП</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Схемы (Э3, Э4)</strong></td>
+                        <td>Принципиальные и монтажные электрические схемы</td>
+                        <td>Для комплектных устройств</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="example-box">
+                <div class="example-title">📊 Практический пример: Паспортизация на предприятии</div>
+                <p><strong>Объект:</strong> ОАО «Кузбасская топливная компания», разрез «Краснобродский»</p>
+                <p><strong>Период внедрения:</strong> 2021-2022 гг.</p>
+                <p><strong>Мероприятие:</strong> Внедрение электронной системы паспортизации электрооборудования</p>
+                <p><strong>Охват:</strong> 1 250 единиц электрооборудования (двигатели, трансформаторы, КТП, кабельные линии)</p>
+                <p><strong>Результаты:</strong></p>
+                <ul>
+                    <li>Сокращение времени поиска технической документации с 30-40 минут до 2-3 минут</li>
+                    <li>Снижение количества аварийных отказов на 25% за счёт своевременного ТО</li>
+                    <li>Оптимизация складских запасов ЗИП — экономия 4,5 млн руб./год</li>
+                    <li>Автоматическое формирование графиков ППР и испытаний</li>
+                    <li>Обеспечение соответствия требованиям Ростехнадзора при проверках</li>
+                </ul>
+            </div>
+
+            <h3>Ведение паспортов в процессе эксплуатации</h3>
+
+            <p>В процессе эксплуатации в паспорт вносятся записи о:</p>
+
+            <ul>
+                <li><strong>Вводе в эксплуатацию</strong> — дата, место установки, ответственное лицо</li>
+                <li><strong>Периодических испытаниях</strong> — результаты измерения сопротивления изоляции, проверки защит</li>
+                <li><strong>Техническом обслуживании</strong> — виды работ, дата, исполнитель</li>
+                <li><strong>Ремонтах</strong> — характер неисправности, выполненные работы, заменённые детали</li>
+                <li><strong>Авариях и отказах</strong> — причины, последствия, принятые меры</li>
+                <li><strong>Модернизации</strong> — изменения конструкции или параметров</li>
+            </ul>
+
+            <div class="formula-box">
+                <strong>Срок хранения паспортов:</strong><br>
+                Паспорта электрооборудования хранятся весь период эксплуатации изделия<br>
+                и не менее 3 лет после списания (ГОСТ 2.601-2019, п. 5.1.4)
+            </div>
+
+            <h2>Контрольные вопросы</h2>
+
+            <ol>
+                <li>Назовите основные группы электротехнической продукции по функциональному назначению.</li>
+                <li>Какие климатические исполнения электрооборудования предусмотрены ГОСТ 15150-69?</li>
+                <li>Расшифруйте обозначение электродвигателя АИР180М4У3.</li>
+                <li>Что означает код IP54 для электрооборудования?</li>
+                <li>Какие виды взрывозащиты применяются для электрооборудования?</li>
+                <li>Расшифруйте маркировку кабеля АВВГнг(А)-LS 4×120.</li>
+                <li>Какие разделы должен содержать паспорт электрооборудования?</li>
+                <li>Назовите типовые гарантийные сроки для различных видов электрооборудования.</li>
+                <li>Какие записи вносятся в паспорт в процессе эксплуатации?</li>
+                <li>Что такое ОКП и как формируется код для электротехнической продукции?</li>
+            </ol>
+
+            <h2>Литература и нормативные документы</h2>
+            
+            <div class="reference">
+                <p><strong>Основные нормативные документы:</strong></p>
+                <ol>
+                    <li>ГОСТ 18311-80 «Изделия электротехнические. Термины и определения основных понятий»</li>
+                    <li>ГОСТ 16110-82 «Машины электрические вращающиеся. Классификация»</li>
+                    <li>ГОСТ 15150-69 «Машины, приборы и другие технические изделия. Исполнения для различных климатических районов»</li>
+                    <li>ГОСТ 14254-2015 (IEC 60529:2013) «Степени защиты, обеспечиваемые оболочками (Код IP)»</li>
+                    <li>ГОСТ 31610.0-2019 (IEC 60079-0:2017) «Взрывоопасные среды. Часть 0. Оборудование. Общие требования»</li>
+                    <li>ГОСТ 11677-85 «Трансформаторы силовые. Общие технические условия»</li>
+                    <li>ГОСТ 16442-80 «Кабели силовые с пластмассовой изоляцией. Технические условия»</li>
+                    <li>ГОСТ 2.601-2019 «ЕСКД. Эксплуатационные документы»</li>
+                    <li>ОК 005-93 «Общероссийский классификатор продукции»</li>
+                    <li>ГОСТ 26772-85 «Машины электрические вращающиеся. Обозначение»</li>
+                </ol>
+                
+                <p style="margin-top: 15px;"><strong>Дополнительная литература:</strong></p>
+                <ol>
+                    <li>Кудрин Б.И. Электроснабжение промышленных предприятий: Учебник для вузов. — М.: Интермет Инжиниринг, 2019. — 672 с.</li>
+                    <li>Шеховцов В.П. Справочное пособие по электрооборудованию и электроснабжению. — М.: ФОРУМ, 2020. — 136 с.</li>
+                    <li>Правила устройства электроустановок (ПУЭ). — 7-е изд. — М.: ЭНАС, 2023.</li>
+                    <li>Справочник по электрическим машинам / Под ред. И.П. Копылова, Б.К. Клокова. — М.: Энергоатомиздат, 2018. — 456 с.</li>
+                </ol>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="1-2.html" class="nav-btn">← Предыдущая тема: 1.2. Роль стандартизации</a>
+                <a href="1-4.html" class="nav-btn">Следующая тема: 1.4. Система планово-предупредительных ремонтов →</a>
+            </div>
+        </article>
+
+        <footer class="footer">
+            <p>© 2026 Кузбасский государственный технический университет имени Т.Ф. Горбачева</p>
+            <p>Кафедра электрических станций, сетей и систем электроснабжения предприятий (ЭГиПП)</p>
+            <p>Автор: Артемасов В.В., к.т.н., доцент</p>
+        </footer>
+    </div>
+</body>
+</html>

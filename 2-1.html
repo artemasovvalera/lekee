@@ -1,0 +1,2147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.1. Эксплуатация воздушных линий электропередачи - Эксплуатация электрооборудования</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 50%, #1a365d 100%);
+            min-height: 100vh;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .lecture-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-left: 6px solid #c53030;
+        }
+
+        .breadcrumb {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #1a365d;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .lecture-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .content-body {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #1a365d;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #c53030;
+        }
+
+        h3 {
+            color: #2c5282;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 25px 0 15px 0;
+        }
+
+        h4 {
+            color: #4a5568;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .formula-box {
+            background: #1a365d;
+            color: white;
+            border-left: 4px solid #c53030;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1rem;
+        }
+
+        .formula-box .formula {
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .formula-box .formula-desc {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: #2c5282;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:hover {
+            background: #f7fafc;
+        }
+
+        .image-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .image-container svg {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-caption {
+            color: #4a5568;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);
+            border-left: 4px solid #f6ad55;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+            border-left: 4px solid #c53030;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            color: #742a2a;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .example-title {
+            font-weight: 700;
+            color: #234e52;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e8f4fd 0%, #bee3f8 100%);
+            border-left: 4px solid #3182ce;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .reference {
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .reference h4 {
+            color: #1a365d;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #c53030;
+            padding-bottom: 10px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e2e8f0;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: #2c5282;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #1a365d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .gost-reference {
+            display: inline-block;
+            background: #edf2f7;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .column-box {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .column-box h4 {
+            color: #2c5282;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f6ad55;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .lecture-header, .content-body {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .two-column, .three-column {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+   .nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid #e2e8f0;
+    gap: 15px;
+}
+
+.nav-btn {
+    padding: 12px 24px;
+    background: #2c5282;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+    flex: 1;
+    max-width: 300px;
+}
+
+.nav-btn:hover {
+    background: #576a84;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.nav-btn-home {
+    background: #c53030;
+    flex: 0 0 auto;
+    max-width: 180px;
+}
+
+.nav-btn-home:hover {
+    background: #9b2c2c;
+}
+
+@media (max-width: 768px) {
+    .nav-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .nav-btn {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .nav-btn-home {
+        order: -1; /* Оглавление первым на мобильных */
+        max-width: 100%;
+    }
+}
+   </style>
+</head>
+<body>
+    
+    <div class="container">
+      <div class="nav-buttons">
+    <a href="1-5.html" class="nav-btn">← Предыдущая тема: 1.5. Система ППР</a>
+    <a href="start.html" class="nav-btn nav-btn-home">📚 Оглавление</a>
+    <a href="2-2.html" class="nav-btn">Следующая тема: 2.2. Эксплуатация КЛ →</a>
+</div>
+      <header class="lecture-header">
+            <div class="breadcrumb">Раздел 2 → Тема 2.1 → Эксплуатация воздушных линий электропередачи</div>
+            <h1>2.1. Эксплуатация воздушных линий электропередачи (ВЛ)</h1>
+            <div class="lecture-meta">
+                <div class="meta-item">📚 Лекционное занятие</div>
+                <div class="meta-item">⏱ 2 академических часа</div>
+                <div class="meta-item">🎯 Раздел 2: Эксплуатация электрооборудования</div>
+            </div>
+        </header>
+
+        <article class="content-body">
+            
+            <!-- ВВЕДЕНИЕ -->
+            <h2>Введение</h2>
+            
+            <p>Воздушные линии электропередачи (ВЛ) являются основным средством передачи электрической энергии на большие расстояния и распределения её между потребителями. В Российской Федерации общая протяжённость воздушных линий всех классов напряжения составляет более 2,5 миллиона километров, что делает их важнейшим элементом электроэнергетической инфраструктуры страны.</p>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <span class="stat-value">2,5 млн</span>
+                    <span class="stat-label">км ВЛ в России</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">70%</span>
+                    <span class="stat-label">электроэнергии передаётся по ВЛ</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">35-50</span>
+                    <span class="stat-label">лет срок службы ВЛ</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">60%</span>
+                    <span class="stat-label">ВЛ старше 30 лет</span>
+                </div>
+            </div>
+
+            <p>Эксплуатация воздушных линий электропередачи представляет собой комплекс организационных и технических мероприятий, направленных на поддержание ВЛ в работоспособном состоянии, обеспечение их надёжной и безопасной работы. Особенностью эксплуатации ВЛ является их значительная протяжённость, расположение на открытом воздухе и подверженность воздействию атмосферных факторов — ветра, гололёда, грозовых разрядов, температурных колебаний.</p>
+
+            <div class="definition-box">
+                <strong>Определение:</strong> <em>Воздушная линия электропередачи (ВЛ)</em> — устройство для передачи и распределения электрической энергии по проводам, расположенным на открытом воздухе и прикреплённым при помощи изоляторов и арматуры к опорам или кронштейнам, стойкам на инженерных сооружениях (мостах, путепроводах и т.п.) (<span class="gost-reference">ПУЭ, п. 2.5.2</span>).
+            </div>
+
+            <p>Правильная организация эксплуатации ВЛ позволяет обеспечить бесперебойное электроснабжение потребителей, продлить срок службы линий и минимизировать затраты на их содержание. Основными нормативными документами, регламентирующими эксплуатацию ВЛ, являются:</p>
+
+            <ul>
+                <li><span class="gost-reference">ПУЭ (глава 2.5)</span> — требования к устройству воздушных линий</li>
+                <li><span class="gost-reference">ПТЭЭП (глава 2.3)</span> — правила технической эксплуатации ВЛ</li>
+                <li><span class="gost-reference">Правила по охране труда при эксплуатации электроустановок</span> — требования безопасности</li>
+                <li><span class="gost-reference">ГОСТ 839-2019</span> — провода неизолированные для воздушных линий</li>
+                <li><span class="gost-reference">СТО 56947007-29.240.55.016-2008</span> — нормы технологического проектирования ВЛ</li>
+            </ul>
+
+            <!-- РАЗДЕЛ 2.1.1 -->
+            <h2>2.1.1. Конструкция и элементы ВЛ</h2>
+
+            <p>Воздушная линия электропередачи представляет собой сложное инженерное сооружение, состоящее из множества элементов, каждый из которых выполняет определённую функцию. Знание конструкции и назначения элементов ВЛ является необходимым условием для организации их правильной эксплуатации.</p>
+
+            <h3>Классификация воздушных линий</h3>
+
+            <p>Воздушные линии классифицируются по нескольким признакам:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Признак классификации</th>
+                        <th>Виды ВЛ</th>
+                        <th>Характеристика</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="4"><strong>По номинальному напряжению</strong></td>
+                        <td>ВЛ до 1 кВ</td>
+                        <td>0,4 кВ — распределительные сети</td>
+                    </tr>
+                    <tr>
+                        <td>ВЛ 1-35 кВ</td>
+                        <td>6, 10, 20, 35 кВ — распределительные сети</td>
+                    </tr>
+                    <tr>
+                        <td>ВЛ 110-220 кВ</td>
+                        <td>Питающие сети, связь с энергосистемой</td>
+                    </tr>
+                    <tr>
+                        <td>ВЛ 330 кВ и выше</td>
+                        <td>Системообразующие, межсистемные связи</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>По назначению</strong></td>
+                        <td>Магистральные</td>
+                        <td>Передача энергии от электростанций</td>
+                    </tr>
+                    <tr>
+                        <td>Распределительные</td>
+                        <td>Распределение энергии потребителям</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>По числу цепей</strong></td>
+                        <td>Одноцепные</td>
+                        <td>Одна трёхфазная цепь на опорах</td>
+                    </tr>
+                    <tr>
+                        <td>Двухцепные</td>
+                        <td>Две трёхфазные цепи на опорах</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>По конструкции проводов</strong></td>
+                        <td>ВЛ с неизолированными проводами</td>
+                        <td>Традиционная конструкция</td>
+                    </tr>
+                    <tr>
+                        <td>ВЛИ (с изолированными проводами)</td>
+                        <td>СИП — самонесущие изолированные провода</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Опоры воздушных линий</h3>
+
+            <p>Опоры являются несущими конструкциями ВЛ, предназначенными для поддержания проводов на необходимой высоте над землёй и обеспечения требуемых расстояний между проводами и до заземлённых частей. Опоры должны воспринимать механические нагрузки от веса проводов, гололёда, ветра и обеспечивать надёжную работу линии в течение всего срока службы.</p>
+
+            <h4>Классификация опор по назначению</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип опоры</th>
+                        <th>Назначение</th>
+                        <th>Конструктивные особенности</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Промежуточные</strong></td>
+                        <td>Поддержание проводов на прямых участках трассы</td>
+                        <td>Провода крепятся в поддерживающих зажимах, воспринимают только вертикальные и горизонтальные (от ветра) нагрузки</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Анкерные</strong></td>
+                        <td>Жёсткое закрепление проводов, ограничение анкерного пролёта</td>
+                        <td>Провода крепятся в натяжных зажимах, воспринимают полное тяжение проводов. Устанавливаются на прямых участках через 3-5 км</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Угловые</strong></td>
+                        <td>Изменение направления трассы ВЛ</td>
+                        <td>Воспринимают равнодействующую тяжения проводов. Бывают промежуточные угловые (до 30°) и анкерно-угловые (более 30°)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Концевые</strong></td>
+                        <td>Начало и конец ВЛ, подход к подстанциям</td>
+                        <td>Воспринимают одностороннее тяжение проводов всех фаз</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ответвительные</strong></td>
+                        <td>Выполнение ответвлений от магистральной линии</td>
+                        <td>Имеют дополнительные траверсы или консоли для крепления отпаечных проводов</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Переходные</strong></td>
+                        <td>Пересечение рек, ущелий, железных дорог</td>
+                        <td>Повышенная высота, усиленная конструкция</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Транспозиционные</strong></td>
+                        <td>Изменение расположения фаз на опоре</td>
+                        <td>Применяются на ВЛ 110 кВ и выше для симметрирования параметров</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="image-container">
+                <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Фон -->
+                    <rect width="900" height="500" fill="#ffffff"/>
+                    
+                    <!-- Заголовок -->
+                    <text x="450" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#1a365d">
+                        ОСНОВНЫЕ ТИПЫ ОПОР ВОЗДУШНЫХ ЛИНИЙ ПО НАЗНАЧЕНИЮ
+                    </text>
+                    
+                    <!-- Промежуточная опора -->
+                    <g transform="translate(80, 60)">
+                        <!-- Опора -->
+                        <line x1="60" y1="380" x2="60" y2="100" stroke="#4a5568" stroke-width="8"/>
+                        <line x1="60" y1="380" x2="30" y2="420" stroke="#4a5568" stroke-width="4"/>
+                        <line x1="60" y1="380" x2="90" y2="420" stroke="#4a5568" stroke-width="4"/>
+                        <!-- Траверса -->
+                        <line x1="10" y1="120" x2="110" y2="120" stroke="#4a5568" stroke-width="6"/>
+                        <!-- Изоляторы -->
+                        <rect x="15" y="120" width="8" height="40" fill="#3182ce"/>
+                        <rect x="56" y="120" width="8" height="40" fill="#3182ce"/>
+                        <rect x="97" y="120" width="8" height="40" fill="#3182ce"/>
+                        <!-- Провода -->
+                        <line x1="0" y1="165" x2="19" y2="160" stroke="#2d3748" stroke-width="3"/>
+                        <line x1="100" y1="165" x2="119" y2="160" stroke="#2d3748" stroke-width="3"/>
+                        <circle cx="19" cy="160" r="4" fill="#2d3748"/>
+                        <circle cx="60" cy="160" r="4" fill="#2d3748"/>
+                        <circle cx="101" cy="160" r="4" fill="#2d3748"/>
+                        <!-- Земля -->
+                        <line x1="0" y1="420" x2="120" y2="420" stroke="#38a169" stroke-width="3"/>
+                        <!-- Подпись -->
+                        <text x="60" y="450" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1a365d">ПРОМЕЖУТОЧНАЯ</text>
+                        <text x="60" y="465" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Поддерживающие</text>
+                        <text x="60" y="478" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">зажимы</text>
+                    </g>
+                    
+                    <!-- Анкерная опора -->
+                    <g transform="translate(240, 60)">
+                        <!-- Опора усиленная -->
+                        <line x1="60" y1="380" x2="60" y2="80" stroke="#4a5568" stroke-width="10"/>
+                        <line x1="60" y1="380" x2="20" y2="420" stroke="#4a5568" stroke-width="5"/>
+                        <line x1="60" y1="380" x2="100" y2="420" stroke="#4a5568" stroke-width="5"/>
+                        <!-- Подкосы -->
+                        <line x1="60" y1="300" x2="25" y2="380" stroke="#4a5568" stroke-width="4"/>
+                        <line x1="60" y1="300" x2="95" y2="380" stroke="#4a5568" stroke-width="4"/>
+                        <!-- Траверса -->
+                        <line x1="5" y1="100" x2="115" y2="100" stroke="#4a5568" stroke-width="7"/>
+                        <!-- Натяжные гирлянды (горизонтальные) -->
+                        <line x1="15" y1="105" x2="15" y2="130" stroke="#3182ce" stroke-width="4"/>
+                        <line x1="15" y1="130" x2="5" y2="160" stroke="#3182ce" stroke-width="3"/>
+                        <line x1="60" y1="105" x2="60" y2="130" stroke="#3182ce" stroke-width="4"/>
+                        <line x1="60" y1="130" x2="60" y2="160" stroke="#3182ce" stroke-width="3"/>
+                        <line x1="105" y1="105" x2="105" y2="130" stroke="#3182ce" stroke-width="4"/>
+                        <line x1="105" y1="130" x2="115" y2="160" stroke="#3182ce" stroke-width="3"/>
+                        <!-- Провода с натяжными зажимами -->
+                        <circle cx="5" cy="160" r="5" fill="#c53030"/>
+                        <circle cx="60" cy="160" r="5" fill="#c53030"/>
+                        <circle cx="115" cy="160" r="5" fill="#c53030"/>
+                        <!-- Земля -->
+                        <line x1="0" y1="420" x2="120" y2="420" stroke="#38a169" stroke-width="3"/>
+                        <!-- Подпись -->
+                        <text x="60" y="450" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1a365d">АНКЕРНАЯ</text>
+                        <text x="60" y="465" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Натяжные</text>
+                        <text x="60" y="478" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">зажимы</text>
+                    </g>
+                    
+                    <!-- Угловая опора -->
+                    <g transform="translate(400, 60)">
+                        <!-- Опора -->
+                        <line x1="60" y1="380" x2="60" y2="90" stroke="#4a5568" stroke-width="9"/>
+                        <line x1="60" y1="380" x2="25" y2="420" stroke="#4a5568" stroke-width="5"/>
+                        <line x1="60" y1="380" x2="95" y2="420" stroke="#4a5568" stroke-width="5"/>
+                        <!-- Оттяжка (направление угла) -->
+                        <line x1="60" y1="200" x2="120" y2="300" stroke="#d69e2e" stroke-width="3"/>
+                        <line x1="120" y1="300" x2="120" y2="420" stroke="#d69e2e" stroke-width="3"/>
+                        <!-- Траверса под углом -->
+                        <line x1="10" y1="110" x2="110" y2="110" stroke="#4a5568" stroke-width="6"/>
+                        <!-- Изоляторы -->
+                        <rect x="15" y="110" width="8" height="45" fill="#3182ce"/>
+                        <rect x="56" y="110" width="8" height="45" fill="#3182ce"/>
+                        <rect x="97" y="110" width="8" height="45" fill="#3182ce"/>
+                        <!-- Провода под углом -->
+                        <line x1="0" y1="155" x2="19" y2="155" stroke="#2d3748" stroke-width="3"/>
+                        <line x1="101" y1="155" x2="130" y2="175" stroke="#2d3748" stroke-width="3"/>
+                        <!-- Угол показан стрелкой -->
+                        <path d="M 0 155 Q 60 140 130 175" stroke="#c53030" stroke-width="1" fill="none" stroke-dasharray="5,3"/>
+                        <!-- Земля -->
+                        <line x1="0" y1="420" x2="130" y2="420" stroke="#38a169" stroke-width="3"/>
+                        <!-- Подпись -->
+                        <text x="60" y="450" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1a365d">УГЛОВАЯ</text>
+                        <text x="60" y="465" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Изменение</text>
+                        <text x="60" y="478" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">направления</text>
+                    </g>
+                    
+                    <!-- Концевая опора -->
+                    <g transform="translate(560, 60)">
+                        <!-- Опора усиленная -->
+                        <line x1="60" y1="380" x2="60" y2="70" stroke="#4a5568" stroke-width="10"/>
+                        <line x1="60" y1="380" x2="15" y2="420" stroke="#4a5568" stroke-width="5"/>
+                        <line x1="60" y1="380" x2="105" y2="420" stroke="#4a5568" stroke-width="5"/>
+                        <!-- Подкосы усиленные -->
+                        <line x1="60" y1="250" x2="15" y2="350" stroke="#4a5568" stroke-width="5"/>
+                        <line x1="60" y1="250" x2="105" y2="350" stroke="#4a5568" stroke-width="5"/>
+                        <!-- Траверса -->
+                        <line x1="5" y1="90" x2="115" y2="90" stroke="#4a5568" stroke-width="7"/>
+                        <!-- Спуски к порталу ПС -->
+                        <line x1="15" y1="95" x2="15" y2="160" stroke="#3182ce" stroke-width="3"/>
+                        <line x1="15" y1="160" x2="15" y2="350" stroke="#2d3748" stroke-width="2"/>
+                        <line x1="60" y1="95" x2="60" y2="160" stroke="#3182ce" stroke-width="3"/>
+                        <line x1="60" y1="160" x2="60" y2="350" stroke="#2d3748" stroke-width="2"/>
+                        <line x1="105" y1="95" x2="105" y2="160" stroke="#3182ce" stroke-width="3"/>
+                        <line x1="105" y1="160" x2="105" y2="350" stroke="#2d3748" stroke-width="2"/>
+                        <!-- Провода с одной стороны -->
+                        <line x1="0" y1="155" x2="15" y2="160" stroke="#2d3748" stroke-width="3"/>
+                        <circle cx="15" cy="160" r="4" fill="#c53030"/>
+                        <!-- Портал ПС -->
+                        <rect x="0" y="350" width="120" height="70" fill="#e2e8f0" stroke="#4a5568" stroke-width="2"/>
+                        <text x="60" y="390" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Портал ПС</text>
+                        <!-- Земля -->
+                        <line x1="0" y1="420" x2="120" y2="420" stroke="#38a169" stroke-width="3"/>
+                        <!-- Подпись -->
+                        <text x="60" y="450" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1a365d">КОНЦЕВАЯ</text>
+                        <text x="60" y="465" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Подход</text>
+                        <text x="60" y="478" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">к ПС</text>
+                    </g>
+                    
+                    <!-- Переходная опора -->
+                    <g transform="translate(720, 60)">
+                        <!-- Высокая опора -->
+                        <line x1="60" y1="380" x2="60" y2="30" stroke="#4a5568" stroke-width="6"/>
+                        <line x1="60" y1="380" x2="30" y2="420" stroke="#4a5568" stroke-width="4"/>
+                        <line x1="60" y1="380" x2="90" y2="420" stroke="#4a5568" stroke-width="4"/>
+                        <!-- Решётчатая структура -->
+                        <line x1="45" y1="100" x2="75" y2="150" stroke="#4a5568" stroke-width="2"/>
+                        <line x1="75" y1="100" x2="45" y2="150" stroke="#4a5568" stroke-width="2"/>
+                        <line x1="45" y1="150" x2="75" y2="200" stroke="#4a5568" stroke-width="2"/>
+                        <line x1="75" y1="150" x2="45" y2="200" stroke="#4a5568" stroke-width="2"/>
+                        <line x1="45" y1="200" x2="75" y2="250" stroke="#4a5568" stroke-width="2"/>
+                        <line x1="75" y1="200" x2="45" y2="250" stroke="#4a5568" stroke-width="2"/>
+                        <!-- Траверса -->
+                        <line x1="20" y1="50" x2="100" y2="50" stroke="#4a5568" stroke-width="5"/>
+                        <!-- Изоляторы -->
+                        <rect x="25" y="50" width="6" height="35" fill="#3182ce"/>
+                        <rect x="57" y="50" width="6" height="35" fill="#3182ce"/>
+                        <rect x="89" y="50" width="6" height="35" fill="#3182ce"/>
+                        <!-- Провода -->
+                        <circle cx="28" cy="88" r="3" fill="#2d3748"/>
+                        <circle cx="60" cy="88" r="3" fill="#2d3748"/>
+                        <circle cx="92" cy="88" r="3" fill="#2d3748"/>
+                        <!-- Река/преграда -->
+                        <rect x="0" y="300" width="120" height="40" fill="#63b3ed" opacity="0.5"/>
+                        <text x="60" y="325" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#2c5282">Река</text>
+                        <!-- Земля -->
+                        <line x1="0" y1="420" x2="120" y2="420" stroke="#38a169" stroke-width="3"/>
+                        <!-- Подпись -->
+                        <text x="60" y="450" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1a365d">ПЕРЕХОДНАЯ</text>
+                        <text x="60" y="465" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Повышенная</text>
+                        <text x="60" y="478" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">высота</text>
+                    </g>
+                </svg>
+                <div class="image-caption">Рис. 2.1. Основные типы опор воздушных линий электропередачи по назначению</div>
+            </div>
+
+            <h4>Железобетонные опоры</h4>
+
+            <p>Железобетонные опоры получили наибольшее распространение на ВЛ напряжением до 110 кВ благодаря относительно низкой стоимости, долговечности и минимальным требованиям к техническому обслуживанию. Срок службы железобетонных опор составляет 40-50 лет при соблюдении технологии изготовления и правил эксплуатации.</p>
+
+            <div class="two-column">
+                <div class="column-box">
+                    <h4>Преимущества ЖБ опор</h4>
+                    <ul>
+                        <li>Высокая механическая прочность</li>
+                        <li>Устойчивость к атмосферным воздействиям</li>
+                        <li>Негорючесть</li>
+                        <li>Не требуют антикоррозионной защиты</li>
+                        <li>Низкие эксплуатационные затраты</li>
+                        <li>Унификация конструкций</li>
+                    </ul>
+                </div>
+                <div class="column-box">
+                    <h4>Недостатки ЖБ опор</h4>
+                    <ul>
+                        <li>Большая масса (затраты на транспортировку)</li>
+                        <li>Хрупкость при ударных нагрузках</li>
+                        <li>Сложность ремонта при повреждениях</li>
+                        <li>Коррозия арматуры при нарушении защитного слоя</li>
+                        <li>Ограниченная высота (до 26 м)</li>
+                        <li>Чувствительность к агрессивным средам</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p>Железобетонные опоры изготавливаются методом центрифугирования или вибрирования. Центрифугированные стойки имеют кольцевое сечение и отличаются более высокой прочностью. Основные типы железобетонных опор:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип опоры</th>
+                        <th>Обозначение</th>
+                        <th>Напряжение, кВ</th>
+                        <th>Высота, м</th>
+                        <th>Особенности</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Промежуточная одностоечная</td>
+                        <td>П110-3</td>
+                        <td>110</td>
+                        <td>22-26</td>
+                        <td>Одна центрифугированная стойка</td>
+                    </tr>
+                    <tr>
+                        <td>Промежуточная портальная</td>
+                        <td>ПБ110-1</td>
+                        <td>110</td>
+                        <td>18-22</td>
+                        <td>Две стойки, соединённые траверсой</td>
+                    </tr>
+                    <tr>
+                        <td>Анкерно-угловая</td>
+                        <td>УБ110-2</td>
+                        <td>110</td>
+                        <td>22-26</td>
+                        <td>Усиленная конструкция, подкосы</td>
+                    </tr>
+                    <tr>
+                        <td>Промежуточная свечевая</td>
+                        <td>ПС35-2</td>
+                        <td>35</td>
+                        <td>16-20</td>
+                        <td>Одна стойка, штыревые изоляторы</td>
+                    </tr>
+                    <tr>
+                        <td>Промежуточная трёхстоечная</td>
+                        <td>П10-1</td>
+                        <td>10</td>
+                        <td>10-13</td>
+                        <td>Три стойки, А-образное расположение</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Стальные (металлические) опоры</h4>
+
+            <p>Стальные опоры применяются на ВЛ высокого и сверхвысокого напряжения (110 кВ и выше), где требуются большая высота и высокая несущая способность. Конструктивно выполняются решётчатыми из прокатных профилей (уголков) или из стальных труб.</p>
+
+            <div class="info-box">
+                <strong>Характеристики стальных опор:</strong>
+                <ul>
+                    <li><strong>Высота:</strong> до 45 м для ВЛ 110-220 кВ, до 100 м и более для ВЛ 500-750 кВ</li>
+                    <li><strong>Масса:</strong> от 3 до 50 тонн в зависимости от напряжения и типа</li>
+                    <li><strong>Срок службы:</strong> 50-70 лет при своевременной антикоррозионной защите</li>
+                    <li><strong>Защита от коррозии:</strong> горячее цинкование, лакокрасочные покрытия</li>
+                    <li><strong>Фундамент:</strong> железобетонные подножники (грибовидные, свайные)</li>
+                </ul>
+            </div>
+
+            <p>Основные типы стальных опор:</p>
+
+            <ul>
+                <li><strong>Башенные</strong> — пирамидальная решётчатая конструкция на четырёх ногах, наиболее распространённый тип</li>
+                <li><strong>Портальные</strong> — две стойки, соединённые траверсой, применяются на ВЛ 330-750 кВ</li>
+                <li><strong>V-образные</strong> — две наклонные стойки, соединённые в верхней части</li>
+                <li><strong>Одностоечные</strong> — стальные многогранные или трубчатые стойки</li>
+            </ul>
+
+            <h4>Деревянные опоры</h4>
+
+            <p>Деревянные опоры применяются на ВЛ напряжением до 35 кВ, преимущественно в лесных районах, где древесина является доступным и дешёвым материалом. Несмотря на ряд недостатков, деревянные опоры до сих пор составляют значительную часть распределительных сетей 0,4-10 кВ.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Характеристика</th>
+                        <th>Описание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Материал</strong></td>
+                        <td>Сосна, лиственница, реже — ель. Лиственница наиболее долговечна</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Защитная обработка</strong></td>
+                        <td>Пропитка антисептиками (креозот, ХМ-11) для защиты от гниения</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Срок службы</strong></td>
+                        <td>Без пропитки — 5-7 лет, с пропиткой — 20-25 лет</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Конструкция</strong></td>
+                        <td>Одностоечные, А-образные, П-образные</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Приставки</strong></td>
+                        <td>Железобетонные пасынки для увеличения срока службы</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Заглубление</strong></td>
+                        <td>1,8-2,5 м в зависимости от типа грунта и высоты опоры</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>⚠️ Особенности эксплуатации деревянных опор:</strong>
+                <ul>
+                    <li>Регулярный контроль состояния древесины (гниль, трещины, повреждения насекомыми)</li>
+                    <li>Проверка состояния бандажей и узлов крепления</li>
+                    <li>Измерение глубины загнивания специальными приборами</li>
+                    <li>Запрещается подниматься на опору при обнаружении загнивания более 2/3 диаметра</li>
+                    <li>Обязательная проверка устойчивости перед подъёмом</li>
+                </ul>
+            </div>
+
+            <h3>Провода и грозозащитные тросы</h3>
+
+            <p>Провода являются основным элементом ВЛ, обеспечивающим передачу электрической энергии. К проводам воздушных линий предъявляются требования высокой электропроводности, механической прочности, стойкости к атмосферным воздействиям и коррозии.</p>
+
+            <h4>Классификация проводов ВЛ</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип провода</th>
+                        <th>Обозначение</th>
+                        <th>Конструкция</th>
+                        <th>Область применения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Алюминиевые</strong></td>
+                        <td>А</td>
+                        <td>Многопроволочные, из алюминия марки А5Е, А7Е</td>
+                        <td>ВЛ до 35 кВ небольшой протяжённости</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Сталеалюминиевые</strong></td>
+                        <td>АС</td>
+                        <td>Стальной сердечник, обвитый алюминиевыми проволоками</td>
+                        <td>ВЛ всех классов напряжения (основной тип)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Алюминиевые с упрочнённым сердечником</strong></td>
+                        <td>АСКС, АСКП</td>
+                        <td>Сердечник из стальных оцинкованных проволок, заполненный смазкой</td>
+                        <td>ВЛ в районах с агрессивной атмосферой</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Из алюминиевого сплава</strong></td>
+                        <td>АЖ (АН)</td>
+                        <td>Из термообработанного алюминиевого сплава</td>
+                        <td>ВЛ в районах с сильным гололёдом</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Защищённые</strong></td>
+                        <td>СИП</td>
+                        <td>Изолированные сшитым полиэтиленом</td>
+                        <td>ВЛИ 0,4-20 кВ</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>Наибольшее распространение получили сталеалюминиевые провода марки АС, сочетающие высокую электропроводность алюминия с механической прочностью стального сердечника. Обозначение провода включает марку и сечение, например: АС 120/19 — провод сталеалюминиевый с сечением алюминиевой части 120 мм² и стального сердечника 19 мм².</p>
+
+            <div class="formula-box">
+                <strong>Допустимый длительный ток провода (по нагреву):</strong>
+                <div class="formula">
+                    I<sub>доп</sub> = √[(α × (t<sub>доп</sub> - t<sub>окр</sub>) × S<sub>охл</sub>) / R<sub>20</sub> × (1 + α<sub>t</sub> × (t<sub>доп</sub> - 20))]
+                </div>
+                <div class="formula-desc">
+                    где: t<sub>доп</sub> — допустимая температура провода (70°С для АС);<br>
+                    t<sub>окр</sub> — температура окружающего воздуха;<br>
+                    R<sub>20</sub> — сопротивление провода при 20°С;<br>
+                    α<sub>t</sub> — температурный коэффициент сопротивления алюминия (0,004 1/°С)
+                </div>
+            </div>
+
+            <h4>Грозозащитные тросы</h4>
+
+            <p>Грозозащитные тросы (молниезащитные тросы) устанавливаются на ВЛ напряжением 35 кВ и выше для защиты линии от прямых ударов молнии. Трос подвешивается над фазными проводами и заземляется на каждой опоре.</p>
+
+            <div class="highlight-box">
+                <strong>Требования к грозозащитным тросам:</strong>
+                <ul>
+                    <li>Угол защиты (между вертикалью и линией, соединяющей трос с крайним проводом) — не более 20-30°</li>
+                    <li>Материал — стальной оцинкованный канат С-35, С-50, С-70 или сталеалюминиевый провод</li>
+                    <li>На ВЛ 110 кВ и выше с металлическими и железобетонными опорами — обязательно</li>
+                    <li>На ВЛ 35 кВ — в районах с числом грозовых часов более 40 в год</li>
+                    <li>Современные тросы со встроенным оптическим кабелем (ОКГТ) используются для связи</li>
+                </ul>
+            </div>
+
+            <h3>Изоляторы</h3>
+
+            <p>Изоляторы предназначены для изоляции проводов от заземлённых частей опор и крепления проводов к опорам. К изоляторам предъявляются требования высокой электрической и механической прочности, стойкости к атмосферным воздействиям.</p>
+
+            <h4>Типы изоляторов</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип изолятора</th>
+                        <th>Конструкция</th>
+                        <th>Материал</th>
+                        <th>Область применения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Штыревые</strong></td>
+                        <td>Одно- или многоэлементные, крепятся на штыре или крюке</td>
+                        <td>Фарфор, стекло</td>
+                        <td>ВЛ до 35 кВ (ШС-10, ШФ-20)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Подвесные тарельчатые</strong></td>
+                        <td>Дисковые элементы, собираемые в гирлянды</td>
+                        <td>Закалённое стекло, фарфор</td>
+                        <td>ВЛ 35 кВ и выше (ПС-70, ПСД-70)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Стержневые полимерные</strong></td>
+                        <td>Стеклопластиковый стержень с рёбрами из силикона</td>
+                        <td>Стеклопластик, силиконовая резина</td>
+                        <td>ВЛ всех классов напряжения</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Опорные</strong></td>
+                        <td>Для крепления шин в РУ</td>
+                        <td>Фарфор</td>
+                        <td>Распределительные устройства</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="image-container">
+                <svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Фон -->
+                    <rect width="900" height="400" fill="#ffffff"/>
+                    
+                    <!-- Заголовок -->
+                    <text x="450" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#1a365d">
+                        ТИПЫ ИЗОЛЯТОРОВ ВОЗДУШНЫХ ЛИНИЙ ЭЛЕКТРОПЕРЕДАЧИ
+                    </text>
+                    
+                    <!-- Штыревой изолятор -->
+                    <g transform="translate(50, 60)">
+                        <text x="80" y="20" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#2c5282">
+                            ШТЫРЕВОЙ
+                        </text>
+                        <!-- Шапка -->
+                        <ellipse cx="80" cy="60" rx="40" ry="10" fill="#8b5a2b"/>
+                        <!-- Юбка 1 -->
+                        <ellipse cx="80" cy="90" rx="50" ry="12" fill="#d4a574" stroke="#8b5a2b" stroke-width="2"/>
+                        <rect x="40" y="60" width="80" height="30" fill="#d4a574"/>
+                        <!-- Юбка 2 -->
+                        <ellipse cx="80" cy="130" rx="55" ry="14" fill="#d4a574" stroke="#8b5a2b" stroke-width="2"/>
+                        <rect x="35" y="90" width="90" height="40" fill="#d4a574"/>
+                        <!-- Юбка 3 (основание) -->
+                        <ellipse cx="80" cy="180" rx="45" ry="12" fill="#d4a574" stroke="#8b5a2b" stroke-width="2"/>
+                        <rect x="45" y="130" width="70" height="50" fill="#d4a574"/>
+                        <!-- Штырь -->
+                        <rect x="75" y="180" width="10" height="60" fill="#718096"/>
+                        <!-- Провод -->
+                        <line x1="20" y1="65" x2="80" y2="65" stroke="#2d3748" stroke-width="4"/>
+                        <line x1="80" y1="65" x2="140" y2="65" stroke="#2d3748" stroke-width="4"/>
+                        <!-- Подпись -->
+                        <text x="80" y="270" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">ШФ-20 (до 20 кВ)</text>
+                        <text x="80" y="285" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#718096">Фарфор, стекло</text>
+                    </g>
+                    
+                    <!-- Подвесной тарельчатый изолятор (гирлянда) -->
+                    <g transform="translate(250, 60)">
+                        <text x="100" y="20" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#2c5282">
+                            ПОДВЕСНОЙ (ГИРЛЯНДА)
+                        </text>
+                        <!-- Серьга крепления к траверсе -->
+                        <ellipse cx="100" cy="50" rx="15" ry="8" fill="#718096" stroke="#4a5568" stroke-width="2"/>
+                        <!-- Элемент 1 -->
+                        <line x1="100" y1="58" x2="100" y2="70" stroke="#4a5568" stroke-width="3"/>
+                        <ellipse cx="100" cy="75" rx="8" ry="5" fill="#718096"/>
+                        <ellipse cx="100" cy="95" rx="35" ry="8" fill="#63b3ed" stroke="#3182ce" stroke-width="2"/>
+                        <rect x="70" y="75" width="60" height="20" fill="#63b3ed"/>
+                        <!-- Элемент 2 -->
+                        <line x1="100" y1="103" x2="100" y2="115" stroke="#4a5568" stroke-width="3"/>
+                        <ellipse cx="100" cy="120" rx="8" ry="5" fill="#718096"/>
+                        <ellipse cx="100" cy="140" rx="35" ry="8" fill="#63b3ed" stroke="#3182ce" stroke-width="2"/>
+                        <rect x="70" y="120" width="60" height="20" fill="#63b3ed"/>
+                        <!-- Элемент 3 -->
+                        <line x1="100" y1="148" x2="100" y2="160" stroke="#4a5568" stroke-width="3"/>
+                        <ellipse cx="100" cy="165" rx="8" ry="5" fill="#718096"/>
+                        <ellipse cx="100" cy="185" rx="35" ry="8" fill="#63b3ed" stroke="#3182ce" stroke-width="2"/>
+                        <rect x="70" y="165" width="60" height="20" fill="#63b3ed"/>
+                        <!-- Зажим -->
+                        <line x1="100" y1="193" x2="100" y2="210" stroke="#4a5568" stroke-width="3"/>
+                        <rect x="85" y="210" width="30" height="15" fill="#718096" rx="3"/>
+                        <!-- Провод -->
+                        <line x1="50" y1="217" x2="85" y2="217" stroke="#2d3748" stroke-width="4"/>
+                        <line x1="115" y1="217" x2="150" y2="217" stroke="#2d3748" stroke-width="4"/>
+                        <!-- Подпись -->
+                        <text x="100" y="270" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">ПС70Е (110 кВ)</text>
+                        <text x="100" y="285" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#718096">Закалённое стекло</text>
+                        <text x="100" y="300" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#718096">7-8 элементов</text>
+                    </g>
+                    
+                    <!-- Стержневой полимерный -->
+                    <g transform="translate(480, 60)">
+                        <text x="80" y="20" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#2c5282">
+                            СТЕРЖНЕВОЙ ПОЛИМЕРНЫЙ
+                        </text>
+                        <!-- Верхний оголовок -->
+                        <rect x="60" y="45" width="40" height="20" fill="#718096" rx="3"/>
+                        <ellipse cx="80" cy="55" rx="25" ry="8" fill="#a0aec0"/>
+                        <!-- Стержень с рёбрами -->
+                        <rect x="75" y="65" width="10" height="160" fill="#c53030"/>
+                        <!-- Рёбра (силиконовые) -->
+                        <ellipse cx="80" cy="80" rx="25" ry="6" fill="#fc8181" stroke="#c53030" stroke-width="1"/>
+                        <ellipse cx="80" cy="100" rx="25" ry="6" fill="#fc8181" stroke="#c53030" stroke-width="1"/>
+                        <ellipse cx="80" cy="120" rx="25" ry="6" fill="#fc8181" stroke="#c53030" stroke-width="1"/>
+                        <ellipse cx="80" cy="140" rx="25" ry="6" fill="#fc8181" stroke="#c53030" stroke-width="1"/>
+                        <ellipse cx="80" cy="160" rx="25" ry="6" fill="#fc8181" stroke="#c53030" stroke-width="1"/>
+                        <ellipse cx="80" cy="180" rx="25" ry="6" fill="#fc8181" stroke="#c53030" stroke-width="1"/>
+                        <ellipse cx="80" cy="200" rx="25" ry="6" fill="#fc8181" stroke="#c53030" stroke-width="1"/>
+                        <!-- Нижний оголовок -->
+                        <ellipse cx="80" cy="220" rx="25" ry="8" fill="#a0aec0"/>
+                        <rect x="60" y="220" width="40" height="15" fill="#718096" rx="3"/>
+                        <!-- Подпись -->
+                        <text x="80" y="270" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#4a5568">ЛК 70/110 (110 кВ)</text>
+                        <text x="80" y="285" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#718096">Стеклопластик +</text>
+                        <text x="80" y="300" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#718096">силиконовая резина</text>
+                    </g>
+                    
+                    <!-- Сравнительная таблица -->
+                    <g transform="translate(620, 60)">
+                        <text x="130" y="20" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#2c5282">
+                            СРАВНЕНИЕ ТИПОВ
+                        </text>
+                        <rect x="10" y="35" width="240" height="250" fill="#f7fafc" stroke="#e2e8f0" stroke-width="1" rx="4"/>
+                        
+                        <text x="20" y="60" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1a365d">Стеклянные:</text>
+                        <text x="20" y="78" font-family="Segoe UI, sans-serif" font-size="9" fill="#38a169">+ Визуальный контроль</text>
+                        <text x="20" y="93" font-family="Segoe UI, sans-serif" font-size="9" fill="#38a169">+ Низкая стоимость</text>
+                        <text x="20" y="108" font-family="Segoe UI, sans-serif" font-size="9" fill="#c53030">- Хрупкость</text>
+                        
+                        <text x="20" y="130" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1a365d">Фарфоровые:</text>
+                        <text x="20" y="148" font-family="Segoe UI, sans-serif" font-size="9" fill="#38a169">+ Высокая прочность</text>
+                        <text x="20" y="163" font-family="Segoe UI, sans-serif" font-size="9" fill="#38a169">+ Стойкость к УФ</text>
+                        <text x="20" y="178" font-family="Segoe UI, sans-serif" font-size="9" fill="#c53030">- Скрытые дефекты</text>
+                        
+                        <text x="20" y="200" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1a365d">Полимерные:</text>
+                        <text x="20" y="218" font-family="Segoe UI, sans-serif" font-size="9" fill="#38a169">+ Лёгкость (в 10 раз)</text>
+                        <text x="20" y="233" font-family="Segoe UI, sans-serif" font-size="9" fill="#38a169">+ Вандалоустойчивость</text>
+                        <text x="20" y="248" font-family="Segoe UI, sans-serif" font-size="9" fill="#38a169">+ Гидрофобность</text>
+                        <text x="20" y="263" font-family="Segoe UI, sans-serif" font-size="9" fill="#c53030">- Старение материала</text>
+                        <text x="20" y="278" font-family="Segoe UI, sans-serif" font-size="9" fill="#c53030">- Высокая стоимость</text>
+                    </g>
+                </svg>
+                <div class="image-caption">Рис. 2.2. Типы изоляторов воздушных линий электропередачи</div>
+            </div>
+
+            <p>Количество элементов в гирлянде подвесных изоляторов определяется классом напряжения линии, степенью загрязнённости атмосферы и типом изоляторов:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Напряжение ВЛ, кВ</th>
+                        <th>Тип изолятора</th>
+                        <th>Количество в гирлянде (I степень загрязнения)</th>
+                        <th>Количество в гирлянде (III степень загрязнения)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>35</td>
+                        <td>ПС70Е</td>
+                        <td>3</td>
+                        <td>4-5</td>
+                    </tr>
+                    <tr>
+                        <td>110</td>
+                        <td>ПС70Е</td>
+                        <td>7</td>
+                        <td>9-11</td>
+                    </tr>
+                    <tr>
+                        <td>220</td>
+                        <td>ПС120Б</td>
+                        <td>11-13</td>
+                        <td>16-19</td>
+                    </tr>
+                    <tr>
+                        <td>500</td>
+                        <td>ПС160Д</td>
+                        <td>21-24</td>
+                        <td>30-35</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Арматура ВЛ</h3>
+
+            <p>Линейная арматура — это совокупность устройств для крепления проводов и тросов к изоляторам и опорам, соединения проводов между собой, защиты от вибрации и других целей. Арматура должна обеспечивать надёжное крепление и не создавать концентрации механических напряжений в проводах.</p>
+
+            <h4>Классификация линейной арматуры</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Группа арматуры</th>
+                        <th>Элементы</th>
+                        <th>Назначение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Зажимы</strong></td>
+                        <td>Натяжные, поддерживающие, соединительные, ответвительные</td>
+                        <td>Крепление и соединение проводов</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Сцепная арматура</strong></td>
+                        <td>Серьги, скобы, ушки, коромысла, звенья</td>
+                        <td>Соединение элементов гирлянды между собой и с опорой</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Защитная арматура</strong></td>
+                        <td>Гасители вибрации, разрядники, балласты</td>
+                        <td>Защита проводов от вибрации, пляски, перенапряжений</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Соединительная арматура</strong></td>
+                        <td>Овальные соединители, прессуемые соединители</td>
+                        <td>Соединение проводов в пролёте</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Контактная арматура</strong></td>
+                        <td>Плашечные, прессуемые зажимы</td>
+                        <td>Ответвления от проводов, переходы</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Зажимы</h4>
+
+            <p><strong>Натяжные зажимы</strong> применяются на анкерных и угловых опорах для закрепления проводов с передачей на опору полного тяжения провода. По конструкции различают:</p>
+
+            <ul>
+                <li><strong>Болтовые натяжные зажимы</strong> (НБ) — провод зажимается между плашками при помощи болтов. Применяются для проводов небольших сечений (до 95 мм²)</li>
+                <li><strong>Клиновые натяжные зажимы</strong> (НК) — провод удерживается в корпусе за счёт заклинивания. Быстрый монтаж, но возможно проскальзывание</li>
+                <li><strong>Прессуемые натяжные зажимы</strong> (НАС) — провод опрессовывается в стальном анкере и алюминиевом корпусе. Наиболее надёжный тип для проводов больших сечений</li>
+            </ul>
+
+            <p><strong>Поддерживающие зажимы</strong> применяются на промежуточных опорах для подвески проводов с возможностью их продольного перемещения при изменении температуры и нагрузок:</p>
+
+            <ul>
+                <li><strong>Глухие зажимы</strong> (ПГ) — провод жёстко закреплён в зажиме, применяются на ВЛ до 35 кВ</li>
+                <li><strong>Выпускающие (лодочки)</strong> (ПГУ) — допускают проскальзывание провода при превышении расчётной нагрузки, предотвращая обрыв</li>
+                <li><strong>Зажимы с ограниченной прочностью заделки</strong> — провод выскальзывает при аварийных нагрузках</li>
+            </ul>
+
+            <div class="info-box">
+                <strong>Требования к линейной арматуре:</strong>
+                <ul>
+                    <li>Механическая прочность — не менее 90% от разрывного усилия провода</li>
+                    <li>Электрическое сопротивление соединения — не более сопротивления участка провода той же длины</li>
+                    <li>Стойкость к коррозии — оцинковка, алюминирование</li>
+                    <li>Срок службы — не менее срока службы провода</li>
+                    <li>Минимальное повреждение провода при монтаже</li>
+                </ul>
+            </div>
+
+            <h4>Гасители вибрации</h4>
+
+            <p>Вибрация проводов возникает под действием ветра и представляет серьёзную опасность для надёжности ВЛ. Частота вибрации составляет 5-60 Гц, амплитуда — до нескольких диаметров провода. Усталостное разрушение проволок провода происходит в местах выхода из зажимов.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип гасителя</th>
+                        <th>Конструкция</th>
+                        <th>Область применения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Гасители Стокбриджа</strong></td>
+                        <td>Два груза на концах стального троса, закреплённого на проводе</td>
+                        <td>ВЛ 35 кВ и выше, основной тип</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Петлевые демпферы</strong></td>
+                        <td>Петля из провода меньшего сечения</td>
+                        <td>ВЛ до 35 кВ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Спиральные протекторы</strong></td>
+                        <td>Спираль из проволоки, навитая на провод в зоне зажима</td>
+                        <td>Защита от повреждения в зажимах</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Гасители ГПГ</strong></td>
+                        <td>Резиновый элемент в металлическом корпусе</td>
+                        <td>ВЛ с расщеплёнными фазами</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- РАЗДЕЛ 2.1.2 -->
+            <h2>2.1.2. Виды технического обслуживания ВЛ</h2>
+
+            <p>Техническое обслуживание воздушных линий электропередачи — это комплекс работ по поддержанию исправного состояния ВЛ, выявлению и устранению неисправностей, предупреждению ускоренного износа элементов. Система технического обслуживания ВЛ регламентируется <span class="gost-reference">ПТЭЭП (глава 2.3)</span> и включает несколько видов работ.</p>
+
+            <h3>Периодичность и виды осмотров ВЛ</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Вид осмотра/обслуживания</th>
+                        <th>Периодичность</th>
+                        <th>Кто проводит</th>
+                        <th>Основные объекты контроля</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Периодические осмотры</strong></td>
+                        <td>Не реже 1 раза в год</td>
+                        <td>ИТР, мастера</td>
+                        <td>Вся трасса ВЛ с земли</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Верховые осмотры</strong></td>
+                        <td>Не реже 1 раза в 6 лет (для ВЛ 35 кВ и выше)</td>
+                        <td>Электромонтёры с подъёмом на опоры</td>
+                        <td>Состояние вершин опор, изоляторов, арматуры</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Внеочередные осмотры</strong></td>
+                        <td>После аварий, стихийных явлений</td>
+                        <td>Оперативный и ремонтный персонал</td>
+                        <td>Повреждённые участки</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ночные осмотры</strong></td>
+                        <td>По необходимости</td>
+                        <td>Электромонтёры</td>
+                        <td>Выявление коронирования, искрений</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Тепловизионный контроль</strong></td>
+                        <td>Не реже 1 раза в 3 года</td>
+                        <td>Специалисты ЭТЛ</td>
+                        <td>Контактные соединения, изоляторы</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Плановое патрулирование (визуальный осмотр)</h3>
+
+            <p>Патрулирование (плановый обход) ВЛ является основным видом технического обслуживания, позволяющим своевременно выявлять дефекты и нарушения. Периодичность патрулирования устанавливается в зависимости от условий эксплуатации, но не реже одного раза в год для ВЛ на металлических и железобетонных опорах и не реже двух раз в год для ВЛ на деревянных опорах.</p>
+
+            <div class="highlight-box">
+                <strong>Объекты контроля при патрулировании ВЛ:</strong>
+                <ol>
+                    <li><strong>Опоры:</strong> наклон, осадка, состояние бетона/металла/древесины, антикоррозионное покрытие, заземление</li>
+                    <li><strong>Провода и тросы:</strong> провисание, наличие набросов, повреждения, коррозия, расстояния до земли и пересекаемых объектов</li>
+                    <li><strong>Изоляторы:</strong> загрязнение, повреждения (трещины, сколы), наличие всех элементов гирлянды</li>
+                    <li><strong>Арматура:</strong> состояние зажимов, соединителей, гасителей вибрации</li>
+                    <li><strong>Трасса:</strong> состояние просеки, наличие посторонних предметов, угроза от деревьев</li>
+                    <li><strong>Заземляющие устройства:</strong> целостность спусков, состояние контактов</li>
+                </ol>
+            </div>
+
+            <p>Результаты осмотра фиксируются в листке осмотра ВЛ, который содержит перечень выявленных дефектов с привязкой к номерам опор. По результатам патрулирования составляется ведомость дефектов для планирования ремонтных работ.</p>
+
+            <div class="example-box">
+                <div class="example-title">📋 Пример: Листок осмотра ВЛ 110 кВ</div>
+                <p><strong>Линия:</strong> ВЛ 110 кВ «ПС Западная — ПС Промышленная»</p>
+                <p><strong>Дата осмотра:</strong> 15.04.2024</p>
+                <p><strong>Осмотр проводил:</strong> мастер Иванов И.И.</p>
+                <table style="margin-top: 10px; font-size: 0.9rem;">
+                    <tr>
+                        <th>№ опоры</th>
+                        <th>Выявленный дефект</th>
+                        <th>Категория</th>
+                        <th>Рекомендации</th>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>Разбит 1 изолятор в гирлянде фазы А</td>
+                        <td>II</td>
+                        <td>Заменить при ТР</td>
+                    </tr>
+                    <tr>
+                        <td>23</td>
+                        <td>Наклон опоры 3° в сторону оси линии</td>
+                        <td>III</td>
+                        <td>Контроль, при увеличении — выправка</td>
+                    </tr>
+                    <tr>
+                        <td>28-29</td>
+                        <td>Поросль деревьев в просеке до 4 м</td>
+                        <td>III</td>
+                        <td>Расчистка при ТР</td>
+                    </tr>
+                    <tr>
+                        <td>45</td>
+                        <td>Ослабление крепления гасителя вибрации</td>
+                        <td>II</td>
+                        <td>Закрепить при верховом осмотре</td>
+                    </tr>
+                    <tr>
+                        <td>67</td>
+                        <td>Коррозия болтов крепления траверсы</td>
+                        <td>III</td>
+                        <td>Заменить болты при СР</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 10px; font-size: 0.85rem;"><em>Категории дефектов: I — аварийный (немедленное устранение), II — срочный (в течение месяца), III — плановый (при очередном ремонте)</em></p>
+            </div>
+
+            <h3>Детальное обследование</h3>
+
+            <p>Детальное (специальное) обследование ВЛ проводится для углублённой оценки технического состояния элементов линии. Включает инструментальные измерения, лабораторные анализы и другие методы диагностики.</p>
+
+            <h4>Виды детального обследования</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Вид обследования</th>
+                        <th>Методы</th>
+                        <th>Периодичность</th>
+                        <th>Что выявляется</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Обследование опор</strong></td>
+                        <td>Измерение отклонений от вертикали, ультразвуковая дефектоскопия, измерение толщины стенок</td>
+                        <td>1 раз в 6-12 лет</td>
+                        <td>Степень коррозии, трещины, скрытые дефекты</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Обследование фундаментов</strong></td>
+                        <td>Откопка, визуальный осмотр, измерение глубины заложения</td>
+                        <td>По результатам осмотров</td>
+                        <td>Разрушение бетона, оголение арматуры, осадка</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Обследование проводов</strong></td>
+                        <td>Визуальный осмотр с лупой, измерение диаметра, проверка сечения</td>
+                        <td>При сроке службы более 25 лет</td>
+                        <td>Коррозия, обрывы проволок, уменьшение сечения</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Обследование деревянных опор</strong></td>
+                        <td>Измерение глубины загнивания приборами (ПД-1)</td>
+                        <td>Ежегодно для опор старше 6 лет</td>
+                        <td>Наружное и внутреннее загнивание</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>⚠️ Критерии браковки деревянных опор:</strong>
+                <ul>
+                    <li>Загнивание древесины на глубину более 3 см при диаметре опоры 18-22 см</li>
+                    <li>Загнивание более 4 см при диаметре 22-26 см</li>
+                    <li>Площадь поперечного сечения здоровой древесины менее 50% расчётной</li>
+                    <li>Сквозные трещины или расколы</li>
+                    <li>Отклонение от вертикали более 3° (для одиночных опор)</li>
+                </ul>
+            </div>
+
+            <h3>Тепловизионный контроль</h3>
+
+            <p>Тепловизионный (инфракрасный) контроль является высокоэффективным методом диагностики состояния контактных соединений и изоляторов ВЛ без отключения линии. Метод основан на регистрации инфракрасного излучения нагретых элементов.</p>
+
+            <div class="definition-box">
+                <strong>Принцип тепловизионного контроля:</strong> Дефектные контактные соединения имеют повышенное переходное сопротивление, что приводит к их нагреву при протекании тока нагрузки. Разность температур между дефектным и исправным элементом (избыточная температура) является критерием оценки состояния.
+            </div>
+
+            <h4>Критерии оценки состояния по результатам тепловизионного контроля</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Категория дефекта</th>
+                        <th>Избыточная температура, °С</th>
+                        <th>Коэффициент дефектности</th>
+                        <th>Рекомендуемые меры</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Норма</strong></td>
+                        <td>0-5</td>
+                        <td>&lt; 1,2</td>
+                        <td>Эксплуатация без ограничений</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Начальная стадия</strong></td>
+                        <td>5-20</td>
+                        <td>1,2-1,5</td>
+                        <td>Контроль при следующем обследовании</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Развившийся дефект</strong></td>
+                        <td>20-50</td>
+                        <td>1,5-2,0</td>
+                        <td>Ремонт при ближайшем отключении</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Аварийный</strong></td>
+                        <td>&gt; 50</td>
+                        <td>&gt; 2,0</td>
+                        <td>Немедленный вывод в ремонт</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>Тепловизионный контроль проводится при токе нагрузки не менее 30% от номинального. Оптимальное время проведения — утренние или вечерние часы при отсутствии прямого солнечного освещения и дождя.</p>
+
+            <h4>Объекты тепловизионного контроля на ВЛ:</h4>
+
+            <ul>
+                <li>Контактные болтовые и прессуемые соединения проводов</li>
+                <li>Натяжные и поддерживающие зажимы</li>
+                <li>Соединители проводов в пролёте</li>
+                <li>Места присоединения ответвлений</li>
+                <li>Изоляторы (выявление дефектов изоляции по характеру нагрева)</li>
+                <li>Места соединения молниезащитного троса с опорами</li>
+            </ul>
+
+            <h3>Контроль натяжения и стрелы провеса проводов</h3>
+
+            <p>Контроль натяжения проводов и грозозащитных тросов проводится для проверки соответствия фактических параметров проводов проектным значениям. Отклонения от нормы могут привести к нарушению габаритов линии или к чрезмерным механическим напряжениям в проводах.</p>
+
+            <div class="formula-box">
+                <strong>Стрела провеса провода:</strong>
+                <div class="formula">
+                    f = (γ × l²) / (8 × σ)
+                </div>
+                <div class="formula-desc">
+                    где: f — стрела провеса, м;<br>
+                    γ — удельная нагрузка на провод, даН/(м·мм²);<br>
+                    l — длина пролёта, м;<br>
+                    σ — механическое напряжение в проводе, даН/мм²
+                </div>
+            </div>
+
+            <h4>Методы измерения стрелы провеса:</h4>
+
+            <ul>
+                <li><strong>Визирование:</strong> Измерение угла наклона линии визирования к горизонту от точки крепления провода до его низшей точки с помощью теодолита или нивелира</li>
+                <li><strong>Метод двух углов:</strong> Измерение углов визирования с двух точек с известным расстоянием между ними</li>
+                <li><strong>Непосредственное измерение:</strong> Измерение расстояния от провода до земли в низшей точке пролёта с помощью рулетки или дальномера</li>
+                <li><strong>Лазерное сканирование:</strong> Использование лазерных дальномеров и БПЛА для создания 3D-модели провода</li>
+            </ul>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Напряжение ВЛ, кВ</th>
+                        <th>Минимальное расстояние до земли (населённая местность), м</th>
+                        <th>Минимальное расстояние до земли (ненаселённая местность), м</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>До 1</td>
+                        <td>6,0</td>
+                        <td>6,0</td>
+                    </tr>
+                    <tr>
+                        <td>6-10</td>
+                        <td>7,0</td>
+                        <td>6,0</td>
+                    </tr>
+                    <tr>
+                        <td>35</td>
+                        <td>7,0</td>
+                        <td>6,0</td>
+                    </tr>
+                    <tr>
+                        <td>110</td>
+                        <td>7,0</td>
+                        <td>6,0</td>
+                    </tr>
+                    <tr>
+                        <td>220</td>
+                        <td>8,0</td>
+                        <td>7,0</td>
+                    </tr>
+                    <tr>
+                        <td>500</td>
+                        <td>8,0</td>
+                        <td>8,0</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- РАЗДЕЛ 2.1.3 -->
+            <h2>2.1.3. Виды ремонта ВЛ</h2>
+
+            <p>Ремонт воздушных линий электропередачи — это комплекс работ по восстановлению исправного состояния элементов ВЛ и их работоспособности. Система ремонтов ВЛ включает текущий, средний и капитальный ремонт, а также аварийно-восстановительные работы.</p>
+
+            <h3>Текущий ремонт ВЛ</h3>
+
+            <p>Текущий ремонт проводится для поддержания работоспособности ВЛ путём устранения выявленных дефектов и замены отдельных элементов. Периодичность — не реже 1 раза в год. Работы выполняются, как правило, без отключения линии или с кратковременным отключением.</p>
+
+            <div class="two-column">
+                <div class="column-box">
+                    <h4>Работы на опорах</h4>
+                    <ul>
+                        <li>Подтяжка и замена болтовых соединений</li>
+                        <li>Восстановление антикоррозионного покрытия</li>
+                        <li>Выправка наклонившихся опор</li>
+                        <li>Укрепление оттяжек</li>
+                        <li>Восстановление нумерации</li>
+                        <li>Ремонт заземляющих спусков</li>
+                        <li>Установка бандажей на деревянные опоры</li>
+                    </ul>
+                </div>
+                <div class="column-box">
+                    <h4>Работы на проводах и арматуре</h4>
+                    <ul>
+                        <li>Замена отдельных изоляторов</li>
+                        <li>Регулировка стрел провеса</li>
+                        <li>Установка ремонтных муфт на провода</li>
+                        <li>Подтяжка болтов зажимов</li>
+                        <li>Замена гасителей вибрации</li>
+                        <li>Удаление набросов с проводов</li>
+                        <li>Восстановление маркировки фаз</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4>Типовые объёмы текущего ремонта</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Работа</th>
+                        <th>Единица измерения</th>
+                        <th>Норматив трудоёмкости, чел.-ч</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Замена изолятора в гирлянде</td>
+                        <td>1 шт.</td>
+                        <td>0,8-1,2</td>
+                    </tr>
+                    <tr>
+                        <td>Замена натяжного зажима</td>
+                        <td>1 шт.</td>
+                        <td>1,5-2,5</td>
+                    </tr>
+                    <tr>
+                        <td>Установка бандажа на деревянную опору</td>
+                        <td>1 шт.</td>
+                        <td>0,5-0,8</td>
+                    </tr>
+                    <tr>
+                        <td>Подтяжка болтов на металлической опоре</td>
+                        <td>1 опора</td>
+                        <td>2,0-4,0</td>
+                    </tr>
+                    <tr>
+                        <td>Окраска металлоконструкций опоры</td>
+                        <td>1 т</td>
+                        <td>30-50</td>
+                    </tr>
+                    <tr>
+                        <td>Расчистка просеки (молодая поросль)</td>
+                        <td>1 км</td>
+                        <td>40-80</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Средний ремонт</h3>
+
+            <p>Средний ремонт проводится с периодичностью 5-8 лет и включает больший объём работ по восстановлению технических характеристик элементов ВЛ. Выполняется с отключением линии на несколько дней.</p>
+
+            <div class="info-box">
+                <strong>Типовой объём работ среднего ремонта ВЛ:</strong>
+                <ul>
+                    <li>Полная замена изоляторов на участке (до 30% гирлянд)</li>
+                    <li>Капитальный ремонт опор (до 10% от общего количества)</li>
+                    <li>Замена дефектной линейной арматуры</li>
+                    <li>Перетяжка проводов с регулировкой стрел провеса</li>
+                    <li>Ремонт фундаментов опор</li>
+                    <li>Полная окраска металлических опор</li>
+                    <li>Капитальная расчистка просеки</li>
+                    <li>Ремонт подъездов к опорам</li>
+                </ul>
+            </div>
+
+            <h3>Капитальный ремонт ВЛ</h3>
+
+            <p>Капитальный ремонт предусматривает полное восстановление или замену основных элементов ВЛ с доведением их характеристик до нормативных значений. Проводится при значительном износе линии или по результатам технического обследования.</p>
+
+            <h4>Работы, выполняемые при капитальном ремонте:</h4>
+
+            <ul>
+                <li><strong>Замена опор:</strong> Полная замена железобетонных опор с трещинами, оголением арматуры; замена металлических опор с коррозией более 30% сечения; замена деревянных опор с загниванием</li>
+                <li><strong>Замена проводов:</strong> При износе более 30% сечения, значительной коррозии, частых повреждениях. Возможна замена на провода большего сечения для увеличения пропускной способности</li>
+                <li><strong>Замена изоляции:</strong> Полная замена изоляторов на современные (например, на полимерные)</li>
+                <li><strong>Замена фундаментов:</strong> При разрушении бетона, вымывании грунта</li>
+                <li><strong>Реконструкция трассы:</strong> Изменение расположения опор, вынос линии из зоны застройки</li>
+            </ul>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Элемент ВЛ</th>
+                        <th>Нормативный срок службы, лет</th>
+                        <th>Критерии для капитального ремонта</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Железобетонные опоры</td>
+                        <td>40-50</td>
+                        <td>Трещины шириной более 0,3 мм, оголение арматуры, коррозия арматуры</td>
+                    </tr>
+                    <tr>
+                        <td>Металлические опоры</td>
+                        <td>50-70</td>
+                        <td>Коррозия более 30% сечения элементов, деформации</td>
+                    </tr>
+                    <tr>
+                        <td>Деревянные опоры</td>
+                        <td>20-25</td>
+                        <td>Загнивание более допустимого, расколы, переломы</td>
+                    </tr>
+                    <tr>
+                        <td>Провода АС</td>
+                        <td>45</td>
+                        <td>Обрыв более 17% проволок наружного повива, износ более 30%</td>
+                    </tr>
+                    <tr>
+                        <td>Стеклянные изоляторы</td>
+                        <td>40</td>
+                        <td>Разрушение тарелок, повреждение шапок</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Аварийно-восстановительные работы</h3>
+
+            <p>Аварийно-восстановительные работы (АВР) выполняются для ликвидации последствий аварийных повреждений ВЛ и восстановления электроснабжения потребителей в кратчайшие сроки. Организация АВР регламентируется <span class="gost-reference">ПТЭЭП</span> и местными инструкциями.</p>
+
+            <h4>Типичные аварийные повреждения ВЛ:</h4>
+
+            <ul>
+                <li>Обрыв проводов и грозозащитных тросов</li>
+                <li>Падение опор (от ветровых нагрузок, гололёда, наезда транспорта)</li>
+                <li>Перекрытие изоляции (грозовое, от загрязнения)</li>
+                <li>Повреждения от падения деревьев</li>
+                <li>Схлёстывание проводов</li>
+                <li>Повреждения от пожаров</li>
+            </ul>
+
+            <div class="warning-box">
+                <strong>⚠️ Организация аварийно-восстановительных работ:</strong>
+                <ul>
+                    <li>Аварийный запас материалов и оборудования — не менее 2% от общей протяжённости ВЛ</li>
+                    <li>Время сбора аварийной бригады — не более 1 часа</li>
+                    <li>Укомплектованность транспортом (автовышки, тягачи, бурильные машины)</li>
+                    <li>Наличие временных опор для быстрого восстановления</li>
+                    <li>Связь с диспетчером в течение всего времени работ</li>
+                    <li>Соблюдение требований охраны труда даже в аварийных условиях</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <div class="example-title">📊 Пример: Статистика аварийности ВЛ (Кузбассэнерго)</div>
+                <p><strong>Период:</strong> 2020-2023 гг.</p>
+                <p><strong>Объект:</strong> ВЛ 35-110 кВ общей протяжённостью 4 500 км</p>
+                <table style="margin-top: 10px;">
+                    <tr>
+                        <th>Причина аварии</th>
+                        <th>Доля, %</th>
+                        <th>Среднее время восстановления, ч</th>
+                    </tr>
+                    <tr>
+                        <td>Грозовые перенапряжения</td>
+                        <td>28</td>
+                        <td>2,5</td>
+                    </tr>
+                    <tr>
+                        <td>Гололёдно-ветровые нагрузки</td>
+                        <td>22</td>
+                        <td>8,5</td>
+                    </tr>
+                    <tr>
+                        <td>Падение деревьев</td>
+                        <td>18</td>
+                        <td>4,2</td>
+                    </tr>
+                    <tr>
+                        <td>Повреждение изоляции (загрязнение)</td>
+                        <td>15</td>
+                        <td>3,0</td>
+                    </tr>
+                    <tr>
+                        <td>Посторонние воздействия (наезд, набросы)</td>
+                        <td>12</td>
+                        <td>5,5</td>
+                    </tr>
+                    <tr>
+                        <td>Дефекты оборудования</td>
+                        <td>5</td>
+                        <td>6,0</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 10px;"><strong>Вывод:</strong> Основные причины аварий связаны с атмосферными воздействиями (50%). Внедрение системы мониторинга гололёда и расширение просек позволило снизить аварийность на 25% к 2023 году.</p>
+            </div>
+
+            <!-- РАЗДЕЛ 2.1.4 -->
+            <h2>2.1.4. Испытания ВЛ</h2>
+
+            <p>Испытания воздушных линий электропередачи проводятся для оценки технического состояния элементов ВЛ и подтверждения их соответствия нормативным требованиям. Объём и периодичность испытаний определяются <span class="gost-reference">ПТЭЭП</span> и <span class="gost-reference">Нормами испытания электрооборудования (РД 34.45-51.300-97)</span>.</p>
+
+            <h3>Измерение сопротивления изоляции изоляторов</h3>
+
+            <p>Измерение сопротивления изоляции проводится для выявления дефектов в фарфоровых и стеклянных изоляторах, снижающих их электрическую прочность. Измерения выполняются мегаомметром на напряжение 2500 В.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип изолятора</th>
+                        <th>Нормируемое сопротивление изоляции, МОм</th>
+                        <th>Условия измерения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Штыревые изоляторы до 1 кВ</td>
+                        <td>Не менее 300</td>
+                        <td>В сухую погоду, при температуре не ниже +5°С</td>
+                    </tr>
+                    <tr>
+                        <td>Штыревые изоляторы 6-10 кВ</td>
+                        <td>Не менее 1000</td>
+                        <td>В сухую погоду</td>
+                    </tr>
+                    <tr>
+                        <td>Штыревые изоляторы 35 кВ</td>
+                        <td>Не менее 3000</td>
+                        <td>В сухую погоду</td>
+                    </tr>
+                    <tr>
+                        <td>Подвесные изоляторы (один элемент)</td>
+                        <td>Не менее 300</td>
+                        <td>В сухую погоду</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <strong>Методика измерения сопротивления изоляции подвесных изоляторов:</strong>
+                <ol>
+                    <li>Измерение проводится при отключённой линии и снятии наведённого напряжения</li>
+                    <li>Один вывод мегаомметра подключается к шапке изолятора, другой — к стержню</li>
+                    <li>Время измерения — 1 минута</li>
+                    <li>Изоляторы с сопротивлением менее 300 МОм подлежат замене</li>
+                    <li>Результаты заносятся в протокол с указанием номера опоры и фазы</li>
+                </ol>
+            </div>
+
+            <h3>Проверка заземления опор</h3>
+
+            <p>Сопротивление заземляющих устройств опор ВЛ измеряется для обеспечения защиты от атмосферных и коммутационных перенапряжений, а также для защиты от поражения электрическим током при повреждении изоляции.</p>
+
+            <h4>Нормы сопротивления заземления опор ВЛ</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Напряжение ВЛ, кВ</th>
+                        <th>Тип опоры</th>
+                        <th>Удельное сопротивление грунта, Ом·м</th>
+                        <th>Норма сопротивления, Ом</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="3">110 и выше (с тросом)</td>
+                        <td rowspan="3">Все опоры</td>
+                        <td>До 100</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>100-500</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>500-1000</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">35</td>
+                        <td rowspan="2">Металлические, ЖБ</td>
+                        <td>До 100</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>Более 100</td>
+                        <td>0,3ρ, но не более 50</td>
+                    </tr>
+                    <tr>
+                        <td>6-10</td>
+                        <td>Металлические, ЖБ</td>
+                        <td>Любое</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>До 1</td>
+                        <td>Железобетонные</td>
+                        <td>Любое</td>
+                        <td>30</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Методы измерения сопротивления заземления</h4>
+
+            <div class="two-column">
+                <div class="column-box">
+                    <h4>Метод амперметра-вольтметра</h4>
+                    <ul>
+                        <li>Используются измерители типа М416, Ф4103</li>
+                        <li>Требуется установка потенциального и токового электродов</li>
+                        <li>Расстояние до электродов: 20-40 м</li>
+                        <li>Высокая точность измерения</li>
+                        <li>Требует значительного времени</li>
+                    </ul>
+                </div>
+                <div class="column-box">
+                    <h4>Безэлектродный метод (клещи)</h4>
+                    <ul>
+                        <li>Используются измерительные клещи С.А 6415</li>
+                        <li>Не требует вспомогательных электродов</li>
+                        <li>Быстрое измерение (секунды)</li>
+                        <li>Применим только при наличии непрерывности тросовой цепи</li>
+                        <li>Меньшая точность при высоком сопротивлении</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="formula-box">
+                <strong>Расчёт сопротивления заземлителя:</strong>
+                <div class="formula">
+                    R = ρ / (2πl) × [ln(2l/d) - 1]
+                </div>
+                <div class="formula-desc">
+                    где: R — сопротивление растеканию, Ом;<br>
+                    ρ — удельное сопротивление грунта, Ом·м;<br>
+                    l — длина заземлителя, м;<br>
+                    d — диаметр заземлителя, м
+                </div>
+            </div>
+
+            <h3>Контроль натяжения и провеса проводов</h3>
+
+            <p>Измерение стрел провеса проводов выполняется при приёмке линии в эксплуатацию, после капитального ремонта и периодически в процессе эксплуатации для контроля габаритов ВЛ.</p>
+
+            <div class="info-box">
+                <strong>Порядок измерения стрел провеса:</strong>
+                <ol>
+                    <li>Выбрать представительный пролёт (без существенных перепадов высот)</li>
+                    <li>Измерить длину пролёта рулеткой или дальномером</li>
+                    <li>Установить теодолит (нивелир) на расстоянии 50-100 м от провода</li>
+                    <li>Измерить вертикальные углы до точек крепления и низшей точки провода</li>
+                    <li>Рассчитать стрелу провеса по формуле тригонометрического расчёта</li>
+                    <li>Сравнить с проектным значением для данной температуры</li>
+                    <li>Отклонение не должно превышать ±5% от расчётного значения</li>
+                </ol>
+            </div>
+
+            <h3>Проверка электрической прочности изоляции</h3>
+
+            <p>Испытания изоляции ВЛ повышенным напряжением проводятся для подтверждения способности изоляции выдерживать рабочее и коммутационное напряжение. Испытания выполняются перед вводом в эксплуатацию и после капитального ремонта.</p>
+
+            <h4>Виды испытаний изоляции</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Вид испытания</th>
+                        <th>Объект</th>
+                        <th>Испытательное напряжение</th>
+                        <th>Продолжительность</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Испытание повышенным напряжением промышленной частоты</strong></td>
+                        <td>Изоляторы ВЛ до 35 кВ</td>
+                        <td>3-кратное номинальное фазное напряжение</td>
+                        <td>1 минута</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Контроль подвесных изоляторов под рабочим напряжением</strong></td>
+                        <td>Гирлянды 35 кВ и выше</td>
+                        <td>Рабочее напряжение</td>
+                        <td>Измерение распределения напряжения</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Проверка штанг ВЛ</strong></td>
+                        <td>Изоляционные штанги</td>
+                        <td>Согласно нормам ПТЭЭП</td>
+                        <td>1 минута</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Методы контроля изоляции под рабочим напряжением</h4>
+
+            <ul>
+                <li><strong>Измерение распределения напряжения по гирлянде:</strong> С помощью штанги с вольтметром измеряется падение напряжения на каждом изоляторе. Дефектный изолятор имеет пониженное напряжение</li>
+                <li><strong>Измерительная штанга с искровым промежутком:</strong> При касании изолятора возникает искра, интенсивность которой характеризует состояние</li>
+                <li><strong>Тепловизионный контроль:</strong> Дефектные изоляторы выявляются по характерному распределению температуры</li>
+                <li><strong>Ультрафиолетовый контроль:</strong> Регистрация коронных разрядов на дефектных изоляторах</li>
+            </ul>
+
+            <div class="example-box">
+                <div class="example-title">📊 Пример: Результаты испытаний ВЛ 110 кВ после капитального ремонта</div>
+                <p><strong>Линия:</strong> ВЛ 110 кВ «ПС Западная — ПС Промышленная», 45 км</p>
+                <p><strong>Дата:</strong> май 2024 г.</p>
+                <table style="margin-top: 10px;">
+                    <tr>
+                        <th>Вид испытания</th>
+                        <th>Норма</th>
+                        <th>Результат</th>
+                        <th>Заключение</th>
+                    </tr>
+                    <tr>
+                        <td>Сопротивление заземления опор (выборочно 15%)</td>
+                        <td>≤ 15 Ом</td>
+                        <td>8,5-14,2 Ом</td>
+                        <td>Соответствует</td>
+                    </tr>
+                    <tr>
+                        <td>Сопротивление изоляции гирлянд (выборочно)</td>
+                        <td>≥ 300 МОм/элемент</td>
+                        <td>850-2500 МОм</td>
+                        <td>Соответствует</td>
+                    </tr>
+                    <tr>
+                        <td>Стрелы провеса (контрольные пролёты)</td>
+                        <td>Откл. ≤ 5%</td>
+                        <td>Откл. 2-4%</td>
+                        <td>Соответствует</td>
+                    </tr>
+                    <tr>
+                        <td>Расстояние до земли (минимум)</td>
+                        <td>≥ 6,0 м</td>
+                        <td>6,8-8,5 м</td>
+                        <td>Соответствует</td>
+                    </tr>
+                    <tr>
+                        <td>Тепловизионный контроль соединений</td>
+                        <td>ΔT &lt; 20°C</td>
+                        <td>ΔT = 3-12°C</td>
+                        <td>Соответствует</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 10px;"><strong>Заключение:</strong> ВЛ 110 кВ «ПС Западная — ПС Промышленная» соответствует требованиям ПУЭ и ПТЭЭП, пригодна к эксплуатации.</p>
+            </div>
+
+            <!-- ВЫВОДЫ -->
+            <h2>Выводы по теме</h2>
+
+            <div class="highlight-box">
+                <strong>Основные выводы:</strong>
+                <ol>
+                    <li><strong>Конструкция ВЛ</strong> включает опоры (железобетонные, стальные, деревянные), провода (преимущественно сталеалюминиевые АС), изоляторы (штыревые, подвесные, полимерные) и линейную арматуру. Каждый элемент имеет свои характеристики, определяющие требования к эксплуатации.</li>
+                    <li><strong>Техническое обслуживание ВЛ</strong> включает периодические осмотры, патрулирование, верховые осмотры, тепловизионный контроль и контроль параметров проводов. Своевременное выявление дефектов позволяет предотвратить аварии.</li>
+                    <li><strong>Система ремонтов ВЛ</strong> включает текущий, средний и капитальный ремонт с различной периодичностью и объёмом работ. Аварийно-восстановительные работы требуют специальной подготовки и оснащения.</li>
+                    <li><strong>Испытания ВЛ</strong> (измерение сопротивления изоляции, проверка заземления, контроль стрел провеса, испытание изоляции) позволяют количественно оценить техническое состояние элементов и принять решение об их дальнейшей эксплуатации.</li>
+                    <li><strong>Безопасность работ</strong> на ВЛ требует строгого соблюдения правил охраны труда, применения средств защиты и организационных мероприятий (наряды-допуски, технические мероприятия).</li>
+                </ol>
+            </div>
+
+            <!-- КОНТРОЛЬНЫЕ ВОПРОСЫ -->
+            <h2>Контрольные вопросы</h2>
+
+            <ol>
+                <li>Перечислите основные типы опор ВЛ по назначению и охарактеризуйте их особенности.</li>
+                <li>В чём преимущества и недостатки железобетонных, стальных и деревянных опор?</li>
+                <li>Какие марки проводов применяются на ВЛ и каковы их конструктивные особенности?</li>
+                <li>Назовите типы изоляторов ВЛ и области их применения.</li>
+                <li>Для чего предназначены гасители вибрации и как они работают?</li>
+                <li>Какие виды технического обслуживания ВЛ предусмотрены ПТЭЭП?</li>
+                <li>Что контролируется при патрулировании ВЛ?</li>
+                <li>Каковы критерии оценки состояния контактных соединений по результатам тепловизионного контроля?</li>
+                <li>Какие работы выполняются при текущем, среднем и капитальном ремонте ВЛ?</li>
+                <li>Какова периодичность измерения сопротивления заземления опор и нормируемые значения?</li>
+                <li>Как проводится контроль изоляции гирлянд под рабочим напряжением?</li>
+                <li>Назовите основные причины аварий на ВЛ и меры их предотвращения.</li>
+            </ol>
+
+            <!-- ЛИТЕРАТУРА -->
+            <h2>Литература и нормативные документы</h2>
+            
+            <div class="reference">
+                <h4>Основные нормативные документы</h4>
+                <ol>
+                    <li>Правила устройства электроустановок (ПУЭ). Глава 2.5. Воздушные линии электропередачи напряжением выше 1 кВ. 7-е издание.</li>
+                    <li>Правила технической эксплуатации электроустановок потребителей (ПТЭЭП). Глава 2.3. Воздушные линии электропередачи. Утв. приказом Минэнерго России от 12.08.2022 № 811.</li>
+                    <li>Правила по охране труда при эксплуатации электроустановок. Утв. приказом Минтруда России от 15.12.2020 № 903н.</li>
+                    <li>ГОСТ 839-2019. Провода неизолированные для воздушных линий электропередачи. Технические условия.</li>
+                    <li>ГОСТ 6490-93. Изоляторы линейные подвесные. Общие технические условия.</li>
+                    <li>ГОСТ 27661-88. Изоляторы линейные подвесные стеклянные. Общие технические условия.</li>
+                    <li>РД 34.45-51.300-97. Объём и нормы испытаний электрооборудования.</li>
+                    <li>СТО 56947007-29.240.55.016-2008. Нормы технологического проектирования воздушных линий электропередачи напряжением 35-750 кВ.</li>
+                </ol>
+                
+                <h4 style="margin-top: 20px;">Учебная литература</h4>
+                <ol>
+                    <li>Крюков К.П., Новгородцев Б.П. Конструкции и механический расчёт линий электропередачи. — Л.: Энергия, 2019. — 432 с.</li>
+                    <li>Рокотян С.С., Шапиро И.М. Справочник по проектированию линий электропередачи. — М.: Энергоатомиздат, 2020. — 768 с.</li>
+                    <li>Короткевич М.А. Эксплуатация электрических сетей. — Минск: Вышэйшая школа, 2018. — 350 с.</li>
+                    <li>Герасименко А.А., Федин В.Т. Передача и распределение электрической энергии. — Ростов н/Д: Феникс, 2020. — 720 с.</li>
+                    <li>Электротехнический справочник. Т. 3. Производство, передача и распределение электрической энергии. / Под общ. ред. В.Г. Герасимова. — М.: Издательский дом МЭИ, 2019. — 964 с.</li>
+                </ol>
+            </div>
+
+         <div class="nav-buttons">
+    <a href="1-5.html" class="nav-btn">← Предыдущая тема: 1.5. Система ППР</a>
+    <a href="start.html" class="nav-btn nav-btn-home">📚 Оглавление</a>
+    <a href="2-2.html" class="nav-btn">Следующая тема: 2.2. Эксплуатация КЛ →</a>
+</div>
+        </article>
+
+        <footer class="footer">
+            <p>© 2026 Кузбасский государственный технический университет имени Т.Ф. Горбачева</p>
+            <p>Кафедра электрических станций, сетей и систем электроснабжения предприятий (ЭГиПП)</p>
+            <p>Автор: Артемасов В.В., к.т.н., доцент</p>
+        </footer>
+    </div>
+</body>
+</html>

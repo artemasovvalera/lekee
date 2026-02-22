@@ -1,0 +1,2949 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.3. Эксплуатация трансформаторов - Эксплуатация электрооборудования</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 50%, #1a365d 100%);
+            min-height: 100vh;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .lecture-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-left: 6px solid #c53030;
+        }
+
+        .breadcrumb {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #1a365d;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .lecture-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .content-body {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #1a365d;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #c53030;
+        }
+
+        h3 {
+            color: #2c5282;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 25px 0 15px 0;
+        }
+
+        h4 {
+            color: #4a5568;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .formula-box {
+            background: #1a365d;
+            color: white;
+            border-left: 4px solid #c53030;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1rem;
+        }
+
+        .formula-box .formula {
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .formula-box .formula-desc {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: #2c5282;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:hover {
+            background: #f7fafc;
+        }
+
+        .image-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .image-container svg {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-caption {
+            color: #4a5568;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);
+            border-left: 4px solid #f6ad55;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+            border-left: 4px solid #c53030;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            color: #742a2a;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .example-title {
+            font-weight: 700;
+            color: #234e52;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e8f4fd 0%, #bee3f8 100%);
+            border-left: 4px solid #3182ce;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .reference {
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .reference h4 {
+            color: #1a365d;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #c53030;
+            padding-bottom: 10px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e2e8f0;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: #2c5282;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .nav-btn:hover {
+            background: #1a365d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-btn-home {
+            background: #c53030;
+            flex: 0 0 auto;
+            max-width: 180px;
+        }
+
+        .nav-btn-home:hover {
+            background: #9b2c2c;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .gost-reference {
+            display: inline-block;
+            background: #edf2f7;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .column-box {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .column-box h4 {
+            color: #2c5282;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f6ad55;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .lecture-header, .content-body {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .two-column, .three-column {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .nav-btn-home {
+                order: -1;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="lecture-header">
+            <div class="breadcrumb">Раздел 2 → Тема 2.3 → Эксплуатация трансформаторов</div>
+            <h1>2.3. Эксплуатация трансформаторов</h1>
+            <div class="lecture-meta">
+                <div class="meta-item">📚 Лекционное занятие</div>
+                <div class="meta-item">⏱ 4 академических часа</div>
+                <div class="meta-item">🎯 Раздел 2: Эксплуатация электрооборудования</div>
+            </div>
+        </header>
+
+        <article class="content-body">
+            
+            <!-- ВВЕДЕНИЕ -->
+            <h2>Введение</h2>
+            
+            <p>Силовые трансформаторы являются одними из наиболее ответственных и дорогостоящих элементов систем электроснабжения. Они обеспечивают преобразование электрической энергии по уровню напряжения, что необходимо для её эффективной передачи и распределения. От надёжной работы трансформаторов напрямую зависит бесперебойное электроснабжение потребителей.</p>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <span class="stat-value">500 тыс.</span>
+                    <span class="stat-label">трансформаторов в РФ</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">25-30</span>
+                    <span class="stat-label">лет нормативный срок службы</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">60%</span>
+                    <span class="stat-label">трансформаторов старше 25 лет</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">98-99%</span>
+                    <span class="stat-label">КПД современных трансформаторов</span>
+                </div>
+            </div>
+
+            <p>Согласно данным Минэнерго России, парк силовых трансформаторов в стране насчитывает около 500 тысяч единиц суммарной мощностью более 900 ГВА. При этом значительная часть оборудования эксплуатируется сверх нормативного срока службы, что требует особого внимания к вопросам технического обслуживания, диагностики и своевременного ремонта.</p>
+
+            <div class="definition-box">
+                <strong>Определение:</strong> <em>Силовой трансформатор</em> — статический электромагнитный аппарат, предназначенный для преобразования переменного тока одного напряжения в переменный ток другого напряжения той же частоты. Работа трансформатора основана на явлении электромагнитной индукции (<span class="gost-reference">ГОСТ 16110-82</span>).
+            </div>
+
+            <p>Эксплуатация трансформаторов регламентируется обширной нормативной базой, основу которой составляют:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Нормативный документ</th>
+                        <th>Область применения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="gost-reference">ГОСТ 11677-85</span></td>
+                        <td>Трансформаторы силовые. Общие технические условия</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">ПТЭЭП, глава 2.1</span></td>
+                        <td>Правила эксплуатации силовых трансформаторов и реакторов</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">РД 34.45-51.300-97</span></td>
+                        <td>Объём и нормы испытаний электрооборудования</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">ГОСТ 982-80</span></td>
+                        <td>Масла трансформаторные. Технические условия</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">СТО 56947007-29.180.01.015-2008</span></td>
+                        <td>Методические указания по диагностике силовых трансформаторов</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">РД 153-34.0-46.302-00</span></td>
+                        <td>Методические указания по диагностике состояния изоляции</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- РАЗДЕЛ 2.3.1 -->
+            <h2>2.3.1. Конструкция и типы трансформаторов</h2>
+
+            <p>Конструкция силового трансформатора определяется его назначением, мощностью, классом напряжения и условиями эксплуатации. Несмотря на разнообразие типов, все трансформаторы имеют общие конструктивные элементы: магнитопровод, обмотки, изоляцию, систему охлаждения и бак (для масляных трансформаторов).</p>
+
+            <h3>Классификация силовых трансформаторов</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Признак классификации</th>
+                        <th>Типы трансформаторов</th>
+                        <th>Примеры обозначений</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>По назначению</strong></td>
+                        <td>Силовые общего назначения, автотрансформаторы, печные, сварочные, измерительные</td>
+                        <td>ТМ, ТДН, АТДЦТН, ТСЗ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>По виду охлаждения</strong></td>
+                        <td>Масляные, сухие, с негорючим жидким диэлектриком</td>
+                        <td>М — масляное, С — сухое, Н — негорючее</td>
+                    </tr>
+                    <tr>
+                        <td><strong>По числу фаз</strong></td>
+                        <td>Однофазные, трёхфазные</td>
+                        <td>О — однофазный, Т — трёхфазный</td>
+                    </tr>
+                    <tr>
+                        <td><strong>По способу регулирования напряжения</strong></td>
+                        <td>С ПБВ, с РПН</td>
+                        <td>ПБВ ±2×2,5%, РПН ±9×1,78%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>По числу обмоток</strong></td>
+                        <td>Двухобмоточные, трёхобмоточные, с расщеплённой обмоткой</td>
+                        <td>ТМ, ТМТН, ТРДН</td>
+                    </tr>
+                    <tr>
+                        <td><strong>По классу напряжения</strong></td>
+                        <td>До 35 кВ (распределительные), 110-220 кВ, 330 кВ и выше</td>
+                        <td>ТМ-1000/10, ТДН-16000/110</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Система обозначений трансформаторов</h3>
+
+            <p>Маркировка трансформаторов содержит информацию о типе, системе охлаждения, мощности и классе напряжения. Структура обозначения регламентирована <span class="gost-reference">ГОСТ 11677-85</span>.</p>
+
+            <div class="example-box">
+                <div class="example-title">📝 Пример расшифровки маркировки трансформатора ТДН-16000/110</div>
+                <ul>
+                    <li><strong>Т</strong> — трёхфазный (О — однофазный)</li>
+                    <li><strong>Д</strong> — принудительная циркуляция воздуха и естественная циркуляция масла (дутьё)</li>
+                    <li><strong>Н</strong> — регулирование напряжения под нагрузкой (РПН)</li>
+                    <li><strong>16000</strong> — номинальная мощность 16000 кВА (16 МВА)</li>
+                    <li><strong>110</strong> — класс напряжения обмотки ВН — 110 кВ</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Другие примеры:</strong></p>
+                <ul>
+                    <li><strong>ТМ-1000/10</strong> — трёхфазный, масляный, 1000 кВА, 10 кВ</li>
+                    <li><strong>ТРДН-25000/110</strong> — трёхфазный, с расщеплённой обмоткой НН, дутьевой, с РПН, 25 МВА, 110 кВ</li>
+                    <li><strong>АТДЦТН-125000/220/110</strong> — автотрансформатор, трёхфазный, дутьевой с принудительной циркуляцией масла, 125 МВА, 220/110 кВ</li>
+                    <li><strong>ТСЗ-630/10</strong> — трёхфазный, сухой, с защитой обмоток, 630 кВА, 10 кВ</li>
+                </ul>
+            </div>
+
+            <h3>Масляные трансформаторы</h3>
+
+            <p>Масляные трансформаторы являются наиболее распространённым типом силовых трансформаторов. Трансформаторное масло выполняет две основные функции: изоляционную (повышает электрическую прочность) и охлаждающую (отводит тепло от обмоток и магнитопровода).</p>
+
+            <div class="image-container">
+                <svg viewBox="0 0 900 550" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Фон -->
+                    <rect width="900" height="550" fill="#ffffff"/>
+                    
+                    <!-- Заголовок -->
+                    <text x="450" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#1a365d">
+                        КОНСТРУКЦИЯ МАСЛЯНОГО СИЛОВОГО ТРАНСФОРМАТОРА
+                    </text>
+                    
+                    <!-- Бак трансформатора -->
+                    <rect x="200" y="100" width="400" height="350" fill="#a0aec0" stroke="#4a5568" stroke-width="3" rx="10"/>
+                    
+                    <!-- Масло внутри -->
+                    <rect x="210" y="140" width="380" height="300" fill="#f6e05e" opacity="0.3"/>
+                    
+                    <!-- Магнитопровод -->
+                    <rect x="270" y="180" width="260" height="220" fill="#718096" stroke="#4a5568" stroke-width="2"/>
+                    <rect x="290" y="200" width="70" height="180" fill="#e2e8f0"/>
+                    <rect x="440" y="200" width="70" height="180" fill="#e2e8f0"/>
+                    
+                    <!-- Обмотки ВН -->
+                    <rect x="295" y="210" width="60" height="160" fill="#c53030" stroke="#9b2c2c" stroke-width="2" rx="5"/>
+                    <rect x="445" y="210" width="60" height="160" fill="#c53030" stroke="#9b2c2c" stroke-width="2" rx="5"/>
+                    
+                    <!-- Обмотки НН -->
+                    <rect x="310" y="220" width="30" height="140" fill="#3182ce" stroke="#2c5282" stroke-width="2" rx="3"/>
+                    <rect x="460" y="220" width="30" height="140" fill="#3182ce" stroke="#2c5282" stroke-width="2" rx="3"/>
+                    
+                    <!-- Вводы ВН -->
+                    <rect x="260" y="60" width="25" height="50" fill="#d69e2e" stroke="#b7791f" stroke-width="2"/>
+                    <ellipse cx="272" cy="55" rx="20" ry="8" fill="#f6ad55"/>
+                    <rect x="360" y="60" width="25" height="50" fill="#d69e2e" stroke="#b7791f" stroke-width="2"/>
+                    <ellipse cx="372" cy="55" rx="20" ry="8" fill="#f6ad55"/>
+                    <rect x="460" y="60" width="25" height="50" fill="#d69e2e" stroke="#b7791f" stroke-width="2"/>
+                    <ellipse cx="472" cy="55" rx="20" ry="8" fill="#f6ad55"/>
+                    <text x="365" y="45" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#1a365d">Вводы ВН</text>
+                    
+                    <!-- Вводы НН -->
+                    <rect x="530" y="120" width="20" height="40" fill="#38a169" stroke="#276749" stroke-width="2"/>
+                    <rect x="560" y="120" width="20" height="40" fill="#38a169" stroke="#276749" stroke-width="2"/>
+                    <rect x="590" y="120" width="20" height="40" fill="#38a169" stroke="#276749" stroke-width="2"/>
+                    <text x="570" y="115" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#1a365d">Вводы НН</text>
+                    
+                    <!-- Расширитель -->
+                    <rect x="620" y="80" width="120" height="60" fill="#a0aec0" stroke="#4a5568" stroke-width="2" rx="5"/>
+                    <line x1="600" y1="110" x2="620" y2="110" stroke="#4a5568" stroke-width="3"/>
+                    <text x="680" y="115" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#1a365d">Расширитель</text>
+                    
+                    <!-- Маслоуказатель -->
+                    <rect x="745" y="85" width="10" height="50" fill="#e2e8f0" stroke="#4a5568" stroke-width="1"/>
+                    <rect x="747" y="105" width="6" height="28" fill="#f6e05e"/>
+                    <text x="780" y="115" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#4a5568">МУ</text>
+                    
+                    <!-- Воздухоосушитель -->
+                    <rect x="620" y="145" width="30" height="50" fill="#e2e8f0" stroke="#4a5568" stroke-width="1"/>
+                    <ellipse cx="635" cy="200" rx="15" ry="20" fill="#d69e2e" stroke="#b7791f" stroke-width="1"/>
+                    <text x="635" y="230" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#4a5568">Воздухо-</text>
+                    <text x="635" y="240" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#4a5568">осушитель</text>
+                    
+                    <!-- Радиаторы охлаждения -->
+                    <g transform="translate(120, 180)">
+                        <rect x="0" y="0" width="15" height="200" fill="#718096" stroke="#4a5568" stroke-width="1"/>
+                        <rect x="20" y="0" width="15" height="200" fill="#718096" stroke="#4a5568" stroke-width="1"/>
+                        <rect x="40" y="0" width="15" height="200" fill="#718096" stroke="#4a5568" stroke-width="1"/>
+                        <text x="30" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Радиаторы</text>
+                    </g>
+                    
+                    <!-- Газовое реле -->
+                    <ellipse cx="610" y="110" rx="15" ry="12" fill="#e53e3e" stroke="#c53030" stroke-width="2"/>
+                    <text x="610" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#c53030">Газовое</text>
+                    <text x="610" y="75" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#c53030">реле</text>
+                    
+                    <!-- Термосигнализатор -->
+                    <circle cx="180" cy="300" r="15" fill="#38a169" stroke="#276749" stroke-width="2"/>
+                    <text x="180" y="330" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#4a5568">Термо-</text>
+                    <text x="180" y="340" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#4a5568">сигнал.</text>
+                    
+                    <!-- Кран слива масла -->
+                    <rect x="350" y="450" width="30" height="20" fill="#4a5568"/>
+                    <rect x="355" y="470" width="20" height="15" fill="#718096"/>
+                    <text x="365" y="500" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#4a5568">Кран</text>
+                    <text x="365" y="510" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#4a5568">слива</text>
+                    
+                    <!-- Заземление -->
+                    <line x1="200" y1="450" x2="200" y2="480" stroke="#2d3748" stroke-width="3"/>
+                    <line x1="185" y1="480" x2="215" y2="480" stroke="#2d3748" stroke-width="3"/>
+                    <line x1="190" y1="488" x2="210" y2="488" stroke="#2d3748" stroke-width="2"/>
+                    <line x1="195" y1="495" x2="205" y2="495" stroke="#2d3748" stroke-width="2"/>
+                    <text x="200" y="515" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#4a5568">Заземление</text>
+                    
+                    <!-- РПН -->
+                    <rect x="520" y="280" width="80" height="100" fill="#805ad5" stroke="#6b46c1" stroke-width="2" rx="5"/>
+                    <text x="560" y="320" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="white">РПН</text>
+                    <text x="560" y="340" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#e9d8fd">Привод</text>
+                    <text x="560" y="355" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#e9d8fd">переключения</text>
+                    
+                    <!-- Табличка -->
+                    <rect x="430" y="400" width="80" height="40" fill="#f7fafc" stroke="#4a5568" stroke-width="1"/>
+                    <text x="470" y="420" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#4a5568">Табличка</text>
+                    <text x="470" y="432" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#4a5568">паспортных данных</text>
+                    
+                    <!-- Легенда -->
+                    <rect x="700" y="260" width="180" height="200" fill="#f7fafc" stroke="#e2e8f0" stroke-width="1" rx="4"/>
+                    <text x="790" y="280" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1a365d">ЛЕГЕНДА</text>
+                    
+                    <rect x="710" y="295" width="15" height="15" fill="#718096"/>
+                    <text x="735" y="306" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Магнитопровод</text>
+                    
+                    <rect x="710" y="320" width="15" height="15" fill="#c53030"/>
+                    <text x="735" y="331" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Обмотка ВН</text>
+                    
+                    <rect x="710" y="345" width="15" height="15" fill="#3182ce"/>
+                    <text x="735" y="356" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Обмотка НН</text>
+                    
+                    <rect x="710" y="370" width="15" height="15" fill="#f6e05e" opacity="0.5"/>
+                    <text x="735" y="381" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Трансф. масло</text>
+                    
+                    <rect x="710" y="395" width="15" height="15" fill="#d69e2e"/>
+                    <text x="735" y="406" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">Вводы</text>
+                    
+                    <rect x="710" y="420" width="15" height="15" fill="#805ad5"/>
+                    <text x="735" y="431" font-family="Segoe UI, sans-serif" font-size="9" fill="#4a5568">РПН</text>
+                </svg>
+                <div class="image-caption">Рис. 2.6. Конструкция масляного силового трансформатора типа ТМН (с РПН). На схеме показаны основные конструктивные элементы: магнитопровод шихтованной конструкции, концентрически расположенные обмотки ВН и НН, вводы, расширитель с маслоуказателем и воздухоосушителем, газовое реле Бухгольца, радиаторы системы охлаждения, привод РПН</div>
+            </div>
+
+            <h4>Основные элементы масляного трансформатора</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Элемент</th>
+                        <th>Назначение</th>
+                        <th>Особенности конструкции</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Магнитопровод</strong></td>
+                        <td>Создание замкнутого магнитного потока, связывающего обмотки</td>
+                        <td>Шихтованная конструкция из листов электротехнической стали толщиной 0,3-0,35 мм с изоляционным покрытием. Стержневой или броневой тип</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Обмотки</strong></td>
+                        <td>Преобразование напряжения и тока</td>
+                        <td>Медный или алюминиевый провод с бумажной или эмалевой изоляцией. Концентрическое или чередующееся расположение</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Бак</strong></td>
+                        <td>Ёмкость для масла, защита активной части</td>
+                        <td>Стальной сварной, овальной или прямоугольной формы. Рассчитан на вакуум и избыточное давление</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Расширитель</strong></td>
+                        <td>Компенсация теплового расширения масла</td>
+                        <td>Цилиндрический бак объёмом 8-10% от объёма масла в баке. Сообщается с атмосферой через воздухоосушитель</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Вводы</strong></td>
+                        <td>Соединение обмоток с внешней сетью</td>
+                        <td>Фарфоровые или полимерные. Маслонаполненные или конденсаторного типа для высоких напряжений</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Система охлаждения</strong></td>
+                        <td>Отвод тепла от активной части</td>
+                        <td>Радиаторы, маслоохладители, вентиляторы, насосы в зависимости от системы охлаждения</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Газовое реле</strong></td>
+                        <td>Защита от внутренних повреждений</td>
+                        <td>Реле Бухгольца, устанавливается на трубе между баком и расширителем. Сигнал при скоплении газа, отключение при бурном газообразовании</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Системы охлаждения масляных трансформаторов</h4>
+
+            <p>Система охлаждения определяет способность трансформатора отводить тепло, выделяющееся в обмотках и магнитопроводе при работе. Выбор системы охлаждения зависит от мощности трансформатора и условий установки.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Обозначение</th>
+                        <th>Система охлаждения</th>
+                        <th>Мощность, МВА</th>
+                        <th>Описание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>М</strong></td>
+                        <td>Естественная циркуляция масла и воздуха</td>
+                        <td>До 16</td>
+                        <td>Охлаждение через гладкую поверхность бака или трубчатые радиаторы</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Д</strong></td>
+                        <td>Принудительная циркуляция воздуха (дутьё)</td>
+                        <td>16-80</td>
+                        <td>Вентиляторы обдувают радиаторы. Включение при нагрузке более 50%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ДЦ</strong></td>
+                        <td>Принудительная циркуляция масла и воздуха</td>
+                        <td>63-400</td>
+                        <td>Насосы прокачивают масло через выносные охладители с вентиляторами</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ц</strong></td>
+                        <td>Принудительная циркуляция масла и воды</td>
+                        <td>более 160</td>
+                        <td>Масло охлаждается в водяных теплообменниках</td>
+                    </tr>
+                    <tr>
+                        <td><strong>НДЦ</strong></td>
+                        <td>Направленная циркуляция масла</td>
+                        <td>более 250</td>
+                        <td>Масло направляется непосредственно к обмоткам через каналы</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Сухие трансформаторы</h3>
+
+            <p>Сухие трансформаторы не содержат горючих жидкостей, что позволяет устанавливать их непосредственно в производственных помещениях без специальных противопожарных мероприятий. Охлаждающей средой служит воздух.</p>
+
+            <div class="two-column">
+                <div class="column-box">
+                    <h4>Преимущества сухих трансформаторов</h4>
+                    <ul>
+                        <li>Пожаробезопасность (класс F0 или F1)</li>
+                        <li>Экологичность (нет масла)</li>
+                        <li>Возможность установки в помещениях</li>
+                        <li>Минимальное обслуживание</li>
+                        <li>Отсутствие утечек</li>
+                        <li>Быстрый ввод в работу после отключения</li>
+                    </ul>
+                </div>
+                <div class="column-box">
+                    <h4>Недостатки сухих трансформаторов</h4>
+                    <ul>
+                        <li>Более высокая стоимость (в 1,5-2 раза)</li>
+                        <li>Большие габариты и масса</li>
+                        <li>Чувствительность к загрязнению и влаге</li>
+                        <li>Меньшая перегрузочная способность</li>
+                        <li>Ограничение по мощности (до 40 МВА)</li>
+                        <li>Ограничение по напряжению (до 35 кВ)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4>Типы сухих трансформаторов</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип</th>
+                        <th>Обозначение</th>
+                        <th>Конструкция изоляции</th>
+                        <th>Класс нагревостойкости</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>С открытыми обмотками</strong></td>
+                        <td>ТС, ТСЗ</td>
+                        <td>Изоляция класса В (130°С) или F (155°С), обмотки открыты</td>
+                        <td>B, F</td>
+                    </tr>
+                    <tr>
+                        <td><strong>С литой изоляцией</strong></td>
+                        <td>ТСЛ, ТСЗЛ</td>
+                        <td>Обмотки залиты эпоксидным компаундом с кварцевым наполнителем</td>
+                        <td>F, H (180°С)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Герметизированные</strong></td>
+                        <td>ТСЗГ</td>
+                        <td>Обмотки в герметичном корпусе с SF₆ или азотом</td>
+                        <td>F</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Автотрансформаторы</h3>
+
+            <p>Автотрансформатор — трансформатор, в котором обмотки высшего и низшего напряжения имеют общую часть (последовательная и общая обмотки электрически соединены). Применяются для связи сетей с небольшим коэффициентом трансформации (до 3-4).</p>
+
+            <div class="formula-box">
+                <strong>Типовая мощность автотрансформатора:</strong>
+                <div class="formula">
+                    S<sub>тип</sub> = S<sub>ном</sub> × (1 - 1/n)
+                </div>
+                <div class="formula-desc">
+                    где: S<sub>тип</sub> — типовая (расчётная) мощность, определяющая габариты;<br>
+                    S<sub>ном</sub> — номинальная (проходная) мощность;<br>
+                    n = U<sub>ВН</sub>/U<sub>НН</sub> — коэффициент трансформации
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Особенности автотрансформаторов:</strong>
+                <ul>
+                    <li><strong>Преимущества:</strong> меньшие габариты и масса (на 20-40%), меньшие потери, меньший расход материалов</li>
+                    <li><strong>Недостатки:</strong> электрическая связь обмоток ВН и НН, повышенные токи КЗ, распространение перенапряжений</li>
+                    <li><strong>Применение:</strong> связь сетей 500/220 кВ, 220/110 кВ, 110/35 кВ</li>
+                    <li><strong>Группы соединений:</strong> только Yн/Yн-0 или Yн/Δ-11</li>
+                    <li><strong>Обязательно:</strong> третичная обмотка (Δ) для компенсации несимметрии и подключения синхронных компенсаторов</li>
+                </ul>
+            </div>
+
+            <h3>Измерительные трансформаторы</h3>
+
+            <p>Измерительные трансформаторы предназначены для преобразования первичных токов и напряжений до значений, удобных для измерения стандартными приборами, а также для изоляции цепей измерения и защиты от высокого напряжения.</p>
+
+            <h4>Трансформаторы тока (ТТ)</h4>
+
+            <p>Трансформаторы тока преобразуют первичный ток в стандартный вторичный ток (1 или 5 А). Вторичная обмотка ТТ работает в режиме, близком к короткому замыканию (низкое сопротивление нагрузки). Нормы и требования к ТТ установлены <span class="gost-reference">ГОСТ 7746-2015</span>.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип ТТ</th>
+                        <th>Конструкция</th>
+                        <th>Применение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Проходные</strong></td>
+                        <td>Первичный проводник проходит через магнитопровод</td>
+                        <td>Установка в проёмах стен, ячеек КРУ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Опорные</strong></td>
+                        <td>Устанавливаются на изоляционном основании</td>
+                        <td>ОРУ, ЗРУ напряжением 6-35 кВ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Встроенные</strong></td>
+                        <td>Встраиваются во вводы трансформаторов, выключателей</td>
+                        <td>Экономия места, упрощение схемы</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Шинные</strong></td>
+                        <td>Шина проходит через окно магнитопровода</td>
+                        <td>Установка на шинах ГРЩ, НКУ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Разъёмные</strong></td>
+                        <td>Магнитопровод разъёмный, устанавливается на кабель</td>
+                        <td>Измерения без отключения, контроль токов</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>⚠️ Опасность размыкания вторичной обмотки ТТ:</strong>
+                <p>Размыкание вторичной обмотки трансформатора тока при протекании первичного тока категорически запрещено! При этом происходит:</p>
+                <ul>
+                    <li>Резкое повышение магнитного потока в сердечнике (насыщение)</li>
+                    <li>Сильный нагрев магнитопровода (возможен пожар)</li>
+                    <li>Появление на вторичных зажимах опасного высокого напряжения (несколько кВ)</li>
+                    <li>Разрушение изоляции вторичной обмотки</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Требование:</strong> Перед отключением приборов вторичная обмотка ТТ должна быть замкнута накоротко специальными закорачивающими зажимами.</p>
+            </div>
+
+            <h4>Трансформаторы напряжения (ТН)</h4>
+
+            <p>Трансформаторы напряжения преобразуют первичное напряжение в стандартное вторичное (100 или 100/√3 В). Вторичная обмотка ТН работает в режиме, близком к холостому ходу. Требования к ТН установлены <span class="gost-reference">ГОСТ 1983-2015</span>.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип ТН</th>
+                        <th>Конструкция</th>
+                        <th>Применение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Однофазные</strong></td>
+                        <td>Одна первичная и одна (или две) вторичные обмотки</td>
+                        <td>Измерения фазного напряжения, схемы с тремя ТН</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Трёхфазные</strong></td>
+                        <td>Три стержня, общий магнитопровод</td>
+                        <td>Сети с изолированной нейтралью 6-10 кВ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Каскадные</strong></td>
+                        <td>Несколько ступеней трансформации</td>
+                        <td>Высокие напряжения (110 кВ и выше)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Емкостные (НДЕ)</strong></td>
+                        <td>Ёмкостный делитель + электромагнитный блок</td>
+                        <td>Напряжения 110 кВ и выше, также для ВЧ-связи</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Антирезонансные (НАМИ)</strong></td>
+                        <td>Специальная конструкция, исключающая феррорезонанс</td>
+                        <td>Сети с изолированной нейтралью, кабельные сети</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <strong>Классы точности измерительных трансформаторов (<span class="gost-reference">ГОСТ 7746-2015</span>, <span class="gost-reference">ГОСТ 1983-2015</span>):</strong>
+                <table style="margin-top: 10px; background: transparent;">
+                    <tr>
+                        <th>Класс точности</th>
+                        <th>Погрешность, %</th>
+                        <th>Назначение</th>
+                    </tr>
+                    <tr>
+                        <td>0,1; 0,2; 0,2S</td>
+                        <td>0,1-0,2</td>
+                        <td>Коммерческий (расчётный) учёт электроэнергии</td>
+                    </tr>
+                    <tr>
+                        <td>0,5; 0,5S</td>
+                        <td>0,5</td>
+                        <td>Технический учёт, точные измерения</td>
+                    </tr>
+                    <tr>
+                        <td>1,0; 3,0</td>
+                        <td>1,0-3,0</td>
+                        <td>Технические измерения, щитовые приборы</td>
+                    </tr>
+                    <tr>
+                        <td>5Р; 10Р</td>
+                        <td>5-10</td>
+                        <td>Релейная защита (гарантированная работа при перегрузках)</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- РАЗДЕЛ 2.3.2 -->
+            <h2>2.3.2. Техническое обслуживание трансформаторов</h2>
+
+            <p>Техническое обслуживание силовых трансформаторов направлено на поддержание их работоспособности, своевременное выявление дефектов и предупреждение аварий. Объём и периодичность обслуживания определяются <span class="gost-reference">ПТЭЭП (глава 2.1)</span> и местными инструкциями.</p>
+
+            <h3>Периодичность технического обслуживания</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Вид обслуживания</th>
+                        <th>Периодичность</th>
+                        <th>Кто выполняет</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Осмотр без отключения</strong></td>
+                        <td>Не реже 1 раза в сутки (при наличии дежурного персонала) или 1 раза в месяц</td>
+                        <td>Оперативный или оперативно-ремонтный персонал</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Осмотр ответственных трансформаторов</strong></td>
+                        <td>Ежедневно</td>
+                        <td>ИТР, мастера</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Внеочередной осмотр</strong></td>
+                        <td>После аварий в сети, при резких изменениях погоды, перегрузках</td>
+                        <td>Оперативный персонал</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Проверка РПН</strong></td>
+                        <td>В соответствии с инструкцией завода-изготовителя (обычно 1-2 раза в год)</td>
+                        <td>Специализированный персонал</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Отбор проб масла</strong></td>
+                        <td>1 раз в год (для трансформаторов 110 кВ и выше — 2 раза в год)</td>
+                        <td>Персонал ЭТЛ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Профилактические испытания</strong></td>
+                        <td>По графику ППР (обычно 1 раз в 2-4 года)</td>
+                        <td>Персонал ЭТЛ</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Визуальный осмотр и контроль параметров</h3>
+
+            <p>При осмотре трансформатора без отключения проверяются:</p>
+
+            <div class="highlight-box">
+                <strong>Объекты контроля при осмотре трансформатора:</strong>
+                <ol>
+                    <li><strong>Показания приборов:</strong> амперметры, вольтметры, ваттметры — соответствие нагрузки допустимой</li>
+                    <li><strong>Температура:</strong> показания термометров масла и обмоток, сравнение с допустимыми значениями</li>
+                    <li><strong>Уровень масла:</strong> по маслоуказателю расширителя, соответствие температуре</li>
+                    <li><strong>Состояние вводов:</strong> отсутствие трещин, сколов, загрязнений, следов разрядов</li>
+                    <li><strong>Состояние бака и арматуры:</strong> отсутствие течей масла, коррозии</li>
+                    <li><strong>Работа системы охлаждения:</strong> вращение вентиляторов, работа насосов, температура радиаторов</li>
+                    <li><strong>Газовое реле:</strong> отсутствие газа в корпусе (по смотровому окну)</li>
+                    <li><strong>Шум трансформатора:</strong> отсутствие посторонних звуков (потрескивание, гудение)</li>
+                    <li><strong>Состояние заземления:</strong> целостность заземляющих проводников</li>
+                    <li><strong>Показания счётчика РПН:</strong> соответствие положению переключателя</li>
+                </ol>
+            </div>
+
+            <h4>Допустимые нагрузки трансформаторов</h4>
+
+            <p>Нагрузка трансформатора определяется допустимой температурой нагрева обмоток, которая зависит от класса изоляции. Согласно <span class="gost-reference">ГОСТ 14209-97</span>, допускаются следующие режимы нагрузки:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Режим нагрузки</th>
+                        <th>Допустимая нагрузка, % от номинальной</th>
+                        <th>Условия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Нормальный режим</td>
+                        <td>100%</td>
+                        <td>Температура охлаждающей среды не выше расчётной</td>
+                    </tr>
+                    <tr>
+                        <td>Систематическая перегрузка</td>
+                        <td>До 150% (зависит от графика нагрузки)</td>
+                        <td>После предшествующей недогрузки, при пониженной температуре</td>
+                    </tr>
+                    <tr>
+                        <td>Аварийная перегрузка</td>
+                        <td>До 140% — 6 ч; до 160% — 45 мин; до 180% — 20 мин</td>
+                        <td>При отключении параллельного трансформатора, не систематически</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Проверка уровня и состояния масла</h3>
+
+            <p>Трансформаторное масло выполняет функции изоляционной и охлаждающей среды, поэтому контроль его состояния имеет первостепенное значение для надёжной работы трансформатора.</p>
+
+            <h4>Контроль уровня масла</h4>
+
+            <p>Уровень масла контролируется по маслоуказателю расширителя и должен соответствовать температуре масла. На маслоуказателе нанесены три отметки:</p>
+            <ul>
+                <li><strong>Нижняя отметка (−45°С или −25°С)</strong> — минимальный уровень при минимальной температуре</li>
+                <li><strong>Средняя отметка (+15°С или +20°С)</strong> — уровень при нормальной температуре</li>
+                <li><strong>Верхняя отметка (+40°С)</strong> — максимальный уровень при максимальной температуре</li>
+            </ul>
+
+            <div class="warning-box">
+                <strong>⚠️ Причины ненормального уровня масла:</strong>
+                <ul>
+                    <li><strong>Пониженный уровень:</strong> течь масла через уплотнения, краны, сварные швы; недолив масла</li>
+                    <li><strong>Повышенный уровень:</strong> перелив масла; неисправность мембраны расширителя (для трансформаторов с азотной подушкой)</li>
+                    <li><strong>Резкое понижение уровня:</strong> возможно серьёзное повреждение — требуется немедленный осмотр и отключение</li>
+                </ul>
+            </div>
+
+            <h4>Контроль качества масла</h4>
+
+            <p>Качество трансформаторного масла определяется комплексом физико-химических показателей согласно <span class="gost-reference">ГОСТ 982-80</span> и <span class="gost-reference">РД 34.45-51.300-97</span>:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Показатель</th>
+                        <th>Норма для масла в эксплуатации (до 35 кВ)</th>
+                        <th>Метод определения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Пробивное напряжение</strong></td>
+                        <td>≥ 25 кВ (для 110 кВ — ≥ 55 кВ)</td>
+                        <td><span class="gost-reference">ГОСТ 6581</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Кислотное число</strong></td>
+                        <td>≤ 0,25 мг КОН/г</td>
+                        <td><span class="gost-reference">ГОСТ 5985</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Температура вспышки</strong></td>
+                        <td>≥ 125°С (снижение не более чем на 5°С)</td>
+                        <td><span class="gost-reference">ГОСТ 4333</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Содержание механических примесей</strong></td>
+                        <td>Отсутствие</td>
+                        <td>Визуально, <span class="gost-reference">ГОСТ 6370</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Содержание водорастворимых кислот</strong></td>
+                        <td>Отсутствие</td>
+                        <td><span class="gost-reference">ГОСТ 6307</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Тангенс угла диэлектрических потерь (tg δ)</strong></td>
+                        <td>≤ 5% при 70°С (для 110 кВ — ≤ 2%)</td>
+                        <td><span class="gost-reference">ГОСТ 6581</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Влагосодержание</strong></td>
+                        <td>≤ 25 г/т (для 110 кВ — ≤ 15 г/т)</td>
+                        <td>Кулонометрический метод</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Хроматографический анализ растворённых газов (ХАРГ)</h4>
+
+            <p>Хроматографический анализ газов, растворённых в масле, является наиболее информативным методом диагностики состояния трансформатора. Метод позволяет выявить дефекты на ранней стадии по составу и концентрации газов. Требования к ХАРГ установлены <span class="gost-reference">РД 153-34.0-46.302-00</span>.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Газ</th>
+                        <th>Обозначение</th>
+                        <th>Источник образования</th>
+                        <th>Граничная концентрация, % об.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Водород</td>
+                        <td>H₂</td>
+                        <td>Частичные разряды, искрение, дуга</td>
+                        <td>0,01</td>
+                    </tr>
+                    <tr>
+                        <td>Метан</td>
+                        <td>CH₄</td>
+                        <td>Локальный нагрев масла (150-300°С)</td>
+                        <td>0,01</td>
+                    </tr>
+                    <tr>
+                        <td>Этан</td>
+                        <td>C₂H₆</td>
+                        <td>Локальный нагрев масла (300-400°С)</td>
+                        <td>0,005</td>
+                    </tr>
+                    <tr>
+                        <td>Этилен</td>
+                        <td>C₂H₄</td>
+                        <td>Значительный нагрев масла (400-600°С)</td>
+                        <td>0,01</td>
+                    </tr>
+                    <tr>
+                        <td>Ацетилен</td>
+                        <td>C₂H₂</td>
+                        <td>Дуга, высокотемпературный нагрев (>700°С)</td>
+                        <td>0,001</td>
+                    </tr>
+                    <tr>
+                        <td>Оксид углерода</td>
+                        <td>CO</td>
+                        <td>Разрушение целлюлозной изоляции</td>
+                        <td>0,05</td>
+                    </tr>
+                    <tr>
+                        <td>Диоксид углерода</td>
+                        <td>CO₂</td>
+                        <td>Разрушение целлюлозной изоляции, окисление масла</td>
+                        <td>0,6</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="example-box">
+                <div class="example-title">📊 Пример интерпретации результатов ХАРГ</div>
+                <p><strong>Трансформатор:</strong> ТДН-16000/110, срок эксплуатации 18 лет</p>
+                <p><strong>Результаты анализа:</strong></p>
+                <table style="margin-top: 10px;">
+                    <tr>
+                        <th>Газ</th>
+                        <th>Концентрация, % об.</th>
+                        <th>Граница</th>
+                        <th>Оценка</th>
+                    </tr>
+                    <tr>
+                        <td>H₂</td>
+                        <td>0,008</td>
+                        <td>0,01</td>
+                        <td style="color: green;">Норма</td>
+                    </tr>
+                    <tr>
+                        <td>CH₄</td>
+                        <td>0,004</td>
+                        <td>0,01</td>
+                        <td style="color: green;">Норма</td>
+                    </tr>
+                    <tr>
+                        <td>C₂H₄</td>
+                        <td>0,018</td>
+                        <td>0,01</td>
+                        <td style="color: orange;">Превышение</td>
+                    </tr>
+                    <tr>
+                        <td>C₂H₂</td>
+                        <td>0,0005</td>
+                        <td>0,001</td>
+                        <td style="color: green;">Норма</td>
+                    </tr>
+                    <tr>
+                        <td>CO</td>
+                        <td>0,12</td>
+                        <td>0,05</td>
+                        <td style="color: red;">Превышение</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 10px;"><strong>Заключение:</strong> Повышенное содержание этилена и оксида углерода указывает на локальный перегрев в зоне контакта обмотки с изоляцией. Рекомендуется сокращение межповерочного интервала до 3 месяцев, тепловизионный контроль, планирование внутреннего осмотра при очередном выводе в ремонт.</p>
+            </div>
+
+            <h3>Контроль температуры обмоток и масла</h3>
+
+            <p>Контроль температурного режима трансформатора необходим для предотвращения перегрева изоляции, который приводит к её ускоренному старению и снижению механической прочности. Измерение температуры проводится с помощью встроенных термометров и тепловизионного обследования.</p>
+
+            <h4>Методы контроля температуры</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Метод</th>
+                        <th>Средства измерения</th>
+                        <th>Что контролируется</th>
+                        <th>Периодичность</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Термометр верхних слоёв масла</strong></td>
+                        <td>Манометрический термометр с сигнальными контактами</td>
+                        <td>Температура масла в верхней части бака</td>
+                        <td>Постоянный контроль, запись показаний при осмотре</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Термометр обмоток (косвенный)</strong></td>
+                        <td>Термометр с подогревом от ТТ в нейтрали</td>
+                        <td>Косвенный контроль температуры обмотки ВН</td>
+                        <td>Постоянный контроль</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Измерение сопротивления обмоток</strong></td>
+                        <td>Мост постоянного тока, микроомметр</td>
+                        <td>Расчёт средней температуры обмотки по изменению сопротивления</td>
+                        <td>При профилактических испытаниях</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Тепловизионное обследование</strong></td>
+                        <td>Тепловизор</td>
+                        <td>Распределение температуры по поверхности бака, радиаторам, вводам</td>
+                        <td>1-2 раза в год, при подозрении на дефект</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Контактные термометры</strong></td>
+                        <td>Термопары, терморезисторы</td>
+                        <td>Точечные измерения температуры доступных элементов</td>
+                        <td>При осмотрах, испытаниях</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Визуальный осмотр и контроль параметров</h3>
+
+            <p>Визуальный осмотр является важнейшим элементом технического обслуживания, позволяющим своевременно выявить внешние признаки неисправностей. Согласно <span class="gost-reference">ПТЭЭП п. 2.1.4</span>, при осмотре трансформатора контролируются следующие параметры и состояния:</p>
+
+            <h4>Объекты контроля при визуальном осмотре</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Объект контроля</th>
+                        <th>Что проверяется</th>
+                        <th>Нормальное состояние</th>
+                        <th>Признаки неисправности</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Уровень масла</strong></td>
+                        <td>Положение уровня в расширителе по маслоуказателю</td>
+                        <td>Уровень соответствует отметке температуры окружающего воздуха</td>
+                        <td>Уровень ниже минимальной отметки, быстрое снижение</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Температура масла</strong></td>
+                        <td>Показания термометра верхних слоёв масла</td>
+                        <td>Не более 95°С при любой нагрузке, превышение температуры окружающего воздуха не более 60°С</td>
+                        <td>Превышение допустимых значений, неравномерный нагрев фаз</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Герметичность бака</strong></td>
+                        <td>Наличие течей масла, подтёков на поверхности</td>
+                        <td>Бак сухой, течей нет</td>
+                        <td>Свежие подтёки масла, масляные пятна на земле под трансформатором</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Газовое реле</strong></td>
+                        <td>Наличие газа в смотровом окне, состояние контактов</td>
+                        <td>Газ отсутствует, реле прозрачное</td>
+                        <td>Скопление газа, потемнение смотрового окна, срабатывание сигнализации</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Воздухоосушитель</strong></td>
+                        <td>Цвет силикагеля</td>
+                        <td>Синий или голубой цвет</td>
+                        <td>Розовый или белый цвет (требуется замена или регенерация)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Вводы ВН и НН</strong></td>
+                        <td>Целостность фарфора, загрязнённость, следы разрядов</td>
+                        <td>Фарфор чистый, без трещин и сколов</td>
+                        <td>Трещины, сколы, загрязнение, следы перекрытий, нагар</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Система охлаждения</strong></td>
+                        <td>Работа вентиляторов, насосов, отсутствие течей</td>
+                        <td>Вентиляторы работают, радиаторы чистые, равномерно нагреты</td>
+                        <td>Вентиляторы не работают, радиаторы загрязнены, неравномерный нагрев</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Шум и вибрация</strong></td>
+                        <td>Наличие посторонних шумов, повышенной вибрации</td>
+                        <td>Ровный гул на частоте 100 Гц, слабая вибрация</td>
+                        <td>Потрескивание, гудение переменного тона, сильная вибрация</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Устройство РПН</strong></td>
+                        <td>Положение указателя ответвления, счётчик переключений</td>
+                        <td>Указатель соответствует фактическому положению</td>
+                        <td>Несоответствие, заклинивание привода</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Окраска бака</strong></td>
+                        <td>Состояние лакокрасочного покрытия</td>
+                        <td>Краска без вздутий и отслоений</td>
+                        <td>Ржавчина, вздутие краски, отслоения</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Заземление</strong></td>
+                        <td>Состояние заземляющих проводников и болтовых соединений</td>
+                        <td>Соединения затянуты, нет коррозии</td>
+                        <td>Ослабление болтов, обрыв проводников, коррозия</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>⚠️ Предельно допустимые температуры трансформаторов (<span class="gost-reference">ГОСТ 11677-85</span>):</strong>
+                <table style="margin-top: 10px; background: rgba(255,255,255,0.6);">
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Масляные трансформаторы</th>
+                        <th>Сухие трансформаторы</th>
+                    </tr>
+                    <tr>
+                        <td>Температура верхних слоёв масла / обмотки</td>
+                        <td>95°С (длительно), 105°С (аварийно до 6 ч)</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>Температура обмоток (расчётная)</td>
+                        <td>105°С (класс А), 115°С (класс Е)</td>
+                        <td>130°С (класс В), 155°С (класс F)</td>
+                    </tr>
+                    <tr>
+                        <td>Превышение температуры масла над окружающим воздухом</td>
+                        <td>Не более 60°С при любой нагрузке</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>Температура магнитопровода на поверхности стали</td>
+                        <td>Не более 90-100°С</td>
+                        <td>Не более 120-130°С</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 10px;"><strong>Примечание:</strong> Превышение допустимых температур приводит к ускоренному старению изоляции. Согласно правилу 8°С, повышение температуры на каждые 8°С сокращает срок службы изоляции в два раза.</p>
+            </div>
+
+            <div class="example-box">
+                <div class="example-title">📊 Пример: Карта ежедневного осмотра трансформатора</div>
+                <p><strong>Объект:</strong> Трансформатор ТДН-10000/110 № 1 ГПП</p>
+                <p><strong>Дата осмотра:</strong> 15.11.2024, время: 14:00</p>
+                <table style="margin-top: 10px;">
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Показание / состояние</th>
+                        <th>Норма</th>
+                        <th>Отметка</th>
+                    </tr>
+                    <tr>
+                        <td>Нагрузка ВН, А</td>
+                        <td>42</td>
+                        <td>I<sub>ном</sub> = 52 А</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Температура масла, °С</td>
+                        <td>68</td>
+                        <td>≤ 95°С</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Уровень масла</td>
+                        <td>На отметке +15°С</td>
+                        <td>Соответствует t<sub>возд</sub> = +15°С</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Газовое реле</td>
+                        <td>Газ отсутствует</td>
+                        <td>Отсутствие газа</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Силикагель воздухоосушителя</td>
+                        <td>Синий цвет, 80%</td>
+                        <td>Синий цвет</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Вентиляторы охлаждения (4 шт.)</td>
+                        <td>2 работают</td>
+                        <td>Автоматическое включение при нагрузке > 50%</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Течи масла</td>
+                        <td>Отсутствуют</td>
+                        <td>Отсутствие течей</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Шум и вибрация</td>
+                        <td>Нормальные</td>
+                        <td>Ровный гул 100 Гц</td>
+                        <td>✓</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 10px;"><strong>Заключение:</strong> Трансформатор ТДН-10000/110 № 1 работает нормально, замечаний нет. Осмотр произвёл: электромонтёр Иванов А.П.</p>
+            </div>
+
+            <h3>Проверка уровня и состояния масла</h3>
+
+            <p>Трансформаторное масло выполняет две важнейшие функции: изолирующую и охлаждающую. Качество масла напрямую влияет на надёжность работы трансформатора. Требования к трансформаторному маслу установлены <span class="gost-reference">ГОСТ 982-80</span> и <span class="gost-reference">ГОСТ 6581-75</span>.</p>
+
+            <h4>Контроль уровня масла</h4>
+
+            <p>Уровень масла в расширителе контролируется по маслоуказателю с учётом температуры окружающего воздуха. На маслоуказателе имеются отметки, соответствующие различным температурам (обычно от -40°С до +40°С).</p>
+
+            <div class="info-box">
+                <strong>Причины понижения уровня масла:</strong>
+                <ul>
+                    <li><strong>Снижение температуры окружающего воздуха</strong> — нормальное явление при остывании трансформатора</li>
+                    <li><strong>Утечка через неплотности</strong> — требует локализации и устранения течи</li>
+                    <li><strong>Испарение через негерметичный воздухоосушитель</strong> — требует проверки герметичности системы</li>
+                    <li><strong>Отбор проб масла</strong> — необходимо доливать масло после отбора</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Действия при понижении уровня:</strong></p>
+                <ul>
+                    <li>Если уровень ниже минимальной отметки — осмотр трансформатора, поиск течей</li>
+                    <li>Доливка масла той же марки (при доливке более 2% — испытание доливаемого масла)</li>
+                    <li>При доливке более 10% объёма — полное испытание смеси масел</li>
+                </ul>
+            </div>
+
+            <h4>Показатели качества трансформаторного масла</h4>
+
+            <p>Периодический контроль качества масла позволяет оценить состояние изоляции и выявить развивающиеся дефекты. Согласно <span class="gost-reference">ПТЭЭП п. 2.1.19</span>, анализ масла проводится не реже 1 раза в год для трансформаторов до 35 кВ и не реже 2 раз в год для трансформаторов 110 кВ и выше.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Показатель</th>
+                        <th>Норма для масла в работе (110 кВ и выше)</th>
+                        <th>Норма для масла в работе (до 35 кВ)</th>
+                        <th>Метод испытания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Пробивное напряжение, кВ</strong></td>
+                        <td>≥ 55 (при 50 Гц, зазор 2,5 мм)</td>
+                        <td>≥ 35</td>
+                        <td><span class="gost-reference">ГОСТ 6581-75</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Тангенс угла диэлектрических потерь при 90°С, %</strong></td>
+                        <td>≤ 3,0</td>
+                        <td>≤ 5,0</td>
+                        <td><span class="gost-reference">ГОСТ 6581-75</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Кислотное число, мг КОН/г</strong></td>
+                        <td>≤ 0,25</td>
+                        <td>≤ 0,35</td>
+                        <td><span class="gost-reference">ГОСТ 5985-79</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Температура вспышки в открытом тигле, °С</strong></td>
+                        <td>≥ 125</td>
+                        <td>≥ 125</td>
+                        <td><span class="gost-reference">ГОСТ 4333-87</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Содержание воды, г/т (ppm)</strong></td>
+                        <td>≤ 25</td>
+                        <td>≤ 35</td>
+                        <td><span class="gost-reference">ГОСТ 7822-75</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Содержание механических примесей</strong></td>
+                        <td>Отсутствуют</td>
+                        <td>Отсутствуют</td>
+                        <td>Визуально</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Содержание водорастворимых кислот и щелочей</strong></td>
+                        <td>Отсутствуют</td>
+                        <td>Отсутствуют</td>
+                        <td><span class="gost-reference">ГОСТ 6307-75</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <strong>Хроматографический анализ растворённых в масле газов (ХАРГ):</strong>
+                <p>Современный метод диагностики внутренних дефектов трансформатора путём анализа состава газов, растворённых в масле. Методика установлена <span class="gost-reference">РД 153-34.0-46.302-00</span>.</p>
+                <table style="margin-top: 10px; background: rgba(255,255,255,0.7);">
+                    <tr>
+                        <th>Газ</th>
+                        <th>Источник образования</th>
+                        <th>Предельное содержание, % об.</th>
+                    </tr>
+                    <tr>
+                        <td>H₂ (водород)</td>
+                        <td>Частичные разряды, коронирование</td>
+                        <td>0,01</td>
+                    </tr>
+                    <tr>
+                        <td>CH₄ (метан)</td>
+                        <td>Перегрев изоляции (150-300°С)</td>
+                        <td>0,001</td>
+                    </tr>
+                    <tr>
+                        <td>C₂H₆ (этан)</td>
+                        <td>Перегрев масла (300-500°С)</td>
+                        <td>0,0005</td>
+                    </tr>
+                    <tr>
+                        <td>C₂H₄ (этилен)</td>
+                        <td>Сильный перегрев (500-700°С)</td>
+                        <td>0,001</td>
+                    </tr>
+                    <tr>
+                        <td>C₂H₂ (ацетилен)</td>
+                        <td>Электрическая дуга (> 700°С)</td>
+                        <td>0,0001</td>
+                    </tr>
+                    <tr>
+                        <td>CO (угарный газ)</td>
+                        <td>Разложение целлюлозы при перегреве</td>
+                        <td>0,05</td>
+                    </tr>
+                    <tr>
+                        <td>CO₂ (углекислый газ)</td>
+                        <td>Окисление целлюлозы</td>
+                        <td>0,5</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 10px;"><strong>Периодичность ХАРГ:</strong> не реже 1 раза в год для трансформаторов 110 кВ и выше, при подозрении на дефект — внеочередной анализ.</p>
+            </div>
+
+            <h3>Контроль температуры обмоток и масла</h3>
+
+            <p>Контроль температурного режима трансформатора необходим для предотвращения перегрева изоляции, который приводит к её ускоренному старению и снижению механической прочности. Измерение температуры проводится с помощью встроенных термометров и тепловизионного обследования.</p>
+
+            <h4>Методы контроля температуры</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Метод</th>
+                        <th>Средства измерения</th>
+                        <th>Что контролируется</th>
+                        <th>Периодичность</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Термометр верхних слоёв масла</strong></td>
+                        <td>Манометрический термометр с сигнальными контактами</td>
+                        <td>Температура масла в верхней части бака</td>
+                        <td>Постоянный контроль, запись показаний при осмотре</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Термометр обмоток (косвенный)</strong></td>
+                        <td>Термометр с подогревом от ТТ в нейтрали</td>
+                        <td>Косвенный контроль температуры обмотки ВН</td>
+                        <td>Постоянный контроль</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Измерение сопротивления обмоток</strong></td>
+                        <td>Мост постоянного тока, микроомметр</td>
+                        <td>Расчёт средней температуры обмотки по изменению сопротивления</td>
+                        <td>При профилактических испытаниях</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Тепловизионное обследование</strong></td>
+                        <td>Тепловизор</td>
+                        <td>Распределение температуры по поверхности бака, радиаторам, вводам</td>
+                        <td>1-2 раза в год, при подозрении на дефект</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Контактные термометры</strong></td>
+                        <td>Термопары, терморезисторы</td>
+                        <td>Точечные измерения температуры доступных элементов</td>
+                        <td>При осмотрах, испытаниях</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="formula-box">
+                <strong>Расчёт средней температуры обмотки по сопротивлению:</strong>
+                <div class="formula">
+                    θ₂ = θ₁ + (R₂/R₁ - 1) × (235 + θ₁)
+                </div>
+                <div class="formula-desc">
+                    где: θ₁ — начальная температура обмотки, °С (обычно 20°С);<br>
+                    θ₂ — конечная температура обмотки, °С;<br>
+                    R₁ — сопротивление обмотки при температуре θ₁, Ом;<br>
+                    R₂ — сопротивление обмотки при температуре θ₂, Ом;<br>
+                    235 — температурный коэффициент для меди (для алюминия — 228)
+                </div>
+                <p style="margin-top: 15px;"><strong>Пример расчёта:</strong> Сопротивление обмотки ВН при 20°С составило R₁ = 2,450 Ом. После нагрузки сопротивление R₂ = 3,186 Ом. Определить температуру обмотки:</p>
+                <div class="formula" style="margin-top: 10px;">
+                    θ₂ = 20 + (3,186/2,450 - 1) × (235 + 20) = 20 + 0,3 × 255 = 96,5°С
+                </div>
+            </div>
+
+            <h4>Тепловизионная диагностика трансформаторов</h4>
+
+            <p>Тепловизионное обследование позволяет выявить локальные перегревы, не обнаруживаемые штатными средствами контроля. Методика тепловизионного контроля регламентирована <span class="gost-reference">РД 153-34.0-20.363-99</span>.</p>
+
+            <div class="info-box">
+                <strong>Объекты контроля при тепловизионном обследовании:</strong>
+                <ul>
+                    <li><strong>Вводы ВН и НН:</strong> выявление дефектов контактных соединений, пробоя изоляции</li>
+                    <li><strong>Бак трансформатора:</strong> выявление локальных перегревов, свидетельствующих о замыканиях в магнитопроводе или обмотках</li>
+                    <li><strong>Радиаторы и охладители:</strong> проверка равномерности циркуляции масла, выявление забитых радиаторов</li>
+                    <li><strong>Приводы РПН:</strong> контроль нагрева контактной системы переключателя</li>
+                    <li><strong>Соединения заземления:</strong> выявление неудовлетворительных контактов</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Критерии дефектности (<span class="gost-reference">РД 153-34.0-20.363-99</span>):</strong></p>
+                <table style="margin-top: 10px; background: rgba(255,255,255,0.7);">
+                    <tr>
+                        <th>Превышение температуры, °С</th>
+                        <th>Степень дефектности</th>
+                        <th>Рекомендации</th>
+                    </tr>
+                    <tr>
+                        <td>До 5</td>
+                        <td>Нормальное состояние</td>
+                        <td>Продолжение эксплуатации</td>
+                    </tr>
+                    <tr>
+                        <td>5-20</td>
+                        <td>Контролируемый дефект</td>
+                        <td>Включение в график ремонтов, контроль динамики</td>
+                    </tr>
+                    <tr>
+                        <td>20-50</td>
+                        <td>Развивающийся дефект</td>
+                        <td>Первоочередной ремонт, усиленный контроль</td>
+                    </tr>
+                    <tr>
+                        <td>Более 50</td>
+                        <td>Опасный дефект</td>
+                        <td>Немедленный вывод в ремонт</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3>Проверка работы системы охлаждения</h3>
+
+            <p>Система охлаждения обеспечивает отвод тепла от активной части трансформатора. Неисправность системы охлаждения может привести к перегреву обмоток и аварии. Проверка работы системы охлаждения проводится при каждом осмотре трансформатора.</p>
+
+            <h4>Контроль элементов системы охлаждения</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Элемент</th>
+                        <th>Что проверяется</th>
+                        <th>Периодичность</th>
+                        <th>Нормативное состояние</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Радиаторы</strong></td>
+                        <td>Загрязнённость, равномерность нагрева, отсутствие течей</td>
+                        <td>При каждом осмотре</td>
+                        <td>Радиаторы чистые, нагреты равномерно, течей нет</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Вентиляторы обдува</strong></td>
+                        <td>Работоспособность, автоматическое включение при заданной температуре или нагрузке</td>
+                        <td>При каждом осмотре</td>
+                        <td>Включаются автоматически, вращение равномерное, без задевания</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Маслонасосы (для ДЦ)</strong></td>
+                        <td>Работоспособность, отсутствие течей, автоматическое включение</td>
+                        <td>При каждом осмотре</td>
+                        <td>Насосы включаются автоматически, давление в норме</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Маслоохладители</strong></td>
+                        <td>Отсутствие течей, равномерность циркуляции масла</td>
+                        <td>При каждом осмотре</td>
+                        <td>Течей нет, циркуляция равномерная</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Датчики температуры</strong></td>
+                        <td>Соответствие показаний, срабатывание сигнализации</td>
+                        <td>1 раз в год</td>
+                        <td>Показания соответствуют контрольным измерениям</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Автоматика управления охлаждением</strong></td>
+                        <td>Проверка уставок, исправность контактов реле</td>
+                        <td>1 раз в год</td>
+                        <td>Включение при заданных параметрах, уставки соответствуют паспорту</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>⚠️ Действия при отказе системы охлаждения:</strong>
+                <p>Согласно <span class="gost-reference">ПТЭЭП п. 2.1.11</span>, при отказе системы охлаждения необходимо:</p>
+                <ol>
+                    <li><strong>При отключении одного вентилятора (из группы):</strong> продолжать эксплуатацию, снизить нагрузку на 15-20%, устранить неисправность в кратчайший срок</li>
+                    <li><strong>При отключении всех вентиляторов системы дутья (Д):</strong> немедленно снизить нагрузку до естественной охлаждающей способности (обычно 50-60% номинальной), вызвать ремонтный персонал</li>
+                    <li><strong>При отказе маслонасосов (ДЦ, Ц):</strong> перевести трансформатор в резервный режим или отключить, запрещается эксплуатация при неработающих насосах</li>
+                    <li><strong>При повышении температуры масла до 95°С:</strong> снизить нагрузку, проверить работу охлаждения</li>
+                    <li><strong>При повышении температуры масла до 105°С:</strong> немедленно отключить трансформатор (аварийный перегрев)</li>
+                </ol>
+                <p style="margin-top: 10px;"><strong>Важно:</strong> Трансформаторы с системой охлаждения ДЦ и Ц не допускается эксплуатировать без работающих насосов даже при малой нагрузке!</p>
+            </div>
+
+            <div class="example-box">
+                <div class="example-title">📊 Пример: Алгоритм управления системой охлаждения ТДН-10000/110</div>
+                <p><strong>Трансформатор:</strong> ТДН-10000/110 (система охлаждения — дутьё, 4 вентилятора по 0,5 кВт)</p>
+                <p><strong>Уставки автоматики:</strong></p>
+                <table style="margin-top: 10px;">
+                    <tr>
+                        <th>Условие</th>
+                        <th>Действие</th>
+                        <th>Примечание</th>
+                    </tr>
+                    <tr>
+                        <td>Нагрузка > 50% I<sub>ном</sub></td>
+                        <td>Включение 2 вентиляторов (автоматически)</td>
+                        <td>Обеспечение охлаждения при повышенной нагрузке</td>
+                    </tr>
+                    <tr>
+                        <td>Нагрузка > 75% I<sub>ном</sub></td>
+                        <td>Включение 4 вентиляторов (автоматически)</td>
+                        <td>Полная мощность охлаждения</td>
+                    </tr>
+                    <tr>
+                        <td>Температура масла > 55°С</td>
+                        <td>Включение 2 вентиляторов (автоматически)</td>
+                        <td>Дублирование по температуре</td>
+                    </tr>
+                    <tr>
+                        <td>Температура масла > 70°С</td>
+                        <td>Включение 4 вентиляторов (автоматически)</td>
+                        <td>Усиленное охлаждение</td>
+                    </tr>
+                    <tr>
+                        <td>Температура масла > 85°С</td>
+                        <td>Сигнализация "ПЕРЕГРЕВ"</td>
+                        <td>Вызов дежурного персонала</td>
+                    </tr>
+                    <tr>
+                        <td>Температура масла > 95°С</td>
+                        <td>Аварийная сигнализация, автоматическое отключение резервного ввода</td>
+                        <td>Аварийный перегрев</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- РАЗДЕЛ 2.3.3 -->
+            <h2>2.3.3. Виды ремонта трансформаторов</h2>
+
+            <p>Ремонт трансформаторов выполняется для восстановления их работоспособности и поддержания технического состояния. В зависимости от объёма работ различают текущий, средний и капитальный ремонты. Объём и периодичность ремонтов определяются системой планово-предупредительного ремонта (ППР) предприятия на основании <span class="gost-reference">ПТЭЭП</span> и результатов диагностики.</p>
+
+            <h3>Классификация ремонтов трансформаторов</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Вид ремонта</th>
+                        <th>Периодичность</th>
+                        <th>Объём работ</th>
+                        <th>Продолжительность</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Текущий ремонт</strong></td>
+                        <td>1-2 раза в год</td>
+                        <td>Устранение мелких дефектов, замена расходных материалов, подтяжка соединений</td>
+                        <td>1-3 дня</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Средний ремонт</strong></td>
+                        <td>1 раз в 4-6 лет</td>
+                        <td>Частичная разборка, ремонт отдельных узлов, замена вводов, РПН, системы охлаждения</td>
+                        <td>5-15 дней</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Капитальный ремонт</strong></td>
+                        <td>1 раз в 10-15 лет (по состоянию)</td>
+                        <td>Полная разборка, ревизия активной части, замена изоляции, перемотка обмоток</td>
+                        <td>1-3 месяца</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Аварийный ремонт</strong></td>
+                        <td>По необходимости</td>
+                        <td>Устранение последствий аварии, замена повреждённых узлов</td>
+                        <td>Зависит от характера повреждения</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Текущий ремонт трансформаторов</h3>
+
+            <p>Текущий ремонт выполняется для устранения мелких дефектов и поддержания трансформатора в работоспособном состоянии. Работы проводятся без вскрытия бака и демонтажа активной части.</p>
+
+            <h4>Типовой объём работ текущего ремонта</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Наименование работ</th>
+                        <th>Содержание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><strong>Наружный осмотр</strong></td>
+                        <td>Осмотр бака, вводов, системы охлаждения, выявление дефектов окраски, течей масла</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>Подтяжка болтовых соединений</strong></td>
+                        <td>Подтяжка крышки бака, фланцев вводов, радиаторов, заземляющих проводников</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>Замена прокладок и уплотнений</strong></td>
+                        <td>Замена прокладок крышки, вводов, газового реле, краном при обнаружении течей</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>Проверка уровня масла</strong></td>
+                        <td>Контроль уровня по маслоуказателю, доливка масла при необходимости</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><strong>Замена силикагеля</strong></td>
+                        <td>Замена или регенерация силикагеля в воздухоосушителе</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><strong>Чистка и окраска</strong></td>
+                        <td>Очистка загрязнений, подкраска мест с поврежденным покрытием</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><strong>Проверка газового реле</strong></td>
+                        <td>Проверка отсутствия газа, состояния контактов, срабатывания защиты</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><strong>Проверка системы охлаждения</strong></td>
+                        <td>Чистка радиаторов, проверка работы вентиляторов и насосов</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><strong>Чистка вводов</strong></td>
+                        <td>Очистка фарфоровых изоляторов от загрязнений, проверка целостности</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><strong>Проверка заземления</strong></td>
+                        <td>Измерение сопротивления заземляющего устройства, подтяжка соединений</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td><strong>Отбор проб масла</strong></td>
+                        <td>Отбор проб для лабораторного анализа (при сроке отбора)</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td><strong>Измерение сопротивления изоляции</strong></td>
+                        <td>Измерение мегаомметром сопротивления изоляции обмоток</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <strong>Замена и регенерация силикагеля:</strong>
+                <p>Силикагель в воздухоосушителе предназначен для поглощения влаги из воздуха, поступающего в расширитель при «дыхании» трансформатора. Насыщение силикагеля влагой определяется по изменению цвета.</p>
+                <ul>
+                    <li><strong>Свежий силикагель:</strong> синий или голубой цвет (содержит индикатор — хлорид кобальта)</li>
+                    <li><strong>Насыщенный влагой:</strong> розовый или белый цвет</li>
+                    <li><strong>Критерий замены:</strong> изменение цвета более чем на 2/3 объёма</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Регенерация силикагеля:</strong> Нагрев до 150-180°С в течение 2-3 часов в сушильном шкафу. После охлаждения силикагель восстанавливает синий цвет и поглощающую способность.</p>
+            </div>
+
+            <h3>Средний ремонт трансформаторов</h3>
+
+            <p>Средний ремонт включает частичную разборку трансформатора и ремонт отдельных узлов без извлечения активной части из бака. Работы проводятся при снятой крышке бака.</p>
+
+            <h4>Типовой объём работ среднего ремонта</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Узел/система</th>
+                        <th>Виды работ</th>
+                        <th>Особенности</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Вводы ВН и НН</strong></td>
+                        <td>Замена вводов с повреждённой изоляцией, проверка контактных соединений</td>
+                        <td>Требуется слив части масла, демонтаж проводников</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Устройство РПН</strong></td>
+                        <td>Ревизия контактной системы, замена изношенных контактов, регулировка</td>
+                        <td>Выполняется специализированной бригадой по инструкции завода</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Система охлаждения</strong></td>
+                        <td>Замена радиаторов, вентиляторов, насосов, ремонт маслопроводов</td>
+                        <td>При необходимости — частичный слив масла</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Газовое реле</strong></td>
+                        <td>Замена реле, проверка срабатывания, регулировка контактов</td>
+                        <td>Проверка на специальном стенде</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Расширитель</strong></td>
+                        <td>Очистка внутренней поверхности, замена прокладок</td>
+                        <td>Слив масла из расширителя</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Прессовка обмоток</strong></td>
+                        <td>Подтяжка прессующих шпилек активной части (при ослаблении)</td>
+                        <td>Контроль усилия прессовки динамометрическим ключом</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Трансформаторное масло</strong></td>
+                        <td>Регенерация или замена масла при неудовлетворительных показателях</td>
+                        <td>Обязательное испытание масла после регенерации</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Магнитопровод</strong></td>
+                        <td>Осмотр верхнего ярма, проверка заземления пластин, устранение замыканий</td>
+                        <td>Требуется снятие крышки бака, осмотр без извлечения из бака</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>⚠️ Меры безопасности при ремонте трансформаторов:</strong>
+                <p>Согласно <span class="gost-reference">ПТЭЭП</span> и <span class="gost-reference">Правилам по охране труда при эксплуатации электроустановок (ПОТЭЭ)</span>:</p>
+                <ul>
+                    <li><strong>Отключение:</strong> Трансформатор должен быть отключён со всех сторон, включая цепи измерения и РПН</li>
+                    <li><strong>Заземление:</strong> Установка переносных заземлений на вводах ВН и НН с обеих сторон</li>
+                    <li><strong>Вывешивание плакатов:</strong> «Не включать! Работают люди!» на всех приводах разъединителей</li>
+                    <li><strong>Слив масла:</strong> Масло сливается только в специально предназначенную ёмкость</li>
+                    <li><strong>Вскрытие бака:</strong> Выполняется не ранее чем через 4-6 часов после отключения (остывание)</li>
+                    <li><strong>Работы внутри бака:</strong> Только при наличии наряда-допуска, с применением СИЗ, при работающей вентиляции</li>
+                    <li><strong>Пожарная безопасность:</strong> Наличие огнетушителей, запрет курения и открытого огня</li>
+                </ul>
+            </div>
+
+            <h3>Капитальный ремонт трансформаторов</h3>
+
+            <p>Капитальный ремонт выполняется при значительном износе трансформатора или после аварии. Включает полную разборку, извлечение активной части из бака, ревизию и ремонт всех элементов, включая обмотки и магнитопровод.</p>
+
+            <h4>Этапы капитального ремонта</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Этап</th>
+                        <th>Содержание работ</th>
+                        <th>Длительность</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. Подготовка</strong></td>
+                        <td>Отключение, заземление, демонтаж навесного оборудования (вводов, РПН, радиаторов)</td>
+                        <td>2-3 дня</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Слив масла</strong></td>
+                        <td>Слив масла в специальную ёмкость, отбор проб для анализа</td>
+                        <td>1 день</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Вскрытие и извлечение активной части</strong></td>
+                        <td>Снятие крышки, подъём активной части из бака с помощью крана</td>
+                        <td>1-2 дня</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. Дефектация</strong></td>
+                        <td>Детальный осмотр обмоток, магнитопровода, изоляции, выявление дефектов</td>
+                        <td>2-3 дня</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. Ремонт магнитопровода</strong></td>
+                        <td>Устранение замыканий между листами стали, замена повреждённых участков, восстановление заземления</td>
+                        <td>5-10 дней</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6. Ремонт обмоток</strong></td>
+                        <td>Замена повреждённых витков, восстановление изоляции, при необходимости — перемотка</td>
+                        <td>15-30 дней</td>
+                    </tr>
+                    <tr>
+                        <td><strong>7. Прессовка и сушка</strong></td>
+                        <td>Прессовка обмоток и магнитопровода, сушка активной части в камере или под вакуумом</td>
+                        <td>7-14 дней</td>
+                    </tr>
+                    <tr>
+                        <td><strong>8. Ремонт бака</strong></td>
+                        <td>Очистка, устранение течей, антикоррозионная обработка, окраска</td>
+                        <td>5-7 дней</td>
+                    </tr>
+                    <tr>
+                        <td><strong>9. Сборка</strong></td>
+                        <td>Установка активной части в бак, монтаж вводов, РПН, системы охлаждения</td>
+                        <td>3-5 дней</td>
+                    </tr>
+                    <tr>
+                        <td><strong>10. Заливка масла</strong></td>
+                        <td>Вакуумирование, заливка осушенного и дегазированного масла</td>
+                        <td>1-2 дня</td>
+                    </tr>
+                    <tr>
+                        <td><strong>11. Испытания</strong></td>
+                        <td>Полный комплекс приёмо-сдаточных испытаний по <span class="gost-reference">РД 34.45-51.300-97</span></td>
+                        <td>3-5 дней</td>
+                    </tr>
+                    <tr>
+                        <td><strong>12. Включение</strong></td>
+                        <td>Подключение, опробование под напряжением, включение нагрузки</td>
+                        <td>1 день</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <strong>Перемотка обмоток трансформатора:</strong>
+                <p>Перемотка обмоток выполняется при значительных повреждениях, которые невозможно устранить локальным ремонтом. Это самая трудоёмкая и дорогостоящая операция капитального ремонта.</p>
+                <p><strong>Этапы перемотки:</strong></p>
+                <ol>
+                    <li><strong>Демонтаж старых обмоток:</strong> разборка прессующей конструкции, снятие обмоток со стержней</li>
+                    <li><strong>Изготовление новых обмоток:</strong> намотка проводом того же сечения, изоляция бумагой и лакотканями</li>
+                    <li><strong>Установка обмоток на магнитопровод:</strong> последовательная установка обмоток НН и ВН</li>
+                    <li><strong>Изоляция и прессовка:</strong> установка изоляционных цилиндров, реек, прессующих шпилек</li>
+                    <li><strong>Сушка:</strong> удаление влаги из изоляции при температуре 90-105°С в течение 48-72 часов</li>
+                    <li><strong>Пропитка:</strong> пропитка обмоток трансформаторным лаком под вакуумом</li>
+                </ol>
+                <p style="margin-top: 10px;"><strong>Важно:</strong> После перемотки трансформатор фактически является новым изделием и должен пройти полный комплекс заводских испытаний!</p>
+            </div>
+
+            <h3>Регенерация трансформаторного масла</h3>
+
+            <p>Регенерация масла выполняется для восстановления его эксплуатационных свойств при ухудшении качества. Процесс включает очистку от механических примесей, влаги и продуктов старения.</p>
+
+            <h4>Методы регенерации трансформаторного масла</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Метод</th>
+                        <th>Принцип действия</th>
+                        <th>Что удаляется</th>
+                        <th>Оборудование</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Фильтрация</strong></td>
+                        <td>Пропускание масла через фильтры (бумажные, тканевые, металлические)</td>
+                        <td>Механические примеси, твёрдые частицы</td>
+                        <td>Маслоочистительные установки типа УВМ, ПСМ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Сепарация</strong></td>
+                        <td>Центрифугирование масла в сепараторе</td>
+                        <td>Механические примеси, вода в свободном виде</td>
+                        <td>Сепараторы центробежные СЦ-1,5; СЦ-3</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Вакуумирование</strong></td>
+                        <td>Обработка масла в вакууме при температуре 50-70°С</td>
+                        <td>Растворённая вода, газы</td>
+                        <td>Вакуумные установки УВМ-5, УВМ-10</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Адсорбция</strong></td>
+                        <td>Пропускание масла через адсорбенты (силикагель, отбеливающие глины)</td>
+                        <td>Кислоты, смолы, продукты старения, вода</td>
+                        <td>Установки адсорбционной очистки</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Термовакуумная обработка</strong></td>
+                        <td>Нагрев масла до 65-75°С в вакууме с распылением</td>
+                        <td>Вода, газы, летучие кислоты</td>
+                        <td>Комбинированные установки ЦСУ, УВМ-6000</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Химическая регенерация</strong></td>
+                        <td>Обработка серной кислотой и щёлочью с последующей адсорбцией</td>
+                        <td>Все виды загрязнений, восстановление свойств</td>
+                        <td>Стационарные регенерационные установки</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <strong>Типовая технология регенерации масла в трансформаторе без слива:</strong>
+                <ol>
+                    <li><strong>Подготовка:</strong> Подключение передвижной установки к трансформатору через краны</li>
+                    <li><strong>Циркуляция:</strong> Прокачка масла через фильтры и адсорбент со скоростью 1-3 объёма в час</li>
+                    <li><strong>Вакуумирование:</strong> Обработка масла в вакуумной камере при температуре 60-70°С</li>
+                    <li><strong>Контроль:</strong> Отбор проб масла каждые 2-4 часа, контроль пробивного напряжения</li>
+                    <li><strong>Завершение:</strong> Прекращение обработки при достижении нормативных показателей</li>
+                </ol>
+                <p style="margin-top: 10px;"><strong>Продолжительность:</strong> 8-24 часа в зависимости от начального состояния масла и объёма бака. Регенерация может выполняться без вывода трансформатора из работы при нагрузке до 50%.</p>
+            </div>
+
+            <div class="example-box">
+                <div class="example-title">📊 Пример: Результаты регенерации масла трансформатора ТДН-16000/110</div>
+                <p><strong>Трансформатор:</strong> ТДН-16000/110 № 2, срок службы 28 лет, объём масла 17 тонн</p>
+                <p><strong>Метод регенерации:</strong> Адсорбционная очистка с вакуумированием (установка ЦСУ-4Т)</p>
+                <p><strong>Продолжительность обработки:</strong> 18 часов</p>
+                <table style="margin-top: 10px;">
+                    <tr>
+                        <th>Показатель</th>
+                        <th>До регенерации</th>
+                        <th>После регенерации</th>
+                        <th>Норма (ГОСТ 982-80)</th>
+                    </tr>
+                    <tr>
+                        <td>Пробивное напряжение, кВ</td>
+                        <td>28</td>
+                        <td>62</td>
+                        <td>≥ 55</td>
+                    </tr>
+                    <tr>
+                        <td>tg δ при 90°С, %</td>
+                        <td>4,8</td>
+                        <td>1,2</td>
+                        <td>≤ 3,0</td>
+                    </tr>
+                    <tr>
+                        <td>Кислотное число, мг КОН/г</td>
+                        <td>0,38</td>
+                        <td>0,08</td>
+                        <td>≤ 0,25</td>
+                    </tr>
+                    <tr>
+                        <td>Содержание воды, г/т</td>
+                        <td>42</td>
+                        <td>8</td>
+                        <td>≤ 25</td>
+                    </tr>
+                    <tr>
+                        <td>Температура вспышки, °С</td>
+                        <td>132</td>
+                        <td>138</td>
+                        <td>≥ 125</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 10px;"><strong>Заключение:</strong> Регенерация масла выполнена успешно, все показатели соответствуют нормам. Трансформатор допущен к дальнейшей эксплуатации. Следующий анализ масла — через 6 месяцев.</p>
+            </div>
+
+            <!-- РАЗДЕЛ 2.3.4 -->
+            <h2>2.3.4. Испытания силовых трансформаторов</h2>
+
+            <p>Испытания силовых трансформаторов проводятся для оценки технического состояния и подтверждения возможности дальнейшей эксплуатации. Объём и нормы испытаний регламентированы <span class="gost-reference">РД 34.45-51.300-97</span>, <span class="gost-reference">ПТЭЭП</span> и заводской документацией.</p>
+
+            <h3>Виды испытаний трансформаторов</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Вид испытаний</th>
+                        <th>Назначение</th>
+                        <th>Периодичность</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Приёмо-сдаточные</strong></td>
+                        <td>Проверка соответствия заводским данным перед вводом в эксплуатацию</td>
+                        <td>Перед первым включением, после капитального ремонта</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Профилактические (эксплуатационные)</strong></td>
+                        <td>Контроль состояния в процессе эксплуатации</td>
+                        <td>По графику ППР: 1 раз в 3-6 лет в зависимости от напряжения</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Послеремонтные</strong></td>
+                        <td>Проверка качества ремонта</td>
+                        <td>После среднего и капитального ремонта</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Внеочередные</strong></td>
+                        <td>Проверка состояния при подозрении на дефект</td>
+                        <td>По необходимости (после КЗ, перегрузок, срабатывания защит)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Типовые</strong></td>
+                        <td>Проверка соответствия конструкции требованиям ГОСТ</td>
+                        <td>При изменении конструкции (заводские испытания)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Измерение сопротивления обмоток постоянному току</h3>
+
+            <p>Измерение активного сопротивления обмоток постоянному току позволяет выявить витковые замыкания, обрывы, некачественные контакты, определить среднюю температуру обмоток. Измерение проводится методом амперметра-вольтметра или с помощью мостов постоянного тока.</p>
+
+            <h4>Методика измерения сопротивления обмоток</h4>
+
+            <div class="info-box">
+                <strong>Порядок измерения методом амперметра-вольтметра:</strong>
+                <ol>
+                    <li><strong>Подготовка:</strong> Отключение трансформатора, установка заземлений, снятие заземлений на время измерений</li>
+                    <li><strong>Подключение приборов:</strong> Амперметр — последовательно, вольтметр — параллельно обмотке</li>
+                    <li><strong>Подача напряжения:</strong> Подача напряжения от источника постоянного тока (аккумулятора, выпрямителя)</li>
+                    <li><strong>Снятие показаний:</strong> После установления тока (5-10 секунд) фиксируются показания приборов</li>
+                    <li><strong>Расчёт сопротивления:</strong> R = U/I, где U — напряжение на обмотке, В; I — ток через обмотку, А</li>
+                    <li><strong>Повторение для всех фаз:</strong> Измерение проводится для каждой фазы (A, B, C)</li>
+                    <li><strong>Приведение к 20°С:</strong> Пересчёт сопротивления к температуре 20°С для сравнения с паспортными данными</li>
+                </ol>
+            </div>
+
+            <div class="formula-box">
+                <strong>Приведение сопротивления к температуре 20°С:</strong>
+                <div class="formula">
+                    R₂₀ = R<sub>t</sub> × (235 + 20) / (235 + t)
+                </div>
+                <div class="formula-desc">
+                    где: R₂₀ — сопротивление при 20°С, Ом;<br>
+                    R<sub>t</sub> — измеренное сопротивление при температуре t, Ом;<br>
+                    t — температура обмотки при измерении, °С;<br>
+                    235 — температурный коэффициент для медных обмоток (для алюминиевых — 228)
+                </div>
+                <p style="margin-top: 15px;"><strong>Пример расчёта:</strong> Измеренное сопротивление обмотки ВН при температуре 35°С составило R₃₅ = 5,48 Ом. Привести к 20°С:</p>
+                <div class="formula" style="margin-top: 10px;">
+                    R₂₀ = 5,48 × (235 + 20) / (235 + 35) = 5,48 × 255 / 270 = 5,17 Ом
+                </div>
+            </div>
+
+            <h4>Нормы оценки результатов измерения сопротивления</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Норма</th>
+                        <th>Оценка</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Отклонение от паспортных данных</strong></td>
+                        <td>± 2%</td>
+                        <td>Соответствует норме</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Отклонение между фазами</strong></td>
+                        <td>Не более 2% от среднего значения трёх фаз</td>
+                        <td>При превышении — возможны дефекты контактов, витковые замыкания</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Изменение по сравнению с предыдущим измерением</strong></td>
+                        <td>Не более 2%</td>
+                        <td>Значительное изменение — признак дефекта</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Измерение коэффициента трансформации</h3>
+
+            <p>Коэффициент трансформации — это отношение напряжений на обмотках ВН и НН при холостом ходе. Измерение позволяет выявить витковые замыкания, обрывы витков, неправильное соединение обмоток.</p>
+
+            <div class="definition-box">
+                <strong>Определение:</strong> <em>Коэффициент трансформации (K<sub>тр</sub>)</em> — отношение числа витков обмотки ВН (w₁) к числу витков обмотки НН (w₂), которое практически равно отношению напряжений на этих обмотках при холостом ходе:
+                <div class="formula" style="margin-top: 10px; font-family: 'Times New Roman', serif; font-size: 1.2rem;">
+                    K<sub>тр</sub> = w₁/w₂ ≈ U₁/U₂
+                </div>
+            </div>
+
+            <h4>Методы измерения коэффициента трансформации</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Метод</th>
+                        <th>Оборудование</th>
+                        <th>Применение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Метод двух вольтметров</strong></td>
+                        <td>Два вольтметра класса 0,5, ЛАТР</td>
+                        <td>Простой метод для предварительной проверки</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Измеритель коэффициента трансформации (ИКТ)</strong></td>
+                        <td>Приборы типа ИКТ, Коэффициент-3, TTR</td>
+                        <td>Основной метод для точных измерений</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Мостовой метод</strong></td>
+                        <td>Мост переменного тока типа Р5026</td>
+                        <td>Высокоточные измерения в лабораторных условиях</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <strong>Методика измерения ИКТ:</strong>
+                <ol>
+                    <li><strong>Подготовка:</strong> Отключение трансформатора, снятие заземлений на время измерений</li>
+                    <li><strong>Подключение прибора:</strong> Зажимы прибора подключаются к выводам обмоток ВН и НН</li>
+                    <li><strong>Выбор ответвления РПН:</strong> Измерение проводится на всех ответвлениях РПН</li>
+                    <li><strong>Проведение измерения:</strong> Прибор автоматически измеряет K<sub>тр</sub> и выводит результат на дисплей</li>
+                    <li><strong>Повторение для всех фаз:</strong> Измерение для фаз AB, BC, CA (для трёхфазных трансформаторов)</li>
+                    <li><strong>Сравнение с паспортными данными:</strong> Полученные значения сравниваются с заводскими данными</li>
+                </ol>
+                <p style="margin-top: 10px;"><strong>Нормы:</strong> Отклонение измеренного K<sub>тр</sub> от паспортного не должно превышать ±0,5% для трансформаторов 110 кВ и выше, ±1% для трансформаторов до 35 кВ. Разброс значений K<sub>тр</sub> между фазами не более 0,3%.</p>
+            </div>
+
+            <div class="example-box">
+                <div class="example-title">📊 Пример: Протокол измерения коэффициента трансформации ТМ-1000/10</div>
+                <p><strong>Трансформатор:</strong> ТМ-1000/10, U<sub>ВН</sub> = 10 кВ, U<sub>НН</sub> = 0,4 кВ, схема соединения Y/Y<sub>н</sub>-0</p>
+                <p><strong>Прибор:</strong> Измеритель коэффициента трансформации «Коэффициент-3М»</p>
+                <p><strong>Расчётный K<sub>тр</sub>:</strong> K<sub>тр</sub> = 10000/400 = 25,0</p>
+                <table style="margin-top: 10px;">
+                    <tr>
+                        <th>Ответвление РПН</th>
+                        <th>K<sub>тр</sub> фаза A</th>
+                        <th>K<sub>тр</sub> фаза B</th>
+                        <th>K<sub>тр</sub> фаза C</th>
+                        <th>Среднее</th>
+                        <th>Отклонение от паспорта, %</th>
+                    </tr>
+                    <tr>
+                        <td>+5% (10,5 кВ)</td>
+                        <td>26,21</td>
+                        <td>26,24</td>
+                        <td>26,19</td>
+                        <td>26,21</td>
+                        <td>+0,04</td>
+                    </tr>
+                    <tr>
+                        <td>+2,5% (10,25 кВ)</td>
+                        <td>25,60</td>
+                        <td>25,63</td>
+                        <td>25,58</td>
+                        <td>25,60</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Номинальное (10 кВ)</td>
+                        <td>24,98</td>
+                        <td>25,01</td>
+                        <td>24,96</td>
+                        <td>24,98</td>
+                        <td>-0,08</td>
+                    </tr>
+                    <tr>
+                        <td>-2,5% (9,75 кВ)</td>
+                        <td>24,38</td>
+                        <td>24,41</td>
+                        <td>24,36</td>
+                        <td>24,38</td>
+                        <td>-0,08</td>
+                    </tr>
+                    <tr>
+                        <td>-5% (9,5 кВ)</td>
+                        <td>23,78</td>
+                        <td>23,81</td>
+                        <td>23,76</td>
+                        <td>23,78</td>
+                        <td>-0,08</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 10px;"><strong>Заключение:</strong> Коэффициент трансформации соответствует паспортным данным на всех ответвлениях. Отклонения не превышают ±0,1%, что значительно меньше допустимых ±1%. Разброс между фазами не превышает 0,15%. Трансформатор исправен.</p>
+            </div>
+
+            <h3>Измерение тангенса угла диэлектрических потерь (tg δ)</h3>
+
+            <p>Тангенс угла диэлектрических потерь (tg δ) характеризует качество изоляции трансформатора. Увеличение tg δ свидетельствует об увлажнении изоляции, её загрязнении или старении. Измерение tg δ является одним из наиболее информативных методов диагностики состояния изоляции.</p>
+
+            <div class="formula-box">
+                <strong>Физический смысл tg δ:</strong>
+                <p style="font-family: 'Segoe UI', sans-serif; font-size: 0.95rem; margin-bottom: 15px;">
+                    В идеальном конденсаторе (изоляция без потерь) ток опережает напряжение на 90°. В реальной изоляции из-за диэлектрических потерь угол сдвига фаз меньше 90° на величину δ (угол диэлектрических потерь).
+                </p>
+                <div class="formula">
+                    tg δ = P<sub>акт</sub> / P<sub>реакт</sub> = I<sub>акт</sub> / I<sub>емк</sub>
+                </div>
+                <div class="formula-desc">
+                    где: P<sub>акт</sub> — активная мощность потерь в изоляции, Вт;<br>
+                    P<sub>реакт</sub> — реактивная (ёмкостная) мощность, ВАр;<br>
+                    I<sub>акт</sub> — активная составляющая тока через изоляцию, А;<br>
+                    I<sub>емк</sub> — ёмкостная составляющая тока, А
+                </div>
+            </div>
+
+            <h4>Методы и приборы для измерения tg δ</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Прибор</th>
+                        <th>Диапазон tg δ</th>
+                        <th>Точность</th>
+                        <th>Особенности</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Мост переменного тока Р5026</strong></td>
+                        <td>10⁻⁴ - 1</td>
+                        <td>±(1-3)%</td>
+                        <td>Ручная балансировка, требует квалифицированного оператора</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Мост Шеринга Р5083</strong></td>
+                        <td>10⁻⁴ - 0,1</td>
+                        <td>±1%</td>
+                        <td>Высокая точность, для измерений при повышенных напряжениях</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Автоматический мост «Тангенс-2000»</strong></td>
+                        <td>10⁻⁴ - 1</td>
+                        <td>±2%</td>
+                        <td>Автоматическая балансировка, быстрое измерение</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Doble M4000</strong></td>
+                        <td>10⁻⁵ - 10</td>
+                        <td>±0,5%</td>
+                        <td>Многофункциональный прибор, измерение tg δ и ёмкости, анализ данных</td>
+                    </tr>
+                    <tr>
+                        <td><strong>СА7100</strong></td>
+                        <td>10⁻⁴ - 1</td>
+                        <td>±1%</td>
+                        <td>Портативный, работа от аккумулятора</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Схемы измерения tg δ трансформаторов</h4>
+
+            <p>Измерение tg δ изоляции трансформатора проводится по различным схемам в зависимости от конструкции обмоток и задач диагностики:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Схема измерения</th>
+                        <th>Что измеряется</th>
+                        <th>Назначение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ВН - (НН+земля)</strong></td>
+                        <td>Изоляция обмотки ВН относительно заземлённых обмоток НН и корпуса</td>
+                        <td>Основная изоляция ВН, выявление увлажнения</td>
+                    </tr>
+                    <tr>
+                        <td><strong>НН - (ВН+земля)</strong></td>
+                        <td>Изоляция обмотки НН относительно заземлённых обмоток ВН и корпуса</td>
+                        <td>Изоляция НН (обычно в норме из-за низкого напряжения)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ВН - НН (земля - экран)</strong></td>
+                        <td>Изоляция между обмотками ВН и НН</td>
+                        <td>Междуобмоточная изоляция</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Отдельные фазы ВН</strong></td>
+                        <td>Изоляция каждой фазы обмотки ВН</td>
+                        <td>Выявление дефектной фазы</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Вводы ВН</strong></td>
+                        <td>Изоляция вводов</td>
+                        <td>Состояние изоляции вводов (часто являются источником повышенных потерь)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>⚠️ Нормы tg δ изоляции трансформаторов (<span class="gost-reference">РД 34.45-51.300-97</span>):</strong>
+                <table style="margin-top: 10px; background: rgba(255,255,255,0.6);">
+                    <tr>
+                        <th>Напряжение обмотки, кВ</th>
+                        <th>tg δ при 20°С, %</th>
+                        <th>Увеличение tg δ при повышении напряжения от 0,7U до U, %</th>
+                    </tr>
+                    <tr>
+                        <td>До 35 включ.</td>
+                        <td>≤ 1,5</td>
+                        <td>≤ 0,3</td>
+                    </tr>
+                    <tr>
+                        <td>60-110</td>
+                        <td>≤ 1,2</td>
+                        <td>≤ 0,3</td>
+                    </tr>
+                    <tr>
+                        <td>150-220</td>
+                        <td>≤ 1,0</td>
+                        <td>≤ 0,2</td>
+                    </tr>
+                    <tr>
+                        <td>330-500</td>
+                        <td>≤ 0,8</td>
+                        <td>≤ 0,1</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 10px;"><strong>Примечания:</strong></p>
+                <ul>
+                    <li>Для трансформаторов со сроком службы более 25 лет нормы tg δ могут быть увеличены на 50%</li>
+                    <li>Температурный коэффициент tg δ составляет примерно +0,5% на каждые 10°С</li>
+                    <li>Значительное увеличение tg δ при повышении напряжения свидетельствует о наличии частичных разрядов в изоляции</li>
+                </ul>
+            </div>
+
+            <h3>Испытание холостым ходом</h3>
+
+            <p>Испытание холостым ходом (опыт холостого хода) проводится для определения потерь в стали магнитопровода и тока холостого хода. Эти параметры характеризуют состояние магнитной системы трансформатора.</p>
+
+            <h4>Методика проведения опыта холостого хода</h4>
+
+            <div class="info-box">
+                <strong>Порядок проведения испытания:</strong>
+                <ol>
+                    <li><strong>Подготовка:</strong> Вторичная обмотка (НН) разомкнута, первичная (ВН) подключена к источнику напряжения</li>
+                    <li><strong>Подача напряжения:</strong> На обмотку ВН подаётся номинальное напряжение (обычно от ЛАТР через измерительный трансформатор)</li>
+                    <li><strong>Измерения:</strong> Фиксируются напряжение U₀, ток I₀ и мощность потерь P₀</li>
+                    <li><strong>Повторение при различных напряжениях:</strong> Снятие характеристики при 1,1U<sub>ном</sub>, U<sub>ном</sub>, 0,9U<sub>ном</sub></li>
+                    <li><strong>Обработка результатов:</strong> Определение потерь холостого хода P₀ и тока холостого хода I₀ в % от номинальных</li>
+                </ol>
+            </div>
+
+            <div class="formula-box">
+                <strong>Параметры холостого хода:</strong>
+                <div class="formula">
+                    P₀ = √3 × U<sub>л</sub> × I₀ × cos φ₀
+                </div>
+                <div class="formula-desc">
+                    где: P₀ — потери холостого хода, Вт;<br>
+                    U<sub>л</sub> — линейное напряжение, В;<br>
+                    I₀ — ток холостого хода, А;<br>
+                    cos φ₀ — коэффициент мощности при холостом ходе (обычно 0,1-0,3)
+                </div>
+                <p style="margin-top: 15px;"><strong>Ток холостого хода в процентах:</strong></p>
+                <div class="formula">
+                    I₀% = (I₀ / I<sub>ном</sub>) × 100%
+                </div>
+                <div class="formula-desc">
+                    где: I₀ — измеренный ток холостого хода, А;<br>
+                    I<sub>ном</sub> — номинальный ток обмотки, А
+                </div>
+            </div>
+
+            <h4>Нормы и оценка результатов опыта холостого хода</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Норма</th>
+                        <th>Возможные причины отклонений</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Потери холостого хода P₀</strong></td>
+                        <td>Не более паспортных значений (допускается превышение до 5% для старых трансформаторов)</td>
+                        <td>Замыкания между листами стали магнитопровода, повреждение изоляции стали, деформация магнитопровода</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ток холостого хода I₀</strong></td>
+                        <td>Не более паспортных значений (обычно 0,5-3% от I<sub>ном</sub> в зависимости от мощности)</td>
+                        <td>Витковые замыкания, размагничивание стали, увеличение зазоров в магнитопроводе</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Несимметрия токов по фазам</strong></td>
+                        <td>Не более 10% от среднего значения</td>
+                        <td>Витковые замыкания в одной из фаз, дефекты магнитопровода</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Испытание короткого замыкания</h3>
+
+            <p>Испытание короткого замыкания (опыт короткого замыкания) проводится для определения потерь короткого замыкания и напряжения короткого замыкания. Эти параметры характеризуют активные сопротивления обмоток и индуктивные сопротивления рассеяния.</p>
+
+            <h4>Методика проведения опыта короткого замыкания</h4>
+
+            <div class="info-box">
+                <strong>Порядок проведения испытания:</strong>
+                <ol>
+                    <li><strong>Подготовка:</strong> Вторичная обмотка (НН) замкнута накоротко, на первичную (ВН) подаётся пониженное напряжение</li>
+                    <li><strong>Подача напряжения:</strong> Напряжение на ВН повышается до тех пор, пока ток в обмотках не достигнет номинального значения</li>
+                    <li><strong>Измерения:</strong> Фиксируются напряжение U<sub>к</sub>, ток I<sub>к</sub> = I<sub>ном</sub> и мощность потерь P<sub>к</sub></li>
+                    <li><strong>Обработка результатов:</strong> Определение потерь короткого замыкания P<sub>к</sub> и напряжения короткого замыкания U<sub>к</sub> в % от номинального</li>
+                </ol>
+            </div>
+
+            <div class="formula-box">
+                <strong>Параметры короткого замыкания:</strong>
+                <div class="formula">
+                    U<sub>к</sub>% = (U<sub>к</sub> / U<sub>ном</sub>) × 100%
+                </div>
+                <div class="formula-desc">
+                    где: U<sub>к</sub>% — напряжение короткого замыкания в процентах;<br>
+                    U<sub>к</sub> — напряжение, при котором ток достигает номинального значения, В;<br>
+                    U<sub>ном</sub> — номинальное напряжение обмотки ВН, В
+                </div>
+                <p style="margin-top: 15px;"><strong>Потери короткого замыкания:</strong></p>
+                <div class="formula">
+                    P<sub>к</sub> = √3 × U<sub>к</sub> × I<sub>ном</sub> = 3 × I<sub>ном</sub>² × R<sub>к</sub>
+                </div>
+                <div class="formula-desc">
+                    где: P<sub>к</sub> — потери короткого замыкания, Вт;<br>
+                    R<sub>к</sub> — активное сопротивление короткого замыкания (сумма сопротивлений обмоток ВН и НН, приведённых к одной обмотке), Ом
+                </div>
+            </div>
+
+            <h4>Нормы и оценка результатов опыта короткого замыкания</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Норма</th>
+                        <th>Возможные причины отклонений</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Напряжение короткого замыкания U<sub>к</sub>%</strong></td>
+                        <td>Соответствует паспортным данным ± 5% (обычно 4,5-10,5% в зависимости от мощности)</td>
+                        <td>Деформация обмоток (осевая или радиальная), витковые замыкания</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Потери короткого замыкания P<sub>к</sub></strong></td>
+                        <td>Не более паспортных значений (допускается превышение до 5%)</td>
+                        <td>Ухудшение контактов, повышение сопротивления обмоток, нагрев</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Несимметрия потерь по фазам</strong></td>
+                        <td>Не более 2% от среднего значения</td>
+                        <td>Витковые замыкания, дефекты контактов в одной из фаз</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="example-box">
+                <div class="example-title">📊 Пример: Протокол испытаний трансформатора ТМ-630/10 после среднего ремонта</div>
+                <p><strong>Трансформатор:</strong> ТМ-630/10/0,4 кВ, Y/Y<sub>н</sub>-0, № завода 12345, год выпуска 2008</p>
+                <p><strong>Дата испытаний:</strong> 10.10.2024</p>
+                <p><strong>Объём ремонта:</strong> Замена вводов ВН, регенерация масла, подтяжка прессовки</p>
+                <table style="margin-top: 10px;">
+                    <tr>
+                        <th>Вид испытания / параметр</th>
+                        <th>Результат</th>
+                        <th>Норма / паспорт</th>
+                        <th>Заключение</th>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="background: #e2e8f0; font-weight: bold;">1. Измерение сопротивления изоляции (мегаомметр 2500 В)</td>
+                    </tr>
+                    <tr>
+                        <td>ВН - (НН+земля)</td>
+                        <td>18000 МОм</td>
+                        <td>≥ 10 МОм</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>НН - (ВН+земля)</td>
+                        <td>8500 МОм</td>
+                        <td>≥ 10 МОм</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="background: #e2e8f0; font-weight: bold;">2. Измерение сопротивления обмоток постоянному току при 20°С</td>
+                    </tr>
+                    <tr>
+                        <td>Обмотка ВН, фаза A</td>
+                        <td>12,48 Ом</td>
+                        <td>12,5 Ом</td>
+                        <td>✓ (-0,16%)</td>
+                    </tr>
+                    <tr>
+                        <td>Обмотка ВН, фаза B</td>
+                        <td>12,52 Ом</td>
+                        <td>12,5 Ом</td>
+                        <td>✓ (+0,16%)</td>
+                    </tr>
+                    <tr>
+                        <td>Обмотка ВН, фаза C</td>
+                        <td>12,50 Ом</td>
+                        <td>12,5 Ом</td>
+                        <td>✓ (0%)</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="background: #e2e8f0; font-weight: bold;">3. Измерение коэффициента трансформации (на основном ответвлении)</td>
+                    </tr>
+                    <tr>
+                        <td>K<sub>тр</sub> фаза A</td>
+                        <td>25,02</td>
+                        <td>25,0</td>
+                        <td>✓ (+0,08%)</td>
+                    </tr>
+                    <tr>
+                        <td>K<sub>тр</sub> фаза B</td>
+                        <td>24,98</td>
+                        <td>25,0</td>
+                        <td>✓ (-0,08%)</td>
+                    </tr>
+                    <tr>
+                        <td>K<sub>тр</sub> фаза C</td>
+                        <td>25,01</td>
+                        <td>25,0</td>
+                        <td>✓ (+0,04%)</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="background: #e2e8f0; font-weight: bold;">4. Измерение tg δ изоляции обмотки ВН при 20°С</td>
+                    </tr>
+                    <tr>
+                        <td>tg δ (ВН - земля)</td>
+                        <td>0,85%</td>
+                        <td>≤ 1,5%</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="background: #e2e8f0; font-weight: bold;">5. Опыт холостого хода при U<sub>ном</sub> = 10 кВ</td>
+                    </tr>
+                    <tr>
+                        <td>Потери холостого хода P₀</td>
+                        <td>1580 Вт</td>
+                        <td>≤ 1680 Вт</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Ток холостого хода I₀</td>
+                        <td>1,8%</td>
+                        <td>≤ 2,1%</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="background: #e2e8f0; font-weight: bold;">6. Опыт короткого замыкания при I<sub>ном</sub></td>
+                    </tr>
+                    <tr>
+                        <td>Потери короткого замыкания P<sub>к</sub></td>
+                        <td>7650 Вт</td>
+                        <td>≤ 8500 Вт</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Напряжение короткого замыкания U<sub>к</sub></td>
+                        <td>5,5%</td>
+                        <td>5,5 ± 0,3%</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="background: #e2e8f0; font-weight: bold;">7. Анализ трансформаторного масла</td>
+                    </tr>
+                    <tr>
+                        <td>Пробивное напряжение</td>
+                        <td>68 кВ</td>
+                        <td>≥ 35 кВ</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>tg δ при 90°С</td>
+                        <td>1,1%</td>
+                        <td>≤ 5,0%</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Кислотное число</td>
+                        <td>0,09 мг КОН/г</td>
+                        <td>≤ 0,35</td>
+                        <td>✓</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 15px;"><strong>Общее заключение:</strong> Трансформатор ТМ-630/10 № 12345 прошёл испытания после среднего ремонта. Все параметры соответствуют нормам <span class="gost-reference">РД 34.45-51.300-97</span> и паспортным данным. Трансформатор допущен к эксплуатации. Следующие испытания — через 3 года.</p>
+                <p style="margin-top: 10px;">Испытания провёл: инженер ЭТЛ Петров И.И. ___________</p>
+            </div>
+
+            <!-- ВЫВОДЫ -->
+            <h2>Выводы по теме</h2>
+
+            <div class="highlight-box">
+                <strong>Основные выводы:</strong>
+                <ol>
+                    <li><strong>Классификация трансформаторов</strong> основана на назначении, системе охлаждения, числе обмоток и способе регулирования напряжения. Масляные трансформаторы преобладают в сетях 110 кВ и выше, сухие — в распределительных сетях 6-10/0,4 кВ внутри помещений.</li>
+                    <li><strong>Техническое обслуживание</strong> включает регулярные осмотры, контроль уровня и качества масла, температуры обмоток, работы системы охлаждения. Своевременное выявление дефектов на стадии осмотра позволяет избежать аварий.</li>
+                    <li><strong>Анализ трансформаторного масла</strong> — важнейший элемент диагностики. Хроматографический анализ растворённых газов (ХАРГ) позволяет выявить развивающиеся дефекты задолго до аварии.</li>
+                    <li><strong>Ремонты трансформаторов</strong> классифицируются на текущие, средние и капитальные. Капитальный ремонт с перемоткой обмоток экономически оправдан только для мощных трансформаторов 110 кВ и выше.</li>
+                    <li><strong>Испытания трансформаторов</strong> включают измерение сопротивления изоляции и обмоток, коэффициента трансформации, tg δ, опыты холостого хода и короткого замыкания. Комплексная оценка результатов позволяет определить остаточный ресурс трансформатора.</li>
+                    <li><strong>Современные методы диагностики</strong> (тепловизионное обследование, ХАРГ, частотный анализ) дополняют традиционные испытания и повышают достоверность оценки технического состояния.</li>
+                </ol>
+            </div>
+
+            <!-- ЛИТЕРАТУРА -->
+            <h2>Литература и нормативные документы</h2>
+            
+            <div class="reference">
+                <h4>Основные нормативные документы</h4>
+                <ol>
+                    <li>ГОСТ 11677-85. Трансформаторы силовые. Общие технические условия.</li>
+                    <li>ГОСТ 16110-82. Трансформаторы силовые. Термины и определения.</li>
+                    <li>Правила технической эксплуатации электроустановок потребителей (ПТЭЭП). Глава 2.1. Силовые трансформаторы и реакторы. Утв. приказом Минэнерго России от 13.01.2003 № 6 (с изменениями).</li>
+                    <li>РД 34.45-51.300-97. Объём и нормы испытаний электрооборудования. М.: НЦ ЭНАС, 2004.</li>
+                    <li>ГОСТ 982-80. Масла трансформаторные. Технические условия.</li>
+                    <li>ГОСТ 6581-75. Материалы электроизоляционные жидкие. Методы электрических испытаний.</li>
+                    <li>РД 153-34.0-46.302-00. Методические указания по диагностике развивающихся дефектов трансформаторного оборудования по результатам хроматографического анализа газов, растворённых в масле.</li>
+                    <li>СТО 56947007-29.180.01.015-2008. Методические указания по диагностике силовых трансформаторов, автотрансформаторов, шунтирующих реакторов и их вводов. М.: ФСК ЕЭС, 2008.</li>
+                    <li>РД 153-34.0-20.363-99. Методика инфракрасной диагностики электрооборудования и ВЛ. М.: ОРГРЭС, 1999.</li>
+                    <li>ГОСТ 7746-2015. Трансформаторы тока. Общие технические условия.</li>
+                    <li>ГОСТ 1983-2015. Трансформаторы напряжения. Общие технические условия.</li>
+                </ol>
+                
+                <h4 style="margin-top: 20px;">Учебная и справочная литература</h4>
+                <ol>
+                    <li>Тихомиров П.М. Расчёт трансформаторов: Учебное пособие. — М.: Энергоатомиздат, 1986. — 528 с.</li>
+                    <li>Сапожников А.Б. Конструирование трансформаторов. — М.: Госэнергоиздат, 1959. — 360 с.</li>
+                    <li>Алексенко Г.В. Монтаж, эксплуатация и ремонт трансформаторов. — М.: НЦ ЭНАС, 2005. — 208 с.</li>
+                    <li>Львов Ю.Н. Диагностика силовых трансформаторов: Пособие для практических работников. — Новосибирск: Наука, 2011. — 245 с.</li>
+                    <li>Справочник по электрическим машинам / Под ред. И.П. Копылова, Б.К. Клокова. — М.: Энергоатомиздат, 1988. — Т. 1, 2.</li>
+                    <li>Баширов М.Г., Бахнов С.И. Техническое обслуживание трансформаторов и преобразователей. — М.: Энергоатомиздат, 1987. — 256 с.</li>
+                    <li>Норенков И.П. Основы автоматизированного проектирования: Учебник для вузов. — М.: Издательство МГТУ им. Н.Э. Баумана, 2009. — 430 с.</li>
+                    <li>Лизунов С.Д., Лоханин А.К. Силовые трансформаторы: Справочная книга. — М.: Энергоиздат, 2004. — 616 с.</li>
+                </ol>
+            </div>
+
+            <!-- НАВИГАЦИЯ -->
+            <div class="nav-buttons">
+                <a href="2-2.html" class="nav-btn">← Предыдущая тема: 2.2. Эксплуатация кабельных линий</a>
+                <a href="start.html" class="nav-btn nav-btn-home">📚 Оглавление</a>
+                <a href="2-4.html" class="nav-btn">Следующая тема: 2.4. Эксплуатация коммутационных аппаратов →</a>
+            </div>
+        </article>
+
+        <footer class="footer">
+            <p>© 2026 Кузбасский государственный технический университет имени Т.Ф. Горбачева</p>
+            <p>Кафедра электрических станций, сетей и систем электроснабжения предприятий (ЭГиПП)</p>
+            <p>Автор: Артемасов В.В., к.т.н., доцент</p>
+        </footer>
+    </div>
+</body>
+</html>

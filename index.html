@@ -1,0 +1,159 @@
+cat > index.html << 'EOF'
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Электротехнический факультет</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 50px;
+            text-align: center;
+        }
+        
+        .course-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.3em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            margin: 20px 0;
+        }
+        
+        .course-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+        
+        .course-link:active {
+            transform: translateY(-2px);
+        }
+        
+        .icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        
+        .counter {
+            margin-top: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .counter h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .counter-value {
+            font-size: 2em;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .footer {
+            padding: 20px;
+            text-align: center;
+            background: #f8f9fa;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚡ Электротехнический факультет</h1>
+            <p>Образовательный портал</p>
+        </div>
+        
+        <div class="content">
+            <div class="icon">🔌</div>
+            <h2>Добро пожаловать!</h2>
+            <p style="margin: 20px 0; color: #666; font-size: 1.1em;">
+                Выберите курс для начала обучения
+            </p>
+            
+            <a href="start.html" class="course-link">
+                📚 Эксплуатация электрооборудования
+            </a>
+            
+            <div class="counter">
+                <h3>Счетчик посещений</h3>
+                <div class="counter-value" id="visitCount">0</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            © 2024 Электротехнический факультет. Все права защищены.
+        </div>
+    </div>
+    
+    <script>
+        // Простой счетчик посещений на localStorage
+        let visits = localStorage.getItem('visitCount');
+        if (visits === null) {
+            visits = 0;
+        }
+        visits = parseInt(visits) + 1;
+        localStorage.setItem('visitCount', visits);
+        document.getElementById('visitCount').textContent = visits;
+    </script>
+</body>
+</html>
+EOF
