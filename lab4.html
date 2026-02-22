@@ -1,0 +1,2642 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа №4 - Эксплуатация силового оборудования: электрических машин и комплектных устройств</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 50%, #1a365d 100%);
+            min-height: 100vh;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .lecture-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-left: 6px solid #38a169;
+        }
+
+        .breadcrumb {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #1a365d;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .lecture-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .content-body {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #1a365d;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #38a169;
+        }
+
+        h3 {
+            color: #2c5282;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 25px 0 15px 0;
+        }
+
+        h4 {
+            color: #4a5568;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .formula-box {
+            background: #1a365d;
+            color: white;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1rem;
+        }
+
+        .formula-box .formula {
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .formula-box .formula-desc {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: #2c5282;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:hover {
+            background: #f7fafc;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);
+            border-left: 4px solid #f6ad55;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+            border-left: 4px solid #c53030;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            color: #742a2a;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .example-title {
+            font-weight: 700;
+            color: #234e52;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e8f4fd 0%, #bee3f8 100%);
+            border-left: 4px solid #3182ce;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .task-box {
+            background: linear-gradient(135deg, #faf5ff 0%, #e9d8fd 100%);
+            border-left: 4px solid #805ad5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .variant-box {
+            background: linear-gradient(135deg, #fffaf0 0%, #feebc8 100%);
+            border: 2px solid #dd6b20;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 12px;
+        }
+
+        .variant-header {
+            background: #dd6b20;
+            color: white;
+            padding: 10px 20px;
+            margin: -25px -25px 20px -25px;
+            border-radius: 10px 10px 0 0;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .reference {
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .reference h4 {
+            color: #1a365d;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #38a169;
+            padding-bottom: 10px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e2e8f0;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: #2c5282;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .nav-btn:hover {
+            background: #1a365d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-btn-home {
+            background: #38a169;
+            flex: 0 0 auto;
+            max-width: 180px;
+        }
+
+        .nav-btn-home:hover {
+            background: #276749;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .gost-reference {
+            display: inline-block;
+            background: #edf2f7;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .column-box {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .column-box h4 {
+            color: #2c5282;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f6ad55;
+        }
+
+        .calculation-step {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+
+        .calculation-step h5 {
+            color: #2c5282;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .result-good {
+            color: #38a169;
+            font-weight: 600;
+        }
+
+        .result-warning {
+            color: #d69e2e;
+            font-weight: 600;
+        }
+
+        .result-bad {
+            color: #c53030;
+            font-weight: 600;
+        }
+
+        .criteria-table th {
+            background: #38a169;
+        }
+
+        .norm-reference {
+            background: #edf2f7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 3px solid #3182ce;
+        }
+
+        .norm-reference strong {
+            color: #2c5282;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .lecture-header, .content-body {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .nav-btn-home {
+                order: -1;
+                max-width: 100%;
+            }
+
+            .variant-header {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="lecture-header">
+            <div class="breadcrumb">Раздел 2 → Лабораторные работы → Работа №4</div>
+            <h1>Лабораторная работа №4<br>Эксплуатация силового оборудования: электрических машин и комплектных устройств</h1>
+            <div class="lecture-meta">
+                <div class="meta-item">🔬 Лабораторное занятие</div>
+                <div class="meta-item">⏱ 4 академических часа</div>
+                <div class="meta-item">📊 Сложность: высокая</div>
+            </div>
+        </header>
+
+        <article class="content-body">
+            
+            <!-- ЦЕЛЬ И ЗАДАЧИ -->
+            <h2>Цель и задачи работы</h2>
+            
+            <div class="definition-box">
+                <strong>Цель работы:</strong> Приобретение практических навыков по организации технической эксплуатации электрических машин (двигателей и генераторов) и комплектных распределительных устройств, включая диагностику технического состояния, анализ виброакустических характеристик, оценку состояния подшипников и изоляции, принятие решений по результатам испытаний.
+            </div>
+
+            <h3>Задачи работы</h3>
+            <ol>
+                <li>Изучить нормативные требования к эксплуатации электрических машин и КРУ</li>
+                <li>Освоить методику виброакустической диагностики электродвигателей</li>
+                <li>Научиться анализировать результаты измерений сопротивления изоляции обмоток</li>
+                <li>Приобрести навыки оценки состояния подшипниковых узлов</li>
+                <li>Освоить методику планирования ремонтов электрических машин</li>
+                <li>Научиться принимать обоснованные решения о допуске оборудования к эксплуатации</li>
+            </ol>
+
+            <h3>Нормативная база</h3>
+            <p>При выполнении работы <strong>обязательно</strong> использовать следующие нормативные документы:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Документ</th>
+                        <th>Область применения в работе</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="gost-reference">ПТЭЭП, глава 2.5</span></td>
+                        <td>Правила эксплуатации электрических машин, периодичность осмотров и ремонтов</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">РД 34.45-51.300-97</span></td>
+                        <td>Нормы испытаний: сопротивление изоляции, коэффициент абсорбции, испытание повышенным напряжением</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">ГОСТ 183-74</span></td>
+                        <td>Общие технические условия на машины электрические вращающиеся</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">ГОСТ ISO 10816-1-97</span></td>
+                        <td>Оценка вибрации машин по измерениям на невращающихся частях</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">ГОСТ 20815-93</span></td>
+                        <td>Вибрация. Допустимые уровни вибрации электрических машин</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">РД 153-34.0-20.363-99</span></td>
+                        <td>Методика инфракрасной диагностики, критерии дефектности</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">ГОСТ 11828-86</span></td>
+                        <td>Машины электрические вращающиеся. Методы испытаний</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">СТО 70238424.27.100.052-2009</span></td>
+                        <td>Электродвигатели. Организация эксплуатации и технического обслуживания</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>⚠️ Важно!</strong> Все расчёты и выводы должны сопровождаться ссылками на конкретные пункты, таблицы или разделы нормативных документов. Ответы без нормативного обоснования оцениваются со снижением балла.
+            </div>
+
+            <!-- ВАРИАНТЫ ЗАДАНИЙ -->
+            <h2>Варианты заданий</h2>
+            
+            <p>Вариант выбирается по <strong>последней цифре номера зачётной книжки</strong>. Если последняя цифра — 0, выполняется вариант 10.</p>
+
+            <!-- ВАРИАНТ 1 -->
+            <div class="variant-box">
+                <div class="variant-header">📋 Вариант 1 (последняя цифра зачётки — 1)</div>
+                
+                <h4>Исходные данные:</h4>
+                <p>Асинхронный двигатель главного привода компрессорной станции.</p>
+                <p><strong>Электродвигатель:</strong> АДО 4-450У-4У1, год выпуска 2012</p>
+                
+                <p><strong>Паспортные данные:</strong></p>
+                <ul>
+                    <li>Номинальная мощность P<sub>ном</sub> = 450 кВт</li>
+                    <li>Напряжение U<sub>ном</sub> = 6000 В</li>
+                    <li>Частота вращения n = 1485 об/мин</li>
+                    <li>КПД = 95,5%, cos φ = 0,89</li>
+                    <li>Класс изоляции F (155°С)</li>
+                    <li>Тип подшипников: 3628 (ведущий и ведомый концы)</li>
+                    <li>Масса: 2850 кг</li>
+                </ul>
+
+                <p><strong>Условия эксплуатации:</strong></p>
+                <ul>
+                    <li>Режим работы: продолжительный (S1)</li>
+                    <li>Нагрузка: 82% от номинальной</li>
+                    <li>Температура окружающего воздуха: +28°С</li>
+                    <li>Наработка после капремонта: 34 500 часов</li>
+                </ul>
+
+                <p><strong>Результаты виброакустической диагностики:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Точка измерения</th>
+                            <th>СКЗ вибрации, мм/с</th>
+                            <th>Доминирующая частота, Гц</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Подшипник ведущий, радиально-вертикальное</td>
+                            <td>5,8</td>
+                            <td>24,75 (оборотная f<sub>вр</sub>)</td>
+                        </tr>
+                        <tr>
+                            <td>Подшипник ведущий, радиально-горизонтальное</td>
+                            <td>4,2</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Подшипник ведущий, осевое</td>
+                            <td>2,1</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Подшипник ведомый, радиально-вертикальное</td>
+                            <td>12,4</td>
+                            <td>BPFO = 148 Гц</td>
+                        </tr>
+                        <tr>
+                            <td>Подшипник ведомый, радиально-горизонтальное</td>
+                            <td>9,8</td>
+                            <td>BPFO = 148 Гц</td>
+                        </tr>
+                        <tr>
+                            <td>Подшипник ведомый, осевое</td>
+                            <td>6,2</td>
+                            <td>—</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Результаты измерения сопротивления изоляции</strong> (мегаомметр 2500 В, температура обмотки 42°С):</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Параметр</th>
+                            <th>Значение</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>R<sub>15</sub> (обмотка статора — корпус)</td>
+                            <td>68 МОм</td>
+                        </tr>
+                        <tr>
+                            <td>R<sub>60</sub> (обмотка статора — корпус)</td>
+                            <td>85 МОм</td>
+                        </tr>
+                        <tr>
+                            <td>Коэффициент абсорбции K<sub>абс</sub></td>
+                            <td>1,25</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Температурные измерения при рабочей нагрузке:</strong></p>
+                <ul>
+                    <li>Температура подшипника ведущего: 68°С</li>
+                    <li>Температура подшипника ведомого: 95°С</li>
+                    <li>Температура корпуса в зоне обмотки статора: 78°С</li>
+                </ul>
+
+                <div class="task-box">
+                    <strong>Задание:</strong>
+                    <ol>
+                        <li>Оценить уровень вибрации по ГОСТ ISO 10816-1-97 и ГОСТ 20815-93, определить зону состояния для каждой точки измерения</li>
+                        <li>Провести анализ спектра вибрации, определить вид дефекта по характерной частоте BPFO</li>
+                        <li>Оценить состояние подшипникового узла ведомого конца по комплексу признаков (вибрация + температура)</li>
+                        <li>Проанализировать сопротивление изоляции: привести к температуре 75°С, оценить коэффициент абсорбции</li>
+                        <li>Оценить температурный режим работы двигателя (превышение температуры обмотки над окружающей средой)</li>
+                        <li>Сделать общее заключение о техническом состоянии двигателя</li>
+                        <li>Разработать рекомендации по дальнейшей эксплуатации с указанием конкретных мероприятий и сроков</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ВАРИАНТ 2 -->
+            <div class="variant-box">
+                <div class="variant-header">📋 Вариант 2 (последняя цифра зачётки — 2)</div>
+                
+                <h4>Исходные данные:</h4>
+                <p>Комплектное распределительное устройство КРУ-10 кВ цеховой подстанции.</p>
+                <p><strong>Оборудование ячейки:</strong> КРУ К-59 № 8 (ячейка отходящего фидера на электродвигатель 630 кВт)</p>
+                
+                <p><strong>Состав ячейки:</strong></p>
+                <ul>
+                    <li>Выключатель вакуумный: ВВ/TEL-10-20/1000</li>
+                    <li>Разъединитель втычного типа</li>
+                    <li>Трансформаторы тока: ТЛК-10-1000/5А, класс 0,5S/10Р</li>
+                    <li>Ограничители перенапряжений: ОПН-10</li>
+                    <li>Токоведущие шины: алюминиевая полоса 80×10 мм</li>
+                </ul>
+
+                <p><strong>Условия работы:</strong></p>
+                <ul>
+                    <li>Ток нагрузки фидера: 720 А</li>
+                    <li>Температура в помещении КРУ: +24°С</li>
+                    <li>Год ввода в эксплуатацию: 2014</li>
+                </ul>
+
+                <p><strong>Результаты тепловизионного обследования:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Объект контроля</th>
+                            <th>Температура, °С</th>
+                            <th>Температура аналогичного элемента, °С</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Контакт шины с вводным зажимом, фаза A</td>
+                            <td>45</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Контакт шины с вводным зажимом, фаза B</td>
+                            <td>108</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Контакт шины с вводным зажимом, фаза C</td>
+                            <td>48</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Верхний контакт выключателя, фаза A</td>
+                            <td>62</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Верхний контакт выключателя, фаза B</td>
+                            <td>95</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Верхний контакт выключателя, фаза C</td>
+                            <td>65</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Втычной контакт разъединителя, фаза B</td>
+                            <td>88</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Сборная шина, фаза B</td>
+                            <td>55</td>
+                            <td>42 (фаза A)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Результаты измерения переходного сопротивления контактов</strong> (микроомметр):</p>
+                <ul>
+                    <li>Контакт выключателя фаза A: 48 мкОм (паспорт: ≤50 мкОм)</li>
+                    <li>Контакт выключателя фаза B: 185 мкОм (паспорт: ≤50 мкОм)</li>
+                    <li>Контакт выключателя фаза C: 52 мкОм (паспорт: ≤50 мкОм)</li>
+                </ul>
+
+                <p><strong>Результаты измерения сопротивления изоляции вторичных цепей</strong> (мегаомметр 1000 В):</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Элемент</th>
+                            <th>R<sub>из</sub>, МОм</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Вторичные обмотки ТТ, фаза A</td>
+                            <td>850</td>
+                        </tr>
+                        <tr>
+                            <td>Вторичные обмотки ТТ, фаза B</td>
+                            <td>920</td>
+                        </tr>
+                        <tr>
+                            <td>Вторичные обмотки ТТ, фаза C</td>
+                            <td>0,35</td>
+                        </tr>
+                        <tr>
+                            <td>Цепи управления и сигнализации</td>
+                            <td>580</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="task-box">
+                    <strong>Задание:</strong>
+                    <ol>
+                        <li>Рассчитать избыточную температуру ΔT для каждого объекта контроля</li>
+                        <li>Определить степень дефектности по РД 153-34.0-20.363-99</li>
+                        <li>Проанализировать соответствие переходного сопротивления контактов выключателя норме</li>
+                        <li>Оценить состояние изоляции вторичных цепей (норма ≥1,0 МОм)</li>
+                        <li>Выявить причинно-следственную связь дефектов фазы B</li>
+                        <li>Составить перечень выявленных дефектов с классификацией по срочности устранения</li>
+                        <li>Разработать план мероприятий по устранению дефектов, определить возможность дальнейшей эксплуатации</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ВАРИАНТ 3 -->
+            <div class="variant-box">
+                <div class="variant-header">📋 Вариант 3 (последняя цифра зачётки — 3)</div>
+                
+                <h4>Исходные данные:</h4>
+                <p>Синхронный двигатель привода мельницы углеразмола тепловой электростанции.</p>
+                <p><strong>Электродвигатель:</strong> СДН-2-17-54-12У3, год выпуска 2008</p>
+                
+                <p><strong>Паспортные данные:</strong></p>
+                <ul>
+                    <li>Номинальная мощность P<sub>ном</sub> = 1600 кВт</li>
+                    <li>Напряжение U<sub>ном</sub> = 6000 В</li>
+                    <li>Частота вращения n = 500 об/мин (12 полюсов)</li>
+                    <li>Cos φ = 1,0 (номинальный)</li>
+                    <li>Ток статора номинальный I<sub>ном</sub> = 185 А</li>
+                    <li>Ток возбуждения номинальный I<sub>в.ном</sub> = 285 А</li>
+                    <li>Класс изоляции F</li>
+                    <li>Тип подшипников: скольжения с баббитовыми вкладышами</li>
+                    <li>Паспортное сопротивление обмотки статора при 20°С: R<sub>20</sub> = 0,178 Ом/фазу</li>
+                </ul>
+
+                <p><strong>Результаты испытаний после капитального ремонта:</strong></p>
+
+                <p><strong>1. Измерение сопротивления изоляции</strong> (температура 35°С):</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Обмотка</th>
+                            <th>R<sub>15</sub>, МОм</th>
+                            <th>R<sub>60</sub>, МОм</th>
+                            <th>K<sub>абс</sub></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Статор относительно корпуса</td>
+                            <td>420</td>
+                            <td>780</td>
+                            <td>1,86</td>
+                        </tr>
+                        <tr>
+                            <td>Обмотка возбуждения (ротор)</td>
+                            <td>85</td>
+                            <td>92</td>
+                            <td>1,08</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>2. Измерение сопротивления обмоток постоянному току</strong> (температура 22°С):</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Фаза</th>
+                            <th>Сопротивление, Ом</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A-X</td>
+                            <td>0,185</td>
+                        </tr>
+                        <tr>
+                            <td>B-Y</td>
+                            <td>0,188</td>
+                        </tr>
+                        <tr>
+                            <td>C-Z</td>
+                            <td>0,183</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>3. Испытание на нагрев при номинальной нагрузке</strong> (продолжительность 4 часа):</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Параметр</th>
+                            <th>Значение</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Температура обмотки статора (метод сопротивления)</td>
+                            <td>128°С</td>
+                        </tr>
+                        <tr>
+                            <td>Температура подшипника №1 (вкладыш)</td>
+                            <td>72°С</td>
+                        </tr>
+                        <tr>
+                            <td>Температура подшипника №2 (вкладыш)</td>
+                            <td>68°С</td>
+                        </tr>
+                        <tr>
+                            <td>Температура масла в ванне подшипника</td>
+                            <td>58°С</td>
+                        </tr>
+                        <tr>
+                            <td>Температура охлаждающего воздуха</td>
+                            <td>25°С</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>4. Результаты опыта холостого хода и короткого замыкания:</strong></p>
+                <ul>
+                    <li>Ток ХХ статора при номинальном напряжении: I₀ = 12,5 А (паспорт: 11,8 А)</li>
+                    <li>Ток возбуждения на ХХ при U<sub>ном</sub>: I<sub>в0</sub> = 48 А</li>
+                    <li>Ток трёхфазного КЗ при I<sub>в</sub> = 285 А: I<sub>кз</sub> = 652 А (паспорт: 620 А)</li>
+                </ul>
+
+                <div class="task-box">
+                    <strong>Задание:</strong>
+                    <ol>
+                        <li>Привести измеренные сопротивления обмоток статора к температуре 20°С, оценить разброс между фазами (норма ≤2%)</li>
+                        <li>Оценить состояние изоляции статора и ротора по сопротивлению изоляции и коэффициенту абсорбции</li>
+                        <li>Проанализировать температурный режим: рассчитать превышение температуры обмотки над охлаждающей средой (для класса F допустимое превышение — 105°С)</li>
+                        <li>Оценить допустимость температуры подшипников скольжения (предельная температура вкладыша — 80°С, масла — 65°С)</li>
+                        <li>Проанализировать результаты опытов ХХ и КЗ: рассчитать отклонение от паспортных данных</li>
+                        <li>Сделать заключение о возможности ввода двигателя в эксплуатацию</li>
+                        <li>Составить рекомендации по режиму обкатки и программе контроля параметров в период приработки</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ВАРИАНТ 4 -->
+            <div class="variant-box">
+                <div class="variant-header">📋 Вариант 4 (последняя цифра зачётки — 4)</div>
+                
+                <h4>Исходные данные:</h4>
+                <p>Асинхронный двигатель с фазным ротором привода крановой тележки грузоподъёмностью 50 т.</p>
+                <p><strong>Электродвигатель:</strong> МТН 412-8, год выпуска 2015</p>
+                
+                <p><strong>Паспортные данные:</strong></p>
+                <ul>
+                    <li>Номинальная мощность P<sub>ном</sub> = 22 кВт (при ПВ = 25%)</li>
+                    <li>Напряжение статора U<sub>ном</sub> = 380 В</li>
+                    <li>Напряжение ротора U<sub>2</sub> = 225 В</li>
+                    <li>Частота вращения n = 705 об/мин</li>
+                    <li>Режим работы: повторно-кратковременный ПВ = 25%</li>
+                    <li>Класс изоляции B (130°С)</li>
+                    <li>Тип подшипников: 6312 (качения)</li>
+                </ul>
+
+                <p><strong>Условия эксплуатации:</strong></p>
+                <ul>
+                    <li>Литейный цех металлургического завода</li>
+                    <li>Запылённость: высокая (металлическая пыль)</li>
+                    <li>Температура окружающей среды: до +40°С</li>
+                    <li>Влажность: до 80%</li>
+                    <li>Наработка: 28 000 часов (8 лет эксплуатации)</li>
+                </ul>
+
+                <p><strong>Результаты периодического осмотра:</strong></p>
+                <ul>
+                    <li>На корпусе в зоне подшипников обнаружены следы смазки (выдавливание)</li>
+                    <li>Поверхность корпуса покрыта металлической пылью слоем 2-3 мм</li>
+                    <li>Вентиляционные каналы забиты на 40-50%</li>
+                    <li>На контактных кольцах ротора — следы износа (канавки глубиной до 1,2 мм)</li>
+                    <li>Щётки изношены на 60% от первоначальной длины</li>
+                    <li>Искрение под щётками — 1,5 балла</li>
+                </ul>
+
+                <p><strong>Результаты измерений при работе под нагрузкой:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Параметр</th>
+                            <th>Значение</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Температура корпуса (зона статора)</td>
+                            <td>92°С</td>
+                        </tr>
+                        <tr>
+                            <td>Температура окружающего воздуха</td>
+                            <td>32°С</td>
+                        </tr>
+                        <tr>
+                            <td>Температура подшипника переднего</td>
+                            <td>88°С</td>
+                        </tr>
+                        <tr>
+                            <td>Температура подшипника заднего</td>
+                            <td>105°С</td>
+                        </tr>
+                        <tr>
+                            <td>Вибрация подшипника переднего, СКЗ</td>
+                            <td>8,5 мм/с</td>
+                        </tr>
+                        <tr>
+                            <td>Вибрация подшипника заднего, СКЗ</td>
+                            <td>15,2 мм/с</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Результаты измерения сопротивления изоляции</strong> (температура обмоток 55°С, мегаомметр 500 В):</p>
+                <ul>
+                    <li>Сопротивление изоляции обмотки статора R<sub>60</sub>: 3,2 МОм</li>
+                    <li>Сопротивление изоляции обмотки ротора R<sub>60</sub>: 1,8 МОм</li>
+                    <li>Коэффициент абсорбции статора K<sub>абс</sub>: 1,05</li>
+                    <li>Коэффициент абсорбции ротора K<sub>абс</sub>: 0,98</li>
+                </ul>
+
+                <div class="task-box">
+                    <strong>Задание:</strong>
+                    <ol>
+                        <li>Оценить температурный режим работы двигателя: рассчитать превышение температуры обмотки с учётом режима ПВ = 25%</li>
+                        <li>Провести анализ состояния подшипниковых узлов по температуре и вибрации (использовать ГОСТ ISO 10816-1)</li>
+                        <li>Оценить состояние изоляции обмоток статора и ротора (для машин до 1 кВ норма R<sub>из</sub> ≥ 0,5 МОм)</li>
+                        <li>Проанализировать коэффициенты абсорбции: определить степень увлажнения изоляции</li>
+                        <li>Оценить состояние щёточно-контактного аппарата по результатам осмотра</li>
+                        <li>Составить полный перечень выявленных дефектов с оценкой их критичности</li>
+                        <li>Разработать объём работ текущего/капитального ремонта двигателя</li>
+                        <li>Предложить мероприятия по улучшению условий эксплуатации</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ВАРИАНТ 5 -->
+            <div class="variant-box">
+                <div class="variant-header">📋 Вариант 5 (последняя цифра зачётки — 5)</div>
+                
+                <h4>Исходные данные:</h4>
+                <p>Синхронный генератор дизель-электрической станции резервного питания больницы.</p>
+                <p><strong>Генератор:</strong> ГС-500-4У3 (в составе ДЭС Caterpillar C18), год выпуска 2018</p>
+                
+                <p><strong>Паспортные данные:</strong></p>
+                <ul>
+                    <li>Номинальная мощность S<sub>ном</sub> = 625 кВА (500 кВт при cos φ = 0,8)</li>
+                    <li>Напряжение U<sub>ном</sub> = 400 В</li>
+                    <li>Частота вращения n = 1500 об/мин</li>
+                    <li>Напряжение возбуждения U<sub>в</sub> = 110 В</li>
+                    <li>Ток возбуждения номинальный I<sub>в.ном</sub> = 45 А</li>
+                    <li>Класс изоляции H (180°С)</li>
+                    <li>Степень защиты IP23</li>
+                </ul>
+
+                <p><strong>Режим работы:</strong></p>
+                <ul>
+                    <li>Резервный источник питания (категория I)</li>
+                    <li>Наработка: 850 моточасов за 6 лет эксплуатации</li>
+                    <li>Количество пусков: 180 (испытания АВР + аварийные пуски)</li>
+                    <li>Последний пуск: 3 месяца назад (плановое испытание)</li>
+                </ul>
+
+                <p><strong>Результаты профилактических испытаний перед отопительным сезоном:</strong></p>
+
+                <p><strong>1. Измерение сопротивления изоляции</strong> (температура 18°С, влажность в помещении 65%):</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Обмотка</th>
+                            <th>R<sub>15</sub>, МОм</th>
+                            <th>R<sub>60</sub>, МОм</th>
+                            <th>K<sub>абс</sub></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Статор (фазы ABC → корпус)</td>
+                            <td>28</td>
+                            <td>48</td>
+                            <td>1,71</td>
+                        </tr>
+                        <tr>
+                            <td>Обмотка возбуждения (ротор)</td>
+                            <td>15</td>
+                            <td>18</td>
+                            <td>1,20</td>
+                        </tr>
+                        <tr>
+                            <td>Обмотка статора возбудителя</td>
+                            <td>35</td>
+                            <td>62</td>
+                            <td>1,77</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>2. Измерение сопротивления обмоток постоянному току</strong> (температура 18°С):</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Обмотка</th>
+                            <th>Сопротивление, Ом</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Статор фаза A-нейтраль</td>
+                            <td>0,0082</td>
+                        </tr>
+                        <tr>
+                            <td>Статор фаза B-нейтраль</td>
+                            <td>0,0085</td>
+                        </tr>
+                        <tr>
+                            <td>Статор фаза C-нейтраль</td>
+                            <td>0,0083</td>
+                        </tr>
+                        <tr>
+                            <td>Обмотка возбуждения</td>
+                            <td>0,485</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>3. Испытание под нагрузкой</strong> (нагрузочный тест 50% от P<sub>ном</sub>, продолжительность 2 часа):</p>
+                <ul>
+                    <li>Напряжение на выходе: 398 В (отклонение -0,5%)</li>
+                    <li>Частота: 50,2 Гц (отклонение +0,4%)</li>
+                    <li>Ток возбуждения: 28 А</li>
+                    <li>Температура обмотки статора (по сопротивлению): 58°С</li>
+                    <li>Температура окружающего воздуха: 22°С</li>
+                </ul>
+
+                <p><strong>4. Проверка системы автоматического регулирования напряжения (АРН):</strong></p>
+                <ul>
+                    <li>Время восстановления напряжения при сбросе нагрузки 100% → 0%: 1,8 с (норма ≤ 3 с)</li>
+                    <li>Перерегулирование напряжения: 8% (норма ≤ 15%)</li>
+                    <li>Статическая точность поддержания напряжения: ±1,2% (норма ±2,5%)</li>
+                </ul>
+
+                <div class="task-box">
+                    <strong>Задание:</strong>
+                    <ol>
+                        <li>Оценить состояние изоляции всех обмоток: сравнить с нормами, учесть влияние длительного простоя</li>
+                        <li>Проанализировать разброс сопротивлений обмоток статора (норма ≤ 2%)</li>
+                        <li>Оценить температурный режим работы генератора при испытательной нагрузке</li>
+                        <li>Проанализировать работу системы АРН, сравнить с нормативными требованиями</li>
+                        <li>Определить влияние режима работы (редкие пуски, длительный простой) на техническое состояние</li>
+                        <li>Сделать заключение о готовности ДЭС к работе в отопительный сезон</li>
+                        <li>Разработать рекомендации по межсезонному обслуживанию резервного генератора</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ВАРИАНТ 6 -->
+            <div class="variant-box">
+                <div class="variant-header">📋 Вариант 6 (последняя цифра зачётки — 6)</div>
+                
+                <h4>Исходные данные:</h4>
+                <p>Группа электродвигателей вентиляционной системы промышленного здания.</p>
+                <p><strong>Электродвигатели:</strong> 4 шт. АИР180M4У3, год выпуска 2019</p>
+                
+                <p><strong>Паспортные данные одного двигателя:</strong></p>
+                <ul>
+                    <li>Номинальная мощность P<sub>ном</sub> = 30 кВт</li>
+                    <li>Напряжение U<sub>ном</sub> = 380 В</li>
+                    <li>Номинальный ток I<sub>ном</sub> = 57,5 А</li>
+                    <li>Частота вращения n = 1460 об/мин</li>
+                    <li>КПД = 91,5%, cos φ = 0,87</li>
+                    <li>Класс изоляции F, степень защиты IP55</li>
+                    <li>Подшипники: 6310 (передний), 6308 (задний)</li>
+                </ul>
+
+                <p><strong>Результаты комплексной диагностики четырёх двигателей:</strong></p>
+                
+                <p><strong>1. Виброакустическая диагностика (СКЗ виброскорости, мм/с):</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Двигатель</th>
+                            <th>Подшипник передний</th>
+                            <th>Подшипник задний</th>
+                            <th>Примечание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Вент-1</td>
+                            <td>2,8</td>
+                            <td>3,2</td>
+                            <td>Доминирует оборотная частота</td>
+                        </tr>
+                        <tr>
+                            <td>Вент-2</td>
+                            <td>4,5</td>
+                            <td>5,8</td>
+                            <td>Повышенная вибрация на 2×f<sub>сети</sub></td>
+                        </tr>
+                        <tr>
+                            <td>Вент-3</td>
+                            <td>3,1</td>
+                            <td>9,5</td>
+                            <td>Выражены частоты BPFI (внутреннее кольцо)</td>
+                        </tr>
+                        <tr>
+                            <td>Вент-4</td>
+                            <td>12,8</td>
+                            <td>14,2</td>
+                            <td>Широкополосный шум, удары</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>2. Измерение сопротивления изоляции</strong> (мегаомметр 1000 В, температура 25°С):</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Двигатель</th>
+                            <th>R<sub>60</sub>, МОм</th>
+                            <th>K<sub>абс</sub></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Вент-1</td>
+                            <td>580</td>
+                            <td>1,45</td>
+                        </tr>
+                        <tr>
+                            <td>Вент-2</td>
+                            <td>420</td>
+                            <td>1,38</td>
+                        </tr>
+                        <tr>
+                            <td>Вент-3</td>
+                            <td>85</td>
+                            <td>1,12</td>
+                        </tr>
+                        <tr>
+                            <td>Вент-4</td>
+                            <td>12</td>
+                            <td>0,95</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>3. Измерение тока потребления при номинальной нагрузке:</strong></p>
+                <ul>
+                    <li>Вент-1: I<sub>A</sub> = 56 А, I<sub>B</sub> = 57 А, I<sub>C</sub> = 55 А</li>
+                    <li>Вент-2: I<sub>A</sub> = 62 А, I<sub>B</sub> = 54 А, I<sub>C</sub> = 58 А</li>
+                    <li>Вент-3: I<sub>A</sub> = 58 А, I<sub>B</sub> = 59 А, I<sub>C</sub> = 57 А</li>
+                    <li>Вент-4: I<sub>A</sub> = 72 А, I<sub>B</sub> = 68 А, I<sub>C</sub> = 75 А</li>
+                </ul>
+
+                <p><strong>4. Температура корпуса при работе:</strong></p>
+                <ul>
+                    <li>Вент-1: 62°С</li>
+                    <li>Вент-2: 68°С</li>
+                    <li>Вент-3: 75°С</li>
+                    <li>Вент-4: 98°С</li>
+                </ul>
+
+                <div class="task-box">
+                    <strong>Задание:</strong>
+                    <ol>
+                        <li>Провести сравнительный анализ технического состояния всех четырёх двигателей по вибрации (определить зоны по ISO 10816-1)</li>
+                        <li>Оценить состояние изоляции каждого двигателя</li>
+                        <li>Проанализировать симметрию токов: рассчитать коэффициент несимметрии для каждого двигателя</li>
+                        <li>Определить вероятные дефекты каждого двигателя по совокупности признаков</li>
+                        <li>Ранжировать двигатели по приоритету ремонта</li>
+                        <li>Составить план-график ремонтов с указанием объёма работ для каждого двигателя</li>
+                        <li>Рассчитать потребность в запасных частях</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ВАРИАНТ 7 -->
+            <div class="variant-box">
+                <div class="variant-header">📋 Вариант 7 (последняя цифра зачётки — 7)</div>
+                
+                <h4>Исходные данные:</h4>
+                <p>Высоковольтный электродвигатель привода дымососа котельной.</p>
+                <p><strong>Электродвигатель:</strong> ДАЗО4-400У-8У1, год выпуска 2010</p>
+                
+                <p><strong>Паспортные данные:</strong></p>
+                <ul>
+                    <li>Номинальная мощность P<sub>ном</sub> = 250 кВт</li>
+                    <li>Напряжение U<sub>ном</sub> = 6000 В</li>
+                    <li>Частота вращения n = 740 об/мин</li>
+                    <li>КПД = 94,2%, cos φ = 0,85</li>
+                    <li>Кратность пускового тока K<sub>п</sub> = 6,5</li>
+                    <li>Класс изоляции F</li>
+                    <li>Система охлаждения: IC01 (самовентиляция)</li>
+                </ul>
+
+                <p><strong>Данные по эксплуатации:</strong></p>
+                <ul>
+                    <li>Наработка: 78 000 часов</li>
+                    <li>Число пусков: 2 450</li>
+                    <li>Последний капремонт: 2017 год (7 лет назад)</li>
+                    <li>Нормативная периодичность капремонта: 6 лет или 50 000 часов</li>
+                </ul>
+
+                <p><strong>Результаты периодических испытаний:</strong></p>
+
+                <p><strong>1. Измерение сопротивления изоляции</strong> (мегаомметр 2500 В, температура 38°С):</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Параметр</th>
+                            <th>2022 год</th>
+                            <th>2023 год</th>
+                            <th>2024 год</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>R<sub>60</sub>, МОм</td>
+                            <td>185</td>
+                            <td>142</td>
+                            <td>78</td>
+                        </tr>
+                        <tr>
+                            <td>K<sub>абс</sub></td>
+                            <td>1,65</td>
+                            <td>1,48</td>
+                            <td>1,22</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>2. Измерение tg δ изоляции обмотки статора:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Напряжение испытания</th>
+                            <th>2022 год, %</th>
+                            <th>2023 год, %</th>
+                            <th>2024 год, %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0,5 U<sub>ном</sub></td>
+                            <td>2,8</td>
+                            <td>3,5</td>
+                            <td>5,2</td>
+                        </tr>
+                        <tr>
+                            <td>1,0 U<sub>ном</sub></td>
+                            <td>3,2</td>
+                            <td>4,2</td>
+                            <td>7,8</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>3. Виброакустическая диагностика (2024 год):</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Точка измерения</th>
+                            <th>СКЗ, мм/с</th>
+                            <th>Особенности спектра</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Подшипник передний</td>
+                            <td>6,8</td>
+                            <td>Выражена 2×f<sub>сети</sub> = 100 Гц</td>
+                        </tr>
+                        <tr>
+                            <td>Подшипник задний</td>
+                            <td>5,2</td>
+                            <td>Норма</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>4. Тепловизионный контроль:</strong></p>
+                <ul>
+                    <li>Температура лобовых частей обмотки: 85°С (при нагрузке 90%)</li>
+                    <li>Температура подшипников: 68°С и 62°С</li>
+                    <li>Локальный нагрев на активной стали статора: перегрев на 12°С относительно соседних участков</li>
+                </ul>
+
+                <div class="task-box">
+                    <strong>Задание:</strong>
+                    <ol>
+                        <li>Проанализировать динамику изменения сопротивления изоляции и коэффициента абсорбции за 3 года</li>
+                        <li>Оценить состояние изоляции по tg δ: рассчитать приращение Δtg δ = tg δ(U<sub>ном</sub>) - tg δ(0,5U<sub>ном</sub>)</li>
+                        <li>Определить характер дефекта изоляции по совокупности признаков</li>
+                        <li>Проанализировать вибрационное состояние, определить возможную причину повышенной вибрации на 2×f<sub>сети</sub></li>
+                        <li>Оценить значение локального перегрева статора</li>
+                        <li>Сравнить наработку с нормативами, обосновать необходимость капремонта</li>
+                        <li>Составить объём работ капитального ремонта с указанием обязательных испытаний</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ВАРИАНТ 8 -->
+            <div class="variant-box">
+                <div class="variant-header">📋 Вариант 8 (последняя цифра зачётки — 8)</div>
+                
+                <h4>Исходные данные:</h4>
+                <p>Электродвигатель привода насоса системы водоснабжения после аварийного отключения.</p>
+                <p><strong>Электродвигатель:</strong> АИР250S4У3, год выпуска 2017</p>
+                
+                <p><strong>Паспортные данные:</strong></p>
+                <ul>
+                    <li>Номинальная мощность P<sub>ном</sub> = 75 кВт</li>
+                    <li>Напряжение U<sub>ном</sub> = 380 В</li>
+                    <li>Номинальный ток I<sub>ном</sub> = 138 А</li>
+                    <li>Частота вращения n = 1480 об/мин</li>
+                    <li>Класс изоляции F</li>
+                    <li>Степень защиты IP55</li>
+                </ul>
+
+                <p><strong>Обстоятельства аварии:</strong></p>
+                <ul>
+                    <li>Двигатель отключён тепловым реле при нагрузке 95%</li>
+                    <li>До отключения зафиксировано повышение тока фазы C на 18% относительно других фаз</li>
+                    <li>Персонал отметил появление запаха горелой изоляции</li>
+                    <li>Время от появления запаха до отключения: около 15 минут</li>
+                </ul>
+
+                <p><strong>Результаты осмотра после охлаждения (через 4 часа):</strong></p>
+                <ul>
+                    <li>Внешних повреждений корпуса не обнаружено</li>
+                    <li>Через вентиляционные отверстия ощущается запах горелой изоляции</li>
+                    <li>Вал проворачивается свободно</li>
+                    <li>Температура корпуса: 45°С (охладился)</li>
+                </ul>
+
+                <p><strong>Результаты измерений:</strong></p>
+
+                <p><strong>1. Сопротивление изоляции</strong> (мегаомметр 1000 В):</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Измерение</th>
+                            <th>R<sub>60</sub>, МОм</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Фаза A — корпус</td>
+                            <td>285</td>
+                        </tr>
+                        <tr>
+                            <td>Фаза B — корпус</td>
+                            <td>320</td>
+                        </tr>
+                        <tr>
+                            <td>Фаза C — корпус</td>
+                            <td>0,8</td>
+                        </tr>
+                        <tr>
+                            <td>Фаза A — фаза B</td>
+                            <td>410</td>
+                        </tr>
+                        <tr>
+                            <td>Фаза A — фаза C</td>
+                            <td>1,2</td>
+                        </tr>
+                        <tr>
+                            <td>Фаза B — фаза C</td>
+                            <td>0,95</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>2. Сопротивление обмоток постоянному току</strong> (температура 35°С):</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Обмотка</th>
+                            <th>Сопротивление, Ом</th>
+                            <th>Паспорт (20°С), Ом</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Фаза A</td>
+                            <td>0,0485</td>
+                            <td>0,0452</td>
+                        </tr>
+                        <tr>
+                            <td>Фаза B</td>
+                            <td>0,0478</td>
+                            <td>0,0452</td>
+                        </tr>
+                        <tr>
+                            <td>Фаза C</td>
+                            <td>0,0312</td>
+                            <td>0,0452</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="task-box">
+                    <strong>Задание:</strong>
+                    <ol>
+                        <li>Проанализировать результаты измерения сопротивления изоляции, выявить дефектную фазу</li>
+                        <li>Привести сопротивления обмоток к температуре 20°С, рассчитать отклонение от паспортных данных</li>
+                        <li>Определить характер повреждения обмотки фазы C по совокупности признаков</li>
+                        <li>Обосновать невозможность дальнейшей эксплуатации двигателя</li>
+                        <li>Определить возможные причины повреждения</li>
+                        <li>Принять решение: ремонт или замена двигателя (обосновать)</li>
+                        <li>Составить акт расследования причин повреждения электродвигателя</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ВАРИАНТ 9 -->
+            <div class="variant-box">
+                <div class="variant-header">📋 Вариант 9 (последняя цифра зачётки — 9)</div>
+                
+                <h4>Исходные данные:</h4>
+                <p>Комплектная трансформаторная подстанция с комплектным распределительным устройством КРУ-0,4 кВ.</p>
+                <p><strong>Оборудование:</strong> КТП-630/10/0,4-У1 с НКУ серии ЩО-70</p>
+                
+                <p><strong>Состав оборудования КРУ-0,4 кВ:</strong></p>
+                <ul>
+                    <li>Вводной автоматический выключатель: ВА-45 1000 А</li>
+                    <li>Секционный автоматический выключатель: ВА-45 630 А</li>
+                    <li>Автоматические выключатели отходящих линий: ВА-47 различных номиналов</li>
+                    <li>Трансформаторы тока: ТШП-0,66 1000/5А</li>
+                    <li>Сборные шины: алюминий 100×10 мм</li>
+                </ul>
+
+                <p><strong>Условия эксплуатации:</strong></p>
+                <ul>
+                    <li>Ток нагрузки трансформатора: 85% от номинального</li>
+                    <li>Температура в помещении КТП: +35°С</li>
+                    <li>Год ввода в эксплуатацию: 2016</li>
+                </ul>
+
+                <p><strong>Результаты периодического обследования:</strong></p>
+
+                                <p><strong>1. Тепловизионный контроль:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Объект контроля</th>
+                            <th>Температура, °С</th>
+                            <th>Температура аналогичного элемента, °С</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Контакт вводного автомата, фаза A</td>
+                            <td>52</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Контакт вводного автомата, фаза B</td>
+                            <td>78</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Контакт вводного автомата, фаза C</td>
+                            <td>55</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Сборная шина, фаза A</td>
+                            <td>48</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Сборная шина, фаза B</td>
+                            <td>62</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Сборная шина, фаза C</td>
+                            <td>50</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Болтовое соединение шин секция 1-2</td>
+                            <td>95</td>
+                            <td>48 (соседнее соединение)</td>
+                        </tr>
+                        <tr>
+                            <td>Кабельный наконечник линии №5</td>
+                            <td>82</td>
+                            <td>45 (линия №4)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>2. Измерение переходного сопротивления контактов:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Контакт</th>
+                            <th>R<sub>пер</sub>, мкОм</th>
+                            <th>Паспортная норма, мкОм</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Вводной автомат, фаза A</td>
+                            <td>32</td>
+                            <td>≤40</td>
+                        </tr>
+                        <tr>
+                            <td>Вводной автомат, фаза B</td>
+                            <td>125</td>
+                            <td>≤40</td>
+                        </tr>
+                        <tr>
+                            <td>Вводной автомат, фаза C</td>
+                            <td>38</td>
+                            <td>≤40</td>
+                        </tr>
+                        <tr>
+                            <td>Болтовое соединение шин</td>
+                            <td>285</td>
+                            <td>≤50</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>3. Измерение сопротивления изоляции:</strong></p>
+                <ul>
+                    <li>Сборные шины относительно корпуса: 850 МОм</li>
+                    <li>Цепи управления и сигнализации: 45 МОм</li>
+                    <li>Цепи вторичных обмоток ТТ: 380 МОм</li>
+                </ul>
+
+                <p><strong>4. Результаты проверки автоматических выключателей:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Выключатель</th>
+                            <th>Уставка теплового расцепителя</th>
+                            <th>Фактический ток срабатывания</th>
+                            <th>Отклонение</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Вводной ВА-45</td>
+                            <td>1000 А</td>
+                            <td>1150 А</td>
+                            <td>+15%</td>
+                        </tr>
+                        <tr>
+                            <td>Линия №3</td>
+                            <td>100 А</td>
+                            <td>118 А</td>
+                            <td>+18%</td>
+                        </tr>
+                        <tr>
+                            <td>Линия №5</td>
+                            <td>160 А</td>
+                            <td>195 А</td>
+                            <td>+22%</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="task-box">
+                    <strong>Задание:</strong>
+                    <ol>
+                        <li>Рассчитать избыточную температуру для каждого объекта теплового контроля</li>
+                        <li>Определить степень дефектности по РД 153-34.0-20.363-99</li>
+                        <li>Проанализировать переходные сопротивления контактов, сравнить с нормами</li>
+                        <li>Оценить сопротивление изоляции цепей управления (норма ≥ 1 МОм)</li>
+                        <li>Проанализировать результаты проверки автоматических выключателей (допустимое отклонение ±20%)</li>
+                        <li>Составить перечень дефектов с приоритизацией по срочности устранения</li>
+                        <li>Разработать план мероприятий по устранению выявленных дефектов</li>
+                        <li>Определить необходимость отключения оборудования для ремонта</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ВАРИАНТ 10 -->
+            <div class="variant-box">
+                <div class="variant-header">📋 Вариант 10 (последняя цифра зачётки — 0)</div>
+                
+                <h4>Исходные данные:</h4>
+                <p>Разработка годового плана технического обслуживания и ремонта электродвигателей насосной станции.</p>
+                
+                <p><strong>Состав оборудования насосной станции:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Наименование</th>
+                            <th>Тип двигателя</th>
+                            <th>Мощность, кВт</th>
+                            <th>Напряжение, В</th>
+                            <th>Год выпуска</th>
+                            <th>Последний КР</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Насос Н-1</td>
+                            <td>АДО-630-4</td>
+                            <td>630</td>
+                            <td>6000</td>
+                            <td>2010</td>
+                            <td>2018</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Насос Н-2</td>
+                            <td>АДО-630-4</td>
+                            <td>630</td>
+                            <td>6000</td>
+                            <td>2012</td>
+                            <td>2020</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Насос Н-3 (резерв)</td>
+                            <td>АДО-630-4</td>
+                            <td>630</td>
+                            <td>6000</td>
+                            <td>2015</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Насос подпитки</td>
+                            <td>АИР200L4</td>
+                            <td>45</td>
+                            <td>380</td>
+                            <td>2018</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Вентилятор В-1</td>
+                            <td>АИР160M4</td>
+                            <td>18,5</td>
+                            <td>380</td>
+                            <td>2016</td>
+                            <td>2022</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Вентилятор В-2</td>
+                            <td>АИР160M4</td>
+                            <td>18,5</td>
+                            <td>380</td>
+                            <td>2016</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Задвижка Зд-1</td>
+                            <td>АИР100L4</td>
+                            <td>4</td>
+                            <td>380</td>
+                            <td>2019</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Задвижка Зд-2</td>
+                            <td>АИР100L4</td>
+                            <td>4</td>
+                            <td>380</td>
+                            <td>2019</td>
+                            <td>—</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Данные о наработке за предыдущий год:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Двигатель</th>
+                            <th>Наработка за год, ч</th>
+                            <th>Общая наработка, ч</th>
+                            <th>Число пусков за год</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Н-1</td>
+                            <td>7200</td>
+                            <td>85 000</td>
+                            <td>45</td>
+                        </tr>
+                        <tr>
+                            <td>Н-2</td>
+                            <td>6800</td>
+                            <td>62 000</td>
+                            <td>52</td>
+                        </tr>
+                        <tr>
+                            <td>Н-3</td>
+                            <td>1200</td>
+                            <td>18 000</td>
+                            <td>28</td>
+                        </tr>
+                        <tr>
+                            <td>Насос подпитки</td>
+                            <td>8200</td>
+                            <td>42 000</td>
+                            <td>380</td>
+                        </tr>
+                        <tr>
+                            <td>В-1</td>
+                            <td>8500</td>
+                            <td>58 000</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>В-2</td>
+                            <td>8500</td>
+                            <td>58 000</td>
+                            <td>12</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Результаты последних измерений:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Двигатель</th>
+                            <th>R<sub>из</sub>, МОм</th>
+                            <th>K<sub>абс</sub></th>
+                            <th>Вибрация, мм/с</th>
+                            <th>Замечания</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Н-1</td>
+                            <td>45</td>
+                            <td>1,18</td>
+                            <td>7,2</td>
+                            <td>Повышенная вибрация подшипника</td>
+                        </tr>
+                        <tr>
+                            <td>Н-2</td>
+                            <td>125</td>
+                            <td>1,42</td>
+                            <td>4,5</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Н-3</td>
+                            <td>280</td>
+                            <td>1,65</td>
+                            <td>3,8</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Насос подпитки</td>
+                            <td>85</td>
+                            <td>1,25</td>
+                            <td>5,2</td>
+                            <td>Течь сальника</td>
+                        </tr>
+                        <tr>
+                            <td>В-1</td>
+                            <td>320</td>
+                            <td>1,55</td>
+                            <td>3,2</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>В-2</td>
+                            <td>180</td>
+                            <td>1,35</td>
+                            <td>6,8</td>
+                            <td>Дисбаланс рабочего колеса</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Нормативы периодичности ремонтов:</strong></p>
+                <ul>
+                    <li>Высоковольтные двигатели (6 кВ): капремонт — 6 лет или 50 000 ч, текущий ремонт — ежегодно</li>
+                    <li>Низковольтные двигатели (0,4 кВ): капремонт — 8 лет или 60 000 ч, текущий ремонт — 2 года</li>
+                    <li>Двигатели задвижек (кратковременный режим): текущий ремонт — 3 года</li>
+                </ul>
+
+                <div class="task-box">
+                    <strong>Задание:</strong>
+                    <ol>
+                        <li>Проанализировать техническое состояние каждого электродвигателя по результатам измерений</li>
+                        <li>Определить необходимость капитального/текущего ремонта для каждого двигателя по наработке и состоянию</li>
+                        <li>Составить годовой график ППР электродвигателей в табличной форме с указанием:
+                            <ul>
+                                <li>Вида ремонта (КР, ТР, ТО)</li>
+                                <li>Месяца проведения</li>
+                                <li>Ориентировочной продолжительности</li>
+                                <li>Объёма основных работ</li>
+                            </ul>
+                        </li>
+                        <li>Определить периодичность профилактических испытаний для каждого двигателя</li>
+                        <li>Рассчитать потребность в запасных частях и материалах на год:
+                            <ul>
+                                <li>Подшипники (по типам)</li>
+                                <li>Смазочные материалы</li>
+                                <li>Обмоточные материалы (для КР)</li>
+                            </ul>
+                        </li>
+                        <li>Составить перечень средств измерений для проведения испытаний</li>
+                        <li>Оценить трудозатраты на выполнение годового плана ТОиР</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ПРИМЕР ВЫПОЛНЕНИЯ -->
+            <h2>Пример выполнения работы</h2>
+
+            <div class="warning-box">
+                <strong>⚠️ Внимание!</strong> Данный пример НЕ входит в варианты заданий и приведён исключительно для демонстрации методики выполнения работы. Использование данных из примера в своём варианте недопустимо!
+            </div>
+
+            <div class="example-box">
+                <div class="example-title">📝 Пример задания (не для выполнения)</div>
+                <p><strong>Асинхронный двигатель привода насоса системы охлаждения.</strong></p>
+                <p><strong>Электродвигатель:</strong> АИР280M4У2, год выпуска 2016</p>
+                
+                <p><strong>Паспортные данные:</strong></p>
+                <ul>
+                    <li>Номинальная мощность P<sub>ном</sub> = 132 кВт</li>
+                    <li>Напряжение U<sub>ном</sub> = 380 В</li>
+                    <li>Частота вращения n = 1480 об/мин</li>
+                    <li>Масса: 680 кг</li>
+                    <li>Класс изоляции F (155°С)</li>
+                    <li>Степень защиты IP55</li>
+                    <li>Тип подшипников: 6316 (качения)</li>
+                </ul>
+
+                <p><strong>Результаты виброакустической диагностики:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Точка измерения</th>
+                            <th>СКЗ вибрации, мм/с</th>
+                            <th>Доминирующая частота</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Подшипник передний (DE), радиально-вертикальное</td>
+                            <td>4,2</td>
+                            <td>24,7 Гц (оборотная)</td>
+                        </tr>
+                        <tr>
+                            <td>Подшипник передний (DE), радиально-горизонтальное</td>
+                            <td>3,8</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Подшипник задний (NDE), радиально-вертикальное</td>
+                            <td>8,5</td>
+                            <td>BPFO = 142 Гц</td>
+                        </tr>
+                        <tr>
+                            <td>Подшипник задний (NDE), радиально-горизонтальное</td>
+                            <td>7,2</td>
+                            <td>BPFO = 142 Гц</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Измерение сопротивления изоляции</strong> (мегаомметр 1000 В, температура 45°С):</p>
+                <ul>
+                    <li>R<sub>15</sub> = 95 МОм</li>
+                    <li>R<sub>60</sub> = 125 МОм</li>
+                    <li>K<sub>абс</sub> = R<sub>60</sub>/R<sub>15</sub> = 1,32</li>
+                </ul>
+
+                <p><strong>Температурные измерения при нагрузке 85%:</strong></p>
+                <ul>
+                    <li>Температура подшипника переднего: 62°С</li>
+                    <li>Температура подшипника заднего: 78°С</li>
+                    <li>Температура корпуса (зона статора): 72°С</li>
+                    <li>Температура окружающего воздуха: 25°С</li>
+                </ul>
+            </div>
+
+            <h3>Решение</h3>
+
+            <h4>1. Оценка уровня вибрации по ГОСТ ISO 10816-1-97</h4>
+
+            <div class="norm-reference">
+                <strong>Нормативное обоснование:</strong> Согласно <span class="gost-reference">ГОСТ ISO 10816-1-97</span> и <span class="gost-reference">ГОСТ 20815-93</span>, для электрических машин мощностью от 75 до 300 кВт на жёстком основании установлены следующие границы зон оценки вибрации по СКЗ виброскорости (класс III по ISO 10816).
+            </div>
+
+            <table class="criteria-table">
+                <thead>
+                    <tr>
+                        <th>Зона</th>
+                        <th>СКЗ виброскорости, мм/с</th>
+                        <th>Оценка состояния</th>
+                        <th>Рекомендуемые действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>A</td>
+                        <td>0 — 2,8</td>
+                        <td>Хорошее</td>
+                        <td>Эксплуатация без ограничений</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>2,8 — 7,1</td>
+                        <td>Допустимое</td>
+                        <td>Эксплуатация с контролем, планирование ТО</td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td>7,1 — 11,2</td>
+                        <td>Ещё допустимое</td>
+                        <td>Ограниченная эксплуатация, планирование ремонта</td>
+                    </tr>
+                    <tr>
+                        <td>D</td>
+                        <td>> 11,2</td>
+                        <td>Недопустимое</td>
+                        <td>Немедленный останов и ремонт</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="calculation-step">
+                <h5>Оценка для подшипника переднего (DE):</h5>
+                <p>СКЗ<sub>max</sub> = 4,2 мм/с</p>
+                <p>По таблице: 2,8 < 4,2 < 7,1 → <strong class="result-good">Зона B (допустимое состояние)</strong></p>
+                <p><em>Рекомендация:</em> Эксплуатация без ограничений, контроль при следующем ТО</p>
+            </div>
+
+            <div class="calculation-step">
+                <h5>Оценка для подшипника заднего (NDE):</h5>
+                <p>СКЗ<sub>max</sub> = 8,5 мм/с</p>
+                <p>По таблице: 7,1 < 8,5 < 11,2 → <strong class="result-warning">Зона C (ещё допустимое состояние)</strong></p>
+                <p><em>Рекомендация:</em> Ограниченная эксплуатация, планирование ремонта в ближайшие 1-3 месяца</p>
+            </div>
+
+            <h4>2. Анализ спектра вибрации</h4>
+
+            <div class="norm-reference">
+                <strong>Нормативное обоснование:</strong> Согласно <span class="gost-reference">СТО 70238424.27.100.052-2009</span>, характерные частоты вибрации позволяют определить вид дефекта:
+                <ul>
+                    <li><strong>f<sub>вр</sub></strong> — оборотная частота: дисбаланс ротора, несоосность</li>
+                    <li><strong>2×f<sub>вр</sub></strong> — двойная оборотная: несоосность, ослабление крепления</li>
+                    <li><strong>BPFO</strong> (Ball Pass Frequency Outer) — частота перекатывания по наружному кольцу: дефект наружного кольца подшипника</li>
+                    <li><strong>BPFI</strong> (Ball Pass Frequency Inner) — частота перекатывания по внутреннему кольцу: дефект внутреннего кольца</li>
+                    <li><strong>2×f<sub>сети</sub></strong> = 100 Гц — электромагнитные дефекты</li>
+                </ul>
+            </div>
+
+            <div class="calculation-step">
+                <h5>Анализ доминирующих частот:</h5>
+                <p><strong>Подшипник передний:</strong> Доминирует оборотная частота f<sub>вр</sub> = 24,7 Гц (n = 1480 об/мин → f = 1480/60 = 24,67 Гц)</p>
+                <p><em>Интерпретация:</em> Небольшой остаточный дисбаланс ротора — <strong class="result-good">в пределах нормы</strong></p>
+                
+                <p><strong>Подшипник задний:</strong> Выражена частота BPFO = 142 Гц</p>
+                <p><em>Интерпретация:</em> <strong class="result-warning">Дефект наружного кольца подшипника</strong> — усталостное выкрашивание дорожки качения</p>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Вывод по п. 2:</strong> Спектральный анализ выявил дефект наружного кольца подшипника заднего конца (NDE). Характерная частота BPFO свидетельствует о развивающемся повреждении. Требуется замена подшипника при ближайшем ремонте.
+            </div>
+
+            <h4>3. Оценка температуры подшипников</h4>
+
+            <div class="norm-reference">
+                <strong>Нормативное обоснование:</strong> Согласно <span class="gost-reference">ГОСТ 183-74 (п. 7.3)</span> и <span class="gost-reference">ПТЭЭП (п. 2.5.16)</span>:
+                <ul>
+                    <li>Предельно допустимая температура подшипников качения — <strong>100°С</strong></li>
+                    <li>Нормальная рабочая температура — не более <strong>80°С</strong></li>
+                    <li>Превышение температуры над окружающей средой — не более <strong>60°С</strong></li>
+                </ul>
+            </div>
+
+            <div class="calculation-step">
+                <h5>Анализ температуры подшипников:</h5>
+                <p><strong>Подшипник передний:</strong> T = 62°С < 80°С → <strong class="result-good">Норма</strong></p>
+                <p>Превышение над окружающей средой: ΔT = 62 - 25 = 37°С < 60°С → <strong class="result-good">Норма</strong></p>
+                
+                <p><strong>Подшипник задний:</strong> T = 78°С < 80°С, но близко к пределу</p>
+                <p>Превышение над окружающей средой: ΔT = 78 - 25 = 53°С < 60°С → <strong class="result-warning">Предупреждение</strong></p>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Вывод по п. 3:</strong> Температура заднего подшипника (78°С) приближается к предельному значению, что коррелирует с выявленным вибрационным дефектом. Повышенная температура подтверждает наличие дефекта подшипника.
+            </div>
+
+            <h4>4. Оценка состояния изоляции</h4>
+
+            <h5>4.1. Сопротивление изоляции</h5>
+
+            <div class="norm-reference">
+                <strong>Нормативное обоснование:</strong> Согласно <span class="gost-reference">РД 34.45-51.300-97 (табл. 23, п. 23.1)</span>:
+                <ul>
+                    <li>Для электродвигателей напряжением до 1000 В: R<sub>из</sub> ≥ <strong>0,5 МОм</strong></li>
+                    <li>Измерение проводится мегаомметром на напряжение 500-1000 В</li>
+                </ul>
+            </div>
+
+            <p><strong>Измеренное значение:</strong> R<sub>60</sub> = 125 МОм >> 0,5 МОм</p>
+
+            <div class="definition-box">
+                <strong>Вывод:</strong> Сопротивление изоляции 125 МОм <strong class="result-good">значительно превышает норму</strong> (в 250 раз). Состояние изоляции хорошее.
+            </div>
+
+            <h5>4.2. Приведение сопротивления изоляции к температуре 40°С</h5>
+
+            <div class="norm-reference">
+                <strong>Нормативное обоснование:</strong> Для сравнения результатов измерений, выполненных при разных температурах, сопротивление изоляции приводится к стандартной температуре по формуле (<span class="gost-reference">РД 34.45-51.300-97, приложение 8</span>):
+            </div>
+
+            <div class="formula-box">
+                <strong>Формула приведения к температуре 40°С:</strong>
+                <div class="formula">
+                    R<sub>40</sub> = R<sub>t</sub> × K<sub>T</sub>
+                </div>
+                <div class="formula-desc">
+                    где: R<sub>40</sub> — сопротивление при 40°С, МОм;<br>
+                    R<sub>t</sub> — измеренное сопротивление при температуре t, МОм;<br>
+                    K<sub>T</sub> = 1,5<sup>(t-40)/10</sup> — температурный коэффициент
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h5>Расчёт:</h5>
+                <p>Температура измерения t = 45°С</p>
+                <p>K<sub>T</sub> = 1,5<sup>(45-40)/10</sup> = 1,5<sup>0,5</sup> = 1,225</p>
+                <p>R<sub>40</sub> = 125 × 1,225 = <strong>153,1 МОм</strong></p>
+            </div>
+
+            <h5>4.3. Коэффициент абсорбции</h5>
+
+            <div class="norm-reference">
+                <strong>Нормативное обоснование:</strong> Согласно <span class="gost-reference">РД 34.45-51.300-97 (п. 23.2)</span>:
+                <ul>
+                    <li>K<sub>абс</sub> ≥ 1,3 — изоляция сухая, в хорошем состоянии</li>
+                    <li>K<sub>абс</sub> = 1,0 — 1,3 — изоляция требует контроля</li>
+                    <li>K<sub>абс</sub> < 1,0 — изоляция увлажнена, эксплуатация недопустима</li>
+                </ul>
+            </div>
+
+            <p><strong>Измеренное значение:</strong> K<sub>абс</sub> = 1,32</p>
+
+            <div class="definition-box">
+                <strong>Вывод:</strong> Коэффициент абсорбции K<sub>абс</sub> = 1,32 > 1,3 → <strong class="result-good">Изоляция сухая, в хорошем состоянии</strong>
+            </div>
+
+            <h4>5. Оценка температурного режима двигателя</h4>
+
+            <div class="norm-reference">
+                <strong>Нормативное обоснование:</strong> Согласно <span class="gost-reference">ГОСТ 183-74</span>, для класса изоляции F:
+                <ul>
+                    <li>Предельно допустимая температура обмотки — <strong>155°С</strong></li>
+                    <li>Допустимое превышение температуры обмотки над охлаждающей средой — <strong>105°С</strong></li>
+                    <li>При измерении по методу термометра на корпусе: T<sub>корп</sub> ≈ T<sub>обм</sub> - (15...25)°С</li>
+                </ul>
+            </div>
+
+            <div class="calculation-step">
+                <h5>Расчёт превышения температуры:</h5>
+                <p>Температура корпуса: T<sub>корп</sub> = 72°С</p>
+                <p>Ориентировочная температура обмотки: T<sub>обм</sub> ≈ 72 + 20 = 92°С</p>
+                <p>Превышение над охлаждающей средой: ΔT = 92 - 25 = <strong>67°С</strong></p>
+                <p>Допустимое превышение для класса F: 105°С</p>
+                <p>Запас: 105 - 67 = 38°С → <strong class="result-good">Достаточный запас</strong></p>
+            </div>
+
+            <div class="definition-box">
+                <strong>Вывод:</strong> Температурный режим двигателя <strong class="result-good">соответствует норме</strong>. Запас по превышению температуры составляет 38°С, что достаточно для работы при номинальной нагрузке.
+            </div>
+
+            <h4>6. Общее заключение о техническом состоянии</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Параметр</th>
+                        <th>Результат</th>
+                        <th>Норма</th>
+                        <th>Соответствие</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Вибрация подшипника DE</td>
+                        <td>4,2 мм/с</td>
+                        <td>Зона B (≤7,1)</td>
+                        <td class="result-good">✓ Допустимо</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Вибрация подшипника NDE</td>
+                        <td>8,5 мм/с</td>
+                        <td>Зона C (≤11,2)</td>
+                        <td class="result-warning">⚠️ Требует ремонта</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Спектр вибрации NDE</td>
+                        <td>BPFO = 142 Гц</td>
+                        <td>—</td>
+                        <td class="result-warning">⚠️ Дефект наружного кольца</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Температура подшипника DE</td>
+                        <td>62°С</td>
+                        <td>≤80°С</td>
+                        <td class="result-good">✓ Норма</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Температура подшипника NDE</td>
+                        <td>78°С</td>
+                        <td>≤80°С</td>
+                        <td class="result-warning">⚠️ Близко к пределу</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Сопротивление изоляции R<sub>60</sub></td>
+                        <td>125 МОм</td>
+                        <td>≥0,5 МОм</td>
+                        <td class="result-good">✓ Отлично</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Коэффициент абсорбции</td>
+                        <td>1,32</td>
+                        <td>≥1,3</td>
+                        <td class="result-good">✓ Изоляция сухая</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Превышение температуры обмотки</td>
+                        <td>67°С</td>
+                        <td>≤105°С</td>
+                        <td class="result-good">✓ Норма</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <strong>ЗАКЛЮЧЕНИЕ:</strong>
+                <p>Электродвигатель АИР280M4 находится в <strong>условно работоспособном состоянии</strong>.</p>
+                <p><strong>Выявленные дефекты:</strong></p>
+                <ol>
+                    <li>Дефект наружного кольца подшипника заднего конца (NDE) — подтверждён вибрационным анализом и косвенно температурными измерениями</li>
+                </ol>
+                <p style="margin-top: 15px;"><strong>Решение:</strong> Допускается ограниченная эксплуатация (не более 2 месяцев) с обязательным выполнением рекомендаций.</p>
+            </div>
+
+            <h4>7. Рекомендации по дальнейшей эксплуатации</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Мероприятие</th>
+                        <th>Срок</th>
+                        <th>Нормативное обоснование</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Включить двигатель в план текущего ремонта с заменой подшипника 6316 заднего конца (NDE)</td>
+                        <td>В течение 2 месяцев</td>
+                        <td><span class="gost-reference">ГОСТ ISO 10816-1</span> — зона C требует планирования ремонта</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Организовать еженедельный контроль температуры и вибрации подшипника NDE</td>
+                        <td>До проведения ремонта</td>
+                        <td><span class="gost-reference">ПТЭЭП п. 2.5.18</span> — усиленный контроль при выявленных дефектах</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Установить порог аварийного отключения по температуре подшипника NDE: 85°С</td>
+                        <td>Немедленно</td>
+                        <td><span class="gost-reference">ГОСТ 183-74</span> — предупреждение аварийного перегрева</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>При ремонте провести дефектовку подшипника переднего конца (DE), при необходимости заменить</td>
+                        <td>При ТР</td>
+                        <td>Профилактическая мера — подшипники установлены одновременно</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>После ремонта выполнить контрольные измерения вибрации и испытание изоляции</td>
+                        <td>После ТР</td>
+                        <td><span class="gost-reference">РД 34.45-51.300-97 п. 23</span> — приёмо-сдаточные испытания</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>8. Список использованных нормативных документов</h4>
+
+            <div class="reference">
+                <ol>
+                    <li><span class="gost-reference">ГОСТ ISO 10816-1-97</span> «Вибрация. Контроль состояния машин по результатам измерений вибрации на невращающихся частях» — определение зон состояния по вибрации</li>
+                    <li><span class="gost-reference">ГОСТ 20815-93</span> «Машины электрические вращающиеся. Механическая вибрация» — нормы вибрации электрических машин</li>
+                    <li><span class="gost-reference">РД 34.45-51.300-97</span> «Объём и нормы испытаний электрооборудования» — п. 23, табл. 23 — нормы изоляции электродвигателей</li>
+                    <li><span class="gost-reference">ГОСТ 183-74</span> «Машины электрические вращающиеся. Общие технические условия» — п. 7.3 — предельные температуры</li>
+                    <li><span class="gost-reference">ПТЭЭП</span> — глава 2.5 — правила эксплуатации электродвигателей</li>
+                    <li><span class="gost-reference">СТО 70238424.27.100.052-2009</span> «Электродвигатели. Организация эксплуатации и технического обслуживания» — методика виброанализа</li>
+                </ol>
+            </div>
+
+            <!-- ТРЕБОВАНИЯ К ОФОРМЛЕНИЮ -->
+            <h2>Требования к оформлению отчёта</h2>
+
+            <h3>Структура отчёта</h3>
+
+            <div class="info-box">
+                <ol>
+                    <li><strong>Титульный лист</strong> — наименование работы, номер варианта, ФИО студента, группа, дата выполнения</li>
+                    <li><strong>Цель работы</strong> — переписать из методических указаний</li>
+                    <li><strong>Исходные данные</strong> — полностью из своего варианта задания</li>
+                    <li><strong>Решение:</strong>
+                        <ul>
+                            <li>Расчёты с формулами и подстановкой численных значений</li>
+                            <li>Ссылки на нормативные документы (название, пункт/таблица)</li>
+                            <li>Промежуточные и итоговые таблицы</li>
+                            <li>Анализ результатов с обоснованием</li>
+                        </ul>
+                    </li>
+                    <li><strong>Заключение:</strong>
+                        <ul>
+                            <li>Общая оценка технического состояния оборудования</li>
+                            <li>Перечень выявленных дефектов с классификацией</li>
+                            <li>Рекомендации по эксплуатации/ремонту с указанием сроков</li>
+                        </ul>
+                    </li>
+                    <li><strong>Список использованных нормативных документов</strong> — с указанием конкретных пунктов и таблиц</li>
+                </ol>
+            </div>
+
+            <h3>Критерии оценки</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Критерий</th>
+                        <th>Максимальный балл</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Правильность расчётов</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td>Корректность ссылок на нормативные документы</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>Качество анализа и обоснованность выводов</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td>Полнота рекомендаций</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>Оформление отчёта</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ИТОГО</strong></td>
+                        <td><strong>100</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- ПРИЛОЖЕНИЯ -->
+            <h2>Приложения</h2>
+
+            <h3>Приложение А. Нормы вибрации электрических машин (ГОСТ ISO 10816-1)</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th rowspan="2">Класс машины</th>
+                        <th rowspan="2">Мощность / высота оси</th>
+                        <th colspan="4">Границы зон, СКЗ виброскорости, мм/с</th>
+                    </tr>
+                    <tr>
+                        <th>A/B</th>
+                        <th>B/C</th>
+                        <th>C/D</th>
+                        <th>Примечание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Класс I</td>
+                        <td>До 15 кВт</td>
+                        <td>1,8</td>
+                        <td>4,5</td>
+                        <td>7,1</td>
+                        <td>Малые машины</td>
+                    </tr>
+                    <tr>
+                        <td>Класс II</td>
+                        <td>15-75 кВт или H = 160-315 мм</td>
+                        <td>2,8</td>
+                        <td>7,1</td>
+                        <td>11,2</td>
+                        <td>Средние машины</td>
+                    </tr>
+                    <tr>
+                        <td>Класс III</td>
+                        <td>75-300 кВт или H > 315 мм</td>
+                        <td>2,8</td>
+                        <td>7,1</td>
+                        <td>11,2</td>
+                        <td>Крупные машины на жёстком основании</td>
+                    </tr>
+                    <tr>
+                        <td>Класс IV</td>
+                        <td>> 300 кВт на гибком основании</td>
+                        <td>4,5</td>
+                        <td>11,2</td>
+                        <td>18,0</td>
+                        <td>Турбоагрегаты</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Приложение Б. Нормы сопротивления изоляции электрических машин</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип машины</th>
+                        <th>Напряжение мегаомметра, В</th>
+                        <th>Минимальное R<sub>из</sub>, МОм</th>
+                        <th>Минимальный K<sub>абс</sub></th>
+                        <th>Документ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Электродвигатели до 1000 В</td>
+                        <td>500 или 1000</td>
+                        <td>0,5</td>
+                        <td>1,0 (рекомендуется ≥1,3)</td>
+                        <td>РД 34.45-51.300-97, табл. 23</td>
+                    </tr>
+                    <tr>
+                        <td>Электродвигатели 3-6 кВ</td>
+                        <td>2500</td>
+                        <td>1,0 на 1 кВ (min 6 МОм)</td>
+                        <td>≥1,3</td>
+                        <td>РД 34.45-51.300-97, табл. 23</td>
+                    </tr>
+                    <tr>
+                        <td>Электродвигатели 10 кВ</td>
+                        <td>2500</td>
+                        <td>10</td>
+                        <td>≥1,3</td>
+                        <td>РД 34.45-51.300-97, табл. 23</td>
+                    </tr>
+                    <tr>
+                        <td>Синхронные генераторы (статор)</td>
+                        <td>2500</td>
+                        <td>1,0 на 1 кВ</td>
+                        <td>≥1,3</td>
+                        <td>РД 34.45-51.300-97, табл. 21</td>
+                    </tr>
+                    <tr>
+                        <td>Обмотка возбуждения</td>
+                        <td>1000</td>
+                        <td>0,5</td>
+                        <td>—</td>
+                        <td>РД 34.45-51.300-97, табл. 21</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Приложение В. Предельные температуры электрических машин</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Класс изоляции</th>
+                        <th>Предельная температура, °С</th>
+                        <th>Допустимое превышение над охлаждающей средой (при T<sub>охл</sub> = 40°С), °С</th>
+                        <th>Область применения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>A</td>
+                        <td>105</td>
+                        <td>60</td>
+                        <td>Устаревшие конструкции</td>
+                    </tr>
+                    <tr>
+                        <td>E</td>
+                        <td>120</td>
+                        <td>75</td>
+                        <td>Редко применяется</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>130</td>
+                        <td>80</td>
+                        <td>Стандартные машины</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>155</td>
+                        <td>105</td>
+                        <td>Большинство современных машин</td>
+                    </tr>
+                    <tr>
+                        <td>H</td>
+                        <td>180</td>
+                        <td>125</td>
+                        <td>Высоконагруженные машины</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Приложение Г. Критерии тепловизионной диагностики электрооборудования</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Избыточная температура ΔT, °С</th>
+                        <th>Коэффициент дефектности K<sub>д</sub></th>
+                        <th>Степень неисправности</th>
+                        <th>Рекомендации</th>
+                        <th>Срок устранения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>До 10</td>
+                        <td>< 1,25</td>
+                        <td>Начальная</td>
+                        <td>Контроль при следующем обследовании</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>10-25</td>
+                        <td>1,25-1,5</td>
+                        <td>Развившаяся</td>
+                        <td>Включить в план ремонтов</td>
+                        <td>До 6 месяцев</td>
+                    </tr>
+                    <tr>
+                        <td>25-50</td>
+                        <td>1,5-2,0</td>
+                        <td>Критическая</td>
+                        <td>Первоочередной ремонт</td>
+                        <td>До 1 месяца</td>
+                    </tr>
+                    <tr>
+                        <td>> 50</td>
+                        <td>> 2,0</td>
+                        <td>Аварийная</td>
+                        <td>Немедленный вывод в ремонт</td>
+                        <td>Немедленно</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><em>Примечание:</em> Избыточная температура ΔT = T<sub>деф</sub> - T<sub>норм</sub>, где T<sub>деф</sub> — температура дефектного элемента, T<sub>норм</sub> — температура аналогичного исправного элемента или окружающей среды.</p>
+
+            <h3>Приложение Д. Характерные частоты дефектов подшипников качения</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Обозначение</th>
+                        <th>Наименование</th>
+                        <th>Формула расчёта</th>
+                        <th>Дефект</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>f<sub>вр</sub></td>
+                        <td>Оборотная частота</td>
+                        <td>f<sub>вр</sub> = n/60</td>
+                        <td>Дисбаланс, несоосность</td>
+                    </tr>
+                    <tr>
+                        <td>BPFO</td>
+                        <td>Частота перекатывания по наружному кольцу</td>
+                        <td>BPFO = z/2 × f<sub>вр</sub> × (1 - d/D × cos α)</td>
+                        <td>Дефект наружного кольца</td>
+                    </tr>
+                    <tr>
+                        <td>BPFI</td>
+                        <td>Частота перекатывания по внутреннему кольцу</td>
+                        <td>BPFI = z/2 × f<sub>вр</sub> × (1 + d/D × cos α)</td>
+                        <td>Дефект внутреннего кольца</td>
+                    </tr>
+                    <tr>
+                        <td>BSF</td>
+                        <td>Частота вращения тел качения</td>
+                        <td>BSF = D/(2d) × f<sub>вр</sub> × (1 - (d/D)² × cos²α)</td>
+                        <td>Дефект тел качения</td>
+                    </tr>
+                    <tr>
+                        <td>FTF</td>
+                        <td>Частота вращения сепаратора</td>
+                        <td>FTF = f<sub>вр</sub>/2 × (1 - d/D × cos α)</td>
+                        <td>Дефект сепаратора</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><em>Обозначения:</em> n — частота вращения, об/мин; z — число тел качения; d — диаметр тела качения; D — диаметр окружности центров тел качения; α — угол контакта.</p>
+
+            <h3>Приложение Е. Периодичность технического обслуживания и ремонта электродвигателей</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип электродвигателя</th>
+                        <th>Осмотр</th>
+                        <th>Текущий ремонт</th>
+                        <th>Капитальный ремонт</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Асинхронные до 100 кВт, 0,4 кВ</td>
+                        <td>1 раз в месяц</td>
+                        <td>1 раз в 2 года</td>
+                        <td>По состоянию (норматив 8 лет)</td>
+                    </tr>
+                    <tr>
+                        <td>Асинхронные свыше 100 кВт, 0,4 кВ</td>
+                        <td>1 раз в неделю</td>
+                        <td>1 раз в год</td>
+                        <td>По состоянию (норматив 6-8 лет)</td>
+                    </tr>
+                    <tr>
+                        <td>Асинхронные 6-10 кВ</td>
+                        <td>Ежесменно</td>
+                        <td>1 раз в год</td>
+                        <td>6 лет или 50 000 ч</td>
+                    </tr>
+                    <tr>
+                        <td>Синхронные двигатели</td>
+                        <td>Ежесменно</td>
+                        <td>1 раз в год</td>
+                        <td>4-6 лет</td>
+                    </tr>
+                    <tr>
+                        <td>Крановые (ПВ = 25-40%)</td>
+                        <td>Ежесменно</td>
+                        <td>1 раз в год</td>
+                        <td>4-5 лет</td>
+                    </tr>
+                    <tr>
+                        <td>Двигатели задвижек</td>
+                        <td>1 раз в месяц</td>
+                        <td>1 раз в 3 года</td>
+                        <td>По состоянию</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="reference">
+                <h4>Рекомендуемая литература для выполнения работы</h4>
+                <ol>
+                    <li><strong>ПТЭЭП</strong> — Правила технической эксплуатации электроустановок потребителей. Утв. приказом Минэнерго России от 13.01.2003 № 6. Глава 2.5 «Электродвигатели».</li>
+                    <li><strong>РД 34.45-51.300-97</strong> «Объём и нормы испытаний электрооборудования». Раздел 23 «Электродвигатели переменного тока».</li>
+                    <li><strong>ГОСТ ISO 10816-1-97</strong> «Вибрация. Контроль состояния машин по результатам измерений вибрации на невращающихся частях. Часть 1. Общие требования».</li>
+                    <li><strong>ГОСТ 20815-93</strong> «Машины электрические вращающиеся. Механическая вибрация. Нормы».</li>
+                    <li><strong>ГОСТ 183-74</strong> «Машины электрические вращающиеся. Общие технические условия».</li>
+                    <li><strong>ГОСТ 11828-86</strong> «Машины электрические вращающиеся. Общие методы испытаний».</li>
+                    <li><strong>РД 153-34.0-20.363-99</strong> «Методика инфракрасной диагностики электрооборудования и ВЛ».</li>
+                    <li><strong>СТО 70238424.27.100.052-2009</strong> «Электродвигатели. Организация эксплуатации и технического обслуживания. Нормы и требования».</li>
+                    <li>Гольдберг О.Д. <em>Испытания электрических машин</em>. — М.: Высшая школа, 2010. — 255 с.</li>
+                    <li>Баркан Б.М. <em>Диагностика электрических машин</em>. — М.: Энергоатомиздат, 2008. — 320 с.</li>
+                    <li>Ширман А.Р. <em>Практическая вибродиагностика и мониторинг состояния механического оборудования</em>. — М.: Машиностроение, 2017. — 412 с.</li>
+                </ol>
+            </div>
+
+            <!-- НАВИГАЦИЯ -->
+            <div class="nav-buttons">
+                <a href="lab3.html" class="nav-btn">← Лабораторная работа №3</a>
+                <a href="start.html" class="nav-btn nav-btn-home">📚 Оглавление</a>
+                <a href="lab5.html" class="nav-btn">Лабораторная работа №5 →</a>
+            </div>
+        </article>
+
+        <footer class="footer">
+            <p>© 2024 Кузбасский государственный технический университет имени Т.Ф. Горбачева</p>
+            <p>Кафедра электрических станций, сетей и систем электроснабжения предприятий (ЭГиПП)</p>
+            <p>Разработчик: кафедра ЭГиПП КузГТУ</p>
+        </footer>
+    </div>
+</body>
+</html>
