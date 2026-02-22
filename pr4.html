@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практическая работа №4 - Энергобаланс промышленного предприятия</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 50%, #1a365d 100%);
+            min-height: 100vh;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .lecture-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-left: 6px solid #805ad5;
+        }
+
+        .breadcrumb {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #1a365d;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .lecture-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .content-body {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #1a365d;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #805ad5;
+        }
+
+        h3 {
+            color: #2c5282;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 25px 0 15px 0;
+        }
+
+        h4 {
+            color: #4a5568;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 20px 0 10px 0;
+        }
+
+        h5 {
+            color: #553c9a;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 15px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .formula-box {
+            background: #1a365d;
+            color: white;
+            border-left: 4px solid #805ad5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1rem;
+        }
+
+        .formula-box .formula {
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .formula-box .formula-desc {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: #2c5282;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:hover {
+            background: #f7fafc;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);
+            border-left: 4px solid #f6ad55;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+            border-left: 4px solid #c53030;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            color: #742a2a;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .example-title {
+            font-weight: 700;
+            color: #234e52;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e8f4fd 0%, #bee3f8 100%);
+            border-left: 4px solid #3182ce;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .task-box {
+            background: linear-gradient(135deg, #faf5ff 0%, #e9d8fd 100%);
+            border-left: 4px solid #805ad5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .variant-box {
+            background: linear-gradient(135deg, #fffaf0 0%, #feebc8 100%);
+            border: 2px solid #dd6b20;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 12px;
+        }
+
+        .variant-header {
+            background: #dd6b20;
+            color: white;
+            padding: 10px 20px;
+            margin: -25px -25px 20px -25px;
+            border-radius: 10px 10px 0 0;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .explanation-box {
+            background: linear-gradient(135deg, #fefcbf 0%, #faf089 100%);
+            border-left: 4px solid #d69e2e;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .explanation-box strong {
+            color: #744210;
+        }
+
+        .step-box {
+            background: #f7fafc;
+            border: 2px solid #805ad5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .step-header {
+            background: #805ad5;
+            color: white;
+            padding: 8px 15px;
+            margin: -20px -20px 15px -20px;
+            border-radius: 6px 6px 0 0;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .reference {
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .reference h4 {
+            color: #1a365d;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #805ad5;
+            padding-bottom: 10px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e2e8f0;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: #2c5282;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .nav-btn:hover {
+            background: #1a365d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-btn-home {
+            background: #805ad5;
+            flex: 0 0 auto;
+            max-width: 180px;
+        }
+
+        .nav-btn-home:hover {
+            background: #553c9a;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .gost-reference {
+            display: inline-block;
+            background: #edf2f7;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .column-box {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .column-box h4 {
+            color: #2c5282;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f6ad55;
+        }
+
+        .calculation-step {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+
+        .calculation-step h5 {
+            color: #2c5282;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .result-good {
+            color: #38a169;
+            font-weight: 600;
+        }
+
+        .result-warning {
+            color: #d69e2e;
+            font-weight: 600;
+        }
+
+        .result-bad {
+            color: #c53030;
+            font-weight: 600;
+        }
+
+        .criteria-table th {
+            background: #805ad5;
+        }
+
+        .norm-reference {
+            background: #edf2f7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 3px solid #3182ce;
+        }
+
+        .norm-reference strong {
+            color: #2c5282;
+        }
+
+        .sankey-placeholder {
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%);
+            border: 2px dashed #718096;
+            padding: 40px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+            color: #4a5568;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .lecture-header, .content-body {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .nav-btn-home {
+                order: -1;
+                max-width: 100%;
+            }
+
+            .variant-header {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="lecture-header">
+            <div class="breadcrumb">Раздел 3 → Практические работы → Работа №4</div>
+            <h1>Практическая работа №4<br>Энергобаланс промышленного предприятия</h1>
+            <div class="lecture-meta">
+                <div class="meta-item">📝 Практическое занятие</div>
+                <div class="meta-item">⏱ 4 академических часа</div>
+                <div class="meta-item">📊 Сложность: высокая</div>
+            </div>
+        </header>
+
+        <article class="content-body">
+            
+            <!-- ЦЕЛЬ И ЗАДАЧИ -->
+            <h2>Цель и задачи работы</h2>
+            
+            <div class="definition-box">
+                <strong>Цель работы:</strong> Приобретение практических навыков составления и анализа энергетического баланса промышленного предприятия, расчёта показателей энергоэффективности, выявления потерь энергии и разработки мероприятий по энергосбережению.
+            </div>
+
+            <h3>Задачи работы</h3>
+            <ol>
+                <li>Изучить методологию составления энергетических балансов предприятий</li>
+                <li>Освоить расчёт приходной и расходной частей электробаланса</li>
+                <li>Научиться определять структуру потерь электроэнергии</li>
+                <li>Рассчитать удельные показатели энергопотребления</li>
+                <li>Провести анализ энергоэффективности и выявить резервы экономии</li>
+                <li>Разработать мероприятия по снижению потерь и повышению энергоэффективности</li>
+                <li>Оценить экономический эффект от внедрения энергосберегающих мероприятий</li>
+            </ol>
+
+            <h3>Теоретические основы</h3>
+
+            <div class="info-box">
+                <strong>Энергетический баланс</strong> — это система показателей, характеризующих соответствие между поступлением (приходом) энергетических ресурсов и их расходованием на предприятии за определённый период времени. Энергобаланс отражает количественное соответствие между приходом и расходом энергии в соответствии с законом сохранения энергии.
+            </div>
+
+            <h4>Структура энергобаланса предприятия</h4>
+
+            <div class="two-column">
+                <div class="column-box">
+                    <h4>Приходная часть (Wприх)</h4>
+                    <ul>
+                        <li>Электроэнергия от энергосистемы</li>
+                        <li>Электроэнергия от собственных источников (ДЭС, СЭС, ВЭУ)</li>
+                        <li>Электроэнергия от когенерационных установок</li>
+                        <li>Электроэнергия рекуперации</li>
+                    </ul>
+                </div>
+                <div class="column-box">
+                    <h4>Расходная часть (Wрасх)</h4>
+                    <ul>
+                        <li>Полезный расход на технологические нужды</li>
+                        <li>Расход на вспомогательные нужды</li>
+                        <li>Потери в электрических сетях и оборудовании</li>
+                        <li>Отпуск сторонним потребителям</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="formula-box">
+                <strong>Основное уравнение энергобаланса:</strong>
+                <div class="formula">
+                    W<sub>прих</sub> = W<sub>расх</sub> = W<sub>полезн</sub> + W<sub>вспом</sub> + ΔW<sub>потерь</sub>
+                </div>
+                <div class="formula-desc">
+                    где: W<sub>прих</sub> — суммарное поступление электроэнергии, кВт·ч;<br>
+                    W<sub>полезн</sub> — полезно использованная электроэнергия на основное производство, кВт·ч;<br>
+                    W<sub>вспом</sub> — электроэнергия на вспомогательные нужды, кВт·ч;<br>
+                    ΔW<sub>потерь</sub> — суммарные потери электроэнергии, кВт·ч
+                </div>
+            </div>
+
+            <h4>Основные показатели энергоэффективности</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Показатель</th>
+                        <th>Формула</th>
+                        <th>Единица измерения</th>
+                        <th>Пояснение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>КПД использования электроэнергии</strong></td>
+                        <td>η = W<sub>полезн</sub> / W<sub>прих</sub> × 100%</td>
+                        <td>%</td>
+                        <td>Доля полезно использованной энергии</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Удельный расход электроэнергии</strong></td>
+                        <td>w = W<sub>расх</sub> / V<sub>прод</sub></td>
+                        <td>кВт·ч/ед. продукции</td>
+                        <td>Расход энергии на единицу продукции</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Коэффициент потерь</strong></td>
+                        <td>K<sub>пот</sub> = ΔW<sub>потерь</sub> / W<sub>прих</sub> × 100%</td>
+                        <td>%</td>
+                        <td>Доля потерь в общем потреблении</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Энергоёмкость продукции</strong></td>
+                        <td>e = W<sub>расх</sub> / С<sub>прод</sub></td>
+                        <td>кВт·ч/руб.</td>
+                        <td>Расход энергии на рубль продукции</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Коэффициент использования мощности</strong></td>
+                        <td>K<sub>им</sub> = P<sub>ср</sub> / P<sub>уст</sub></td>
+                        <td>о.е.</td>
+                        <td>Степень загрузки оборудования</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Нормативная база</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Документ</th>
+                        <th>Область применения в работе</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="gost-reference">Федеральный закон № 261-ФЗ</span></td>
+                        <td>Об энергосбережении и повышении энергетической эффективности</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">ГОСТ Р 51541-99</span></td>
+                        <td>Энергосбережение. Энергетическая эффективность. Состав показателей</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">ГОСТ Р 51750-2001</span></td>
+                        <td>Методика определения энергоёмкости производства продукции</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">ГОСТ Р 27322-87</span></td>
+                        <td>Энергобаланс промышленного предприятия. Общие положения</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">СТО 70238424.27.100.059-2009</span></td>
+                        <td>Методика составления энергетических балансов</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gost-reference">РД 153-34.0-09.162-00</span></td>
+                        <td>Расчёт технических потерь электроэнергии в электрических сетях</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>⚠️ Важно!</strong> Все расчёты должны сопровождаться ссылками на источники данных и методики. Результаты должны быть представлены в виде таблиц энергобаланса и диаграмм распределения энергии.
+            </div>
+
+            <!-- ВАРИАНТЫ ЗАДАНИЙ -->
+            <h2>Варианты заданий</h2>
+            
+            <p>Вариант выбирается по <strong>последней цифре номера зачётной книжки</strong>. Если последняя цифра — 0, выполняется вариант 10.</p>
+
+            <!-- ВАРИАНТ 1 -->
+            <div class="variant-box">
+                <div class="variant-header">📋 Вариант 1 (последняя цифра зачётки — 1)</div>
+                
+                <h4>Исходные данные:</h4>
+                <p><strong>Предприятие:</strong> Машиностроительный завод по производству металлорежущих станков</p>
+                <p><strong>Расчётный период:</strong> календарный год</p>
+                
+                <p><strong>Общие сведения:</strong></p>
+                <ul>
+                    <li>Установленная мощность силовых электроприёмников: 8 500 кВт</li>
+                    <li>Установленная мощность электрического освещения: 1 200 кВт</li>
+                    <li>Годовой объём производства: 1 250 станков</li>
+                    <li>Число рабочих дней в году: 250</li>
+                    <li>Режим работы: двухсменный (16 часов/сутки)</li>
+                </ul>
+
+                <p><strong>Данные электропотребления по группам:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Группа потребителей</th>
+                            <th>Pуст, кВт</th>
+                            <th>Tг, ч/год</th>
+                            <th>Kи</th>
+                            <th>cos φ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Металлорежущие станки</td>
+                            <td>4 200</td>
+                            <td>3 800</td>
+                            <td>0,25</td>
+                            <td>0,65</td>
+                        </tr>
+                        <tr>
+                            <td>Кузнечно-прессовое оборудование</td>
+                            <td>1 800</td>
+                            <td>2 200</td>
+                            <td>0,35</td>
+                            <td>0,70</td>
+                        </tr>
+                        <tr>
+                            <td>Термические печи</td>
+                            <td>1 500</td>
+                            <td>4 000</td>
+                            <td>0,75</td>
+                            <td>0,92</td>
+                        </tr>
+                        <tr>
+                            <td>Сварочное оборудование</td>
+                            <td>600</td>
+                            <td>1 800</td>
+                            <td>0,30</td>
+                            <td>0,50</td>
+                        </tr>
+                        <tr>
+                            <td>Компрессорная станция</td>
+                            <td>400</td>
+                            <td>4 500</td>
+                            <td>0,80</td>
+                            <td>0,85</td>
+                        </tr>
+                        <tr>
+                            <td>Освещение производственных помещений</td>
+                            <td>850</td>
+                            <td>3 200</td>
+                            <td>0,90</td>
+                            <td>0,95</td>
+                        </tr>
+                        <tr>
+                            <td>Освещение административных зданий</td>
+                            <td>350</td>
+                            <td>2 500</td>
+                            <td>0,85</td>
+                            <td>0,95</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Данные о потерях электроэнергии:</strong></p>
+                <ul>
+                    <li>Потери в трансформаторах ГПП (2×6300 кВА): определить расчётом</li>
+                    <li>Потери в цеховых трансформаторах (8×1000 кВА): определить расчётом</li>
+                    <li>Потери в кабельных линиях 10 кВ (общая длина 2,5 км): 1,2% от передаваемой мощности</li>
+                    <li>Потери в сетях 0,4 кВ: 3,5% от потребления</li>
+                </ul>
+
+                <p><strong>Тарифы на электроэнергию:</strong></p>
+                <ul>
+                    <li>Цена электроэнергии: 5,85 руб./кВт·ч</li>
+                    <li>Ставка за мощность: 850 руб./кВт в месяц</li>
+                </ul>
+
+                <div class="task-box">
+                    <strong>Задание:</strong>
+                    <ol>
+                        <li>Рассчитать годовое электропотребление по каждой группе потребителей</li>
+                        <li>Определить потери электроэнергии в трансформаторах и сетях</li>
+                        <li>Составить электробаланс предприятия (таблица с приходной и расходной частью)</li>
+                        <li>Рассчитать удельный расход электроэнергии на единицу продукции</li>
+                        <li>Определить КПД использования электроэнергии и коэффициент потерь</li>
+                        <li>Построить диаграмму (круговую или Санкей) распределения электропотребления</li>
+                        <li>Выявить наиболее энергоёмкие процессы и разработать не менее 3 мероприятий по энергосбережению</li>
+                        <li>Оценить экономический эффект от предложенных мероприятий</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ВАРИАНТ 2 -->
+            <div class="variant-box">
+                <div class="variant-header">📋 Вариант 2 (последняя цифра зачётки — 2)</div>
+                
+                <h4>Исходные данные:</h4>
+                <p><strong>Предприятие:</strong> Хлебозавод производительностью 120 тонн хлебобулочных изделий в сутки</p>
+                <p><strong>Расчётный период:</strong> календарный год</p>
+                
+                <p><strong>Общие сведения:</strong></p>
+                <ul>
+                    <li>Установленная мощность: 2 400 кВт</li>
+                    <li>Режим работы: непрерывный (круглосуточно, 365 дней)</li>
+                    <li>Годовой объём производства: 43 800 тонн</li>
+                </ul>
+
+                <p><strong>Данные электропотребления по группам:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Группа потребителей</th>
+                            <th>Pуст, кВт</th>
+                            <th>Tг, ч/год</th>
+                            <th>Kи</th>
+                            <th>cos φ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Тестомесильное оборудование</td>
+                            <td>280</td>
+                            <td>7 200</td>
+                            <td>0,65</td>
+                            <td>0,75</td>
+                        </tr>
+                        <tr>
+                            <td>Хлебопекарные печи (электрические)</td>
+                            <td>1 200</td>
+                            <td>8 200</td>
+                            <td>0,85</td>
+                            <td>0,98</td>
+                        </tr>
+                        <tr>
+                            <td>Холодильное оборудование</td>
+                            <td>180</td>
+                            <td>8 500</td>
+                            <td>0,70</td>
+                            <td>0,80</td>
+                        </tr>
+                        <tr>
+                            <td>Транспортёры и конвейеры</td>
+                            <td>150</td>
+                            <td>7 000</td>
+                            <td>0,55</td>
+                            <td>0,70</td>
+                        </tr>
+                        <tr>
+                            <td>Упаковочное оборудование</td>
+                            <td>120</td>
+                            <td>6 500</td>
+                            <td>0,60</td>
+                            <td>0,75</td>
+                        </tr>
+                        <tr>
+                            <td>Вентиляция и кондиционирование</td>
+                            <td>250</td>
+                            <td>8 000</td>
+                            <td>0,75</td>
+                            <td>0,85</td>
+                        </tr>
+                        <tr>
+                            <td>Освещение</td>
+                            <td>180</td>
+                            <td>4 500</td>
+                            <td>0,80</td>
+                            <td>0,95</td>
+                        </tr>
+                        <tr>
+                            <td>Прочее оборудование</td>
+                            <td>40</td>
+                            <td>3 000</td>
+                            <td>0,50</td>
+                            <td>0,80</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Данные о потерях:</strong></p>
+                <ul>
+                    <li>Потери в трансформаторах (2×1600 кВА): определить расчётом</li>
+                    <li>Потери в распределительных сетях 0,4 кВ: 4,2% от потребления</li>
+                </ul>
+
+                <p><strong>Дополнительные данные:</strong></p>
+                <ul>
+                    <li>Средний тариф на электроэнергию: 6,12 руб./кВт·ч</li>
+                    <li>Средняя цена реализации продукции: 85 руб./кг</li>
+                    <li>Себестоимость продукции (без электроэнергии): 42 руб./кг</li>
+                </ul>
+
+                <div class="task-box">
+                    <strong>Задание:</strong>
+                    <ol>
+                        <li>Рассчитать годовое электропотребление по каждой группе потребителей</li>
+                        <li>Определить потери в трансформаторах и распределительных сетях</li>
+                        <li>Составить электробаланс предприятия</li>
+                        <li>Рассчитать удельный расход электроэнергии (кВт·ч/тонна продукции)</li>
+                        <li>Определить долю затрат на электроэнергию в себестоимости продукции</li>
+                        <li>Сравнить с отраслевыми нормативами (для хлебопекарной промышленности: 70-100 кВт·ч/т)</li>
+                        <li>Разработать мероприятия по снижению энергоёмкости производства</li>
+                        <li>Рассчитать экономию при снижении удельного расхода на 10%</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ВАРИАНТ 3 -->
+            <div class="variant-box">
+                <div class="variant-header">📋 Вариант 3 (последняя цифра зачётки — 3)</div>
+                
+                <h4>Исходные данные:</h4>
+                <p><strong>Предприятие:</strong> Горно-обогатительный комбинат (ГОК)</p>
+                <p><strong>Расчётный период:</strong> календарный год</p>
+                
+                <p><strong>Общие сведения:</strong></p>
+                <ul>
+                    <li>Установленная мощность: 85 000 кВт</li>
+                    <li>Годовой объём переработки руды: 12 млн тонн</li>
+                    <li>Выход концентрата: 2,4 млн тонн (20% от руды)</li>
+                    <li>Режим работы: непрерывный</li>
+                    <li>Питание от подстанции 110/10 кВ</li>
+                </ul>
+
+                <p><strong>Данные электропотребления по технологическим переделам:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Технологический передел</th>
+                            <th>Pуст, кВт</th>
+                            <th>Tг, ч/год</th>
+                            <th>Kи</th>
+                            <th>cos φ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Добыча (экскаваторы, буровые станки)</td>
+                            <td>15 000</td>
+                            <td>6 500</td>
+                            <td>0,55</td>
+                            <td>0,75</td>
+                        </tr>
+                        <tr>
+                            <td>Транспортировка (конвейеры, железнодорожный транспорт)</td>
+                            <td>12 000</td>
+                            <td>7 500</td>
+                            <td>0,65</td>
+                            <td>0,80</td>
+                        </tr>
+                        <tr>
+                            <td>Дробление (дробилки крупного, среднего, мелкого дробления)</td>
+                            <td>18 000</td>
+                            <td>7 800</td>
+                            <td>0,75</td>
+                            <td>0,85</td>
+                        </tr>
+                        <tr>
+                            <td>Измельчение (шаровые мельницы)</td>
+                            <td>25 000</td>
+                            <td>8 000</td>
+                            <td>0,85</td>
+                            <td>0,88</td>
+                        </tr>
+                        <tr>
+                            <td>Обогащение (флотация, магнитная сепарация)</td>
+                            <td>8 000</td>
+                            <td>8 200</td>
+                            <td>0,70</td>
+                            <td>0,82</td>
+                        </tr>
+                        <tr>
+                            <td>Водоснабжение и водоотведение</td>
+                            <td>4 500</td>
+                            <td>8 500</td>
+                            <td>0,75</td>
+                            <td>0,85</td>
+                        </tr>
+                        <tr>
+                            <td>Освещение и вспомогательные нужды</td>
+                            <td>2 500</td>
+                            <td>5 000</td>
+                            <td>0,60</td>
+                            <td>0,90</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Данные о потерях:</strong></p>
+                <ul>
+                    <li>Потери в трансформаторах ГПП (2×63000 кВА): определить расчётом</li>
+                    <li>Потери в распределительных сетях 10 кВ: 2,8% от передаваемой мощности</li>
+                    <li>Потери в цеховых трансформаторах и сетях 0,4 кВ: 4,5% от потребления НН</li>
+                </ul>
+
+                <p><strong>Экономические данные:</strong></p>
+                <ul>
+                    <li>Тариф на электроэнергию: 3,20 руб./кВт·ч</li>
+                    <li>Цена концентрата: 8 500 руб./тонна</li>
+                </ul>
+
+                <div class="task-box">
+                    <strong>Задание:</strong>
+                    <ol>
+                        <li>Рассчитать годовое электропотребление по технологическим переделам</li>
+                        <li>Определить суммарные потери электроэнергии</li>
+                        <li>Составить электробаланс комбината</li>
+                        <li>Рассчитать удельный расход электроэнергии на тонну руды и на тонну концентрата</li>
+                        <li>Определить наиболее энергоёмкий передел</li>
+                        <li>Сравнить с отраслевыми показателями (для ГОКов: 20-35 кВт·ч/т руды)</li>
+                        <li>Предложить мероприятия по энергосбережению на наиболее энергоёмком переделе</li>
+                        <li>Рассчитать потенциал экономии при внедрении частотного регулирования на шаровых мельницах (экономия до 15%)</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ВАРИАНТ 4 -->
+            <div class="variant-box">
+                <div class="variant-header">📋 Вариант 4 (последняя цифра зачётки — 4)</div>
+                
+                <h4>Исходные данные:</h4>
+                <p><strong>Предприятие:</strong> Молочный комбинат</p>
+                <p><strong>Расчётный период:</strong> календарный год</p>
+                
+                <p><strong>Общие сведения:</strong></p>
+                <ul>
+                    <li>Установленная мощность: 3 200 кВт</li>
+                    <li>Годовой объём переработки молока: 180 000 тонн</li>
+                    <li>Режим работы: двухсменный, 300 дней в году</li>
+                </ul>
+
+                <p><strong>Данные электропотребления по группам:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Группа потребителей</th>
+                            <th>Pуст, кВт</th>
+                            <th>Tг, ч/год</th>
+                            <th>Kи</th>
+                            <th>cos φ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Холодильные компрессоры</td>
+                            <td>1 100</td>
+                            <td>8 200</td>
+                            <td>0,80</td>
+                            <td>0,85</td>
+                        </tr>
+                        <tr>
+                            <td>Пастеризационно-охладительные установки</td>
+                            <td>450</td>
+                            <td>4 500</td>
+                            <td>0,70</td>
+                            <td>0,82</td>
+                        </tr>
+                        <tr>
+                            <td>Сепараторы и гомогенизаторы</td>
+                            <td>320</td>
+                            <td>4 200</td>
+                            <td>0,65</td>
+                            <td>0,80</td>
+                        </tr>
+                        <tr>
+                            <td>Фасовочно-упаковочное оборудование</td>
+                            <td>280</td>
+                            <td>4 000</td>
+                            <td>0,60</td>
+                            <td>0,78</td>
+                        </tr>
+                        <tr>
+                            <td>Насосы и транспортёры</td>
+                            <td>380</td>
+                            <td>4 500</td>
+                            <td>0,55</td>
+                            <td>0,75</td>
+                        </tr>
+                        <tr>
+                            <td>Вентиляция</td>
+                            <td>350</td>
+                            <td>5 000</td>
+                            <td>0,70</td>
+                            <td>0,85</td>
+                        </tr>
+                        <tr>
+                            <td>Освещение</td>
+                            <td>220</td>
+                            <td>4 000</td>
+                            <td>0,75</td>
+                            <td>0,95</td>
+                        </tr>
+                        <tr>
+                            <td>Административные и бытовые нужды</td>
+                            <td>100</td>
+                            <td>2 500</td>
+                            <td>0,50</td>
+                            <td>0,90</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Данные о потерях:</strong></p>
+                <ul>
+                    <li>Потери в трансформаторах (2×2500 кВА): определить расчётом</li>
+                    <li>Потери в сетях 0,4 кВ: 3,8% от потребления</li>
+                </ul>
+
+                <p><strong>Дополнительные данные:</strong></p>
+                <ul>
+                    <li>Тариф на электроэнергию: 5,95 руб./кВт·ч</li>
+                    <li>Отраслевой норматив: 35-50 кВт·ч/т молока</li>
+                </ul>
+
+                <div class="task-box">
+                    <strong>Задание:</strong>
+                    <ol>
+                        <li>Рассчитать годовое электропотребление по группам оборудования</li>
+                        <li>Составить электробаланс предприятия</li>
+                        <li>Рассчитать удельный расход электроэнергии на тонну переработанного молока</li>
+                        <li>Сравнить с отраслевым нормативом, сделать выводы</li>
+                        <li>Определить долю холодильного оборудования в общем потреблении</li>
+                        <li>Разработать мероприятия по снижению потребления холодильных установок</li>
+                        <li>Оценить потенциал внедрения рекуперации тепла</li>
+                        <li>Рассчитать экономию при замене освещения на светодиодное</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ВАРИАНТ 5 -->
+            <div class="variant-box">
+                <div class="variant-header">📋 Вариант 5 (последняя цифра зачётки — 5)</div>
+                
+                <h4>Исходные данные:</h4>
+                <p><strong>Предприятие:</strong> Цементный завод</p>
+                <p><strong>Расчётный период:</strong> календарный год</p>
+                
+                <p><strong>Общие сведения:</strong></p>
+                <ul>
+                    <li>Установленная мощность: 42 000 кВт</li>
+                    <li>Годовой объём производства цемента: 2,5 млн тонн</li>
+                    <li>Режим работы: непрерывный</li>
+                    <li>Способ производства: сухой</li>
+                </ul>
+
+                <p><strong>Данные электропотребления по технологическим процессам:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Технологический процесс</th>
+                            <th>Pуст, кВт</th>
+                            <th>Tг, ч/год</th>
+                            <th>Kи</th>
+                            <th>cos φ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Добыча и транспортировка сырья</td>
+                            <td>4 500</td>
+                            <td>5 500</td>
+                            <td>0,60</td>
+                            <td>0,78</td>
+                        </tr>
+                        <tr>
+                            <td>Дробление известняка</td>
+                            <td>3 200</td>
+                            <td>6 800</td>
+                            <td>0,70</td>
+                            <td>0,82</td>
+                        </tr>
+                        <tr>
+                            <td>Помол сырьевой смеси</td>
+                            <td>12 000</td>
+                            <td>7 500</td>
+                            <td>0,80</td>
+                            <td>0,85</td>
+                        </tr>
+                        <tr>
+                            <td>Вращающаяся печь (привод, вентиляторы)</td>
+                            <td>8 500</td>
+                            <td>8 000</td>
+                            <td>0,85</td>
+                            <td>0,88</td>
+                        </tr>
+                        <tr>
+                            <td>Помол цемента (цементные мельницы)</td>
+                            <td>10 000</td>
+                            <td>7 200</td>
+                            <td>0,82</td>
+                            <td>0,86</td>
+                        </tr>
+                        <tr>
+                            <td>Упаковка и отгрузка</td>
+                            <td>1 800</td>
+                            <td>4 500</td>
+                            <td>0,55</td>
+                            <td>0,78</td>
+                        </tr>
+                        <tr>
+                            <td>Аспирация и газоочистка</td>
+                            <td>1 500</td>
+                            <td>8 000</td>
+                            <td>0,75</td>
+                            <td>0,85</td>
+                        </tr>
+                        <tr>
+                            <td>Освещение и вспомогательные</td>
+                            <td>500</td>
+                            <td>4 500</td>
+                            <td>0,65</td>
+                            <td>0,92</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Данные о потерях:</strong></p>
+                <ul>
+                    <li>Потери в трансформаторах (2×40000 кВА): определить расчётом</li>
+                    <li>Потери в сетях 10 кВ: 2,2%</li>
+                    <li>Потери в сетях 0,4 кВ: 4,0%</li>
+                </ul>
+
+                <p><strong>Экономические данные:</strong></p>
+                <ul>
+                    <li>Тариф: 4,25 руб./кВт·ч</li>
+                    <li>Отраслевой норматив (сухой способ): 95-110 кВт·ч/т цемента</li>
+                </ul>
+
+                <div class="task-box">
+                    <strong>Задание:</strong>
+                    <ol>
+                        <li>Рассчитать электропотребление по технологическим процессам</li>
+                        <li>Составить электробаланс завода</li>
+                        <li>Определить удельный расход электроэнергии на тонну цемента</li>
+                        <li>Сравнить с отраслевым нормативом</li>
+                        <li>Определить долю затрат на помол (сырьевой + цементный)</li>
+                        <li>Предложить мероприятия по снижению энергоёмкости помола</li>
+                        <li>Оценить эффект от внедрения вертикальных валковых мельниц вместо шаровых</li>
+                        <li>Рассчитать годовую экономию при снижении удельного расхода на 5%</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ВАРИАНТ 6 -->
+            <div class="variant-box">
+                <div class="variant-header">📋 Вариант 6 (последняя цифра зачётки — 6)</div>
+                
+                <h4>Исходные данные:</h4>
+                <p><strong>Предприятие:</strong> Торговый центр</p>
+                <p><strong>Расчётный период:</strong> календарный год</p>
+                
+                <p><strong>Общие сведения:</strong></p>
+                <ul>
+                    <li>Общая площадь: 45 000 м²</li>
+                    <li>Торговая площадь: 32 000 м²</li>
+                    <li>Установленная мощность: 5 800 кВт</li>
+                    <li>Режим работы: 10:00-22:00 (12 часов), 365 дней</li>
+                </ul>
+
+                <p><strong>Данные электропотребления по системам:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Система</th>
+                            <th>Pуст, кВт</th>
+                            <th>Tг, ч/год</th>
+                            <th>Kи</th>
+                            <th>cos φ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Освещение торговых залов</td>
+                            <td>1 400</td>
+                            <td>4 380</td>
+                            <td>0,85</td>
+                            <td>0,95</td>
+                        </tr>
+                        <tr>
+                            <td>Освещение общих зон и паркинга</td>
+                            <td>600</td>
+                            <td>6 000</td>
+                            <td>0,75</td>
+                            <td>0,95</td>
+                        </tr>
+                        <tr>
+                            <td>Кондиционирование (чиллеры)</td>
+                            <td>1 800</td>
+                            <td>3 500</td>
+                            <td>0,70</td>
+                            <td>0,85</td>
+                        </tr>
+                        <tr>
+                            <td>Вентиляция приточно-вытяжная</td>
+                            <td>850</td>
+                            <td>5 500</td>
+                            <td>0,80</td>
+                            <td>0,85</td>
+                        </tr>
+                        <tr>
+                            <td>Эскалаторы и лифты</td>
+                            <td>320</td>
+                            <td>4 380</td>
+                            <td>0,45</td>
+                            <td>0,75</td>
+                        </tr>
+                        <tr>
+                            <td>Холодильное оборудование (продуктовая зона)</td>
+                            <td>450</td>
+                            <td>8 500</td>
+                            <td>0,75</td>
+                            <td>0,82</td>
+                        </tr>
+                        <tr>
+                            <td>Фудкорт (электроплиты, печи)</td>
+                            <td>280</td>
+                            <td>4 000</td>
+                            <td>0,60</td>
+                            <td>0,95</td>
+                        </tr>
+                        <tr>
+                            <td>Прочее (охрана, IT, реклама)</td>
+                            <td>100</td>
+                            <td>8 760</td>
+                            <td>0,80</td>
+                            <td>0,90</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Данные о потерях:</strong></p>
+                <ul>
+                    <li>Потери в трансформаторах (2×4000 кВА): определить расчётом</li>
+                    <li>Потери в сетях 0,4 кВ: 3,2%</li>
+                </ul>
+
+                <p><strong>Экономические данные:</strong></p>
+                <ul>
+                    <li>Тариф: 6,45 руб./кВт·ч</li>
+                    <li>Годовой товарооборот: 8,5 млрд руб.</li>
+                </ul>
+
+                <div class="task-box">
+                    <strong>Задание:</strong>
+                    <ol>
+                        <li>Рассчитать годовое электропотребление по системам</li>
+                        <li>Составить электробаланс торгового центра</li>
+                        <li>Рассчитать удельное потребление на 1 м² площади (кВт·ч/м²/год)</li>
+                        <li>Сравнить с нормативом для торговых центров (180-280 кВт·ч/м²/год)</li>
+                        <li>Определить долю затрат на электроэнергию в операционных расходах</li>
+                        <li>Разработать мероприятия по энергосбережению для систем освещения и кондиционирования</li>
+                        <li>Оценить эффект от внедрения системы автоматического управления освещением (DALI)</li>
+                        <li>Рассчитать окупаемость замены чиллеров на инверторные</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ВАРИАНТ 7 -->
+            <div class="variant-box">
+                <div class="variant-header">📋 Вариант 7 (последняя цифра зачётки — 7)</div>
+                
+                <h4>Исходные данные:</h4>
+                <p><strong>Предприятие:</strong> Металлургический завод (электросталеплавильный цех)</p>
+                <p><strong>Расчётный период:</strong> календарный год</p>
+                
+                <p><strong>Общие сведения:</strong></p>
+                <ul>
+                    <li>Установленная мощность: 125 000 кВт</li>
+                    <li>Годовой объём производства стали: 800 000 тонн</li>
+                    <li>Режим работы: непрерывный</li>
+                    <li>Основное оборудование: 2 дуговые сталеплавильные печи (ДСП) по 150 тонн</li>
+                </ul>
+
+                <p><strong>Данные электропотребления:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Оборудование/процесс</th>
+                            <th>Pуст, кВт</th>
+                            <th>Tг, ч/год</th>
+                            <th>Kи</th>
+                            <th>cos φ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Дуговые печи ДСП-150 (2 шт.)</td>
+                            <td>100 000</td>
+                            <td>7 500</td>
+                            <td>0,65</td>
+                            <td>0,85</td>
+                        </tr>
+                        <tr>
+                            <td>Установка «ковш-печь» (2 шт.)</td>
+                            <td>12 000</td>
+                            <td>6 500</td>
+                            <td>0,55</td>
+                            <td>0,82</td>
+                        </tr>
+                        <tr>
+                            <td>Машины непрерывного литья заготовок</td>
+                            <td>3 500</td>
+                            <td>7 000</td>
+                            <td>0,70</td>
+                            <td>0,80</td>
+                        </tr>
+                        <tr>
+                            <td>Газоочистка и аспирация</td>
+                            <td>4 500</td>
+                            <td>7 800</td>
+                            <td>0,80</td>
+                            <td>0,85</td>
+                        </tr>
+                        <tr>
+                            <td>Крановое оборудование</td>
+                            <td>2 800</td>
+                            <td>5 000</td>
+                            <td>0,40</td>
+                            <td>0,75</td>
+                        </tr>
+                        <tr>
+                            <td>Водоснабжение и охлаждение</td>
+                            <td>1 500</td>
+                            <td>8 000</td>
+                            <td>0,75</td>
+                            <td>0,85</td>
+                        </tr>
+                        <tr>
+                            <td>Вспомогательное оборудование</td>
+                            <td>700</td>
+                            <td>6 000</td>
+                            <td>0,60</td>
+                            <td>0,80</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Данные о потерях:</strong></p>
+                <ul>
+                    <li>Потери в печных трансформаторах (2×80 МВА): 0,8% от переданной энергии</li>
+                    <li>Потери в распределительных сетях: 2,5%</li>
+                </ul>
+
+                <p><strong>Экономические данные:</strong></p>
+                <ul>
+                    <li>Тариф для металлургии: 3,85 руб./кВт·ч</li>
+                    <li>Отраслевой норматив: 400-500 кВт·ч/т стали (для ДСП)</li>
+                </ul>
+
+                <div class="task-box">
+                    <strong>Задание:</strong>
+                    <ol>
+                        <li>Рассчитать годовое электропотребление по оборудованию</li>
+                        <li>Составить электробаланс ЭСПЦ</li>
+                        <li>Определить удельный расход электроэнергии на тонну стали</li>
+                        <li>Сравнить с отраслевым нормативом</li>
+                        <li>Рассчитать долю затрат на электроэнергию в себестоимости стали</li>
+                        <li>Проанализировать эффективность работы ДСП (удельный расход на тонну)</li>
+                        <li>Предложить мероприятия по снижению удельного расхода ДСП</li>
+                        <li>Оценить эффект от внедрения системы оптимизации плавки</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ВАРИАНТ 8 -->
+            <div class="variant-box">
+                <div class="variant-header">📋 Вариант 8 (последняя цифра зачётки — 8)</div>
+                
+                <h4>Исходные данные:</h4>
+                <p><strong>Предприятие:</strong> Водоканал (системы водоснабжения и водоотведения города)</p>
+                <p><strong>Расчётный период:</strong> календарный год</p>
+                
+                <p><strong>Общие сведения:</strong></p>
+                <ul>
+                    <li>Население города: 350 000 человек</li>
+                    <li>Годовой объём поднятой воды: 55 млн м³</li>
+                    <li>Годовой объём сточных вод: 48 млн м³</li>
+                    <li>Установленная мощность насосного оборудования: 18 500 кВт</li>
+                    <li>Режим работы: непрерывный</li>
+                </ul>
+
+                <p><strong>Данные электропотребления:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Объект/процесс</th>
+                            <th>Pуст, кВт</th>
+                            <th>Tг, ч/год</th>
+                            <th>Kи</th>
+                            <th>cos φ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Насосные станции 1-го подъёма (водозабор)</td>
+                            <td>4 200</td>
+                            <td>8 000</td>
+                            <td>0,75</td>
+                            <td>0,85</td>
+                        </tr>
+                        <tr>
+                            <td>Станция водоподготовки</td>
+                            <td>1 800</td>
+                            <td>8 200</td>
+                            <td>0,70</td>
+                            <td>0,82</td>
+                        </tr>
+                        <tr>
+                            <td>Насосные станции 2-го подъёма</td>
+                            <td>5 500</td>
+                            <td>7 500</td>
+                            <td>0,65</td>
+                            <td>0,85</td>
+                        </tr>
+                        <tr>
+                            <td>Насосные станции 3-го подъёма (повысительные)</td>
+                            <td>2 800</td>
+                            <td>6 000</td>
+                            <td>0,55</td>
+                            <td>0,82</td>
+                        </tr>
+                        <tr>
+                            <td>Канализационные насосные станции (КНС)</td>
+                            <td>2 400</td>
+                            <td>7 800</td>
+                            <td>0,70</td>
+                            <td>0,80</td>
+                        </tr>
+                        <tr>
+                            <td>Очистные сооружения канализации</td>
+                            <td>1 500</td>
+                            <td>8 500</td>
+                            <td>0,75</td>
+                            <td>0,82</td>
+                        </tr>
+                        <tr>
+                            <td>Административные здания и лаборатории</td>
+                            <td>300</td>
+                            <td>3 500</td>
+                            <td>0,60</td>
+                            <td>0,90</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Данные о потерях:</strong></p>
+                <ul>
+                    <li>Потери в трансформаторах (распределённые по объектам): 2,5%</li>
+                    <li>Потери в сетях 0,4 кВ: 4,5%</li>
+                    <li>Потери воды в сетях: 28% (для справки)</li>
+                </ul>
+
+                <p><strong>Экономические данные:</strong></p>
+                <ul>
+                    <li>Средний тариф на электроэнергию: 5,45 руб./кВт·ч</li>
+                    <li>Тариф на водоснабжение: 32 руб./м³</li>
+                    <li>Тариф на водоотведение: 28 руб./м³</li>
+                </ul>
+
+                <div class="task-box">
+                    <strong>Задание:</strong>
+                    <ol>
+                        <li>Рассчитать годовое электропотребление по объектам</li>
+                        <li>Составить электробаланс водоканала</li>
+                        <li>Рассчитать удельный расход электроэнергии на 1 м³ воды (подъём) и на 1 м³ стоков (очистка)</li>
+                        <li>Сравнить с отраслевыми нормативами (водоснабжение: 0,4-0,8 кВт·ч/м³, водоотведение: 0,3-0,5 кВт·ч/м³)</li>
+                        <li>Оценить влияние потерь воды на удельное энергопотребление</li>
+                        <li>Разработать мероприятия по снижению потребления насосных станций</li>
+                        <li>Оценить эффект от внедрения частотного регулирования на насосах 2-го подъёма</li>
+                        <li>Рассчитать экономию при снижении потерь воды на 10%</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ВАРИАНТ 9 -->
+            <div class="variant-box">
+                <div class="variant-header">📋 Вариант 9 (последняя цифра зачётки — 9)</div>
+                
+                <h4>Исходные данные:</h4>
+                <p><strong>Предприятие:</strong> Деревообрабатывающий комбинат</p>
+                <p><strong>Расчётный период:</strong> календарный год</p>
+                
+                <p><strong>Общие сведения:</strong></p>
+                <ul>
+                    <li>Установленная мощность: 6 800 кВт</li>
+                    <li>Годовой объём производства: пиломатериалы — 120 000 м³, ДСП — 85 000 м³, фанера — 45 000 м³</li>
+                    <li>Режим работы: двухсменный, 250 дней в году</li>
+                </ul>
+
+                <p><strong>Данные электропотребления по производствам:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Производство/участок</th>
+                            <th>Pуст, кВт</th>
+                            <th>Tг, ч/год</th>
+                            <th>Kи</th>
+                            <th>cos φ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Лесопильный цех</td>
+                            <td>1 800</td>
+                            <td>3 800</td>
+                            <td>0,55</td>
+                            <td>0,75</td>
+                        </tr>
+                        <tr>
+                            <td>Сушильные камеры</td>
+                            <td>1 200</td>
+                            <td>6 500</td>
+                            <td>0,80</td>
+                            <td>0,92</td>
+                        </tr>
+                        <tr>
+                            <td>Производство ДСП (прессы, измельчители)</td>
+                            <td>1 500</td>
+                            <td>4 200</td>
+                            <td>0,65</td>
+                            <td>0,80</td>
+                        </tr>
+                        <tr>
+                            <td>Производство фанеры (лущение, прессование)</td>
+                            <td>1 100</td>
+                            <td>3 800</td>
+                            <td>0,60</td>
+                            <td>0,78</td>
+                        </tr>
+                        <tr>
+                            <td>Аспирация и пневмотранспорт</td>
+                            <td>650</td>
+                            <td>4 000</td>
+                            <td>0,75</td>
+                            <td>0,85</td>
+                        </tr>
+                        <tr>
+                            <td>Котельная (вспомогательное оборудование)</td>
+                            <td>280</td>
+                            <td>5 500</td>
+                            <td>0,70</td>
+                            <td>0,82</td>
+                        </tr>
+                        <tr>
+                            <td>Освещение и прочие</td>
+                            <td>270</td>
+                            <td>3 500</td>
+                            <td>0,65</td>
+                            <td>0,92</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Данные о потерях:</strong></p>
+                <ul>
+                    <li>Потери в трансформаторах (3×2500 кВА): определить расчётом</li>
+                    <li>Потери в сетях: 3,8%</li>
+                </ul>
+
+                <p><strong>Экономические данные:</strong></p>
+                <ul>
+                    <li>Тариф: 5,65 руб./кВт·ч</li>
+                    <li>Отраслевые нормативы: пиломатериалы — 25-40 кВт·ч/м³, ДСП — 80-120 кВт

@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практическая работа №2 - Стандартизация в эксплуатации и ремонте электрических машин</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 50%, #1a365d 100%);
+            min-height: 100vh;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .lecture-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-left: 6px solid #c53030;
+        }
+
+        .breadcrumb {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #1a365d;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .lecture-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .content-body {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #1a365d;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #c53030;
+        }
+
+        h3 {
+            color: #2c5282;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 25px 0 15px 0;
+        }
+
+        h4 {
+            color: #4a5568;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .formula-box {
+            background: #1a365d;
+            color: white;
+            border-left: 4px solid #c53030;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1rem;
+        }
+
+        .formula-box .formula {
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .formula-box .formula-desc {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: #2c5282;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:hover {
+            background: #f7fafc;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);
+            border-left: 4px solid #f6ad55;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+            border-left: 4px solid #c53030;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            color: #742a2a;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .example-title {
+            font-weight: 700;
+            color: #234e52;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e8f4fd 0%, #bee3f8 100%);
+            border-left: 4px solid #3182ce;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .step-box {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4fd 100%);
+            border-left: 4px solid #3182ce;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #2c5282;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .calculation-detail {
+            background: #f7fafc;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px dashed #cbd5e0;
+        }
+
+        .calculation-detail code {
+            background: #edf2f7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+            color: #2d3748;
+        }
+
+        .result-highlight {
+            background: #c6f6d5;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #22543d;
+            margin: 10px 0;
+        }
+
+        .conclusion-box {
+            background: linear-gradient(135deg, #e8f4fd 0%, #c3dafe 100%);
+            border: 2px solid #3182ce;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 12px;
+        }
+
+        .conclusion-box h4 {
+            color: #1a365d;
+            margin-bottom: 15px;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .gost-reference {
+            display: inline-block;
+            background: #edf2f7;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e2e8f0;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: #2c5282;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .nav-btn:hover {
+            background: #1a365d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-btn-home {
+            background: #c53030;
+            flex: 0 0 auto;
+            max-width: 180px;
+        }
+
+        .nav-btn-home:hover {
+            background: #9b2c2c;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .variant-table td:first-child {
+            font-weight: bold;
+            background: #edf2f7;
+            text-align: center;
+        }
+
+        .important-note {
+            background: #fffaf0;
+            border: 1px solid #f6ad55;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .important-note::before {
+            content: "⚠️ ";
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .lecture-header, .content-body {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .nav-btn-home {
+                order: -1;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <header class="lecture-header">
+            <div class="breadcrumb">Практические работы → Работа №2 → Стандартизация электрических машин</div>
+            <h1>Практическая работа №2</h1>
+            <p style="font-size: 1.2rem; color: #2c5282; margin-bottom: 15px;"><strong>Тема:</strong> Стандартизация в эксплуатации и ремонте электрических машин</p>
+            <div class="lecture-meta">
+                <div class="meta-item">📚 Практическое занятие</div>
+                <div class="meta-item">⏱ 4 академических часа</div>
+                <div class="meta-item">🎯 Раздел 2.7: Эксплуатация электрических машин</div>
+            </div>
+        </header>
+
+        <article class="content-body">
+            
+            <!-- ЦЕЛЬ РАБОТЫ -->
+            <h2>Цель работы</h2>
+            
+            <p>Научиться применять требования стандартов (<span class="gost-reference">ГОСТ IEC 60034-1-2014</span>, <span class="gost-reference">ГОСТ Р 51689-2000</span>, <span class="gost-reference">ПТЭЭП</span>) при планировании технического обслуживания и ремонта электродвигателей, определении их технического состояния и принятии решений о дальнейшей эксплуатации.</p>
+
+            <div class="definition-box">
+                <strong>Практическая значимость:</strong> Умение правильно интерпретировать результаты измерений и сопоставлять их с нормативными значениями — ключевой навык инженера-эксплуатационника. От этого зависит безопасность персонала, надёжность оборудования и экономическая эффективность предприятия.
+            </div>
+
+            <!-- ЗАДАНИЕ -->
+            <h2>Задание</h2>
+            
+            <ol>
+                <li>Выбрать свой вариант по последней цифре зачётной книжки (от 0 до 9).</li>
+                <li>По паспортным данным электродвигателя определить его технические характеристики и рассчитать номинальный ток.</li>
+                <li>Определить нормативные значения сопротивления изоляции обмоток согласно <span class="gost-reference">ПТЭЭП</span> и <span class="gost-reference">ГОСТ</span>.</li>
+                <li>Проанализировать результаты измерений и сделать заключение о техническом состоянии двигателя.</li>
+                <li>Определить категорию ремонта и перечень необходимых работ.</li>
+                <li>Рассчитать периодичность технического обслуживания по нормативам системы ППР.</li>
+                <li>Сделать итоговый вывод с рекомендациями по дальнейшей эксплуатации.</li>
+            </ol>
+
+            <!-- ТЕОРЕТИЧЕСКИЕ СВЕДЕНИЯ -->
+            <h2>Краткие теоретические сведения</h2>
+
+            <h3>1. Классы изоляции электрических машин</h3>
+            
+            <p>Класс изоляции определяет максимально допустимую температуру нагрева обмоток при длительной работе. Превышение этой температуры приводит к ускоренному старению изоляции и сокращению срока службы двигателя.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Класс изоляции</th>
+                        <th>Предельная температура, °C</th>
+                        <th>Типичные материалы</th>
+                        <th>Область применения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>A</strong></td>
+                        <td>105</td>
+                        <td>Хлопок, шёлк, бумага, пропитанные</td>
+                        <td>Устаревшие двигатели</td>
+                    </tr>
+                    <tr>
+                        <td><strong>E</strong></td>
+                        <td>120</td>
+                        <td>Синтетические плёнки, эмали</td>
+                        <td>Бытовые приборы</td>
+                    </tr>
+                    <tr>
+                        <td><strong>B</strong></td>
+                        <td>130</td>
+                        <td>Слюдяные материалы на органических связующих</td>
+                        <td>Общепромышленные двигатели</td>
+                    </tr>
+                    <tr>
+                        <td><strong>F</strong></td>
+                        <td>155</td>
+                        <td>Слюда, стекловолокно на синтетических связующих</td>
+                        <td>Современные промышленные двигатели</td>
+                    </tr>
+                    <tr>
+                        <td><strong>H</strong></td>
+                        <td>180</td>
+                        <td>Кремнийорганические материалы</td>
+                        <td>Тяжёлые условия эксплуатации</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <strong>Правило «10 градусов»:</strong> Превышение допустимой температуры изоляции на каждые 10°C сокращает срок службы обмотки примерно в 2 раза. Это правило Аррениуса широко используется при оценке остаточного ресурса электрических машин.
+            </div>
+
+            <h3>2. Нормы сопротивления изоляции обмоток</h3>
+
+            <p>Сопротивление изоляции — важнейший показатель технического состояния электродвигателя. Измерение проводится мегаомметром на соответствующее напряжение.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Номинальное напряжение двигателя, В</th>
+                        <th>Напряжение мегаомметра, В</th>
+                        <th>Минимально допустимое сопротивление изоляции, МОм</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>До 500</td>
+                        <td>500</td>
+                        <td>0,5</td>
+                    </tr>
+                    <tr>
+                        <td>500–1000</td>
+                        <td>1000</td>
+                        <td>1,0</td>
+                    </tr>
+                    <tr>
+                        <td>Свыше 1000</td>
+                        <td>2500</td>
+                        <td>1,0 на каждые 1000 В номинального напряжения</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>Важно!</strong> Измерение сопротивления изоляции проводится при температуре обмотки не ниже +10°C. При более низких температурах результаты измерений могут быть завышены из-за влияния конденсата.
+            </div>
+
+            <h3>3. Коэффициент абсорбции</h3>
+
+            <p>Коэффициент абсорбции (R<sub>60</sub>/R<sub>15</sub>) характеризует степень увлажнения и загрязнения изоляции:</p>
+
+            <div class="formula-box">
+                <div class="formula">K<sub>абс</sub> = R<sub>60</sub> / R<sub>15</sub></div>
+                <div class="formula-desc">
+                    где R<sub>60</sub> — сопротивление изоляции через 60 секунд после подачи напряжения;<br>
+                    R<sub>15</sub> — сопротивление изоляции через 15 секунд после подачи напряжения.
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Значение K<sub>абс</sub></th>
+                        <th>Состояние изоляции</th>
+                        <th>Рекомендации</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>≥ 1,3</td>
+                        <td>Хорошее (сухая изоляция)</td>
+                        <td>Двигатель допускается к эксплуатации</td>
+                    </tr>
+                    <tr>
+                        <td>1,0 – 1,3</td>
+                        <td>Удовлетворительное</td>
+                        <td>Требуется контроль, желательна сушка</td>
+                    </tr>
+                    <tr>
+                        <td>< 1,0</td>
+                        <td>Неудовлетворительное (увлажнена)</td>
+                        <td>Обязательная сушка перед включением</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>4. Структура ремонтного цикла асинхронных двигателей</h3>
+
+            <p>Согласно системе ППР, ремонтный цикл электродвигателей включает:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Вид ТО/ремонта</th>
+                        <th>Обозначение</th>
+                        <th>Периодичность</th>
+                        <th>Основные работы</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Техническое обслуживание</td>
+                        <td>ТО</td>
+                        <td>Ежемесячно</td>
+                        <td>Осмотр, очистка, проверка крепления, контроль нагрева</td>
+                    </tr>
+                    <tr>
+                        <td>Текущий ремонт</td>
+                        <td>Т</td>
+                        <td>1 раз в год</td>
+                        <td>Замена смазки, проверка зазоров, измерение сопротивления изоляции</td>
+                    </tr>
+                    <tr>
+                        <td>Капитальный ремонт</td>
+                        <td>К</td>
+                        <td>1 раз в 5–8 лет</td>
+                        <td>Полная разборка, замена подшипников, перемотка (при необходимости)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <strong>Типовая структура ремонтного цикла:</strong><br>
+                К – ТО – ТО – Т – ТО – ТО – Т – ТО – ТО – Т – ТО – ТО – Т – ТО – ТО – К<br><br>
+                Это означает: между капитальными ремонтами проводится 4 текущих ремонта и 12 технических обслуживаний.
+            </div>
+
+            <h3>5. Классы энергоэффективности</h3>
+
+            <p>Согласно <span class="gost-reference">ГОСТ IEC 60034-30-1-2016</span>, электродвигатели классифицируются по энергоэффективности:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Класс</th>
+                        <th>Наименование</th>
+                        <th>Характеристика</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>IE1</strong></td>
+                        <td>Стандартная эффективность</td>
+                        <td>Базовый уровень (устаревшие двигатели)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IE2</strong></td>
+                        <td>Высокая эффективность</td>
+                        <td>Минимальные требования для новых двигателей</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IE3</strong></td>
+                        <td>Премиум эффективность</td>
+                        <td>Рекомендуется для длительной эксплуатации</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IE4</strong></td>
+                        <td>Супер-премиум эффективность</td>
+                        <td>Максимальная экономия энергии</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- СПРАВОЧНЫЕ ДАННЫЕ -->
+            <h2>Справочные данные для расчётов</h2>
+
+            <h3>Таблица А. Стандартный ряд мощностей электродвигателей (кВт)</h3>
+            <p><span class="gost-reference">ГОСТ 12139-84</span></p>
+            <div class="highlight-box">
+                0,37 – 0,55 – 0,75 – 1,1 – 1,5 – 2,2 – 3,0 – 4,0 – 5,5 – 7,5 – 11 – 15 – 18,5 – 22 – 30 – 37 – 45 – 55 – 75 – 90 – 110 – 132 – 160 – 200 – 250 – 315 – 400
+            </div>
+
+            <h3>Таблица Б. Стандартные синхронные частоты вращения (об/мин) при 50 Гц</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Число пар полюсов (p)</th>
+                        <th>Синхронная частота (n<sub>1</sub>), об/мин</th>
+                        <th>Типичная номинальная частота (n<sub>2</sub>), об/мин</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>3000</td><td>2850–2950</td></tr>
+                    <tr><td>2</td><td>1500</td><td>1420–1480</td></tr>
+                    <tr><td>3</td><td>1000</td><td>950–980</td></tr>
+                    <tr><td>4</td><td>750</td><td>720–740</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Таблица В. Формулы для расчётов</h3>
+
+            <div class="formula-box">
+                <strong>Номинальный ток трёхфазного асинхронного двигателя:</strong>
+                <div class="formula">I<sub>н</sub> = P<sub>н</sub> / (√3 × U<sub>н</sub> × η × cos φ)</div>
+                <div class="formula-desc">
+                    где P<sub>н</sub> — номинальная мощность, Вт;<br>
+                    U<sub>н</sub> — номинальное линейное напряжение, В;<br>
+                    η — КПД двигателя (в долях единицы);<br>
+                    cos φ — коэффициент мощности.
+                </div>
+            </div>
+
+            <div class="formula-box">
+                <strong>Скольжение асинхронного двигателя:</strong>
+                <div class="formula">s = (n<sub>1</sub> - n<sub>2</sub>) / n<sub>1</sub> × 100%</div>
+                <div class="formula-desc">
+                    где n<sub>1</sub> — синхронная частота вращения, об/мин;<br>
+                    n<sub>2</sub> — номинальная частота вращения ротора, об/мин.
+                </div>
+            </div>
+
+            <h3>Таблица Г. Допустимые значения вибрации электродвигателей</h3>
+            <p><span class="gost-reference">ГОСТ ИСО 10816-1-97</span></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Высота оси вращения, мм</th>
+                        <th>Хорошее состояние, мм/с</th>
+                        <th>Допустимо, мм/с</th>
+                        <th>Требуется ремонт, мм/с</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>56–132</td><td>до 1,8</td><td>1,8–4,5</td><td>более 4,5</td></tr>
+                    <tr><td>132–225</td><td>до 2,8</td><td>2,8–7,1</td><td>более 7,1</td></tr>
+                    <tr><td>225–400</td><td>до 4,5</td><td>4,5–11,2</td><td>более 11,2</td></tr>
+                </tbody>
+            </table>
+
+            <!-- ВАРИАНТЫ ЗАДАНИЙ -->
+            <h2>Варианты заданий</h2>
+            <p><em>(Номер варианта выбирается по последней цифре зачётной книжки)</em></p>
+
+            <table class="variant-table">
+                <thead>
+                    <tr>
+                        <th>Вариант</th>
+                        <th>Тип двигателя</th>
+                        <th>P<sub>н</sub>, кВт</th>
+                        <th>U<sub>н</sub>, В</th>
+                        <th>n<sub>2</sub>, об/мин</th>
+                        <th>КПД, %</th>
+                        <th>cos φ</th>
+                        <th>Класс изол.</th>
+                        <th>R<sub>изм</sub>, МОм</th>
+                        <th>Вибрация, мм/с</th>
+                        <th>Наработка, тыс. ч</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0</td>
+                        <td>АИР160S4</td>
+                        <td>15</td>
+                        <td>380</td>
+                        <td>1460</td>
+                        <td>88,5</td>
+                        <td>0,86</td>
+                        <td>F</td>
+                        <td>45</td>
+                        <td>2,2</td>
+                        <td>28</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>АИР112M2</td>
+                        <td>7,5</td>
+                        <td>380</td>
+                        <td>2900</td>
+                        <td>87,5</td>
+                        <td>0,88</td>
+                        <td>F</td>
+                        <td>12</td>
+                        <td>3,8</td>
+                        <td>42</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>АИР180M4</td>
+                        <td>30</td>
+                        <td>380</td>
+                        <td>1470</td>
+                        <td>91,0</td>
+                        <td>0,87</td>
+                        <td>F</td>
+                        <td>85</td>
+                        <td>4,1</td>
+                        <td>35</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>АИР100L4</td>
+                        <td>4,0</td>
+                        <td>380</td>
+                        <td>1420</td>
+                        <td>85,0</td>
+                        <td>0,84</td>
+                        <td>B</td>
+                        <td>0,8</td>
+                        <td>2,5</td>
+                        <td>52</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>АИР200L6</td>
+                        <td>30</td>
+                        <td>380</td>
+                        <td>980</td>
+                        <td>90,5</td>
+                        <td>0,83</td>
+                        <td>F</td>
+                        <td>120</td>
+                        <td>5,8</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>АИР132S4</td>
+                        <td>7,5</td>
+                        <td>380</td>
+                        <td>1450</td>
+                        <td>87,0</td>
+                        <td>0,85</td>
+                        <td>F</td>
+                        <td>35</td>
+                        <td>1,9</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>АИР225M4</td>
+                        <td>55</td>
+                        <td>380</td>
+                        <td>1475</td>
+                        <td>92,5</td>
+                        <td>0,88</td>
+                        <td>F</td>
+                        <td>180</td>
+                        <td>6,5</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>АИР160M2</td>
+                        <td>18,5</td>
+                        <td>380</td>
+                        <td>2930</td>
+                        <td>89,5</td>
+                        <td>0,89</td>
+                        <td>F</td>
+                        <td>65</td>
+                        <td>3,2</td>
+                        <td>31</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>АИР80B4</td>
+                        <td>1,5</td>
+                        <td>380</td>
+                        <td>1410</td>
+                        <td>78,0</td>
+                        <td>0,83</td>
+                        <td>B</td>
+                        <td>0,4</td>
+                        <td>4,2</td>
+                        <td>65</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>АИР250S4</td>
+                        <td>75</td>
+                        <td>380</td>
+                        <td>1480</td>
+                        <td>93,0</td>
+                        <td>0,88</td>
+                        <td>H</td>
+                        <td>250</td>
+                        <td>7,8</td>
+                        <td>15</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="important-note">
+                <strong>Пояснение к обозначению двигателя АИР160S4:</strong><br>
+                АИР — серия (асинхронный, интернациональный, Россия);<br>
+                160 — высота оси вращения, мм;<br>
+                S — установочный размер по длине (S — короткий, M — средний, L — длинный);<br>
+                4 — число полюсов (определяет синхронную частоту: 4 полюса = 1500 об/мин).
+            </div>
+
+            <!-- ПРИМЕР ВЫПОЛНЕНИЯ -->
+            <h2>Подробный пример выполнения работы</h2>
+
+            <div class="highlight-box">
+                <strong>Дано (Вариант X — демонстрационный):</strong>
+                <ul>
+                    <li>Тип двигателя: <strong>АИР180S4</strong></li>
+                    <li>Номинальная мощность P<sub>н</sub> = <strong>22 кВт</strong></li>
+                    <li>Номинальное напряжение U<sub>н</sub> = <strong>380 В</strong></li>
+                    <li>Номинальная частота вращения n<sub>2</sub> = <strong>1465 об/мин</strong></li>
+                    <li>КПД η = <strong>90,0%</strong></li>
+                    <li>Коэффициент мощности cos φ = <strong>0,87</strong></li>
+                    <li>Класс изоляции: <strong>F</strong></li>
+                    <li>Измеренное сопротивление изоляции R<sub>изм</sub> = <strong>25 МОм</strong></li>
+                    <li>Измеренная вибрация = <strong>3,5 мм/с</strong></li>
+                    <li>Наработка с начала эксплуатации = <strong>38 тыс. часов</strong></li>
+                </ul>
+            </div>
+
+            <!-- ШАГ 1 -->
+            <div class="step-box">
+                <h3><span class="step-number">1</span>Расчёт номинального тока электродвигателя</h3>
+                
+                <p>Для расчёта номинального тока трёхфазного асинхронного двигателя используем формулу:</p>
+
+                <div class="formula-box">
+                    <div class="formula">I<sub>н</sub> = P<sub>н</sub> / (√3 × U<sub>н</sub> × η × cos φ)</div>
+                </div>
+
+                <p><strong>Разберём каждый элемент формулы:</strong></p>
+
+                <div class="calculation-detail">
+                    <p><strong>P<sub>н</sub> = 22 кВт = 22 000 Вт</strong></p>
+                    <p><em>Почему переводим в ватты?</em> Потому что в системе СИ мощность измеряется в ваттах. Если оставить киловатты, результат будет в 1000 раз меньше действительного значения тока.</p>
+                </div>
+
+                <div class="calculation-detail">
+                    <p><strong>√3 ≈ 1,732</strong></p>
+                    <p><em>Откуда берётся √3?</em> Это коэффициент, связывающий линейное и фазное напряжение в трёхфазной системе. При соединении обмоток «звездой» линейное напряжение (380 В между фазами) в √3 раз больше фазного (220 В). Этот множитель учитывает особенность трёхфазной системы.</p>
+                </div>
+
+                <div class="calculation-detail">
+                    <p><strong>U<sub>н</sub> = 380 В</strong></p>
+                    <p><em>Что это за напряжение?</em> Это номинальное линейное напряжение — напряжение между любыми двумя фазами сети. Стандартное значение для промышленных сетей 0,4 кВ.</p>
+                </div>
+
+                <div class="calculation-detail">
+                    <p><strong>η = 90,0% = 0,90</strong></p>
+                    <p><em>Зачем КПД в знаменателе?</em> КПД (коэффициент полезного действия) показывает, какая часть потребляемой электрической мощности преобразуется в механическую. Если КПД = 90%, то двигатель потребляет из сети больше мощности, чем отдаёт на валу: P<sub>потр</sub> = P<sub>мех</sub> / η. Разница — это потери (нагрев обмоток, трение в подшипниках, потери в стали).</p>
+                    <p><em>Пример:</em> Двигатель с P<sub>н</sub> = 22 кВт на валу потребляет из сети: 22 / 0,90 = 24,44 кВт</p>
+                </div>
+
+                <div class="calculation-detail">
+                    <p><strong>cos φ = 0,87</strong></p>
+                    <p><em>Что такое коэффициент мощности?</em> Асинхронный двигатель потребляет не только активную мощность (которая преобразуется в механическую работу), но и реактивную (для создания магнитного поля). Полная мощность S = P / cos φ. Коэффициент мощности показывает, какая часть полной мощности является активной.</p>
+                </div>
+
+                <p><strong>Подставляем значения и выполняем расчёт:</strong></p>
+
+                <div class="calculation-detail">
+                    <p><code>I<sub>н</sub> = 22000 / (1,732 × 380 × 0,90 × 0,87)</code></p>
+                    <p><strong>Шаг 1:</strong> Вычисляем знаменатель поэтапно:</p>
+                    <p><code>1,732 × 380 = 658,16</code> — это √3 × U</p>
+                    <p><code>658,16 × 0,90 = 592,34</code> — учли КПД</p>
+                    <p><code>592,34 × 0,87 = 515,34</code> — учли cos φ</p>
+                    <p><strong>Шаг 2:</strong> Делим мощность на полученное значение:</p>
+                    <p><code>I<sub>н</sub> = 22000 / 515,34 = 42,69 А</code></p>
+                </div>
+
+                <div class="result-highlight">
+                    ✓ Номинальный ток электродвигателя: <strong>I<sub>н</sub> ≈ 42,7 А</strong>
+                </div>
+
+                <p><em>Для чего нужен этот расчёт?</em> Номинальный ток используется для:</p>
+                <ul>
+                    <li>Выбора сечения питающего кабеля</li>
+                    <li>Настройки уставок тепловой защиты</li>
+                    <li>Выбора коммутационной аппаратуры (контакторов, автоматов)</li>
+                    <li>Контроля режима работы — если измеренный ток значительно отличается от номинального, это сигнал о проблеме</li>
+                </ul>
+            </div>
+
+            <!-- ШАГ 2 -->
+            <div class="step-box">
+                <h3><span class="step-number">2</span>Определение нормативного сопротивления изоляции</h3>
+
+                <p>Согласно <span class="gost-reference">ПТЭЭП (Приложение 3)</span>, минимально допустимое сопротивление изоляции обмоток электродвигателей напряжением до 1000 В составляет:</p>
+
+                <div class="calculation-detail">
+                    <p><strong>R<sub>изол.мин</sub> = 0,5 МОм</strong></p>
+                    <p><em>Почему именно 0,5 МОм?</em> Это значение установлено на основе многолетнего опыта эксплуатации и обеспечивает:</p>
+                    <ul>
+                        <li>Безопасность персонала (ограничение тока утечки)</li>
+                        <li>Защиту от пробоя изоляции при пусках</li>
+                        <li>Минимально достаточный запас электрической прочности</li>
+                    </ul>
+                </div>
+
+                <p><strong>Анализ измеренного значения:</strong></p>
+
+                <div class="calculation-detail">
+                    <p>Измерено: <strong>R<sub>изм</sub> = 25 МОм</strong></p>
+                    <p>Норматив: <strong>R<sub>мин</sub> = 0,5 МОм</strong></p>
+                    <p>Отношение: <code>R<sub>изм</sub> / R<sub>мин</sub> = 25 / 0,5 = 50</code></p>
+                    <p><em>Измеренное значение в 50 раз превышает минимально допустимое!</em></p>
+                </div>
+
+                <div class="result-highlight">
+                    ✓ Сопротивление изоляции соответствует норме с большим запасом.<br>
+                    ✓ Условие R<sub>изм</sub> ≥ R<sub>мин</sub> выполнено: 25 МОм ≥ 0,5 МОм
+                </div>
+
+                <div class="info-box">
+                    <strong>Дополнительный анализ:</strong> Высокое сопротивление изоляции (25 МОм) свидетельствует о хорошем состоянии изоляционной системы. Для двигателей класса F с наработкой 38 000 часов это отличный показатель. Изоляция сухая, без значительных загрязнений и повреждений.
+                </div>
+            </div>
+
+            <!-- ШАГ 3 -->
+            <div class="step-box">
+                <h3><span class="step-number">3</span>Определение скольжения и проверка соответствия стандарту</h3>
+
+                <p>Скольжение — важный параметр, характеризующий режим работы асинхронного двигателя.</p>
+
+                <div class="formula-box">
+                    <div class="formula">s = (n<sub>1</sub> - n<sub>2</sub>) / n<sub>1</sub> × 100%</div>
+                </div>
+
+                <p><strong>Определяем синхронную частоту вращения:</strong></p>
+
+                <div class="calculation-detail">
+                    <p>Из обозначения АИР180<strong>S4</strong> → число полюсов = 4</p>
+                    <p>Синхронная частота: <code>n<sub>1</sub> = 60 × f / p = 60 × 50 / 2 = 1500 об/мин</code></p>
+                    <p><em>Пояснение:</em> f = 50 Гц (частота сети), p = 2 (число пар полюсов, т.к. всего полюсов 4)</p>
+                </div>
+
+                <p><strong>Рассчитываем скольжение:</strong></p>
+
+                <div class="calculation-detail">
+                    <p><code>s = (1500 - 1465) / 1500 × 100% = 35 / 1500 × 100% = 2,33%</code></p>
+                </div>
+
+                <div class="result-highlight">
+                    ✓ Номинальное скольжение: <strong>s = 2,33%</strong>
+                </div>
+
+                <p><strong>Проверка соответствия стандартам:</strong></p>
+
+                <div class="calculation-detail">
+                    <p>Согласно <span class="gost-reference">ГОСТ Р 51689-2000</span>, номинальное скольжение асинхронных двигателей общепромышленного назначения должно находиться в пределах <strong>2–5%</strong> для двигателей мощностью 10–100 кВт.</p>
+                    <p>Наше значение: 2,33% — <strong>соответствует норме</strong>.</p>
+                    <p><em>Что означает низкое скольжение?</em> Скольжение 2,33% говорит о том, что ротор вращается почти синхронно с магнитным полем статора. Это характерно для двигателей с высоким КПД — меньше скольжение → меньше потери в роторе.</p>
+                </div>
+            </div>
+
+            <!-- ШАГ 4 -->
+            <div class="step-box">
+                <h3><span class="step-number">4</span>Анализ вибрационного состояния</h3>
+
+                <p>Вибрация — один из главных диагностических параметров электрических машин. Повышенная вибрация указывает на дефекты подшипников, дисбаланс ротора, ослабление крепления или электромагнитные проблемы.</p>
+
+                <p><strong>Определяем нормативные значения:</strong></p>
+
+                <div class="calculation-detail">
+                    <p>Высота оси вращения двигателя АИР180S4: <strong>h = 180 мм</strong></p>
+                    <p>(Это число в обозначении — первые три цифры после АИР)</p>
+                    <p>По <span class="gost-reference">ГОСТ ИСО 10816-1-97</span> для h = 132–225 мм:</p>
+                    <ul>
+                        <li>Хорошее состояние: до 2,8 мм/с</li>
+                        <li>Допустимо: 2,8–7,1 мм/с</li>
+                        <li>Требуется ремонт: более 7,1 мм/с</li>
+                    </ul>
+                </div>
+
+                <p><strong>Оценка измеренного значения:</strong></p>
+
+                <div class="calculation-detail">
+                    <p>Измеренная вибрация: <strong>3,5 мм/с</strong></p>
+                    <p>Сравниваем с нормами:</p>
+                    <ul>
+                        <li>3,5 > 2,8 мм/с → превышает границу «хорошего» состояния</li>
+                        <li>3,5 < 7,1 мм/с → не превышает границу «допустимо»</li>
+                    </ul>
+                </div>
+
+                <div class="result-highlight">
+                    ⚠ Вибрационное состояние: <strong>ДОПУСТИМО</strong>, но требует внимания<br>
+                    Рекомендация: провести балансировку ротора при ближайшем текущем ремонте
+                </div>
+
+                <div class="warning-box">
+                    <strong>Важно!</strong> Вибрация 3,5 мм/с находится в зоне «допустимо», но ближе к нижней границе. Это означает, что двигатель может продолжать работу, однако необходимо:
+                    <ul>
+                        <li>Увеличить частоту контроля вибрации (раз в месяц вместо раз в квартал)</li>
+                        <li>Проверить состояние подшипников при ближайшем ТО</li>
+                        <li>Запланировать диагностику причин вибрации</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ШАГ 5 -->
+            <div class="step-box">
+                <h3><span class="step-number">5</span>Анализ наработки и определение остаточного ресурса</h3>
+
+                <p>Наработка электродвигателя — важнейший показатель для планирования ремонтов и оценки остаточного ресурса.</p>
+
+                <p><strong>Исходные данные:</strong></p>
+
+                <div class="calculation-detail">
+                    <p>Наработка с начала эксплуатации: <strong>38 000 часов</strong></p>
+                    <p>Нормативный срок службы асинхронного двигателя: <strong>15–20 лет</strong></p>
+                    <p>Межремонтный период до капитального ремонта: <strong>~25 000–40 000 часов</strong></p>
+                    <p>(зависит от условий эксплуатации и мощности)</p>
+                </div>
+
+                <p><strong>Расчёт эквивалентного срока эксплуатации:</strong></p>
+
+                <div class="calculation-detail">
+                    <p>При работе в одну смену (8 часов) 250 дней в году:</p>
+                    <p><code>Годовая наработка = 8 × 250 = 2000 часов</code></p>
+                    <p><code>Срок эксплуатации = 38000 / 2000 = 19 лет</code></p>
+                    <p>При работе в две смены (16 часов):</p>
+                    <p><code>Годовая наработка = 16 × 250 = 4000 часов</code></p>
+                    <p><code>Срок эксплуатации = 38000 / 4000 = 9,5 лет</code></p>
+                </div>
+
+                <div class="result-highlight">
+                    ⚠ Двигатель выработал значительную часть ресурса<br>
+                    При односменной работе — близок к нормативному сроку службы<br>
+                    Рекомендация: провести углублённую диагностику состояния
+                </div>
+
+                <p><strong>Оценка необходимости капитального ремонта:</strong></p>
+
+                <div class="calculation-detail">
+                    <p>Согласно типовой структуре ремонтного цикла, капитальный ремонт проводится после наработки 25 000–40 000 часов.</p>
+                    <p>Наработка двигателя: 38 000 часов — <strong>приближается к верхней границе межремонтного периода</strong>.</p>
+                    <p>Учитывая хорошее состояние изоляции (25 МОм) и допустимый уровень вибрации, можно продлить эксплуатацию до очередного планового ремонта.</p>
+                </div>
+            </div>
+
+            <!-- ШАГ 6 -->
+            <div class="step-box">
+                <h3><span class="step-number">6</span>Определение категории и объёма ремонта</h3>
+
+                <p>На основании анализа всех параметров определяем необходимый вид ремонтного воздействия.</p>
+
+                <p><strong>Сводная таблица состояния двигателя:</strong></p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Параметр</th>
+                            <th>Измеренное значение</th>
+                            <th>Норматив</th>
+                            <th>Оценка</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Сопротивление изоляции</td>
+                            <td>25 МОм</td>
+                            <td>≥ 0,5 МОм</td>
+                            <td style="color: green; font-weight: bold;">✓ Отлично</td>
+                        </tr>
+                        <tr>
+                            <td>Вибрация</td>
+                            <td>3,5 мм/с</td>
+                            <td>≤ 2,8 (хорошо) / ≤ 7,1 (допустимо)</td>
+                            <td style="color: orange; font-weight: bold;">⚠ Допустимо</td>
+                        </tr>
+                        <tr>
+                            <td>Наработка</td>
+                            <td>38 000 ч</td>
+                            <td>до 40 000 ч (до кап. ремонта)</td>
+                            <td style="color: orange; font-weight: bold;">⚠ Близко к пределу</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="result-highlight">
+                    <strong>Рекомендуемый вид ремонта: ТЕКУЩИЙ РЕМОНТ (Т)</strong>
+                </div>
+
+                <p><strong>Объём работ текущего ремонта:</strong></p>
+
+                <ol>
+                    <li><strong>Механическая часть:</strong>
+                        <ul>
+                            <li>Замена подшипников (основная причина повышенной вибрации)</li>
+                            <li>Проверка и восстановление посадочных мест</li>
+                            <li>Балансировка ротора</li>
+                            <li>Проверка крепления лобовых частей обмотки</li>
+                        </ul>
+                    </li>
+                    <li><strong>Электрическая часть:</strong>
+                        <ul>
+                            <li>Измерение сопротивления обмоток постоянному току</li>
+                            <li>Проверка межвитковой изоляции</li>
+                            <li>Проверка состояния выводов и клеммной коробки</li>
+                        </ul>
+                    </li>
+                    <li><strong>Общие работы:</strong>
+                        <ul>
+                            <li>Очистка и продувка двигателя</li>
+                            <li>Проверка системы охлаждения (вентилятор, кожух)</li>
+                            <li>Проверка заземления</li>
+                            <li>Покраска (при необходимости)</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- ШАГ 7 -->
+            <div class="step-box">
+                <h3><span class="step-number">7</span>Расчёт периодичности технического обслуживания</h3>
+
+                <p>Согласно системе ППР, периодичность ТО зависит от условий эксплуатации и категории помещения.</p>
+
+                <div class="formula-box">
+                    <div class="formula">T<sub>ТО</sub> = T<sub>баз</sub> × K<sub>усл</sub> × K<sub>возр</sub></div>
+                    <div class="formula-desc">
+                        где T<sub>баз</sub> — базовая периодичность ТО;<br>
+                        K<sub>усл</sub> — коэффициент условий эксплуатации;<br>
+                        K<sub>возр</sub> — коэффициент, учитывающий возраст оборудования.
+                    </div>
+                </div>
+
+                <p><strong>Определяем коэффициенты:</strong></p>
+
+                <div class="calculation-detail">
+                    <p><strong>T<sub>баз</sub> = 720 часов</strong> (стандартная периодичность ТО — 1 месяц)</p>
+                    <p><strong>K<sub>усл</sub> = 1,0</strong> — нормальные условия (закрытое сухое помещение)</p>
+                    <p>Варианты K<sub>усл</sub>: 0,8 — тяжёлые условия; 0,9 — средние; 1,0 — нормальные</p>
+                    <p><strong>K<sub>возр</sub> = 0,8</strong> — для оборудования с наработкой более 30 000 часов</p>
+                    <p>Варианты K<sub>возр</sub>: 1,0 — новое; 0,9 — до 20 000 ч; 0,8 — более 30 000 ч</p>
+                </div>
+
+                <p><strong>Расчёт периодичности:</strong></p>
+
+                <div class="calculation-detail">
+                    <p><code>T<sub>ТО</sub> = 720 × 1,0 × 0,8 = 576 часов</code></p>
+                    <p>Округляем до стандартного значения: <strong>≈ 500 часов (3 недели)</strong></p>
+                </div>
+
+                <div class="result-highlight">
+                    ✓ Рекомендуемая периодичность ТО: <strong>каждые 500 часов работы</strong><br>
+                    (или 3 недели при двухсменной работе)
+                </div>
+
+                <p><strong>Содержание ежемесячного ТО:</strong></p>
+                <ul>
+                    <li>Внешний осмотр (отсутствие повреждений, загрязнений, утечек смазки)</li>
+                    <li>Контроль температуры нагрева корпуса и подшипников</li>
+                    <li>Проверка уровня вибрации (переносным виброметром)</li>
+                    <li>Проверка затяжки крепёжных соединений</li>
+                    <li>Контроль токовой нагрузки (сравнение с номинальной)</li>
+                    <li>Проверка состояния клеммных соединений</li>
+                    <li>Очистка от пыли (продувка сжатым воздухом)</li>
+                </ul>
+            </div>
+
+            <!-- ИТОГОВЫЙ ВЫВОД -->
+            <div class="conclusion-box">
+                <h3><span class="step-number">8</span>Итоговый вывод и рекомендации</h3>
+
+                <p><strong>Объект анализа:</strong> Асинхронный электродвигатель АИР180S4, P<sub>н</sub> = 22 кВт, n = 1465 об/мин</p>
+
+                <p><strong>Результаты анализа:</strong></p>
+                <ol>
+                    <li><strong>Номинальный ток:</strong> I<sub>н</sub> = 42,7 А (рассчитан по стандартной формуле для трёхфазных АД)</li>
+                    <li><strong>Состояние изоляции:</strong> ОТЛИЧНОЕ. R<sub>изм</sub> = 25 МОм при норме ≥ 0,5 МОм. Запас по сопротивлению изоляции — 50-кратный.</li>
+                    <li><strong>Вибрационное состояние:</strong> ДОПУСТИМОЕ. Измеренная вибрация 3,5 мм/с находится в пределах нормы (до 7,1 мм/с), но превышает границу «хорошего» состояния (2,8 мм/с).</li>
+                    <li><strong>Ресурсное состояние:</strong> Наработка 38 000 часов приближается к межремонтному периоду (40 000 часов до капитального ремонта).</li>
+                </ol>
+
+                <p><strong>Принятые решения по результатам анализа:</strong></p>
+                <ul>
+                    <li>Двигатель <strong>допускается к дальнейшей эксплуатации</strong></li>
+                    <li>Назначен <strong>текущий ремонт</strong> с заменой подшипников и балансировкой ротора</li>
+                    <li>Периодичность ТО сокращена до <strong>500 часов</strong> (вместо стандартных 720 часов) в связи с возрастом оборудования</li>
+                    <li>После текущего ремонта — контрольное измерение вибрации</li>
+                </ul>
+
+                <p><strong>Применённые нормативные документы:</strong></p>
+                <ul>
+                    <li><span class="gost-reference">ПТЭЭП</span> — нормы сопротивления изоляции</li>
+                    <li><span class="gost-reference">ГОСТ ИСО 10816-1-97</span> — нормы вибрации</li>
+                    <li><span class="gost-reference">ГОСТ Р 51689-2000</span> — технические требования к асинхронным двигателям</li>
+                    <li><span class="gost-reference">РД 34.45-51.300-97</span> — объём и нормы испытаний</li>
+                </ul>
+            </div>
+
+            <!-- СПИСОК ЛИТЕРАТУРЫ -->
+            <h2>Рекомендуемая литература</h2>
+
+            <ol>
+                <li>ПТЭЭП. Правила технической эксплуатации электроустановок потребителей. — М.: ЭНАС, 2023.</li>
+                <li>ГОСТ IEC 60034-1-2014. Машины электрические вращающиеся. Часть 1. Номинальные данные и характеристики.</li>
+                <li>ГОСТ Р 51689-2000. Машины электрические асинхронные мощностью от 1 до 400 кВт включительно.</li>
+                <li>ГОСТ ИСО 10816-1-97. Вибрация. Контроль состояния машин по результатам измерений вибрации на невращающихся частях.</li>
+                <li>РД 34.45-51.300-97. Объём и нормы испытаний электрооборудования.</li>
+                <li>Сибикин Ю.Д. Техническое обслуживание, ремонт электрооборудования и сетей промышленных предприятий. — М.: Академия, 2020.</li>
+            </ol>
+
+            <div class="nav-buttons">
+                <a href="pr1.html" class="nav-btn">← Практическая работа №1</a>
+                <a href="start.html" class="nav-btn nav-btn-home">📚 Оглавление</a>
+                <a href="pr3.html" class="nav-btn">Практическая работа №3 →</a>
+            </div>
+
+        </article>
+
+        <footer class="footer">
+            <p>Эксплуатация электроустановок — Практические работы</p>
+            <p>© 2024</p>
+        </footer>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,1921 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практическая работа №3 - Методика заполнения наряд-допуска и распоряжения</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 50%, #1a365d 100%);
+            min-height: 100vh;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .lecture-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-left: 6px solid #c53030;
+        }
+
+        .breadcrumb {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #1a365d;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .lecture-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .content-body {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #1a365d;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #c53030;
+        }
+
+        h3 {
+            color: #2c5282;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 25px 0 15px 0;
+        }
+
+        h4 {
+            color: #4a5568;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: #2c5282;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:hover {
+            background: #f7fafc;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);
+            border-left: 4px solid #f6ad55;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+            border-left: 4px solid #c53030;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            color: #742a2a;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e8f4fd 0%, #bee3f8 100%);
+            border-left: 4px solid #3182ce;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .step-box {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4fd 100%);
+            border-left: 4px solid #3182ce;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #2c5282;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .document-form {
+            background: #fff;
+            border: 2px solid #2c5282;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .document-header {
+            text-align: center;
+            border-bottom: 2px solid #1a365d;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .document-header h3 {
+            color: #1a365d;
+            font-size: 1.4rem;
+            margin: 0;
+        }
+
+        .document-field {
+            display: flex;
+            margin: 12px 0;
+            align-items: flex-start;
+        }
+
+        .field-label {
+            min-width: 200px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .field-value {
+            flex: 1;
+            border-bottom: 1px solid #718096;
+            padding: 2px 5px;
+            min-height: 24px;
+            color: #c53030;
+            font-weight: 500;
+        }
+
+        .field-hint {
+            font-size: 0.85rem;
+            color: #718096;
+            font-style: italic;
+            margin-left: 5px;
+        }
+
+        .signature-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f7fafc;
+            border-radius: 8px;
+        }
+
+        .signature-item {
+            text-align: center;
+        }
+
+        .signature-line {
+            border-bottom: 1px solid #2d3748;
+            height: 30px;
+            margin-bottom: 5px;
+        }
+
+        .signature-label {
+            font-size: 0.85rem;
+            color: #4a5568;
+        }
+
+        .filled-value {
+            color: #2c5282;
+            font-weight: 600;
+            background: #edf2f7;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .section-divider {
+            border-top: 2px dashed #cbd5e0;
+            margin: 25px 0;
+            padding-top: 20px;
+        }
+
+        .comparison-table {
+            margin: 20px 0;
+        }
+
+        .comparison-table th {
+            background: #1a365d;
+        }
+
+        .comparison-table td:first-child {
+            font-weight: 600;
+            background: #f7fafc;
+        }
+
+        .result-highlight {
+            background: #c6f6d5;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #22543d;
+            margin: 10px 0;
+        }
+
+        .conclusion-box {
+            background: linear-gradient(135deg, #e8f4fd 0%, #c3dafe 100%);
+            border: 2px solid #3182ce;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 12px;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .gost-reference {
+            display: inline-block;
+            background: #edf2f7;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e2e8f0;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: #2c5282;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .nav-btn:hover {
+            background: #1a365d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-btn-home {
+            background: #c53030;
+            flex: 0 0 auto;
+            max-width: 180px;
+        }
+
+        .nav-btn-home:hover {
+            background: #9b2c2c;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .important-note {
+            background: #fffaf0;
+            border: 1px solid #f6ad55;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .important-note::before {
+            content: "⚠️ ";
+        }
+
+        .check-list {
+            background: #f0fff4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .check-list li::marker {
+            content: "✓ ";
+            color: #38a169;
+            font-weight: bold;
+        }
+
+        .error-example {
+            background: #fff5f5;
+            border-left: 4px solid #c53030;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .correct-example {
+            background: #f0fff4;
+            border-left: 4px solid #38a169;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .role-card {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .role-title {
+            color: #2c5282;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .role-badge {
+            background: #2c5282;
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #3182ce;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #f7fafc;
+            border-radius: 8px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 20px;
+            width: 10px;
+            height: 10px;
+            background: #3182ce;
+            border-radius: 50%;
+        }
+
+        .timeline-time {
+            font-weight: 600;
+            color: #2c5282;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .lecture-header, .content-body {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .signature-block {
+                grid-template-columns: 1fr;
+            }
+
+            .document-field {
+                flex-direction: column;
+            }
+
+            .field-label {
+                min-width: auto;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <header class="lecture-header">
+            <div class="breadcrumb">Практические работы → Работа №3 → Оформление наряд-допуска и распоряжения</div>
+            <h1>Практическая работа №3</h1>
+            <p style="font-size: 1.2rem; color: #2c5282; margin-bottom: 15px;"><strong>Тема:</strong> Методика заполнения «наряд-допуска», «распоряжения»</p>
+            <div class="lecture-meta">
+                <div class="meta-item">📚 Практическое занятие</div>
+                <div class="meta-item">⏱ 4 академических часа</div>
+                <div class="meta-item">🎯 Раздел 1.1.4: Организация безопасной эксплуатации</div>
+            </div>
+        </header>
+
+        <article class="content-body">
+            
+            <!-- ЦЕЛЬ РАБОТЫ -->
+            <h2>Цель работы</h2>
+            
+            <p>Освоить методику правильного заполнения документов, оформляющих работы в электроустановках — <strong>наряда-допуска</strong> и <strong>распоряжения</strong>, в соответствии с требованиями <span class="gost-reference">ПОТЭУ (Правила по охране труда при эксплуатации электроустановок)</span>.</p>
+
+            <div class="definition-box">
+                <strong>Практическая значимость:</strong> Правильное оформление наряда-допуска и распоряжения — обязательное условие допуска персонала к работам в электроустановках. Ошибки в оформлении этих документов могут привести к несчастным случаям, а также к административной и уголовной ответственности должностных лиц.
+            </div>
+
+            <!-- ЗАДАНИЕ -->
+            <h2>Задание</h2>
+            
+            <ol>
+                <li>Изучить теоретические сведения о порядке оформления наряда-допуска и распоряжения.</li>
+                <li>Выбрать свой вариант по последней цифре зачётной книжки (от 0 до 9).</li>
+                <li>Заполнить бланк <strong>наряда-допуска</strong> для выполнения указанных работ.</li>
+                <li>Заполнить бланк <strong>распоряжения</strong> для выполнения работ меньшей сложности.</li>
+                <li>Определить, какие организационные и технические мероприятия необходимы для каждого вида работ.</li>
+                <li>Проанализировать типичные ошибки при заполнении документов.</li>
+                <li>Сделать итоговый вывод о правильности оформления документации.</li>
+            </ol>
+
+            <!-- ТЕОРЕТИЧЕСКИЕ СВЕДЕНИЯ -->
+            <h2>Краткие теоретические сведения</h2>
+
+            <h3>1. Виды работ в электроустановках по способу организации</h3>
+
+            <p>Согласно <span class="gost-reference">ПОТЭУ</span>, работы в электроустановках в отношении мер безопасности подразделяются на:</p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Критерий сравнения</th>
+                        <th>Наряд-допуск</th>
+                        <th>Распоряжение</th>
+                        <th>Перечень работ в порядке текущей эксплуатации</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Форма документа</td>
+                        <td>Письменная (типовой бланк)</td>
+                        <td>Устная или письменная, с записью в журнал</td>
+                        <td>Перечень, утверждённый руководителем</td>
+                    </tr>
+                    <tr>
+                        <td>Срок действия</td>
+                        <td>До 15 календарных дней, продление — ещё на 15 дней</td>
+                        <td>В течение рабочего дня (смены)</td>
+                        <td>Постоянно (в рамках перечня)</td>
+                    </tr>
+                    <tr>
+                        <td>Категория работ</td>
+                        <td>Работы повышенной опасности</td>
+                        <td>Небольшие по объёму работы</td>
+                        <td>Малоопасные работы малой трудоёмкости</td>
+                    </tr>
+                    <tr>
+                        <td>Целевой инструктаж</td>
+                        <td>Обязателен, с росписью в наряде</td>
+                        <td>Обязателен, с записью в журнал</td>
+                        <td>Не требуется (инструктаж при допуске к самостоятельной работе)</td>
+                    </tr>
+                    <tr>
+                        <td>Численность бригады</td>
+                        <td>Не менее 2 человек</td>
+                        <td>Не менее 2 человек</td>
+                        <td>Может выполняться единолично</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>2. Ответственные лица при работах по наряду-допуску</h3>
+
+            <div class="role-card">
+                <div class="role-title">
+                    <span>👤 Выдающий наряд</span>
+                    <span class="role-badge">Группа V (выше 1000 В) / Группа IV (до 1000 В)</span>
+                </div>
+                <p><strong>Обязанности:</strong></p>
+                <ul>
+                    <li>Определяет необходимость и возможность безопасного выполнения работы</li>
+                    <li>Назначает ответственного руководителя работ и производителя работ</li>
+                    <li>Определяет содержание работы, место, время начала и окончания</li>
+                    <li>Определяет технические мероприятия по подготовке рабочего места</li>
+                    <li>Определяет состав бригады и группы членов бригады</li>
+                </ul>
+            </div>
+
+            <div class="role-card">
+                <div class="role-title">
+                    <span>👤 Ответственный руководитель работ</span>
+                    <span class="role-badge">Группа V (выше 1000 В) / Группа IV (до 1000 В)</span>
+                </div>
+                <p><strong>Назначается при работах:</strong></p>
+                <ul>
+                    <li>С использованием механизмов и грузоподъёмных машин</li>
+                    <li>В зонах повышенной опасности</li>
+                    <li>На ВЛ с пересечением других линий</li>
+                    <li>По специальным технологическим картам</li>
+                </ul>
+                <p><strong>Обязанности:</strong> Отвечает за выполнение всех указанных в наряде мер безопасности и их достаточность.</p>
+            </div>
+
+            <div class="role-card">
+                <div class="role-title">
+                    <span>👤 Допускающий</span>
+                    <span class="role-badge">Группа IV (выше 1000 В) / Группа III (до 1000 В)</span>
+                </div>
+                <p><strong>Обязанности:</strong></p>
+                <ul>
+                    <li>Отвечает за правильность и достаточность принятых мер безопасности</li>
+                    <li>Подготавливает рабочее место (выполняет технические мероприятия)</li>
+                    <li>Проводит инструктаж при допуске</li>
+                    <li>Осуществляет допуск бригады к работе</li>
+                </ul>
+            </div>
+
+            <div class="role-card">
+                <div class="role-title">
+                    <span>👤 Производитель работ</span>
+                    <span class="role-badge">Группа IV (выше 1000 В) / Группа III (до 1000 В)</span>
+                </div>
+                <p><strong>Обязанности:</strong></p>
+                <ul>
+                    <li>Отвечает за соответствие рабочего места указаниям наряда</li>
+                    <li>Отвечает за соблюдение бригадой требований безопасности</li>
+                    <li>Обеспечивает безопасное ведение работ</li>
+                    <li>Контролирует исправность инструмента и СИЗ</li>
+                    <li>Проводит целевой инструктаж членам бригады</li>
+                </ul>
+            </div>
+
+            <div class="role-card">
+                <div class="role-title">
+                    <span>👤 Наблюдающий</span>
+                    <span class="role-badge">Группа III</span>
+                </div>
+                <p><strong>Назначается:</strong> при работах, выполняемых персоналом строительных, монтажных организаций, не имеющим права самостоятельного производства работ в электроустановках.</p>
+                <p><strong>Обязанности:</strong></p>
+                <ul>
+                    <li>Осуществляет надзор за соблюдением членами бригады требований безопасности</li>
+                    <li>Контролирует, чтобы члены бригады не приближались к токоведущим частям</li>
+                </ul>
+            </div>
+
+            <div class="role-card">
+                <div class="role-title">
+                    <span>👥 Члены бригады</span>
+                    <span class="role-badge">Группа III и выше / Один — Группа II</span>
+                </div>
+                <p><strong>Обязанности:</strong></p>
+                <ul>
+                    <li>Выполнять требования ПОТЭУ и инструктивные указания</li>
+                    <li>Соблюдать требования охраны труда</li>
+                    <li>Применять безопасные методы и приёмы работ</li>
+                    <li>Использовать СИЗ по назначению</li>
+                </ul>
+            </div>
+
+            <h3>3. Технические мероприятия, обеспечивающие безопасность работ</h3>
+
+            <p>При подготовке рабочего места со снятием напряжения должны быть в указанном порядке выполнены следующие технические мероприятия:</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">Мероприятие 1</div>
+                    <strong>Произведены необходимые отключения</strong>
+                    <p>Отключение коммутационных аппаратов с ручным приводом или дистанционно. Отключаются все токоведущие части, на которых будет проводиться работа, а также токоведущие части, к которым при выполнении работы возможно приближение на недопустимое расстояние.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">Мероприятие 2</div>
+                    <strong>Приняты меры, препятствующие подаче напряжения</strong>
+                    <p>Вывешивание запрещающих плакатов «Не включать! Работают люди», «Не включать! Работа на линии». Запирание приводов коммутационных аппаратов на механический замок. Отсоединение концов питающих линий.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">Мероприятие 3</div>
+                    <strong>Проверено отсутствие напряжения</strong>
+                    <p>Проверка выполняется указателем напряжения заводского изготовления, исправность которого перед применением определяется с помощью специальных приборов или приближением к токоведущим частям, заведомо находящимся под напряжением.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">Мероприятие 4</div>
+                    <strong>Установлено заземление</strong>
+                    <p>Переносные заземления устанавливаются на токоведущие части непосредственно после проверки отсутствия напряжения. Сначала заземляющий проводник присоединяется к заземлителю, затем — к токоведущим частям.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">Мероприятие 5</div>
+                    <strong>Вывешены указательные плакаты, ограждены рабочие места</strong>
+                    <p>Плакаты «Заземлено» — на приводах разъединителей. Плакаты «Работать здесь» — на рабочем месте. Плакаты «Стой! Напряжение» — на ограждениях. При необходимости — установка временных ограждений.</p>
+                </div>
+            </div>
+
+            <h3>4. Организационные мероприятия</h3>
+
+            <div class="info-box">
+                <strong>Организационными мероприятиями, обеспечивающими безопасность работ, являются:</strong>
+                <ul>
+                    <li>Оформление работ нарядом-допуском, распоряжением или перечнем работ</li>
+                    <li>Выдача разрешения на подготовку рабочего места и на допуск</li>
+                    <li>Допуск к работе</li>
+                    <li>Надзор во время работы</li>
+                    <li>Оформление перерывов, переводов на другое место, окончания работы</li>
+                </ul>
+            </div>
+
+            <h3>5. Структура наряда-допуска</h3>
+
+            <p>Наряд-допуск оформляется в двух экземплярах (при передаче по телефону — в трёх) и содержит следующие разделы:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Раздел наряда</th>
+                        <th>Содержание</th>
+                        <th>Кто заполняет</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Лицевая сторона</strong></td>
+                        <td>Общие сведения о работе, ответственные лица, состав бригады</td>
+                        <td>Выдающий наряд</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Таблица «Меры безопасности»</strong></td>
+                        <td>Отключить, где и откуда, установить заземления, плакаты</td>
+                        <td>Выдающий наряд</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Разрешение на подготовку</strong></td>
+                        <td>Разрешение на подготовку рабочих мест и на допуск</td>
+                        <td>Оперативный персонал</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Таблица «Ежедневный допуск»</strong></td>
+                        <td>Даты, время, подписи допускающего и производителя работ</td>
+                        <td>Допускающий, производитель работ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Регистрация целевого инструктажа</strong></td>
+                        <td>ФИО членов бригады, группы, подписи</td>
+                        <td>Производитель работ, члены бригады</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Оформление окончания работы</strong></td>
+                        <td>Работа полностью окончена, бригада выведена</td>
+                        <td>Производитель работ, допускающий</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- СПРАВОЧНЫЕ ДАННЫЕ -->
+            <h2>Справочные данные</h2>
+
+            <h3>Таблица А. Минимальные группы по электробезопасности для ответственных лиц</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ответственное лицо</th>
+                        <th>ЭУ до 1000 В</th>
+                        <th>ЭУ выше 1000 В</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Выдающий наряд</td><td>IV</td><td>V</td></tr>
+                    <tr><td>Ответственный руководитель работ</td><td>IV</td><td>V</td></tr>
+                    <tr><td>Допускающий</td><td>III</td><td>IV</td></tr>
+                    <tr><td>Производитель работ</td><td>III</td><td>IV</td></tr>
+                    <tr><td>Наблюдающий</td><td>III</td><td>III</td></tr>
+                    <tr><td>Члены бригады</td><td>III (один может II)</td><td>III (один может II)</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Таблица Б. Запрещающие и указательные плакаты</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Наименование плаката</th>
+                        <th>Где вывешивается</th>
+                        <th>Назначение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>«Не включать! Работают люди»</td>
+                        <td>На приводах коммутационных аппаратов</td>
+                        <td>Запрет на подачу напряжения</td>
+                    </tr>
+                    <tr>
+                        <td>«Не включать! Работа на линии»</td>
+                        <td>На приводах линейных разъединителей</td>
+                        <td>Запрет на включение линии</td>
+                    </tr>
+                    <tr>
+                        <td>«Не открывать! Работают люди»</td>
+                        <td>На задвижках воздухопроводов</td>
+                        <td>Запрет на подачу воздуха</td>
+                    </tr>
+                    <tr>
+                        <td>«Заземлено»</td>
+                        <td>На приводах разъединителей с заземлением</td>
+                        <td>Указание о наличии заземления</td>
+                    </tr>
+                    <tr>
+                        <td>«Работать здесь»</td>
+                        <td>На рабочем месте</td>
+                        <td>Указание места работы</td>
+                    </tr>
+                    <tr>
+                        <td>«Стой! Напряжение»</td>
+                        <td>На временных ограждениях</td>
+                        <td>Предупреждение об опасности</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- ВАРИАНТЫ ЗАДАНИЙ -->
+            <h2>Варианты заданий</h2>
+            <p><em>(Номер варианта выбирается по последней цифре зачётной книжки)</em></p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Вариант</th>
+                        <th>Работа по НАРЯДУ-ДОПУСКУ</th>
+                        <th>Работа по РАСПОРЯЖЕНИЮ</th>
+                        <th>Напряжение ЭУ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>0</strong></td>
+                        <td>Капитальный ремонт силового трансформатора ТМ-630/10</td>
+                        <td>Замена предохранителей в РУ-0,4 кВ</td>
+                        <td>10 кВ / 0,4 кВ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1</strong></td>
+                        <td>Ремонт выключателя ВВ/TEL-10 в ячейке КРУ</td>
+                        <td>Фазировка кабельной линии 0,4 кВ</td>
+                        <td>10 кВ / 0,4 кВ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2</strong></td>
+                        <td>Замена изоляторов на ВЛ-10 кВ</td>
+                        <td>Проверка соединений в щите освещения</td>
+                        <td>10 кВ / 0,4 кВ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3</strong></td>
+                        <td>Ремонт кабельной муфты 10 кВ в кабельном канале</td>
+                        <td>Измерение сопротивления изоляции электродвигателя</td>
+                        <td>10 кВ / 0,4 кВ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4</strong></td>
+                        <td>Испытания повышенным напряжением КЛ-10 кВ</td>
+                        <td>Замена автоматического выключателя в ЩР</td>
+                        <td>10 кВ / 0,4 кВ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5</strong></td>
+                        <td>Ремонт разъединителя РЛНД-10 на ОРУ</td>
+                        <td>Подтяжка контактов в силовом шкафу 0,4 кВ</td>
+                        <td>10 кВ / 0,4 кВ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6</strong></td>
+                        <td>Замена трансформаторов тока в ячейке КРУ-10 кВ</td>
+                        <td>Замена пускателя электродвигателя насоса</td>
+                        <td>10 кВ / 0,4 кВ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>7</strong></td>
+                        <td>Капитальный ремонт электродвигателя 6 кВ</td>
+                        <td>Проверка работы АВР на секции 0,4 кВ</td>
+                        <td>6 кВ / 0,4 кВ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>8</strong></td>
+                        <td>Монтаж ячейки КРУ взамен демонтированной</td>
+                        <td>Замена ламп освещения в РУ-0,4 кВ</td>
+                        <td>10 кВ / 0,4 кВ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>9</strong></td>
+                        <td>Ремонт шинного моста 10 кВ между секциями</td>
+                        <td>Измерение нагрузки отходящих линий 0,4 кВ</td>
+                        <td>10 кВ / 0,4 кВ</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="important-note">
+                <strong>Исходные данные для всех вариантов:</strong><br>
+                Организация: ООО «Энергосервис»<br>
+                Объект: Подстанция «Заводская» 10/0,4 кВ<br>
+                Дата выполнения работ: текущая дата + 1 день<br>
+                Время работы: с 9:00 до 17:00
+            </div>
+
+            <!-- ПРИМЕР ВЫПОЛНЕНИЯ -->
+            <h2>Подробный пример выполнения работы</h2>
+
+            <div class="highlight-box">
+                <strong>Дано (Вариант X — демонстрационный):</strong>
+                <ul>
+                    <li><strong>Работа по наряду:</strong> Текущий ремонт масляного выключателя ВМП-10 в ячейке №5 КРУ-10 кВ</li>
+                    <li><strong>Работа по распоряжению:</strong> Замена магнитного пускателя электродвигателя вентилятора в ЩСУ-0,4 кВ</li>
+                    <li><strong>Напряжение:</strong> 10 кВ / 0,4 кВ</li>
+                    <li><strong>Организация:</strong> ООО «Энергосервис»</li>
+                    <li><strong>Объект:</strong> ПС «Заводская» 10/0,4 кВ</li>
+                </ul>
+            </div>
+
+            <!-- ЧАСТЬ 1: НАРЯД-ДОПУСК -->
+            <h2>Часть 1. Заполнение наряда-допуска</h2>
+
+            <div class="step-box">
+                <h3><span class="step-number">1</span>Определение ответственных лиц</h3>
+
+                <p>Прежде чем заполнять наряд, необходимо определить всех ответственных лиц с учётом требований к их группам по электробезопасности.</p>
+
+                <div class="calculation-detail" style="background: #f7fafc; padding: 15px; margin: 10px 0; border-radius: 8px; border: 1px dashed #cbd5e0;">
+                    <p><strong>Анализ ситуации:</strong></p>
+                    <p>Работа выполняется в электроустановке <strong>выше 1000 В</strong> (КРУ-10 кВ), следовательно:</p>
+                    <ul>
+                        <li>Выдающий наряд — должен иметь группу <strong>V</strong></li>
+                        <li>Ответственный руководитель работ — группа <strong>V</strong> (назначается, т.к. работа в КРУ требует повышенных мер безопасности)</li>
+                        <li>Допускающий — группа <strong>IV</strong></li>
+                        <li>Производитель работ — группа <strong>IV</strong></li>
+                        <li>Члены бригады — группа <strong>III</strong> и выше</li>
+                    </ul>
+                </div>
+
+                <p><strong>Назначаем ответственных лиц:</strong></p>
+
+                <table>
+                    <tr>
+                        <td><strong>Выдающий наряд:</strong></td>
+                        <td>Главный энергетик Сидоров Пётр Иванович, группа V до и выше 1000 В</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ответственный руководитель:</strong></td>
+                        <td>Начальник ЭТЛ Козлов Андрей Михайлович, группа V до и выше 1000 В</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Допускающий:</strong></td>
+                        <td>Дежурный электромонтёр Новиков Сергей Владимирович, группа IV до и выше 1000 В</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Производитель работ:</strong></td>
+                        <td>Электромонтёр по ремонту Фёдоров Алексей Николаевич, группа IV до и выше 1000 В</td>
+                    </tr>
+                </table>
+
+                <div class="info-box">
+                    <strong>Почему назначен ответственный руководитель?</strong><br>
+                    Согласно ПОТЭУ, ответственный руководитель работ назначается при выполнении работ в электроустановках выше 1000 В, в том числе:
+                    <ul>
+                        <li>С использованием механизмов и грузоподъёмных машин</li>
+                        <li>В ячейках КРУ, в том числе при выкатывании и вкатывании тележки</li>
+                        <li>На оборудовании, имеющем сложную схему</li>
+                    </ul>
+                    Работа в ячейке КРУ-10 кВ относится к работам повышенной опасности!
+                </div>
+            </div>
+
+            <div class="step-box">
+                <h3><span class="step-number">2</span>Определение технических мероприятий</h3>
+
+                <p>Для безопасного проведения ремонта выключателя ВМП-10 в ячейке №5 необходимо выполнить следующие технические мероприятия:</p>
+
+                <div class="calculation-detail" style="background: #f7fafc; padding: 15px; margin: 10px 0; border-radius: 8px; border: 1px dashed #cbd5e0;">
+                    <p><strong>1. ОТКЛЮЧИТЬ:</strong></p>
+                    <ul>
+                        <li>Выключатель ВМП-10 ячейки №5 — отключением привода</li>
+                        <li>Разъединители ячейки №5 — отключить шинный и линейный разъединители</li>
+                        <li>Тележку выключателя — выкатить в ремонтное положение</li>
+                        <li>Оперативные цепи — снять предохранители в цепях управления</li>
+                    </ul>
+                </div>
+
+                <div class="calculation-detail" style="background: #f7fafc; padding: 15px; margin: 10px 0; border-radius: 8px; border: 1px dashed #cbd5e0;">
+                    <p><strong>2. МЕРЫ, ПРЕПЯТСТВУЮЩИЕ ПОДАЧЕ НАПРЯЖЕНИЯ:</strong></p>
+                    <ul>
+                        <li>Вывесить плакаты «Не включать! Работают люди» на приводах разъединителей ячейки №5</li>
+                        <li>Вывесить плакаты «Не включать! Работают люди» на ключах управления выключателем</li>
+                        <li>Закрыть шторку ячейки на замок (при выкаченной тележке)</li>
+                    </ul>
+                </div>
+
+                <div class="calculation-detail" style="background: #f7fafc; padding: 15px; margin: 10px 0; border-radius: 8px; border: 1px dashed #cbd5e0;">
+                    <p><strong>3. ПРОВЕРИТЬ ОТСУТСТВИЕ НАПРЯЖЕНИЯ:</strong></p>
+                    <ul>
+                        <li>На шинах ячейки №5 (в отсеке выключателя) указателем напряжения УВН-10</li>
+                        <li>На кабельных разделках (со стороны линии)</li>
+                    </ul>
+                </div>
+
+                <div class="calculation-detail" style="background: #f7fafc; padding: 15px; margin: 10px 0; border-radius: 8px; border: 1px dashed #cbd5e0;">
+                    <p><strong>4. ЗАЗЕМЛИТЬ:</strong></p>
+                    <ul>
+                        <li>Установить переносное заземление на шины ячейки №5 — ПЗ №1</li>
+                        <li>Установить переносное заземление на кабель — ПЗ №2</li>
+                        <li>Включить заземляющие ножи разъединителей (при наличии)</li>
+                    </ul>
+                </div>
+
+                <div class="calculation-detail" style="background: #f7fafc; padding: 15px; margin: 10px 0; border-radius: 8px; border: 1px dashed #cbd5e0;">
+                    <p><strong>5. ОГРАЖДЕНИЕ РАБОЧЕГО МЕСТА:</strong></p>
+                    <ul>
+                        <li>Вывесить плакат «Заземлено» на приводе разъединителя с заземлением</li>
+                        <li>Вывесить плакат «Работать здесь» на выкаченной тележке выключателя</li>
+                        <li>Оградить соседние ячейки (№4 и №6), оставшиеся под напряжением, с установкой плакатов «Стой! Напряжение»</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step-box">
+                <h3><span class="step-number">3</span>Определение состава бригады</h3>
+
+                <p>Состав бригады определяется исходя из характера и объёма работ, а также требований безопасности.</p>
+
+                <div class="calculation-detail" style="background: #f7fafc; padding: 15px; margin: 10px 0; border-radius: 8px; border: 1px dashed #cbd5e0;">
+                    <p><strong>Анализ необходимой численности:</strong></p>
+                    <ul>
+                        <li>Работа: текущий ремонт масляного выключателя (разборка, осмотр, чистка контактов, замена масла, сборка)</li>
+                        <li>Минимальный состав бригады при работах выше 1000 В — 2 человека</li>
+                        <li>Рекомендуемый состав для данной работы — 3 человека (производитель + 2 члена бригады)</li>
+                    </ul>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>№ п/п</th>
+                            <th>ФИО</th>
+                            <th>Группа</th>
+                            <th>Должность</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Фёдоров Алексей Николаевич</td>
+                            <td>IV</td>
+                            <td>Производитель работ</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Васильев Дмитрий Сергеевич</td>
+                            <td>IV</td>
+                            <td>Член бригады</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Морозов Игорь Петрович</td>
+                            <td>III</td>
+                            <td>Член бригады</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box">
+                    <strong>Проверка правильности состава:</strong>
+                    <ul class="check-list">
+                        <li>Производитель работ имеет группу IV — требование выполнено (для ЭУ выше 1000 В нужна группа IV)</li>
+                        <li>Члены бригады имеют группу III и выше — требование выполнено</li>
+                        <li>Численность бригады (3 человека) достаточна для выполнения работы</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step-box">
+                <h3><span class="step-number">4</span>Заполнение бланка наряда-допуска</h3>
+
+                <p>Теперь заполняем каждый раздел наряда-допуска с подробными пояснениями:</p>
+            </div>
+
+            <!-- БЛАНК НАРЯДА-ДОПУСКА -->
+            <div class="document-form">
+                <div class="document-header">
+                    <p style="text-align: right; font-size: 0.9rem;">Форма ЭУ-44</p>
+                    <h3>НАРЯД-ДОПУСК № <span class="filled-value">127</span></h3>
+                    <p>для работы в электроустановках</p>
+                </div>
+
+                <p style="text-align: right;">Организация: <span class="filled-value">ООО «Энергосервис»</span></p>
+                <p style="text-align: right;">Подразделение: <span class="filled-value">Электротехническая служба</span></p>
+
+                <div class="section-divider"></div>
+
+                <h4>1. Ответственные лица</h4>
+
+                <div class="document-field">
+                    <span class="field-label">Выдающий наряд:</span>
+                    <span class="field-value">Сидоров Пётр Иванович, главный энергетик, группа V</span>
+                </div>
+
+                <div class="example-box">
+                    <strong>💡 Почему так заполнено:</strong><br>
+                    Указываем полностью ФИО, должность и группу по электробезопасности. Выдающий наряд — это лицо, которое определяет необходимость работы, назначает ответственных и определяет меры безопасности. Для работ в ЭУ выше 1000 В требуется группа V.
+                </div>
+
+                <div class="document-field">
+                    <span class="field-label">Ответственный руководитель работ:</span>
+                    <span class="field-value">Козлов Андрей Михайлович, начальник ЭТЛ, группа V</span>
+                </div>
+
+                <div class="example-box">
+                    <strong>💡 Почему назначен ответственный руководитель:</strong><br>
+                    Работа выполняется в КРУ-10 кВ. Согласно п. 5.8 ПОТЭУ, ответственный руководитель работ назначается при работах в электроустановках выше 1000 В. Он отвечает за выполнение всех мер безопасности и руководит работой бригады на месте.
+                </div>
+
+                <div class="document-field">
+                    <span class="field-label">Допускающий:</span>
+                    <span class="field-value">Новиков Сергей Владимирович, дежурный электромонтёр, группа IV</span>
+                </div>
+
+                <div class="example-box">
+                    <strong>💡 Кто может быть допускающим:</strong><br>
+                    Допускающий — это работник из числа оперативного персонала. Он подготавливает рабочее место (выполняет переключения, устанавливает заземления) и допускает бригаду к работе. Для ЭУ выше 1000 В требуется группа IV.
+                </div>
+
+                <div class="document-field">
+                    <span class="field-label">Производитель работ:</span>
+                    <span class="field-value">Фёдоров Алексей Николаевич, электромонтёр по ремонту, группа IV</span>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <h4>2. Содержание работы</h4>
+
+                <div class="document-field">
+                    <span class="field-label">Поручается:</span>
+                    <span class="field-value">Текущий ремонт масляного выключателя ВМП-10 в ячейке №5 КРУ-10 кВ: разборка полюсов, чистка и осмотр контактов, замена масла, сборка, проверка работы привода</span>
+                </div>
+
+                <div class="example-box">
+                    <strong>💡 Как правильно описать содержание работы:</strong><br>
+                    Содержание работы должно быть конкретным и понятным. Указываем:
+                    <ul>
+                        <li><strong>Вид работы:</strong> текущий ремонт (не «ремонт», а конкретно — текущий)</li>
+                        <li><strong>Объект:</strong> масляный выключатель ВМП-10 (полное наименование с типом)</li>
+                        <li><strong>Место:</strong> ячейка №5 КРУ-10 кВ (конкретная ячейка и РУ)</li>
+                        <li><strong>Перечень операций:</strong> разборка, чистка, замена масла и т.д.</li>
+                    </ul>
+                </div>
+
+                <div class="document-field">
+                    <span class="field-label">Работу начать:</span>
+                    <span class="field-value">« 15 » января 2025 г. в 09 ч 00 мин</span>
+                </div>
+
+                <div class="document-field">
+                    <span class="field-label">Работу закончить:</span>
+                    <span class="field-value">« 15 » января 2025 г. в 17 ч 00 мин</span>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <h4>3. Состав бригады</h4>
+
+                <table style="font-size: 0.95rem;">
+                    <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Фамилия, инициалы</th>
+                            <th>Группа</th>
+                            <th>Подпись об инструктаже</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><span class="filled-value">Фёдоров А.Н. (производитель работ)</span></td>
+                            <td><span class="filled-value">IV</span></td>
+                            <td style="font-style: italic; color: #718096;">(подпись)</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><span class="filled-value">Васильев Д.С.</span></td>
+                            <td><span class="filled-value">IV</span></td>
+                            <td style="font-style: italic; color: #718096;">(подпись)</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><span class="filled-value">Морозов И.П.</span></td>
+                            <td><span class="filled-value">III</span></td>
+                            <td style="font-style: italic; color: #718096;">(подпись)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="section-divider"></div>
+
+                <h4>4. Меры по подготовке рабочего места</h4>
+
+                <table style="font-size: 0.95rem;">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%;">№</th>
+                            <th style="width: 50%;">Наименование мероприятия</th>
+                            <th style="width: 45%;">Место выполнения</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><span class="filled-value">Отключить выключатель</span></td>
+                            <td><span class="filled-value">Ячейка №5, КРУ-10 кВ</span></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><span class="filled-value">Отключить шинный разъединитель</span></td>
+                            <td><span class="filled-value">Ячейка №5, КРУ-10 кВ</span></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><span class="filled-value">Отключить линейный разъединитель</span></td>
+                            <td><span class="filled-value">Ячейка №5, КРУ-10 кВ</span></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><span class="filled-value">Выкатить тележку выключателя в ремонтное положение</span></td>
+                            <td><span class="filled-value">Ячейка №5, КРУ-10 кВ</span></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><span class="filled-value">Снять предохранители в цепях управления</span></td>
+                            <td><span class="filled-value">Релейный отсек ячейки №5</span></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><span class="filled-value">Вывесить плакат «Не включать! Работают люди»</span></td>
+                            <td><span class="filled-value">На приводах разъединителей яч. №5, на ключе управления</span></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td><span class="filled-value">Проверить отсутствие напряжения указателем УВН-10</span></td>
+                            <td><span class="filled-value">На неподвижных контактах яч. №5 со стороны шин и кабеля</span></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td><span class="filled-value">Установить переносное заземление ПЗ-1</span></td>
+                            <td><span class="filled-value">На шины ячейки №5</span></td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td><span class="filled-value">Установить переносное заземление ПЗ-2</span></td>
+                            <td><span class="filled-value">На кабельные разделки ячейки №5</span></td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td><span class="filled-value">Вывесить плакат «Заземлено»</span></td>
+                            <td><span class="filled-value">На приводах разъединителей с заземлением</span></td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td><span class="filled-value">Вывесить плакат «Работать здесь»</span></td>
+                            <td><span class="filled-value">На тележке выключателя</span></td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td><span class="filled-value">Установить временные ограждения, вывесить плакаты «Стой! Напряжение»</span></td>
+                            <td><span class="filled-value">На соседних ячейках №4 и №6</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="example-box">
+                    <strong>💡 Как правильно заполнять таблицу мер безопасности:</strong><br>
+                    <ol>
+                        <li><strong>Последовательность:</strong> Мероприятия записываются в порядке их выполнения (отключение → плакаты → проверка → заземление → ограждение)</li>
+                        <li><strong>Конкретность:</strong> Указываем точное место (не «на РУ», а «ячейка №5 КРУ-10 кВ»)</li>
+                        <li><strong>Полнота:</strong> Перечисляем ВСЕ необходимые мероприятия — пропуск любого пункта может привести к несчастному случаю</li>
+                        <li><strong>Номера ПЗ:</strong> Переносные заземления нумеруются (ПЗ-1, ПЗ-2) для учёта</li>
+                    </ol>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <h4>5. Особые указания</h4>
+
+                <div class="document-field">
+                    <span class="field-value" style="width: 100%;">Применять диэлектрические перчатки при работе с маслом. Работу выполнять с применением страховочной системы при работе на высоте более 1,8 м. Слив масла производить в специальную ёмкость.</span>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <h4>6. Подпись выдающего наряд</h4>
+
+                <div class="signature-block">
+                    <div class="signature-item">
+                        <div class="signature-line"></div>
+                        <div class="signature-label">Подпись</div>
+                    </div>
+                    <div class="signature-item">
+                        <div class="filled-value">Сидоров П.И.</div>
+                        <div class="signature-label">Расшифровка</div>
+                    </div>
+                    <div class="signature-item">
+                        <div class="filled-value">« 14 » января 2025 г.</div>
+                        <div class="signature-label">Дата</div>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <strong>💡 Важно:</strong> Наряд выдаётся и подписывается накануне дня производства работ (14 января), чтобы допускающий имел время для подготовки рабочего места. Работы начинаются 15 января.
+                </div>
+
+                <div class="section-divider"></div>
+
+                <h4>7. Разрешение на подготовку рабочего места и на допуск (заполняется оперативным персоналом)</h4>
+
+                <div class="document-field">
+                    <span class="field-label">Разрешение на подготовку рабочего места и на допуск выдал:</span>
+                </div>
+                <div class="document-field">
+                    <span class="field-value" style="width: 100%;">Диспетчер ОДС Петров В.А. « 15 » января 2025 г. 08 ч 30 мин</span>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <h4>8. Рабочее место подготовлено. Допуск к работе произведён</h4>
+
+                <table style="font-size: 0.95rem;">
+                    <thead>
+                        <tr>
+                            <th>Дата, время</th>
+                            <th>Подпись допускающего</th>
+                            <th>Подпись производителя работ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="filled-value">15.01.2025, 09:00</span></td>
+                            <td style="font-style: italic; color: #718096;">(подпись Новикова С.В.)</td>
+                            <td style="font-style: italic; color: #718096;">(подпись Фёдорова А.Н.)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="section-divider"></div>
+
+                <h4>9. Ежедневный допуск и окончание работы</h4>
+
+                <table style="font-size: 0.95rem;">
+                    <thead>
+                        <tr>
+                            <th>Дата</th>
+                            <th>Допуск к работе (время, подпись)</th>
+                            <th>Работа окончена, бригада удалена (время, подпись)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="filled-value">15.01.2025</span></td>
+                            <td><span class="filled-value">09:00</span> <span style="font-style: italic; color: #718096;">(подписи)</span></td>
+                            <td><span class="filled-value">16:45</span> <span style="font-style: italic; color: #718096;">(подписи)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="section-divider"></div>
+
+                <h4>10. Работа полностью окончена</h4>
+
+                <div class="document-field">
+                    <span class="field-label">Работа полностью окончена, бригада выведена:</span>
+                    <span class="field-value">« 15 » января 2025 г. в 16 ч 45 мин</span>
+                </div>
+
+                <div class="signature-block">
+                    <div class="signature-item">
+                        <div class="signature-line"></div>
+                        <div class="signature-label">Производитель работ</div>
+                    </div>
+                    <div class="signature-item">
+                        <div class="signature-line"></div>
+                        <div class="signature-label">Допускающий</div>
+                    </div>
+                </div>
+
+                <div class="document-field">
+                    <span class="field-label">Заземления сняты, наряд закрыт:</span>
+                    <span class="field-value">« 15 » января 2025 г. в 17 ч 00 мин</span>
+                </div>
+
+            </div>
+
+            <!-- АНАЛИЗ ТИПИЧНЫХ ОШИБОК В НАРЯДЕ -->
+            <div class="step-box">
+                <h3><span class="step-number">5</span>Анализ типичных ошибок при заполнении наряда</h3>
+            </div>
+
+            <div class="error-example">
+                <strong>❌ Ошибка 1: Неполное указание места работы</strong><br>
+                <em>Неправильно:</em> «Ремонт выключателя в КРУ»<br>
+                <em>Правильно:</em> «Текущий ремонт масляного выключателя ВМП-10 в ячейке №5 КРУ-10 кВ»<br>
+                <strong>Почему это важно:</strong> При неточном указании места работы возможна ошибка при подготовке рабочего места — могут подготовить не ту ячейку.
+            </div>
+
+            <div class="error-example">
+                <strong>❌ Ошибка 2: Пропуск технических мероприятий</strong><br>
+                <em>Неправильно:</em> Не указана проверка отсутствия напряжения перед установкой заземления<br>
+                <strong>Почему это важно:</strong> Установка заземления на токоведущие части, находящиеся под напряжением, приведёт к короткому замыканию и несчастному случаю.
+            </div>
+
+            <div class="error-example">
+                <strong>❌ Ошибка 3: Несоответствие группы по электробезопасности</strong><br>
+                <em>Неправильно:</em> Производитель работ имеет группу III в ЭУ выше 1000 В<br>
+                <strong>Почему это важно:</strong> Для работы производителем работ в ЭУ выше 1000 В требуется группа IV. Работник с группой III не имеет достаточной квалификации.
+            </div>
+
+                        <div class="error-example">
+                <strong>❌ Ошибка 4: Отсутствие подписей членов бригады</strong><br>
+                <em>Неправильно:</em> Члены бригады не расписались за получение целевого инструктажа<br>
+                <strong>Почему это важно:</strong> Подпись подтверждает, что работник получил инструктаж и понял меры безопасности. Без подписи допуск к работе запрещён.
+            </div>
+
+            <div class="error-example">
+                <strong>❌ Ошибка 5: Неправильная нумерация переносных заземлений</strong><br>
+                <em>Неправильно:</em> «Установить заземление» (без номера)<br>
+                <em>Правильно:</em> «Установить переносное заземление ПЗ-1 на шины ячейки №5»<br>
+                <strong>Почему это важно:</strong> Переносные заземления подлежат учёту. Номер позволяет контролировать установку и снятие каждого заземления.
+            </div>
+
+            <div class="error-example">
+                <strong>❌ Ошибка 6: Неверная последовательность мероприятий</strong><br>
+                <em>Неправильно:</em> Сначала указано заземление, потом проверка отсутствия напряжения<br>
+                <em>Правильно:</em> Сначала проверка отсутствия напряжения, затем установка заземления<br>
+                <strong>Почему это важно:</strong> Последовательность технических мероприятий строго регламентирована ПОТЭУ и обеспечивает безопасность.
+            </div>
+
+            <div class="correct-example">
+                <strong>✓ Признаки правильно заполненного наряда:</strong>
+                <ul>
+                    <li>Все графы заполнены разборчиво, без исправлений</li>
+                    <li>Указаны полные ФИО, должности и группы всех ответственных лиц</li>
+                    <li>Содержание работы конкретное (тип оборудования, номер ячейки, вид работы)</li>
+                    <li>Технические мероприятия указаны в правильной последовательности</li>
+                    <li>Все переносные заземления пронумерованы</li>
+                    <li>Указаны конкретные места установки плакатов и заземлений</li>
+                    <li>Все подписи на месте</li>
+                </ul>
+            </div>
+
+            <!-- ЧАСТЬ 2: РАСПОРЯЖЕНИЕ -->
+            <h2>Часть 2. Заполнение распоряжения</h2>
+
+            <div class="highlight-box">
+                <strong>Задание по распоряжению (Вариант X):</strong><br>
+                Замена магнитного пускателя электродвигателя вентилятора в ЩСУ-0,4 кВ
+            </div>
+
+            <div class="step-box">
+                <h3><span class="step-number">1</span>Анализ возможности выполнения работы по распоряжению</h3>
+
+                <p>Прежде чем оформлять распоряжение, необходимо убедиться, что данная работа может выполняться по распоряжению, а не по наряду-допуску.</p>
+
+                <div class="calculation-detail" style="background: #f7fafc; padding: 15px; margin: 10px 0; border-radius: 8px; border: 1px dashed #cbd5e0;">
+                    <p><strong>Критерии для работ по распоряжению:</strong></p>
+                    <ul>
+                        <li>✓ Работа небольшого объёма — замена одного пускателя занимает 1-2 часа</li>
+                        <li>✓ Работа выполняется в течение одной смены — не требует продления</li>
+                        <li>✓ Напряжение до 1000 В — ЩСУ-0,4 кВ</li>
+                        <li>✓ Работа не входит в перечень работ, выполняемых только по наряду</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Согласно ПОТЭУ, по распоряжению могут выполняться:</strong>
+                    <ul>
+                        <li>Работы без снятия напряжения вдали от токоведущих частей</li>
+                        <li>Работы со снятием напряжения в электроустановках до 1000 В продолжительностью не более одной смены</li>
+                        <li>Работы на ВЛ, выполняемые с опор или с телескопической вышки</li>
+                        <li>Некоторые виды работ в электроустановках выше 1000 В (регламентированы отдельно)</li>
+                    </ul>
+                </div>
+
+                <div class="result-highlight">
+                    ✓ Работа может выполняться по распоряжению — все критерии соблюдены
+                </div>
+            </div>
+
+            <div class="step-box">
+                <h3><span class="step-number">2</span>Определение ответственных лиц для работы по распоряжению</h3>
+
+                <div class="calculation-detail" style="background: #f7fafc; padding: 15px; margin: 10px 0; border-radius: 8px; border: 1px dashed #cbd5e0;">
+                    <p><strong>Для работ по распоряжению назначаются:</strong></p>
+                    <ul>
+                        <li><strong>Выдающий распоряжение</strong> — группа IV (для ЭУ до 1000 В)</li>
+                        <li><strong>Допускающий</strong> — группа III (из числа оперативного персонала), если требуется подготовка рабочего места</li>
+                        <li><strong>Производитель работ</strong> — группа III (для ЭУ до 1000 В)</li>
+                        <li><strong>Члены бригады</strong> — группа III (один может иметь группу II)</li>
+                    </ul>
+                </div>
+
+                <p><strong>Назначаем ответственных:</strong></p>
+
+                <table>
+                    <tr>
+                        <td><strong>Выдающий распоряжение:</strong></td>
+                        <td>Мастер участка Иванов Николай Александрович, группа IV до 1000 В</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Допускающий:</strong></td>
+                        <td>Дежурный электромонтёр Смирнов Олег Викторович, группа III до 1000 В</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Производитель работ:</strong></td>
+                        <td>Электромонтёр Кузнецов Виктор Андреевич, группа III до 1000 В</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="step-box">
+                <h3><span class="step-number">3</span>Определение технических мероприятий</h3>
+
+                <p>Для замены пускателя в ЩСУ-0,4 кВ необходимы следующие мероприятия:</p>
+
+                <div class="calculation-detail" style="background: #f7fafc; padding: 15px; margin: 10px 0; border-radius: 8px; border: 1px dashed #cbd5e0;">
+                    <p><strong>1. ОТКЛЮЧИТЬ:</strong></p>
+                    <ul>
+                        <li>Автоматический выключатель питания пускателя в ЩСУ (ввод на секцию)</li>
+                        <li>Автоматический выключатель в цепи управления (если есть)</li>
+                    </ul>
+                </div>
+
+                <div class="calculation-detail" style="background: #f7fafc; padding: 15px; margin: 10px 0; border-radius: 8px; border: 1px dashed #cbd5e0;">
+                    <p><strong>2. ПРЕДОТВРАТИТЬ ПОДАЧУ НАПРЯЖЕНИЯ:</strong></p>
+                    <ul>
+                        <li>Вывесить плакат «Не включать! Работают люди» на рукоятке автомата</li>
+                        <li>При возможности — заблокировать автомат в отключённом положении</li>
+                    </ul>
+                </div>
+
+                <div class="calculation-detail" style="background: #f7fafc; padding: 15px; margin: 10px 0; border-radius: 8px; border: 1px dashed #cbd5e0;">
+                    <p><strong>3. ПРОВЕРИТЬ ОТСУТСТВИЕ НАПРЯЖЕНИЯ:</strong></p>
+                    <ul>
+                        <li>Проверить отсутствие напряжения указателем до 1000 В на контактах пускателя</li>
+                    </ul>
+                </div>
+
+                <div class="calculation-detail" style="background: #f7fafc; padding: 15px; margin: 10px 0; border-radius: 8px; border: 1px dashed #cbd5e0;">
+                    <p><strong>4. ВЫВЕСИТЬ ПЛАКАТЫ:</strong></p>
+                    <ul>
+                        <li>Плакат «Работать здесь» — на месте работы</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Почему не устанавливается заземление?</strong><br>
+                    В электроустановках до 1000 В с заземлённой нейтралью при работах со снятием напряжения на электродвигателях, пускателях и другом оборудовании установка заземления не требуется, если исключена возможность подачи напряжения на место работы (отключением автомата, рубильника с видимым разрывом цепи и вывешиванием плаката).
+                </div>
+            </div>
+
+            <div class="step-box">
+                <h3><span class="step-number">4</span>Оформление распоряжения</h3>
+
+                <p>Распоряжение может отдаваться устно или письменно (в зависимости от установленного в организации порядка). Во всех случаях распоряжение регистрируется в <strong>Журнале учёта работ по нарядам и распоряжениям</strong>.</p>
+            </div>
+
+            <!-- БЛАНК РАСПОРЯЖЕНИЯ -->
+            <div class="document-form">
+                <div class="document-header">
+                    <h3>ЖУРНАЛ УЧЁТА РАБОТ ПО НАРЯДАМ И РАСПОРЯЖЕНИЯМ</h3>
+                    <p>Запись о работе по распоряжению</p>
+                </div>
+
+                <table style="font-size: 0.9rem;">
+                    <tr>
+                        <td style="width: 25%; background: #edf2f7;"><strong>Номер распоряжения:</strong></td>
+                        <td><span class="filled-value">№ 58</span></td>
+                        <td style="width: 25%; background: #edf2f7;"><strong>Дата, время выдачи:</strong></td>
+                        <td><span class="filled-value">15.01.2025, 10:00</span></td>
+                    </tr>
+                </table>
+
+                <div class="section-divider"></div>
+
+                <h4>1. Выдающий распоряжение</h4>
+                <div class="document-field">
+                    <span class="field-value" style="width: 100%;">Иванов Николай Александрович, мастер участка, группа IV до 1000 В</span>
+                </div>
+
+                <div class="example-box">
+                    <strong>💡 Кто имеет право выдавать распоряжение:</strong><br>
+                    Право выдачи распоряжений предоставляется работникам из числа административно-технического персонала, имеющим группу IV в ЭУ до 1000 В (или группу V в ЭУ выше 1000 В). Перечень таких работников определяется распоряжением руководителя организации.
+                </div>
+
+                <h4>2. Содержание работы</h4>
+                <div class="document-field">
+                    <span class="field-value" style="width: 100%;">Замена магнитного пускателя ПМЕ-211 электродвигателя вентилятора В-3 в ЩСУ-0,4 кВ, панель №2</span>
+                </div>
+
+                <div class="example-box">
+                    <strong>💡 Как описывать содержание работы в распоряжении:</strong><br>
+                    <ul>
+                        <li><strong>Что делаем:</strong> замена магнитного пускателя</li>
+                        <li><strong>Тип оборудования:</strong> ПМЕ-211 (указываем тип для правильного подбора замены)</li>
+                        <li><strong>Какой механизм обслуживает:</strong> электродвигатель вентилятора В-3</li>
+                        <li><strong>Где находится:</strong> ЩСУ-0,4 кВ, панель №2 (точная локализация)</li>
+                    </ul>
+                </div>
+
+                <h4>3. Категория работ</h4>
+                <div class="document-field">
+                    <span class="field-value" style="width: 100%;">Со снятием напряжения</span>
+                </div>
+
+                <h4>4. Меры безопасности</h4>
+                <div class="document-field">
+                    <span class="field-value" style="width: 100%;">Отключить автоматический выключатель QF-5 в панели №2. Вывесить плакат «Не включать! Работают люди». Проверить отсутствие напряжения указателем УН-500. Работать в диэлектрических перчатках при проверке отсутствия напряжения.</span>
+                </div>
+
+                <div class="example-box">
+                    <strong>💡 Особенности записи мер безопасности в распоряжении:</strong><br>
+                    В отличие от наряда, где меры безопасности записываются в таблице, в распоряжении они указываются текстом. Но содержание то же:
+                    <ul>
+                        <li>Что отключить (с указанием позиционного обозначения QF-5)</li>
+                        <li>Какие плакаты вывесить</li>
+                        <li>Как проверить отсутствие напряжения</li>
+                        <li>Какие СИЗ применять</li>
+                    </ul>
+                </div>
+
+                <h4>5. Производитель работ (наблюдающий)</h4>
+                <div class="document-field">
+                    <span class="field-value" style="width: 100%;">Кузнецов Виктор Андреевич, электромонтёр, группа III до 1000 В</span>
+                </div>
+
+                <h4>6. Состав бригады</h4>
+                <table style="font-size: 0.95rem;">
+                    <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Фамилия, инициалы</th>
+                            <th>Группа</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><span class="filled-value">Кузнецов В.А. (производитель работ)</span></td>
+                            <td><span class="filled-value">III</span></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><span class="filled-value">Павлов С.М.</span></td>
+                            <td><span class="filled-value">III</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box">
+                    <strong>Минимальный состав бригады при работах по распоряжению:</strong><br>
+                    При работах по распоряжению в электроустановках до 1000 В со снятием напряжения минимальный состав бригады — <strong>2 человека</strong>. Один работник может иметь группу II, но производитель работ должен иметь группу III.
+                </div>
+
+                <h4>7. Допускающий</h4>
+                <div class="document-field">
+                    <span class="field-value" style="width: 100%;">Смирнов Олег Викторович, дежурный электромонтёр, группа III до 1000 В</span>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <h4>8. Регистрация допуска и окончания работы</h4>
+
+                <table style="font-size: 0.9rem;">
+                    <tr>
+                        <td style="width: 30%; background: #edf2f7;"><strong>Допуск к работе:</strong></td>
+                        <td><span class="filled-value">15.01.2025, 10:30</span></td>
+                        <td style="width: 20%;">Подпись допускающего:</td>
+                        <td style="font-style: italic; color: #718096;">(подпись)</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #edf2f7;"><strong>Целевой инструктаж проведён:</strong></td>
+                        <td colspan="3"><span class="filled-value">Кузнецов В.А., Павлов С.М. — инструктаж получили</span> <span style="font-style: italic; color: #718096;">(подписи)</span></td>
+                    </tr>
+                    <tr>
+                        <td style="background: #edf2f7;"><strong>Работа окончена:</strong></td>
+                        <td><span class="filled-value">15.01.2025, 12:15</span></td>
+                        <td>Подпись производителя:</td>
+                        <td style="font-style: italic; color: #718096;">(подпись)</td>
+                    </tr>
+                </table>
+
+                <div class="example-box">
+                    <strong>💡 Хронология работы по распоряжению:</strong><br>
+                    <ol>
+                        <li><strong>10:00</strong> — Выдача распоряжения (устно по телефону или лично)</li>
+                        <li><strong>10:00–10:30</strong> — Подготовка рабочего места допускающим</li>
+                        <li><strong>10:30</strong> — Допуск бригады, проведение целевого инструктажа</li>
+                        <li><strong>10:30–12:15</strong> — Выполнение работы (замена пускателя)</li>
+                        <li><strong>12:15</strong> — Окончание работы, уборка рабочего места</li>
+                        <li><strong>12:15</strong> — Сообщение допускающему об окончании работы</li>
+                    </ol>
+                </div>
+
+            </div>
+
+            <!-- СРАВНЕНИЕ НАРЯДА И РАСПОРЯЖЕНИЯ -->
+            <div class="step-box">
+                <h3><span class="step-number">5</span>Сравнительный анализ наряда-допуска и распоряжения</h3>
+            </div>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Наряд-допуск (наш пример)</th>
+                        <th>Распоряжение (наш пример)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Напряжение ЭУ</td>
+                        <td>10 кВ (выше 1000 В)</td>
+                        <td>0,4 кВ (до 1000 В)</td>
+                    </tr>
+                    <tr>
+                        <td>Сложность работы</td>
+                        <td>Высокая (ремонт выключателя)</td>
+                        <td>Средняя (замена пускателя)</td>
+                    </tr>
+                    <tr>
+                        <td>Срок действия</td>
+                        <td>До 15 суток</td>
+                        <td>Одна рабочая смена</td>
+                    </tr>
+                    <tr>
+                        <td>Форма документа</td>
+                        <td>Типовой бланк в 2-х экземплярах</td>
+                        <td>Запись в журнале</td>
+                    </tr>
+                    <tr>
+                        <td>Группа выдающего</td>
+                        <td>V</td>
+                        <td>IV</td>
+                    </tr>
+                    <tr>
+                        <td>Группа производителя</td>
+                        <td>IV</td>
+                        <td>III</td>
+                    </tr>
+                    <tr>
+                        <td>Ответственный руководитель</td>
+                        <td>Назначен (группа V)</td>
+                        <td>Не назначается</td>
+                    </tr>
+                    <tr>
+                        <td>Установка заземлений</td>
+                        <td>Обязательна (ПЗ-1, ПЗ-2)</td>
+                        <td>Не требуется</td>
+                    </tr>
+                    <tr>
+                        <td>Численность бригады</td>
+                        <td>3 человека</td>
+                        <td>2 человека</td>
+                    </tr>
+                    <tr>
+                        <td>Продолжительность работы</td>
+                        <td>7 ч 45 мин</td>
+                        <td>1 ч 45 мин</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- ТИПИЧНЫЕ ОШИБКИ В РАСПОРЯЖЕНИИ -->
+            <div class="step-box">
+                <h3><span class="step-number">6</span>Типичные ошибки при оформлении распоряжения</h3>
+            </div>
+
+            <div class="error-example">
+                <strong>❌ Ошибка 1: Работа не может выполняться по распоряжению</strong><br>
+                <em>Пример:</em> Оформление распоряжения на работу в ЭУ выше 1000 В, требующую установки заземлений<br>
+                <strong>Правильно:</strong> Такие работы выполняются только по наряду-допуску
+            </div>
+
+            <div class="error-example">
+                <strong>❌ Ошибка 2: Не указан способ проверки отсутствия напряжения</strong><br>
+                <em>Неправильно:</em> «Проверить отсутствие напряжения»<br>
+                <em>Правильно:</em> «Проверить отсутствие напряжения указателем УН-500»<br>
+                <strong>Почему важно:</strong> Должен быть указан конкретный прибор соответствующего класса напряжения
+            </div>
+
+            <div class="error-example">
+                <strong>❌ Ошибка 3: Не зарегистрирован целевой инструктаж</strong><br>
+                <em>Неправильно:</em> Отсутствуют подписи членов бригады за инструктаж<br>
+                <strong>Почему важно:</strong> Целевой инструктаж обязателен и при работах по распоряжению
+            </div>
+
+            <div class="error-example">
+                <strong>❌ Ошибка 4: Работа продлена на следующий день</strong><br>
+                <em>Неправильно:</em> Распоряжение выдано 15.01, работа закончена 16.01<br>
+                <strong>Правильно:</strong> Распоряжение действует только в течение одной смены. Для продолжения работы выдаётся новое распоряжение
+            </div>
+
+            <div class="error-example">
+                <strong>❌ Ошибка 5: Отсутствует запись в журнале</strong><br>
+                <em>Неправильно:</em> Распоряжение отдано устно, но не зарегистрировано<br>
+                <strong>Правильно:</strong> Все распоряжения (даже устные) должны быть зарегистрированы в журнале учёта работ по нарядам и распоряжениям
+            </div>
+
+            <!-- ИТОГОВЫЙ ВЫВОД -->
+            <div class="conclusion-box">
+                <h3><span class="step-number">7</span>Итоговый вывод</h3>
+
+                <p><strong>По результатам выполнения практической работы:</strong></p>
+
+                <h4>1. Наряд-допуск № 127</h4>
+                <ul>
+                    <li><strong>Работа:</strong> Текущий ремонт масляного выключателя ВМП-10 в ячейке №5 КРУ-10 кВ</li>
+                    <li><strong>Обоснование выбора наряда:</strong> Работа выполняется в электроустановке выше 1000 В, относится к работам повышенной опасности, требует установки заземлений</li>
+                    <li><strong>Ответственные лица:</strong> 5 человек (выдающий наряд, ответственный руководитель, допускающий, производитель работ, 2 члена бригады)</li>
+                    <li><strong>Технические мероприятия:</strong> 12 пунктов (отключения, плакаты, проверка, заземления, ограждения)</li>
+                    <li><strong>Применённые нормативные документы:</strong> ПОТЭУ, глава V</li>
+                </ul>
+
+                <h4>2. Распоряжение № 58</h4>
+                <ul>
+                    <li><strong>Работа:</strong> Замена магнитного пускателя ПМЕ-211 в ЩСУ-0,4 кВ</li>
+                    <li><strong>Обоснование выбора распоряжения:</strong> Работа небольшого объёма в ЭУ до 1000 В, выполняется в течение одной смены, не требует установки заземлений</li>
+                    <li><strong>Ответственные лица:</strong> 4 человека (выдающий распоряжение, допускающий, производитель работ, 1 член бригады)</li>
+                    <li><strong>Технические мероприятия:</strong> Отключение автомата, плакат, проверка отсутствия напряжения</li>
+                </ul>
+
+                <h4>3. Ключевые различия документов:</h4>
+                <table>
+                    <tr>
+                        <td><strong>Наряд-допуск</strong></td>
+                        <td>Применяется для работ повышенной опасности, в ЭУ выше 1000 В, при необходимости установки заземлений, при работах продолжительностью более одной смены</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Распоряжение</strong></td>
+                        <td>Применяется для работ небольшого объёма в ЭУ до 1000 В (и некоторых работ в ЭУ выше 1000 В), выполняемых в течение одной смены</td>
+                    </tr>
+                </table>
+
+                <h4>4. Практические навыки, полученные при выполнении работы:</h4>
+                <ul>
+                    <li>Определение вида документа (наряд или распоряжение) в зависимости от характера работы</li>
+                    <li>Назначение ответственных лиц с учётом требуемых групп по электробезопасности</li>
+                    <li>Определение необходимых технических мероприятий в правильной последовательности</li>
+                    <li>Правильное заполнение всех разделов наряда-допуска и журнала распоряжений</li>
+                    <li>Выявление и предотвращение типичных ошибок при оформлении документов</li>
+                </ul>
+            </div>
+
+           
+
+          
+            <!-- СПИСОК ЛИТЕРАТУРЫ -->
+            <h2>Нормативные документы и рекомендуемая литература</h2>
+
+            <ol>
+                <li><strong>Приказ Минтруда России от 15.12.2020 № 903н</strong> «Об утверждении Правил по охране труда при эксплуатации электроустановок» (ПОТЭУ).</li>
+                <li><strong>ПТЭЭП</strong> — Правила технической эксплуатации электроустановок потребителей (утв. Приказом Минэнерго от 13.01.2003 № 6).</li>
+                <li><strong>ГОСТ 12.4.026-2015</strong> — Система стандартов безопасности труда. Цвета сигнальные, знаки безопасности и разметка сигнальная.</li>
+                <li><strong>СО 153-34.03.603-2003</strong> — Инструкция по применению и испытанию средств защиты, используемых в электроустановках.</li>
+                <li>Красник В.В. <strong>Правила по охране труда при эксплуатации электроустановок в вопросах и ответах.</strong> — М.: ЭНАС, 2023.</li>
+                <li>Сибикин Ю.Д., Сибикин М.Ю. <strong>Электробезопасность при эксплуатации электроустановок промышленных предприятий.</strong> — М.: Академия, 2020.</li>
+            </ol>
+
+            <div class="nav-buttons">
+                <a href="pr2.html" class="nav-btn">← Практическая работа №2</a>
+                <a href="start.html" class="nav-btn nav-btn-home">📚 Оглавление</a>
+                <a href="pr4.html" class="nav-btn">Практическая работа №4 →</a>
+            </div>
+
+        </article>
+
+        <footer class="footer">
+            <p>Эксплуатация электроустановок — Практические работы</p>
+            <p>© 2024</p>
+        </footer>
+    </div>
+
+</body>
+</html>
