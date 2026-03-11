@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эксплуатация электрооборудования - КузГТУ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c1929 0%, #1a365d 50%, #0d2137 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Анимированный фон */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .bg-animation span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            animation: move 25s infinite;
+            bottom: -150px;
+            border-radius: 50%;
+        }
+
+        .bg-animation span:nth-child(1) { left: 10%; width: 80px; height: 80px; animation-delay: 0s; }
+        .bg-animation span:nth-child(2) { left: 20%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
+        .bg-animation span:nth-child(3) { left: 35%; width: 60px; height: 60px; animation-delay: 4s; }
+        .bg-animation span:nth-child(4) { left: 50%; width: 40px; height: 40px; animation-delay: 0s; animation-duration: 18s; }
+        .bg-animation span:nth-child(5) { left: 65%; width: 25px; height: 25px; animation-delay: 0s; }
+        .bg-animation span:nth-child(6) { left: 75%; width: 70px; height: 70px; animation-delay: 3s; }
+        .bg-animation span:nth-child(7) { left: 85%; width: 35px; height: 35px; animation-delay: 7s; }
+        .bg-animation span:nth-child(8) { left: 5%; width: 50px; height: 50px; animation-delay: 15s; animation-duration: 45s; }
+        .bg-animation span:nth-child(9) { left: 55%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s; }
+        .bg-animation span:nth-child(10) { left: 90%; width: 90px; height: 90px; animation-delay: 0s; animation-duration: 11s; }
+
+        @keyframes move {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1500px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Электрические искры */
+        .electric-sparks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .spark {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #00d4ff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+            animation: sparkle 3s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* ==================== ТИТУЛЬНАЯ СТРАНИЦА ==================== */
+        .title-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            text-align: center;
+            animation: fadeIn 1s ease;
+        }
+
+        .title-page.hidden {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Логотип университета */
+        .university-logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3); }
+            50% { box-shadow: 0 10px 60px rgba(255, 215, 0, 0.5); }
+        }
+
+        .university-logo::before {
+            content: '⚡';
+            font-size: 3.5rem;
+        }
+
+        /* Рамка титульника */
+        .title-frame {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 30px;
+            padding: 50px 60px;
+            max-width: 800px;
+            width: 95%;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .title-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Угловые декорации */
+        .corner {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 3px solid #ffd700;
+        }
+
+        .corner-tl { top: 15px; left: 15px; border-right: none; border-bottom: none; }
+        .corner-tr { top: 15px; right: 15px; border-left: none; border-bottom: none; }
+        .corner-bl { bottom: 15px; left: 15px; border-right: none; border-top: none; }
+        .corner-br { bottom: 15px; right: 15px; border-left: none; border-top: none; }
+
+        /* Название университета */
+        .university-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffd700;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            margin-bottom: 5px;
+            letter-spacing: 3px;
+        }
+
+        .university-year {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            margin-bottom: 40px;
+        }
+
+        /* Разделительная линия */
+        .divider {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+            margin: 30px auto;
+        }
+
+        .divider-short {
+            width: 100px;
+        }
+
+        /* Название дисциплины */
+        .discipline-name {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .discipline-subtitle {
+            font-size: 1.1rem;
+            color: #00d4ff;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Информация о программе */
+        .program-info {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        .info-value {
+            color: #fff;
+            font-weight: 500;
+            text-align: right;
+        }
+
+        /* Информация о преподавателе */
+        .teacher-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .teacher-photo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            font-size: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .teacher-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .teacher-title {
+            font-size: 1rem;
+            color: #00d4ff;
+        }
+
+        /* Кнопка начала */
+        .btn {
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 40px;
+        }
+
+        .btn-start {
+            background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+            color: #1a1a2e;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-start:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(255, 215, 0, 0.6);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* ==================== ГЛАВНЫЙ ЭКРАН ==================== */
+        .container {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            max-width: 900px;
+            width: 95%;
+            margin: 0 auto;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container.active {
+            display: flex;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Заголовок */
+        .title {
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            margin-bottom: 40px;
+        }
+
+        /* Область прокрутки вопросов */
+        .slot-machine {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            width: 100%;
+        }
+
+        .slot-window {
+            height: 80px;
+            overflow: hidden;
+            position: relative;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slot-content {
+            position: absolute;
+            width: 100%;
+            transition: transform 0.1s ease-out;
+        }
+
+        .slot-item {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .slot-window::before,
+        .slot-window::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 50px;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .slot-window::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(26, 26, 46, 0.8), transparent);
+        }
+
+        .slot-window::after {
+            right: 0;
+            background: linear-gradient(to left, rgba(26, 26, 46, 0.8), transparent);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: #fff;
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(0, 212, 255, 0.6);
+        }
+
+        .btn-primary:disabled {
+            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        /* Звуковой индикатор */
+        .sound-wave {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            margin: 20px 0;
+        }
+
+        .sound-wave.active {
+            display: flex;
+        }
+
+        .sound-wave span {
+            width: 4px;
+            height: 20px;
+            background: #00d4ff;
+            border-radius: 2px;
+            animation: wave 0.5s ease-in-out infinite;
+        }
+
+        .sound-wave span:nth-child(1) { animation-delay: 0s; }
+        .sound-wave span:nth-child(2) { animation-delay: 0.1s; }
+        .sound-wave span:nth-child(3) { animation-delay: 0.2s; }
+        .sound-wave span:nth-child(4) { animation-delay: 0.3s; }
+        .sound-wave span:nth-child(5) { animation-delay: 0.4s; }
+
+        @keyframes wave {
+            0%, 100% { height: 10px; }
+            50% { height: 30px; }
+        }
+
+        .counter {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-top: 20px;
+        }
+
+        /* ==================== ЭКРАН РЕЗУЛЬТАТА ==================== */
+        .result-screen {
+            display: none;
+            animation: fadeIn 0.5s ease;
+            width: 100%;
+        }
+
+        .result-screen.active {
+            display: block;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 153, 204, 0.1) 100%);
+            border: 2px solid rgba(0, 212, 255, 0.5);
+            border-radius: 25px;
+            padding: 50px 40px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .question-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #00d4ff;
+            text-shadow: 0 0 50px rgba(0, 212, 255, 0.8);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .question-label {
+            font-size: 1rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .question-text {
+            font-size: 1.4rem;
+            color: #fff;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+            margin-top: 15px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-home {
+            background: transparent;
+            color: #ffd700;
+            border: 2px solid #ffd700;
+            margin-top: 15px;
+        }
+
+        .btn-home:hover {
+            background: rgba(255, 215, 0, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .main-screen {
+            display: block;
+            width: 100%;
+        }
+
+        .main-screen.hidden {
+            display: none;
+        }
+
+        .decorative-line {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        /* Мини-заголовок */
+        .mini-header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mini-logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+
+        .mini-text {
+            text-align: left;
+        }
+
+        .mini-text h3 {
+            color: #ffd700;
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+
+        .mini-text p {
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .university-name { font-size: 1.8rem; }
+            .discipline-name { font-size: 1.5rem; }
+            .title-frame { padding: 30px 20px; }
+            .info-row { flex-direction: column; }
+            .info-value { text-align: left; }
+            .title { font-size: 1.6rem; }
+            .question-number { font-size: 3rem; }
+            .question-text { font-size: 1.1rem; }
+            .btn { padding: 15px 30px; font-size: 1rem; }
+            .result-card { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Анимированный фон -->
+    <div class="bg-animation">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Электрические искры -->
+    <div class="electric-sparks" id="sparks"></div>
+
+    <!-- ==================== ТИТУЛЬНАЯ СТРАНИЦА ==================== -->
+    <div class="title-page" id="titlePage">
+        <div class="university-logo"></div>
+        
+        <div class="title-frame">
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-tr"></div>
+            <div class="corner corner-bl"></div>
+            <div class="corner corner-br"></div>
+
+            <h1 class="university-name">КузГТУ</h1>
+            <p class="university-year">2026</p>
+
+            <div class="divider"></div>
+
+            <h2 class="discipline-name">Эксплуатация электрооборудования</h2>
+            <p class="discipline-subtitle">Рабочая программа дисциплины</p>
+
+            <div class="program-info">
+                <div class="info-row">
+                    <span class="info-label">Направление подготовки</span>
+                    <span class="info-value">13.03.02 Электроэнергетика и электротехника</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Профиль</span>
+                    <span class="info-value">05 Менеджмент в энергетике</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Квалификация</span>
+                    <span class="info-value">Бакалавр</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Форма обучения</span>
+                    <span class="info-value">Очная</span>
+                </div>
+            </div>
+
+            <div class="teacher-section">
+                <div class="teacher-photo">👨‍🏫</div>
+                <h3 class="teacher-name">Артемасов Валерий Валерьевич</h3>
+                <p class="teacher-title">к.т.н., доцент кафедры ЭГиПП</p>
+            </div>
+
+            <button class="btn btn-start" onclick="startProgram()">
+                ⚡ Начать тестирование
+            </button>
+        </div>
+    </div>
+
+    <!-- ==================== ГЛАВНЫЙ ЭКРАН ==================== -->
+    <div class="container" id="mainContainer">
+        <!-- Мини-заголовок -->
+        <div class="mini-header">
+            <div class="mini-logo">⚡</div>
+            <div class="mini-text">
+                <h3>КузГТУ</h3>
+                <p>Эксплуатация электрооборудования</p>
+            </div>
+        </div>
+
+        <!-- Главный экран выбора -->
+        <div class="main-screen" id="mainScreen">
+            <h1 class="title">🎰 Генератор вопросов</h1>
+            <p class="subtitle">Случайный выбор экзаменационного вопроса</p>
+            
+            <div class="slot-machine">
+                <div class="slot-window">
+                    <div class="slot-content" id="slotContent">
+                        <div class="slot-item">Нажмите кнопку для выбора вопроса</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sound-wave" id="soundWave">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <button class="btn btn-primary" id="spinBtn" onclick="startSpin()">
+                🎲 Выбрать вопрос
+            </button>
+
+            <p class="counter">Всего вопросов: <strong>51</strong></p>
+
+            <button class="btn btn-home" onclick="goToTitle()" style="margin-top: 30px;">
+                ← На титульную страницу
+            </button>
+        </div>
+
+        <!-- Экран результата -->
+        <div class="result-screen" id="resultScreen">
+            <div class="result-card">
+                <div class="question-label">Ваш вопрос</div>
+                <div class="question-number" id="questionNumber">№14</div>
+                <div class="decorative-line"></div>
+                <p class="question-text" id="questionText">Текст вопроса</p>
+            </div>
+
+            <button class="btn btn-primary" onclick="newQuestion()">
+                🔄 Новый вопрос
+            </button>
+            <br>
+            <button class="btn btn-secondary" onclick="showMainScreen()">
+                ← К выбору вопроса
+            </button>
+            <br>
+            <button class="btn btn-home" onclick="goToTitle()">
+                🏠 На титульную страницу
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Массив вопросов
+        const questions = [
+            { num: 14, text: "Какова периодичность чистки светильников?" },
+            { num: 15, text: "Поясните правила эксплуатации внутрицеховых электрических сетей." },
+            { num: 16, text: "Каким параметрам должны соответствовать электропроводки?" },
+            { num: 17, text: "Какие требования предъявляются к осветительным электроустановкам?" },
+            { num: 18, text: "Как выполняется замена ламп?" },
+            { num: 19, text: "Какие параметры должны соблюдаться при эксплуатации осветительных установок?" },
+            { num: 20, text: "Как производится утилизация перегоревших люминесцентных ламп?" },
+            { num: 21, text: "Перечислите основные правила техники безопасности при эксплуатации электропроводок." },
+            { num: 22, text: "Перечислите правила техники безопасности при работе на высоте с осветительными установками." },
+            { num: 23, text: "Какая приемо-сдаточная документация предъявляется после выполнения электромонтажных работ?" },
+            { num: 24, text: "Как проверить центровку валов при передаче вращения с помощью муфт?" },
+            { num: 25, text: "Как проверить центровку валов при передаче вращения с помощью ременной передачи?" },
+            { num: 26, text: "Как проверить правильную набивку смазки в подшипниках?" },
+            { num: 27, text: "Как проверяется вибрация электрической машины?" },
+            { num: 28, text: "Как правильно рассчитать токи плавких вставок предохранителей?" },
+            { num: 29, text: "Как притереть щетки?" },
+            { num: 30, text: "Как очистить коллектор от нагара?" },
+            { num: 31, text: "Назовите причины нагрева электродвигателя." },
+            { num: 32, text: "Каковы причины повышенной вибрации электродвигателя?" },
+            { num: 33, text: "В каком состоянии должны содержаться пусковая, защитная аппаратура и распределительные шкафы?" },
+            { num: 34, text: "Как проверить сопротивление изоляции электродвигателя и каковы нормы?" },
+            { num: 35, text: "Кто выполняет технические осмотры и надзор при эксплуатации электрооборудования?" },
+            { num: 36, text: "Кто допускается к эксплуатации силового электрооборудования и с какой группой допуска?" },
+            { num: 37, text: "Назовите способы прокладки кабелей." },
+            { num: 38, text: "Перечислите основные требования, предъявляемые к прокладке кабелей в земле." },
+            { num: 39, text: "Какие марки кабелей допускаются к прокладке в кабельных сооружениях?" },
+            { num: 40, text: "Перечислите основные приемо-сдаточные документы, предъявляемые при приемке кабельной линии после монтажа." },
+            { num: 41, text: "Каким испытаниям подвергаются кабельные линии при приемке в эксплуатацию?" },
+            { num: 42, text: "Поясните правила эксплуатации кабельных линий в зонах с агрессивными грунтами." },
+            { num: 43, text: "Какие существуют методы борьбы с блуждающими токами?" },
+            { num: 44, text: "Как маркируются кабельные и воздушные линии и как осуществляется контроль за их маркировкой?" },
+            { num: 45, text: "Поясните основные правила техники безопасности при эксплуатации кабельных ЛЭП." },
+            { num: 46, text: "Что входит в состав КТП?" },
+            { num: 47, text: "Поясните основные схемы расположения оборудования закрытой подстанции?" },
+            { num: 48, text: "Что проверяется при наличии строительной части ТП?" },
+            { num: 49, text: "Перечислите основные документы приемо-сдаточной документации КТП." },
+            { num: 50, text: "Какие измерения производятся при сдаче-приемке ТП?" },
+            { num: 51, text: "Каким требованиям должны удовлетворять трансформаторы при приемке в эксплуатацию?" },
+            { num: 52, text: "Что проверяется при приемке РУ высокого напряжения?" },
+            { num: 53, text: "Каким требованиям должны удовлетворять контактные соединения?" },
+            { num: 54, text: "Какие надписи и маркировки наносятся на элементы электрооборудования?" },
+            { num: 55, text: "Как осуществляется эксплуатация оборудования ТП?" },
+            { num: 56, text: "Что проверяется при осмотрах оборудования ТП и РП?" },
+            { num: 57, text: "Когда производятся внеочередные осмотры КТП и РП?" },
+            { num: 58, text: "Как выполняется очистка элементов распределительных устройств?" },
+            { num: 59, text: "Когда производится очистка РУ?" },
+            { num: 60, text: "Укажите сроки профилактических испытаний электрооборудования РУ." },
+            { num: 61, text: "Когда и как проверяется трансформаторное масло?" },
+            { num: 62, text: "Какие перегрузки допускаются трансформаторами?" },
+            { num: 63, text: "Поясните, что такое оперативные подключения? Кто их выполняет?" },
+            { num: 64, text: "Поясните основные правила техники безопасности при эксплуатации ТП и РП." }
+        ];
+
+        let isSpinning = false;
+        let selectedQuestion = null;
+
+        // Создание электрических искр
+        function createSparks() {
+            const sparksContainer = document.getElementById('sparks');
+            for (let i = 0; i < 20; i++) {
+                const spark = document.createElement('div');
+                spark.className = 'spark';
+                spark.style.left = Math.random() * 100 + '%';
+                spark.style.top = Math.random() * 100 + '%';
+                spark.style.animationDelay = Math.random() * 3 + 's';
+                sparksContainer.appendChild(spark);
+            }
+        }
+        createSparks();
+
+        // Переход с титульной страницы
+        function startProgram() {
+            document.getElementById('titlePage').classList.add('hidden');
+            document.getElementById('mainContainer').classList.add('active');
+        }
+
+        // Возврат на титульную страницу
+        function goToTitle() {
+            document.getElementById('mainContainer').classList.remove('active');
+            document.getElementById('titlePage').classList.remove('hidden');
+            document.getElementById('mainScreen').classList.remove('hidden');
+            document.getElementById('resultScreen').classList.remove('active');
+            document.getElementById('slotContent').innerHTML = '<div class="slot-item">Нажмите кнопку для выбора вопроса</div>';
+        }
+
+        function startSpin() {
+            if (isSpinning) return;
+            
+            isSpinning = true;
+            const btn = document.getElementById('spinBtn');
+            const slotContent = document.getElementById('slotContent');
+            const soundWave = document.getElementById('soundWave');
+            
+            btn.disabled = true;
+            soundWave.classList.add('active');
+            
+            const totalDuration = 3000;
+            const initialInterval = 50;
+            const finalInterval = 300;
+            
+            let currentInterval = initialInterval;
+            let elapsed = 0;
+            
+            function spin() {
+                if (elapsed >= totalDuration) {
+                    selectedQuestion = questions[Math.floor(Math.random() * questions.length)];
+                    slotContent.innerHTML = `<div class="slot-item">№${selectedQuestion.num}: ${selectedQuestion.text}</div>`;
+                    slotContent.style.filter = 'blur(0px)';
+                    
+                    soundWave.classList.remove('active');
+                    
+                    setTimeout(() => {
+                        showResult();
+                        btn.disabled = false;
+                        isSpinning = false;
+                    }, 500);
+                    return;
+                }
+                
+                const currentIndex = Math.floor(Math.random() * questions.length);
+                const q = questions[currentIndex];
+                slotContent.innerHTML = `<div class="slot-item">№${q.num}: ${q.text}</div>`;
+                
+                if (currentInterval < 100) {
+                    slotContent.style.filter = 'blur(2px)';
+                } else {
+                    slotContent.style.filter = 'blur(0px)';
+                }
+                
+                elapsed += currentInterval;
+                const progress = elapsed / totalDuration;
+                currentInterval = initialInterval + (finalInterval - initialInterval) * Math.pow(progress, 2);
+                
+                setTimeout(spin, currentInterval);
+            }
+            
+            spin();
+        }
+
+        function showResult() {
+            document.getElementById('mainScreen').classList.add('hidden');
+            document.getElementById('resultScreen').classList.add('active');
+            document.getElementById('questionNumber').textContent = `№${selectedQuestion.num}`;
+            document.getElementById('questionText').textContent = selectedQuestion.text;
+        }
+
+        function showMainScreen() {
+            document.getElementById('mainScreen').classList.remove('hidden');
+            document.getElementById('resultScreen').classList.remove('active');
+            document.getElementById('slotContent').innerHTML = '<div class="slot-item">Нажмите кнопку для выбора вопроса</div>';
+        }
+
+        function newQuestion() {
+            showMainScreen();
+            setTimeout(() => startSpin(), 100);
+        }
+
+        // Эффект ripple для кнопок
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const ripple = document.createElement('span');
+                ripple.style.cssText = `
+                    position: absolute;
+                    background: rgba(255,255,255,0.5);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    width: 100px;
+                    height: 100px;
+                    left: ${x - 50}px;
+                    top: ${y - 50}px;
+                    animation: ripple 0.6s ease-out;
+                `;
+                
+                this.style.position = 'relative';
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                from { transform: scale(0); opacity: 1; }
+                to { transform: scale(4); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
